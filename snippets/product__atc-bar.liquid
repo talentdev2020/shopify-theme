@@ -1,0 +1,41 @@
+<div id="product__tab--bar" class="product__tab--bar section__wrapper section">
+  <div class="product__bar--bar-pc is-flex medium-down--hide">
+    <ul class="anchor__scroll product__tab is-flex">
+      {% if section.settings.is_video %}
+      <li><a href="#product__video-section">{{ section.settings.anchor_text_video }}</a></li>
+      {% endif %}
+      {% if section.settings.is_faq %}
+      <li><a href="#product-faq-container2">{{ section.settings.anchor_text_faq }}</a></li>
+      {% endif %}
+      {% if section.settings.is_reviews %}
+      <li><a href="#product__reviews-section">{{ section.settings.anchor_text_reviews }}</a></li>
+      {% endif %}
+      {% if section.settings.is_specs %}
+      <li><a href="#product__tech-specs-section">{{ section.settings.anchor_text_specs }}</a></li>
+      {% endif %}
+    </ul>
+
+    {% comment %} Purchase form {% endcomment %}
+    <div class="product-form-container">
+
+    {% comment %} Notify form
+    {% include 'product__notify-me-form' %}
+    {% endcomment %}
+
+    {% comment %} Product form {% endcomment %}
+    {% unless collection_handles contains 'coming-soon' %}
+      {% include 'product__form', product: product, type: 'product' %}
+    {% endunless %}
+    </div> 
+  </div>
+  <div class="product__bar--bar-mobile medium-down--visible">
+    <ul class="anchor__scroll">
+      <li><a class="" href="">{% include 'icon_solid', name: "sticky_rss" %}</a></li>
+      <li><a class="" href="#product__tech-specs-section">{% include  'icon_solid', name: "sticky_gear" %}</a></li>
+      <li><a class="" href="#product-faq-container2">{% include  'icon_solid', name: "sticky_binoculars" %}</a></li>
+      <li><a class="" href="#product__reviews-section">{% include  'icon_solid', name: "sticky_star" %}</a></li>
+      <li><a class="" href="#product__video-section">{% include  'icon_solid', name: "sticky_film" %}</a></li>
+      <li><a href="">{% include  'icon_solid', name: "down-caret" %}</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-2{fill:#f4364c}
+        </style>
+    </defs>
+    <g id="Group_1688" data-name="Group 1688" transform="translate(-4139.814 -1326)">
+        <circle id="Ellipse_14" cx="15" cy="15" r="15" class="cls-1" data-name="Ellipse 14" transform="translate(4139.814 1326)"/>
+        <g id="Icon_ionic-ios-arrow-dropright" data-name="Icon ionic-ios-arrow-dropright" transform="translate(4142.439 1328.625)">
+            <path id="Path_8163" d="M14.664 10.229a.85.85 0 0 1 1.2 0l4.184 4.2a.846.846 0 0 1 .026 1.167l-4.123 4.136a.845.845 0 1 1-1.2-1.193l3.5-3.557-3.592-3.557a.837.837 0 0 1 .005-1.196z" class="cls-2" data-name="Path 8163" transform="translate(-4.153 -2.486)"/>
+            <path id="Path_8164" d="M3.375 12.5A9.123 9.123 0 1 0 12.5 3.375 9.121 9.121 0 0 0 3.375 12.5zm1.4 0a7.716 7.716 0 0 1 13.179-5.458A7.716 7.716 0 1 1 7.042 17.954 7.653 7.653 0 0 1 4.778 12.5z" class="cls-2" data-name="Path 8164"/>
+        </g>
+    </g>
+</svg>

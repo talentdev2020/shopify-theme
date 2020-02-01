@@ -1,0 +1,150 @@
+/* # Collection
+================================================== */
+
+.collection-page {
+  .section__wrapper{
+    @include respond-to('medium-down') {
+      padding: 0;
+    }
+  }
+}
+.collection__filters {
+  margin-bottom: 20px;
+
+  .select {
+    max-width: 50%;
+
+    @include respond-to('small-down') {
+      max-width: 100%;
+    }
+  }
+
+  .select:first-child {
+
+    @include respond-to('small-down') {
+      margin-bottom: 10px;
+    }
+  }
+
+  .select,
+  select {
+
+    @include respond-to('small-down') {
+      width: 100%;
+    }
+  }
+
+  .is-grouped {
+    @include justify-content(flex-end);
+
+    @include respond-to('medium-down') {
+      @include justify-content(flex-start);
+    }
+  }
+}
+
+.collection-main {
+  .image-element__wrap img {
+    width: 352px;
+    height: 386px;
+
+    @include respond-to('medium-down') {
+      width: 145px;
+      height: 170px;
+    }
+  }
+  .banner__text {
+    margin: 0;
+  }
+
+  .banner__content {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+  .product-thumbnail__title, .product-thumbnail__price .money {
+    font-size: 1.1rem;
+    @include respond-to('medium-down') {
+      font-size: 0.85rem;
+    }
+  }
+
+  .product-thumbnail__price .product-thumbnail__was-price .money {
+    font-size: 1rem;
+  }
+}
+
+
+.collection__sort-by-filter {
+  @include respond-to('medium-down') {
+    margin-left: 10px;
+  }
+}
+
+.sub-collection-main main {
+  min-height: 0;
+}
+
+.collection-menu {
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+.jsCollectionMenu {
+  .column {
+    .icon {
+      width: 36px;
+      height: 41px;
+    }
+  }
+  .collection-menu__nav{
+    z-index: 1;
+    @include respond-to('medium-down') {
+      display: block!important;
+    }
+    .collection-menu__nav--prev{
+      position: absolute;
+      top: 15px;
+      left: 0%;
+    }
+    .collection-menu__nav--next{
+      position: absolute;
+      top: 15px;
+      right: 0%;
+    }
+  }
+
+  .flickity-slider {
+    & > .column {
+      width: 33.33333%;
+      @include respond-to('medium-down') {
+        width: 50%;
+      }
+    }
+  }
+
+  .icon-bar__text{
+    font-size: 1.1rem;
+
+    @include respond-to('medium-down') {
+      font-size: 0.85rem;
+    }
+  }
+
+  .icon-bar__block {
+    padding: 7px 10px;
+    width: 60%;
+    margin: auto;
+
+    @include respond-to('medium-down') {
+      padding: 4px;
+      width: 100%;
+    }
+  }
+
+  section {
+    padding: 14px 0;
+  }
+}
+

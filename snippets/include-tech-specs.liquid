@@ -1,0 +1,110 @@
+{% comment %}
+  Snippet can be used in block
+  eg. {% include 'include-reviews' %}
+{% endcomment %}
+
+{% comment %}Assign object as block{% endcomment %}
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% comment %} Advanced {% endcomment %}
+{% assign css_class = object.settings.css_class %}
+{% assign custom_css = object.settings.custom_css %}
+{% assign custom_html = object.settings.custom_html %}
+{% assign enable_popup = object.settings.enable_popup %}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+    {% if width == 'wide' -%}
+      width: 100%;
+    {%- elsif width == 'half' -%}
+      width: 50%;
+    {%- endif %}
+  }
+  {% include 'css-loop', css: custom_css, id: id %}
+{% endstyle %}
+
+{% comment %} HTML markup {% endcomment %}
+<section id="product__tech-specs-section" class="section
+                product__tech-specs-section
+                {{ css_class }}
+                is-width-{{ width }}" data-popup="{{ enable_popup }}">
+  <div class="container">
+    <div class="one-whole column">
+        {% if object.settings.image != blank %}
+            {% include 'image-element', image: object.settings.image, alt: object.settings.image.alt, additional_classes: 'image-with-text__image' %}
+        {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+    </div>
+
+    <div class="product-tech_specs one-whole column">
+        <div class="one-whole
+                        is-flex
+                        is-flex-wrap
+                        is-justify-left
+                        is-justify-space-between">
+
+            <div class="one-third medium-down--one-whole column name">
+                <h1>Tech specs
+                  <a href="#" class="active">
+                    <span class="up">{% include 'icon_solid', name: 'up-caret' %}</span>
+                    <span class="down">{% include 'icon_solid', name: 'down-caret' %}</span>
+                  </a>
+                </h1>
+            </div>
+
+            <div class="two-thirds medium-down--one-whole column title-show">
+                <h1>{{ object.settings.title }}</h1>
+            </div>
+        </div>
+
+        <div class="tech__specs--content one-whole is-flex
+                            is-flex-wrap
+                            is-justify-left
+                            is-justify-space-between">
+            <div class="one-third column medium-down--hide">
+            </div>
+
+            {% if block.settings.custom_html != blank %}
+            <div class="two-thirds column tech-specs_description medium-down--one-whole">
+              {{ product.description }}
+              {% comment %}
+                {{ object.settings.custom_html }}
+              {% endcomment %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="product-box one-whole column is-flex is-justify-space-between">
+
+        <div class="one-third column name">
+            <h1>What’s in<br>the box</h1>
+        </div>
+
+        <div class="two-thirds column">
+            <span>{{ object.settings.sub-title }}</span>
+        </div>
+    </div>
+
+    <div class="product-tech_specs__buttons is-flex is-flex-wrap one-whole slideshow-classic__buttons buttons ">
+        <div class="one-half medium-down--one-whole column">
+            <a class="button button--secondary ">Download the instruction Manual</a>
+        </div>
+        <div class="one-half medium-down--one-whole column">
+            <a class="button button--secondary ">Download the PC viewing software</a>
+        </div>
+    </div>
+  </div>
+</section>

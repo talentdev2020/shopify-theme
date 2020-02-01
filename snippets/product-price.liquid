@@ -1,0 +1,44 @@
+<p class="modal_price subtitle medium-down--hide">
+            {% if collection_handles contains 'coming-soon' %}
+              {% if settings.stickers_enabled == false %}
+                {{ 'collections.general.coming_soon' | t }}
+              {% endif %}
+            {% else %}
+
+              {% comment %} Sold out {% endcomment %}
+              <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+
+              {% comment %} Current price {% endcomment %}
+              <span class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                <span class="current_price {% if product.available == false %}hidden{% endif %}">
+                  {% if variant.price > 0 %}
+                    <span class="money">{{ variant.price | money }}</span>
+                  {% else %}
+                    {{ settings.free_price_text }}
+                  {% endif %}
+                </span>
+              </span>
+
+              {% comment %} Compare at (original) price {% endcomment %}
+              <span class="was-price">
+                {% if variant.price < variant.compare_at_price and variant.available %}
+                  <span class="money">{{ variant.compare_at_price | money }}</span>
+                {% endif %}
+              </span>
+
+              {% comment %} Size chart {% endcomment %}
+              {% if settings.size_chart != blank or meta-size-chart %}
+                <a href="javascript:;" class="product__size-chart medium-down--hidden" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
+                {% include 'popup-size-chart', product_id: product.id %}
+              {% endif %}
+
+              {% comment %} Savings {% endcomment %}
+              {% if section.settings.display_savings %}
+                <span class="sale savings">
+                  {% if variant.price < variant.compare_at_price and variant.available %}
+                    {{ 'products.product.savings' | t }}  {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                  {% endif %}
+                </span>
+              {% endif %}
+            {% endif %}
+          </p>

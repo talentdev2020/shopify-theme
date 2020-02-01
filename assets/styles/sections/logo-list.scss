@@ -1,0 +1,33 @@
+/* # Logo list
+================================================== */
+
+.logo-list__wrapper {
+  @include respond-to('small-down') {
+    max-width: $site-max-width;
+    width: $site-width;
+  }
+
+  .logo-list__item {
+    p {
+      font-size: 12px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: normal;
+      text-align: center;
+      color: $black;
+      margin-top: 21px;
+    }
+  }
+}
+
+body.page-press {
+
+  .logo-list__item {
+    margin: 40px calc(20px / 2) 20px !important;
+  }
+  .rich-text__content .button {
+    max-width: 232px;
+  }
+}

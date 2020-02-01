@@ -1,0 +1,12 @@
+{% comment %}
+  To edit the contents of this file, look inside the `sections` folder for the file name that comes directly after `section`.
+{% endcomment %}
+
+<main id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section warranty-page" data-check-for-order="true">
+  {% section 'page-warranty__banner' %}
+  <section class="section__wrapper section">
+    <div class="container faq-container">
+      {% section 'page-faq__column1' %}
+    </div>
+  </section>
+</main>

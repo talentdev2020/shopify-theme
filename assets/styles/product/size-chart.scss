@@ -1,0 +1,48 @@
+/* # Size chart
+================================================== */
+
+.size-chart {
+  display: none;
+
+  .fancybox-close-small svg {
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 50%;
+  }
+}
+
+.size-chart-wrap {
+  @include flex(1 0 60%);
+  padding: 0;
+  max-width: 900px;
+  position: relative;
+  padding: 40px;
+
+  &.animated {
+    opacity: 0;
+  }
+}
+
+
+.product__size-chart {
+  font-size: 1rem;
+
+  &.size-chart--medium-down {
+    float: left;
+    width: 100%;
+    display: none;
+    padding-bottom: 20px;
+
+    @include respond-to('medium-down') {
+      display: block;
+    }
+  }
+
+  .icon {
+    position: relative;
+    top: 2px;
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+}
+
+

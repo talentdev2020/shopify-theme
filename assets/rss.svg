@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.42" height="14.42" viewBox="0 0 14.42 14.42">
+    <defs>
+        <style>
+            .cls-1{fill:#f4364c;stroke:#f4364c;stroke-width:.3px}
+        </style>
+    </defs>
+    <g id="rss" transform="translate(.15 .15)">
+        <path id="Path_8342" d="M12.06 19.12a7.06 7.06 0 1 1 7.06-7.06 7.06 7.06 0 0 1-7.06 7.06zm0-13.492a6.432 6.432 0 1 0 6.432 6.432 6.432 6.432 0 0 0-6.432-6.432z" class="cls-1" data-name="Path 8342" transform="translate(-5 -5)"/>
+        <path id="Path_8343" d="M42.2 19.461a1.605 1.605 0 1 1 1.6-1.605 1.605 1.605 0 0 1-1.6 1.605zm0-2.526a.922.922 0 1 0 .921.921.922.922 0 0 0-.921-.921z" class="cls-1" data-name="Path 8343" transform="translate(-35.137 -14.329)"/>
+        <path id="Path_8344" d="M42.695 43.7a1.378 1.378 0 0 1-1.515-1.158v-4.048a1.575 1.575 0 0 1 3.032 0v4.053a1.379 1.379 0 0 1-1.517 1.153zm0-5.819a.752.752 0 0 0-.832.608v4.053a.876.876 0 0 0 1.665 0v-4.048a.752.752 0 0 0-.833-.609z" class="cls-1" data-name="Path 8344" transform="translate(-35.627 -31.508)"/>
+    </g>
+</svg>

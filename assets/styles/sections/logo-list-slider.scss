@@ -1,0 +1,97 @@
+/* # Logo list slider
+================================================== */
+
+.logo-list-slider {
+
+  .has-background {
+    padding-top: 20px;
+  }
+  .mobile-slider  {
+    position: relative;
+
+     div.container:first-of-type {
+      @include respond-to('medium-down') {
+        position: static;
+      }
+    }
+
+    [data-logo-list-slider] {
+      &:after {
+        @include respond-to('medium-down') {
+          content: 'flickity';
+          display: none;
+        }
+      }
+    }
+    .logo-list-slider__nav-wrapper {
+      display: block !important;
+      .logo-list-slider__nav{
+        position: absolute;
+        top: calc(50% - 18px);
+        content: '';
+        width: 36px;
+        height: 36px;
+        display: block;
+        z-index: 10;
+
+        .icon svg {
+          display: none;
+        }
+      }
+
+      .logo-list-slider__nav.logo-list-slider__nav--prev .icon{
+        left: 0;
+        background: url('{{ "grey-arrow-left.svg" | asset_url }}') no-repeat 0 0 transparent;
+        background-size: contain;
+        width: 36px;
+        height: 36px;
+      }
+      .logo-list-slider__nav.logo-list-slider__nav--next {
+        right: 0;
+        background: url('{{ "grey-arrow-right.svg" | asset_url }}') no-repeat 0 0 transparent;
+        background-size: contain;
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+  
+  .desktop-slider--disabled {
+
+    [data-logo-list-slider] {
+      &:after {
+        @include respond-to('medium-up') {
+          content: '';
+        }
+      }
+    }
+    .logo-list-slider__nav-wrapper {
+      display: none;
+    }
+  }
+
+  .logo-list-slider__wrapper {
+    @include respond-to('small-down') {
+      max-width: $site-max-width;
+      width: $site-width;
+    }
+  }
+
+  .logo-list-slider__item {
+    .image-element__wrap {
+      min-height: 60px;
+    }
+
+    p {
+      font-size: 12px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: normal;
+      text-align: center;
+      color: #2e2e2e;
+      margin-top: 21px;
+    }
+  }
+}
