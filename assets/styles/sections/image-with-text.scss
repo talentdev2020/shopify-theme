@@ -1,0 +1,248 @@
+/* # Image with text
+================================================== */
+
+.image-with-text {
+
+  .has-gutter-enabled {
+
+    .image-with-text__column:not(:last-child) {
+      @include respond-to('medium-down') {
+        margin-bottom: 20px;
+      }
+    }
+  }
+    .buttons img {
+      padding-right: 10px;
+    }
+}
+.image-with-text__image-column {
+  position: relative;
+
+  .inner_object {
+    width: 223px;
+    height: 229px;
+    display: block;
+    position: absolute;
+    top: 93px;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    margin: 0 auto;
+  }
+}
+
+.image-with-text__image-column.has-image-crop {
+}
+
+.image-with-text__text-column {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &.has-background {
+    padding: 30px;
+  }
+
+  .image-with-text__pre__heading {
+    color: $red;
+  }
+  
+  .image-with-text__heading {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    line-height: 1.2;
+  
+    // Sizes
+    &.is-small {
+      font-size: floor($headline-font-size*0.8px);
+
+      @include respond-to('medium-down') {
+        font-size: 24px;
+      }
+    }
+  
+    &.is-regular {
+      font-size: floor($headline-font-size*1px);
+
+      @include respond-to('medium-down') {
+        font-size: 24px;
+      }
+    }
+  
+    &.is-large {
+      font-size: floor($headline-font-size*1.5px);
+
+      @include respond-to('medium-down') {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @include respond-to('medium-down') {
+    @include order(1);
+  }
+
+  table.icons{
+    .icon-magnetic__mount {
+      background: url('{{ "icon-magnetic_mount.svg" | asset_url }}') no-repeat 0 0 transparent;
+      background-position: 0% 50%;
+    }
+    .icon-mobicam__app {
+      background: url('{{ "icon-mobicam__app.svg" | asset_url }}') no-repeat 0 0 transparent;
+      background-position: 0% 50%;
+    }
+    .icon-mobicam_pc__software {
+      background: url('{{ "icon-mobicam_pc__software.svg" | asset_url }}') no-repeat 0 0 transparent;
+      background-position: 0% 50%;
+    }
+    .icon-mobicam__manual {
+      background: url('{{ "icon-mobicam__manual.svg" | asset_url }}') no-repeat 0 0 transparent;
+      background-position: 0% 50%;
+    }
+    .spacer {
+      height: 10px;
+    }
+
+    td {
+      border: none;
+      width: 50%;
+      height: 50px;
+      padding: 15px 10px 0 50px;
+    }
+
+    .icon-heart_rate_tracking {
+      background: url('{{ "icon_heart.svg" | asset_url }}') no-repeat 0 0 transparent;
+    }
+    .icon-talking_readout {
+      background: url('{{ "icon_megaphone.svg" | asset_url }}') no-repeat 0 0 transparent;
+    }
+    .icon-built_in_flashlight {
+      background: url('{{ "icon_flashlight.svg" | asset_url }}') no-repeat 0 0 transparent;;
+    }
+    .icon-medication_reminder {
+      background: url('{{ "icon_finger.svg" | asset_url }}') no-repeat 0 0 transparent;
+    }
+  }
+
+  table.texts{
+    tr.sub_title {
+      td {
+        font-weight: bold;
+      }
+    }
+    td {
+      width: 50%;
+      border: none;
+      padding: 0 0.75em 0.75rem 0;
+    }
+  }
+
+  .icons-audio {
+    background: url('{{ "icons-audio.svg" | asset_url }}') no-repeat 0 0 transparent;
+    background-position: 50% 50%;
+    height: 135px;
+    
+    @include respond-to('medium-down') {
+      background-size: contain;
+    }
+  }
+
+  .image-with-text__icons-icon-text  {
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 35px 0;
+    padding-left: 0;
+
+    .image-with-text__icons-icon {
+      min-width: 50px;
+      min-height: 50px;
+      max-width: 60px;
+      margin: 0 !important;
+    }
+    .image-with-text__icons-text {
+      font-size: 19px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.11;
+      letter-spacing: normal;
+      text-align: left;
+      width: calc(100% - 70px);
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  }
+}
+
+
+
+.image-with-text__link {
+  display: block;
+  overflow: hidden;
+}
+
+.image-with-text__link:hover .image-with-text__image,
+.image-with-text__link:hover svg {
+  transform: $transition-zoom;
+}
+
+.image-with-text__image,
+.image-with-text__link svg {
+  transition: transform $transition-speed ease-in-out;
+}
+
+.image-with-text__image_description {
+  color: $red;
+}
+
+.second_images {
+
+}
+
+.small-image1 {
+  margin-bottom: $gutter;
+}
+
+.small-image2 {
+  margin-bottom: $gutter;
+}
+.image-with-text__pretitle {
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+.button--google-play {
+  width: 115px;
+  height: 35px;
+  display: block;
+  background: url('{{ "gplay.svg" | asset_url }}') no-repeat 0 0 transparent;
+  font-size: 0 !important;
+  border: none !important;
+  margin-right: 7px;
+
+  &:hover {
+    opacity: 0.75;
+    font-size: 0 !important;
+    border: none !important;
+  }
+}
+.button--app-store {
+  width: 115px;
+  height: 35px;
+  display: block;
+  background: url('{{ "appstore.svg" | asset_url }}') no-repeat 0 0 transparent;
+  font-size: 0 !important;
+  border: none !important;
+  margin-right: 7px;
+
+  &:hover {
+    opacity: 0.75;
+    font-size: 0 !important;
+    border: none !important;
+  }
+}

@@ -1,0 +1,1823 @@
+{
+  "current": {
+    "show_announcement_bar": true,
+    "show_popup": false,
+    "show_fixed_message": false,
+    "header_layout": "classic",
+    "footer_layout": "classic",
+    "product_layout": "classic",
+    "image_loading_style": "fade-in",
+    "logo_mobile": "shopify:\/\/shop_images\/Image_10_406637e4-94e7-46b4-8080-ca110262fd42.png",
+    "mobile_logo_width": 80,
+    "logo_mobile_position": "center",
+    "logo_menu_position": "left",
+    "show_search_icon_mobile": true,
+    "icon_style": "icons",
+    "announcement_text": "FREE SHIPPING on orders over $60",
+    "mobile_announcement_text_background": "#ffffff",
+    "mobile_announcement_text_color": "#f4364c",
+    "mobile_header_background_color": "#003149",
+    "mobile_header_opacity": 100,
+    "mobile_header_icon_color": "#ffffff",
+    "footer_only_mobile_menu": "mobile-only-search",
+    "mobile_menu_background_color": "rgba(0,0,0,0)",
+    "mobile_menu_opacity": 100,
+    "mobile_menu_link_color": "rgba(0,0,0,0)",
+    "mobile_menu_link_hover_color": "rgba(0,0,0,0)",
+    "button_primary_padding": "large",
+    "button_primary_bg_color": "#f4364c",
+    "button_primary_bg_color_transparency": 100,
+    "button_primary_border_color": "#f4364c",
+    "button_primary_text_color": "#ffffff",
+    "button_primary_bg_color--highlight": "#ffffff",
+    "button_primary_bg_color_transparency--highlight": 100,
+    "button_primary_border_color--highlight": "#f4364c",
+    "button_primary_text_color--highlight": "#f4364c",
+    "button_primary_border_radius": 30,
+    "button_secondary_padding": "large",
+    "button_secondary_bg_color": "#ffffff",
+    "button_secondary_bg_color_transparency": 100,
+    "button_secondary_border_color": "#f4364c",
+    "button_secondary_text_color": "#f4364c",
+    "button_secondary_bg_color--highlight": "#f4364c",
+    "button_secondary_bg_color_transparency--highlight": 100,
+    "button_secondary_border_color--highlight": "#f4364c",
+    "button_secondary_text_color--highlight": "#ffffff",
+    "button_secondary_border_radius": 30,
+    "button_link_padding": "regular",
+    "button_link_text_color": "#000000",
+    "button_link_text_color--highlight": "#ccc",
+    "button_link_underline_style": "solid",
+    "button_link_underline_thickness": 1,
+    "button_cart_padding": "large",
+    "button_cart_bg_color": "#f4364c",
+    "button_cart_bg_color--highlight": "#ffffff",
+    "button_cart_border_color": "#f4364c",
+    "button_cart_border_color--highlight": "#f4364c",
+    "button_cart_text_color": "#ffffff",
+    "button_cart_text_color--highlight": "#f4364c",
+    "button_cart_icon": "",
+    "button_cart_icon_position": "left",
+    "button_cart_border_radius": 30,
+    "icon": "icon_solid",
+    "toggle_icon_style": "plus_and_minus",
+    "social_media_share_style": "squared",
+    "breadcrumb_capitalization": "none",
+    "breadcrumb_separator": "arrow",
+    "breadcrumb_size": "regular",
+    "dropdown_style": "vertical",
+    "dropdown_position": "below-parent",
+    "dropdown_link_spacing": "medium",
+    "use_placeholders": false,
+    "form_button_style": "button--primary",
+    "display_heading_divider": false,
+    "heading_divider_animation": "none",
+    "heading_divider_style": "short",
+    "heading_divider_width": 2,
+    "toggle_sidebar": false,
+    "tab_style": "underline",
+    "table_styles_enabled": true,
+    "qty_box_style": "box",
+    "qty_border_radius": 25,
+    "tag_style": "solid",
+    "mega_menu_1": true,
+    "mega_menu_2": false,
+    "mega_menu_3": false,
+    "mega_menu_4": false,
+    "mega_menu_5": false,
+    "mega_menu_6": false,
+    "mega_menu_7": false,
+    "mega_menu_8": false,
+    "mega_menu_9": false,
+    "mega_menu_10": false,
+    "shop_bg_color": "#ffffff",
+    "border_color": "#d3d3d3",
+    "regular_color": "#444444",
+    "link_color": "#ff671f",
+    "link_hover_color": "#ff9d6f",
+    "heading_color": "#000000",
+    "banner_heading_color": "#ffffff",
+    "divider_color": "#000000",
+    "logo_text": "#ffffff",
+    "header_background": "#ffffff",
+    "header_link_color": "#000000",
+    "header_link_hover_color": "#ff671f",
+    "header_cart_badge_color": "#fbc100",
+    "cart_background_color": "#fff",
+    "show_dropdown_shadow": true,
+    "dropdown_background": "#ffffff",
+    "dropdown_background_opacity": 100,
+    "dropdown_link_color": "#000000",
+    "dropdown_link_hover_color": "#ff671f",
+    "footer_background": "#003149",
+    "footer_border": "rgba(0,0,0,0)",
+    "footer_link_color": "#ffffff",
+    "footer_link_hover_color": "#ff671f",
+    "footer_headings_color": "#f4364c",
+    "footer_text_color": "#ffffff",
+    "product_thumb_background_color": "#fff6f4",
+    "sale_color": "#fff6f4",
+    "was_price_color": "#808080",
+    "product_hover_text_color": "#000000",
+    "product_hover_bg_color": "#ffffff",
+    "banner_bestseller": "#f0d00e",
+    "banner_comingsoon": "#585757",
+    "banner_new": "#ff671f",
+    "banner_preorder": "#6e6e6f",
+    "banner_sale": "#f4364c",
+    "banner_staffpick": "#222222",
+    "product_list": "#fafafa",
+    "checkout_background": "#fafafa",
+    "cart_border": "#d6d6d6",
+    "qty_icon_color": "#ffffff",
+    "qty_icon_hover_color": "#ddd",
+    "qty_background_color": "rgba(0,0,0,0)",
+    "qty_background_hover_color": "rgba(0,0,0,0)",
+    "slide_arrow_background": "#fff",
+    "slide_arrow_color": "#f4364c",
+    "slide_dot_color": "#f4364c",
+    "regular__font": "nunito_n4",
+    "regular_font_size": 16,
+    "highlight__font": "nunito_n4",
+    "highlight_font_size": 16,
+    "highlight_font_style": "none",
+    "logo__font": "nunito_n4",
+    "logo_font_size": 20,
+    "logo_font_style": "none",
+    "nav__font": "nunito_n6",
+    "nav_font_size": 16,
+    "nav_letter_spacing": 1,
+    "nav_font_style": "none",
+    "dropdown_heading_font_size": 16,
+    "dropdown_font_size": 12,
+    "dropdown_letter_spacing": 0,
+    "dropdown_font_style": "none",
+    "button__font": "nunito_n4",
+    "button_letter_spacing": 0,
+    "button_font_style": "none",
+    "heading__font": "nunito_n7",
+    "heading_size": 35,
+    "heading_letter_spacing": 0,
+    "heading_font_style": "none",
+    "preheading_font": "nunito_n4",
+    "preheading_size": 15,
+    "preheading_style": "none",
+    "subheading_font": "nunito_n4",
+    "subheading_size": 15,
+    "subheading_style": "none",
+    "banner_heading__font": "open_sans_n4",
+    "banner_heading_size": 40,
+    "banner_heading_style": "none",
+    "banner_text__font": "nunito_n4",
+    "banner_text_size": 15,
+    "banner_text_letter_spacing": 1,
+    "footer_heading_font_size": 16,
+    "footer_font_size": 14,
+    "search_option": "everything",
+    "search_title": "Search",
+    "search_placeholder": "What are you looking for?",
+    "search_heading_color": "#000",
+    "search_display_style": "popup",
+    "search_popup_bg": "#fff",
+    "search_menu": "",
+    "enable_autocomplete": true,
+    "search_to_display": 5,
+    "show_secondary_image": false,
+    "display_vendor": false,
+    "thumbnail_hover_enabled": false,
+    "thumbnail_text_alignment": "center",
+    "stickers_enabled": true,
+    "sticker_shape": "square",
+    "sticker_position": "left",
+    "collection_swatches": true,
+    "collection_swatches_shape": "square",
+    "enable_quickshop": false,
+    "quickshop_button_style": "button--secondary",
+    "quickshop_show_vendor": false,
+    "quickshop_show_price_savings": true,
+    "quickshop_magnify_images": false,
+    "show_dynamic_checkout_button": false,
+    "quickshop_truncate_words": false,
+    "quickshop_truncate_words_limit": 20,
+    "quickshop_gallery_transition_styles": "slide",
+    "quickshop_gallery_position": "left",
+    "show_product_gallery_thumbnails": true,
+    "qs_popup_color": "#fff",
+    "enable_shopify_review_comments": true,
+    "enable_shopify_collection_badges": true,
+    "display_product_quantity": true,
+    "limit_quantity": false,
+    "display_inventory_left": false,
+    "inventory_threshold": 10,
+    "free_price_text": "Free",
+    "product_form_style": "dropdown",
+    "swatch_style": "square",
+    "notify_me_form": true,
+    "notify_me_description": "<p>Notify me when this product is available:<\/p>",
+    "size_chart": "",
+    "cart_action": "mini_cart",
+    "cart_icon": "cart",
+    "display_special_instructions": false,
+    "display_tos_checkbox": false,
+    "tos_page": "",
+    "display_savings": false,
+    "display_ajax_quantity_box": false,
+    "cart_message": "",
+    "go_to_checkout": true,
+    "enable_shipping_calculator": false,
+    "shipping_calculator_default_country": "United States",
+    "show_multiple_currencies": false,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "USD CAD INR GBP AUD EUR JPY",
+    "default_currency": "USD",
+    "disqus_enabled": false,
+    "disqus_shortname": "",
+    "twitter_link": "#",
+    "facebook_link": "#",
+    "youtube_link": "#",
+    "vimeo_link": "",
+    "pinterest_link": "",
+    "tumblr_link": "",
+    "instagram_link": "#",
+    "snapchat_link": "",
+    "houzz_link": "",
+    "linkedin_link": "",
+    "dribbble_link": "",
+    "behance_link": "",
+    "flickr_link": "",
+    "email_link": "",
+    "og_image_fallback": "",
+    "favicon": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "1557099063267": {
+        "type": "index__image-with-text",
+        "blocks": {
+          "1557099063267-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Rectangle_490.png",
+              "image_crop": "none",
+              "image_link": "",
+              "stretch_image": true,
+              "display_inner_object": false,
+              "inner_object": "none",
+              "inner_image": "",
+              "aspect_ratio": "16:9",
+              "autoplay": false,
+              "autoloop": true,
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=8NxS0vrPcsA",
+              "controls": true,
+              "html5_video": ""
+            }
+          },
+          "1557099063267-2": {
+            "type": "text",
+            "settings": {
+              "pretitle": "To Monitor The Entire Home",
+              "title": "HD Cameras & Sensors",
+              "heading_size": "small",
+              "text": "<p>With clear, HD video &ndash; day or night &ndash; it&rsquo;s easy to check in on the kids.<\/p>",
+              "button_label": "Learn More",
+              "link": "",
+              "button_style": "button--link-style",
+              "button_label_two": "",
+              "link_two": "",
+              "button_style_two": "button--primary",
+              "show_arrow": true,
+              "background": "#fafafa",
+              "text_color": "rgba(0,0,0,0)",
+              "pretitle_color": "#f4364c",
+              "alignment": "left",
+              "vertical_position": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1557099063267-1",
+          "1557099063267-2"
+        ],
+        "settings": {
+          "width": "standard",
+          "show_gutter": false,
+          "padding_top": 80,
+          "padding_bottom": 80,
+          "animation": "none",
+          "background_color": "#fafafa",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1557099168881": {
+        "type": "index__rich-text",
+        "settings": {
+          "title": "About Mobi",
+          "heading_font": "nunito_n7",
+          "heading_color": "rgba(0,0,0,0)",
+          "heading_alignment": "center",
+          "heading_size": 30,
+          "text": "<p>Look for MOBI products &ndash; including our digital thermometers, Bluetooth speakers and night lights &ndash; at major retailers in the United States and beyond. We value our retail partners as well as our customers, and we understand that you&rsquo;re key to our success.<\/p>\n<p><\/p>",
+          "text_font": "nunito_n4",
+          "text_color": "#444444",
+          "text_alignment": "center",
+          "text_size": 14,
+          "columns": 1,
+          "button_label": "",
+          "button_link": "",
+          "button_alignment": "center",
+          "button_style": "button--primary",
+          "background": "rgba(0,0,0,0)",
+          "gradient": "rgba(0,0,0,0)",
+          "gradient_rotation": 180,
+          "width": "standard",
+          "padding_top": 65,
+          "padding_bottom": 65,
+          "padding_left": 0,
+          "padding_right": 0,
+          "animation": "none",
+          "css_class": "about-mobi",
+          "custom_css": ""
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "icon_label": "tag",
+          "text": "<p>Draw attention to promos + sales!<\/p>",
+          "alignment": "center",
+          "size": "regular",
+          "button_label": "",
+          "link": "",
+          "button_style": "button--primary",
+          "background": "#ff671f",
+          "text_color": "#ffffff",
+          "width": "wide",
+          "homepage_only": false,
+          "enable_sticky": false,
+          "show_close_icon": true,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "header__top-bar": {
+        "type": "header__top-bar",
+        "blocks": {
+          "header__top-bar-0": {
+            "type": "text",
+            "settings": {
+              "text": "Support : 323-904-3000"
+            }
+          },
+          "1578742780160": {
+            "type": "text",
+            "settings": {
+              "text": "FREE SHIPPING on orders over $60"
+            }
+          },
+          "1578742200934": {
+            "type": "menu",
+            "settings": {
+              "menu": "topbar-menu",
+              "menu_alignment": "end"
+            }
+          }
+        },
+        "block_order": [
+          "header__top-bar-0",
+          "1578742780160",
+          "1578742200934"
+        ],
+        "settings": {
+          "show_top_bar": true,
+          "font": "nunito_n4",
+          "font_style": "none",
+          "font_size": 16,
+          "letter_spacing": 0,
+          "background": "#003149",
+          "link_color": "#ffffff",
+          "link_hover_color": "#ff671f",
+          "text_color": "#ffffff",
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "header-classic": {
+        "type": "header-classic",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Image_10.png",
+          "logo_width": 200,
+          "main_linklist": "main-menu",
+          "menu_alignment": "start",
+          "display_search": true,
+          "icon_style": "icons",
+          "enable_overlay": false,
+          "show_text_shadow": false,
+          "overlay_link_color": "#000000",
+          "overlay_link_hover_color": "#333333",
+          "overlay_background": "#ffffff",
+          "overlay_background_opacity": 0,
+          "overlay_logo": "shopify:\/\/shop_images\/Image_10.png",
+          "overlay_logo_width": 80,
+          "enable_sticky": false,
+          "sticky_background_opacity": 50,
+          "scroll_logo_width": 80,
+          "width": "standard",
+          "vertical_alignment": "center",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "mega-menu-1": {
+        "type": "mega-menu-1",
+        "blocks": {
+          "mega-menu-1-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-1-1": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "",
+              "richtext": "<p>Add description and links to your promotion<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "",
+              "button_label": "Shop now",
+              "button_style": "button--primary"
+            }
+          },
+          "mega-menu-1-2": {
+            "type": "mixed",
+            "settings": {
+              "richtext_top": "Your headline",
+              "image_top": "",
+              "image_link_top": "",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-1-3": {
+            "type": "empty_column",
+            "settings": {
+            }
+          },
+          "mega-menu-1-4": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "image_link": "",
+              "image_caption": "<p>Image caption appears here<\/p>"
+            }
+          },
+          "mega-menu-1-5": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-1-0",
+          "mega-menu-1-1",
+          "mega-menu-1-2",
+          "mega-menu-1-3",
+          "mega-menu-1-4",
+          "mega-menu-1-5"
+        ],
+        "settings": {
+          "parent_link": "catalog",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#f6f6f6",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": true,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "footer__icon-bar": {
+        "type": "footer__icon-bar",
+        "blocks": {
+          "footer__icon-bar-0": {
+            "type": "text",
+            "settings": {
+              "icon": "leaf",
+              "text": "100% Organic",
+              "link": ""
+            }
+          },
+          "footer__icon-bar-1": {
+            "type": "text",
+            "settings": {
+              "icon": "bunny",
+              "text": "Cruelty free",
+              "link": ""
+            }
+          },
+          "footer__icon-bar-2": {
+            "type": "text",
+            "settings": {
+              "icon": "chat",
+              "text": "24\/7 support",
+              "link": ""
+            }
+          },
+          "footer__icon-bar-3": {
+            "type": "text",
+            "settings": {
+              "icon": "truck",
+              "text": "Free shipping",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "footer__icon-bar-0",
+          "footer__icon-bar-1",
+          "footer__icon-bar-2",
+          "footer__icon-bar-3"
+        ],
+        "settings": {
+          "show_icon_bar": false,
+          "alignment": "center",
+          "icon_position": "row",
+          "size": "medium",
+          "background": "#8b8b8b",
+          "link_color": "#ffffff",
+          "link_hover_color": "#000000",
+          "text_color": "#ffffff",
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "footer-classic": {
+        "type": "footer-classic",
+        "blocks": {
+          "footer-classic-0": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Image_10.png",
+              "size": "small",
+              "text": "<p>MOBI puts excellent innovation, <br>design and technology together <br>to bring smart choices to the <br>marketplace.<\/p>",
+              "social_icons_footer": false
+            }
+          },
+          "footer-classic-1": {
+            "type": "link_list",
+            "settings": {
+              "menu": "shop",
+              "social_icons_footer": false
+            }
+          },
+          "1578397286339": {
+            "type": "link_list",
+            "settings": {
+              "menu": "support",
+              "social_icons_footer": false
+            }
+          },
+          "1578397321258": {
+            "type": "link_list",
+            "settings": {
+              "menu": "company",
+              "social_icons_footer": false
+            }
+          }
+        },
+        "block_order": [
+          "footer-classic-0",
+          "footer-classic-1",
+          "1578397286339",
+          "1578397321258"
+        ],
+        "settings": {
+          "copyright_text": "<p>Copyright Mobi&nbsp;<\/p>",
+          "display_designed_by": false,
+          "display_shopify": false,
+          "display_payment_methods": true,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1578397140271": {
+        "type": "index__image-with-text",
+        "blocks": {
+          "1578397140271-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/mobile.png",
+              "image_crop": "none",
+              "image_link": "",
+              "stretch_image": false,
+              "display_inner_object": true,
+              "inner_object": "video",
+              "inner_image": "shopify:\/\/shop_images\/Mask_Group_1.png",
+              "aspect_ratio": "4:3",
+              "autoplay": false,
+              "autoloop": true,
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+              "controls": false,
+              "html5_video": ""
+            }
+          },
+          "1578397140271-2": {
+            "type": "text",
+            "settings": {
+              "pretitle": "MOBI CAM APP",
+              "title": "Complete motion capture",
+              "heading_size": "regular",
+              "text": "<p>The MobiCam App is 100% free and is available for iOS and Android users in the App Store and Google Play Store.<\/p>",
+              "button_label": "App store",
+              "link": "",
+              "button_style": "button--app-store",
+              "button_label_two": "Google play",
+              "link_two": "",
+              "button_style_two": "button--google-play",
+              "show_arrow": false,
+              "background": "rgba(0,0,0,0)",
+              "text_color": "rgba(0,0,0,0)",
+              "pretitle_color": "#f4364c",
+              "alignment": "left",
+              "vertical_position": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1578397140271-1",
+          "1578397140271-2"
+        ],
+        "settings": {
+          "width": "standard",
+          "show_gutter": true,
+          "padding_top": 80,
+          "padding_bottom": 80,
+          "animation": "none",
+          "background_color": "#fafafa",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1578397169843": {
+        "type": "index__instagram",
+        "settings": {
+          "title": "@Mobitechnologies",
+          "subtitle": "#Thermometers | #Babymonitors",
+          "instagram_client_id": "13112112101.d90570a.575c69b7cbbe4c6c91c5540bcee853f6",
+          "show_date": true,
+          "images_per_row": 5,
+          "instagram_total": 10,
+          "width": "wide",
+          "show_gutter": true,
+          "padding_top": 80,
+          "padding_bottom": 80,
+          "animation": "none",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1578397218500": {
+        "type": "index__newsletter",
+        "settings": {
+          "display_first_name": false,
+          "display_last_name": false,
+          "newsletter_title": "Sign up for the newsletter",
+          "newsletter_richtext": "<p>Be the first to hear about our latest launches, new products, and events.<\/p>",
+          "newsletter_section_text_align": "left",
+          "background_color": "#fafafa",
+          "text_color": "#000000",
+          "background_image": "",
+          "image_darken": false,
+          "image": "",
+          "image_cropping": "center",
+          "image_position": "left",
+          "width": "wide",
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_left": 0,
+          "padding_right": 0,
+          "animation": "none",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1578397648458": {
+        "type": "index__slideshow-classic",
+        "blocks": {
+          "1578397648458-0": {
+            "type": "image",
+            "settings": {
+              "link": "",
+              "image": "shopify:\/\/shop_images\/Group_1595.png",
+              "mobile_image": "shopify:\/\/shop_images\/Group_1595_33a5dd0b-61d8-4f51-bce8-c4ad99ee17ac.png",
+              "pretext": "",
+              "title": "Welcome To Mobi",
+              "subtitle": "<p>Innovation in Digital Thermometers<\/p>",
+              "pretext_color": "#ffffff",
+              "heading_color": "#ffffff",
+              "subheading_color": "#ffffff",
+              "text_alignment": "center",
+              "text_horizontal_position": "center",
+              "background_color": "rgba(0,0,0,0)",
+              "background_opacity": 77,
+              "border_color": "#ffffff",
+              "border_width": 0,
+              "text_width": 40,
+              "button_1": "Learn More",
+              "button_1_link": "#",
+              "button_1_style": "button--secondary",
+              "button_2": "",
+              "button_2_link": "",
+              "button_2_style": "button--secondary",
+              "show_review": true,
+              "review_product": "health-check-ear-forehead-thermometer-with-medication-reminder",
+              "mobile_image_crop": "none",
+              "pretext_color_mobile": "rgba(0,0,0,0)",
+              "heading_color_mobile": "rgba(0,0,0,0)",
+              "subheading_color_mobile": "rgba(0,0,0,0)"
+            }
+          },
+          "1578397648458-1": {
+            "type": "image",
+            "settings": {
+              "link": "",
+              "image": "shopify:\/\/shop_images\/Group_1595.png",
+              "mobile_image": "",
+              "pretext": "<p>Preheading<\/p>",
+              "title": "Classic slideshow",
+              "subtitle": "<p>Additional info in the subheading<\/p>",
+              "pretext_color": "#000000",
+              "heading_color": "#000000",
+              "subheading_color": "#000000",
+              "text_alignment": "center",
+              "text_horizontal_position": "center",
+              "background_color": "#ffffff",
+              "background_opacity": 77,
+              "border_color": "#ffffff",
+              "border_width": 0,
+              "text_width": 40,
+              "button_1": "Button 1",
+              "button_1_link": "",
+              "button_1_style": "button--secondary",
+              "button_2": "Button 2",
+              "button_2_link": "",
+              "button_2_style": "button--secondary",
+              "show_review": true,
+              "review_product": "",
+              "mobile_image_crop": "none",
+              "pretext_color_mobile": "rgba(0,0,0,0)",
+              "heading_color_mobile": "rgba(0,0,0,0)",
+              "subheading_color_mobile": "rgba(0,0,0,0)"
+            }
+          }
+        },
+        "block_order": [
+          "1578397648458-0",
+          "1578397648458-1"
+        ],
+        "settings": {
+          "image_transition": "slide",
+          "image_slideshow_speed": 8,
+          "show_arrows": true,
+          "show_nav_buttons": true,
+          "mobile_text_below_image": false,
+          "width": "wide",
+          "padding_top": 0,
+          "padding_bottom": 50,
+          "animation": "none",
+          "css_class": "welcome-slider",
+          "custom_css": ""
+        }
+      },
+      "header-centered__top-bar": {
+        "type": "header-centered__top-bar",
+        "settings": {
+          "show_social_icons": true,
+          "text": "<p>Add a phone number or other information.<\/p>",
+          "font": "open_sans_n4",
+          "font_style": "none",
+          "font_size": 14,
+          "letter_spacing": 0,
+          "top_bar_background": "rgba(0,0,0,0)",
+          "top_bar_link": "rgba(0,0,0,0)",
+          "top_bar_link_hover": "rgba(0,0,0,0)",
+          "top_bar_text": "rgba(0,0,0,0)",
+          "display_search": true,
+          "icon_style": "icons",
+          "cart_button_background": "#000000",
+          "cart_button_text": "#ffffff",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "header-centered": {
+        "type": "header-centered",
+        "settings": {
+          "logo": "",
+          "logo_width": 200,
+          "logo_position": "between",
+          "main_linklist": "main-menu",
+          "menu_spacing": "default",
+          "enable_overlay": false,
+          "show_text_shadow": false,
+          "overlay_background": "rgba(0,0,0,0)",
+          "overlay_background_opacity": 0,
+          "overlay_link_color": "rgba(0,0,0,0)",
+          "overlay_link_hover_color": "rgba(0,0,0,0)",
+          "overlay_logo": "",
+          "overlay_logo_width": 80,
+          "enable_sticky": false,
+          "sticky_background_opacity": 50,
+          "scroll_logo_width": 200,
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "page__main": {
+        "type": "page__main",
+        "settings": {
+          "width": "standard",
+          "padding_top": 40,
+          "padding_bottom": 40,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "login-form": {
+        "type": "login-form",
+        "settings": {
+          "richtext": "",
+          "login_image": "shopify:\/\/shop_images\/register.jpg",
+          "login_overlay_color": "#fff",
+          "login_overlay_opacity": 0,
+          "reset_image": "shopify:\/\/shop_images\/register.jpg",
+          "reset_overlay_color": "#fff",
+          "reset_overlay_opacity": 0,
+          "width": "standard",
+          "padding_top": 100,
+          "padding_bottom": 100,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "product__sidebar": {
+        "type": "product__sidebar",
+        "blocks": {
+          "product__sidebar-0": {
+            "type": "featured_promo",
+            "settings": {
+              "promo_background": "#eeeeee",
+              "promo_text": "#000000",
+              "promo_image": "",
+              "richtext": "<p>Use this area for promotional information.<\/p>",
+              "promo_link": "",
+              "button_label": "Shop now",
+              "button_style": "button--primary"
+            }
+          },
+          "product__sidebar-1": {
+            "type": "menu",
+            "settings": {
+              "menu": ""
+            }
+          },
+          "product__sidebar-2": {
+            "type": "text",
+            "settings": {
+              "title": "Heading",
+              "text": "<p>Text area can be used for details about blog authors or general information.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "product__sidebar-0",
+          "product__sidebar-1",
+          "product__sidebar-2"
+        ],
+        "settings": {
+          "show_sidebar": false,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "product__main": {
+        "type": "product__main",
+        "blocks": {
+          "product__main-0": {
+            "type": "recommended_products",
+            "settings": {
+              "width": "wide",
+              "padding_top": 20,
+              "padding_bottom": 20,
+              "animation": "none"
+            }
+          }
+        },
+        "block_order": [
+          "product__main-0"
+        ],
+        "settings": {
+          "product_breadcrumb": false,
+          "gallery_arrows": true,
+          "enable_zoom": true,
+          "enable_product_lightbox": true,
+          "slideshow_speed": 3,
+          "slideshow_transition": "slide",
+          "thumbnail_position": "bottom-thumbnails",
+          "enable_thumbnail_slider": true,
+          "product_images_position": "left",
+          "show_payment_button": true,
+          "display_vendor": false,
+          "display_sku": false,
+          "enable_shopify_product_badges": true,
+          "display_savings": true,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": true,
+          "product_description_position": "top",
+          "width": "standard",
+          "padding_top": 20,
+          "padding_bottom": 20,
+          "animation": "none",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "product__recommendations": {
+        "type": "product__recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "product_recommendations_style": "grid",
+          "product_recommendations_heading": "You may also like",
+          "products_per": 3,
+          "recommended_products_limit": 4,
+          "align_height": false,
+          "collection_height": 200
+        }
+      },
+      "collection__banner": {
+        "type": "collection__banner",
+        "settings": {
+          "show_banner": true,
+          "image": "shopify:\/\/shop_images\/register.jpg",
+          "image_darken": false,
+          "subtitle": "Subheading",
+          "width": "wide",
+          "banner_height": "medium",
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "free_shipping__title": "Free shipping over $100",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "collection__menu": {
+        "type": "collection__menu",
+        "blocks": {
+          "1579537912937": {
+            "type": "text",
+            "settings": {
+              "icon": "chat",
+              "text": "Thermometer &<br>  Health Devices",
+              "link": "shopify:\/\/collections\/baby-night-lights"
+            }
+          },
+          "1579537953836": {
+            "type": "text",
+            "settings": {
+              "icon": "chat",
+              "text": "Smart Home",
+              "link": "shopify:\/\/collections\/baby-night-lights"
+            }
+          },
+          "1579537987376": {
+            "type": "text",
+            "settings": {
+              "icon": "chat",
+              "text": "MobiCam <br>Series",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1579537912937",
+          "1579537953836",
+          "1579537987376"
+        ],
+        "settings": {
+          "alignment": "center",
+          "icon_position": "row",
+          "size": "medium",
+          "background": "#ffffff",
+          "link_color": "#000000",
+          "link_hover_color": "#000000",
+          "border_color": "#f4364c",
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "collection__sidebar": {
+        "type": "collection__sidebar",
+        "blocks": {
+          "collection__sidebar-0": {
+            "type": "featured_promo",
+            "settings": {
+              "promo_background": "#eeeeee",
+              "promo_text": "#000000",
+              "promo_image": "",
+              "richtext": "<p>Use this area for promotional information.<\/p>",
+              "promo_link": "",
+              "button_label": "Shop now",
+              "button_style": "button--primary"
+            }
+          },
+          "collection__sidebar-1": {
+            "type": "menu",
+            "settings": {
+              "menu": ""
+            }
+          },
+          "collection__sidebar-2": {
+            "type": "text",
+            "settings": {
+              "title": "Heading",
+              "text": "<p>Text area can be used for details about blog authors or general information.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "collection__sidebar-0",
+          "collection__sidebar-1",
+          "collection__sidebar-2"
+        ],
+        "settings": {
+          "show_sidebar": false,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "collection__main": {
+        "type": "collection__main",
+        "settings": {
+          "collection_breadcrumb": false,
+          "collection_tags": false,
+          "collection_sort": false,
+          "show_promo_banner": false,
+          "image": "",
+          "image_darken": true,
+          "promo_title": "Special sale on now!",
+          "promo_text": "<p>Description of promotion with lots of details.<\/p>",
+          "banner_height": "medium",
+          "align_height": false,
+          "collection_height": 200,
+          "products_per_row": 3,
+          "mobile_products_per_row": "1",
+          "pagination_limit": 48,
+          "pagination_type": "basic_pagination",
+          "width": "standard",
+          "padding_top": 40,
+          "padding_bottom": 40,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1579608316537": {
+        "type": "index__logo-list-slider",
+        "blocks": {
+          "1579608316537-0": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Image_44.png",
+              "link": "",
+              "title": "“Pretty good security for the cheap cost”"
+            }
+          },
+          "1579608316537-1": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Image_42.png",
+              "link": "",
+              "title": "“Took like a second to get the <br>  temperature reading”"
+            }
+          },
+          "1579608316537-2": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Image_45.png",
+              "link": "",
+              "title": "“Pretty good security for the cheap cost”"
+            }
+          }
+        },
+        "block_order": [
+          "1579608316537-0",
+          "1579608316537-1",
+          "1579608316537-2"
+        ],
+        "settings": {
+          "logo_size": "large",
+          "background": "rgba(0,0,0,0)",
+          "gradient": "rgba(0,0,0,0)",
+          "gradient_rotation": 0,
+          "width": "standard",
+          "padding_top": 20,
+          "padding_bottom": 0,
+          "padding_left": 0,
+          "padding_right": 0,
+          "animation": "none",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "cart__banner": {
+        "type": "cart__banner",
+        "settings": {
+          "show_banner": true,
+          "image": "shopify:\/\/shop_images\/Group_1655.png",
+          "image_darken": false,
+          "subtitle": "Subheading",
+          "width": "wide",
+          "banner_height": "medium",
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "cart__main": {
+        "type": "cart__main",
+        "blocks": {
+          "1579640996403": {
+            "type": "featured_collection",
+            "settings": {
+              "title": "Shop <br>All Products",
+              "subtitle": "Original designs with dimmable LED.",
+              "collection": "product-parts-accessories",
+              "products_per": 3,
+              "mobile_products_per_row": "1",
+              "products_limit": 10,
+              "align_height": false,
+              "collection_height": 350,
+              "collection_style": "slider",
+              "width": "standard",
+              "show_gutter": true,
+              "padding_top": 20,
+              "padding_bottom": 20,
+              "animation": "none"
+            }
+          },
+          "1579641426301": {
+            "type": "featured_collection",
+            "settings": {
+              "title": "Shop <br>All Products",
+              "subtitle": "",
+              "collection": "frontpage",
+              "products_per": 3,
+              "mobile_products_per_row": "1",
+              "products_limit": 10,
+              "align_height": true,
+              "collection_height": 330,
+              "collection_style": "slider",
+              "width": "standard",
+              "show_gutter": true,
+              "padding_top": 20,
+              "padding_bottom": 20,
+              "animation": "none"
+            }
+          }
+        },
+        "block_order": [
+          "1579640996403",
+          "1579641426301"
+        ],
+        "settings": {
+          "display_product_quantity_cart": true,
+          "display_savings": false,
+          "display_continue_shipping": false,
+          "cart_message": "",
+          "width": "standard",
+          "padding_top": 40,
+          "padding_bottom": 40,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1579792562708": {
+        "type": "index__list-collection",
+        "blocks": {
+          "1579815935875": {
+            "type": "collection",
+            "settings": {
+              "list_collection": "thermometers",
+              "show_review": true,
+              "review_product": "prime-ear-forehead-thermometer"
+            }
+          },
+          "1579815968707": {
+            "type": "collection",
+            "settings": {
+              "list_collection": "wrist-type-blood-pressure-monitor",
+              "show_review": true,
+              "review_product": "prime-ear-forehead-thermometer"
+            }
+          },
+          "1579816016131": {
+            "type": "collection",
+            "settings": {
+              "list_collection": "baby-monitor",
+              "show_review": true,
+              "review_product": "health-check-ear-forehead-thermometer-with-medication-reminder"
+            }
+          },
+          "1579822570124": {
+            "type": "collection",
+            "settings": {
+              "list_collection": "baby-night-lights",
+              "show_review": true,
+              "review_product": "health-check-ear-forehead-thermometer-with-medication-reminder"
+            }
+          }
+        },
+        "block_order": [
+          "1579815935875",
+          "1579815968707",
+          "1579816016131",
+          "1579822570124"
+        ],
+        "settings": {
+          "title": "Shop<br> All Products",
+          "subtitle": "Original designs with dimmable LED.",
+          "collections_per_row": 3,
+          "align_height": true,
+          "collection_height": 400,
+          "background_color": "#fafafa",
+          "width": "standard",
+          "padding_top": 40,
+          "padding_bottom": 40,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1579964742016": {
+        "type": "index__featured-collection",
+        "settings": {
+          "title": "",
+          "collection": "frontpage",
+          "products_per": 3,
+          "mobile_products_per_row": "1",
+          "products_limit": 10,
+          "align_height": false,
+          "collection_height": 200,
+          "thumb_caption_background": "#fff6f4",
+          "collection_style": "slider",
+          "width": "standard",
+          "show_gutter": true,
+          "padding_top": 20,
+          "padding_bottom": 20,
+          "animation": "none",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1579980390381": {
+        "type": "index__testimonial",
+        "blocks": {
+          "1579980390381-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "What our customers are saying…",
+              "quote": "<p>This camera works great as a baby monitor and pet monitor. I bought it for my toddlers room to watch her during Nap\/quiet time and I love that I can see the entire room, hear her and talk to her. <\/p>",
+              "show_review": true,
+              "review_product": "health-check-ear-forehead-thermometer-with-medication-reminder",
+              "text": "<p>Peony H, Ohio<\/p>",
+              "info_text": "rgba(0,0,0,0)",
+              "info_background": "#fff6f4"
+            }
+          },
+          "1579980390381-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "Great product!",
+              "quote": "<p>Include a favorite customer quote or feedback here.<\/p>",
+              "show_review": true,
+              "review_product": "health-check-ear-forehead-thermometer-with-medication-reminder",
+              "text": "<p><strong>Customer name<\/strong><\/p>\n<p><\/p>",
+              "info_text": "rgba(0,0,0,0)",
+              "info_background": "#fff6f4"
+            }
+          },
+          "1579980390381-2": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "Great product!",
+              "quote": "<p>Include a favorite customer quote or feedback here.<\/p>",
+              "show_review": true,
+              "review_product": "health-check-ear-forehead-thermometer-with-medication-reminder",
+              "text": "<p><strong>Customer name<\/strong><\/p>\n<p>customerlink.com<\/p>",
+              "info_text": "rgba(0,0,0,0)",
+              "info_background": "#fff6f4"
+            }
+          }
+        },
+        "block_order": [
+          "1579980390381-0",
+          "1579980390381-1",
+          "1579980390381-2"
+        ],
+        "settings": {
+          "show_border": false,
+          "enable_images": false,
+          "crop_shape": "circle",
+          "card_alignment": "center",
+          "card_text": "rgba(0,0,0,0)",
+          "card_background": "#fff6f4",
+          "width": "standard",
+          "padding_top": 0,
+          "padding_bottom": 80,
+          "animation": "none",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+       "product-sections__main": {
+        "type": "product-sections__main",
+        "blocks": {
+          "product-sections__main-0": {
+            "type": "product_info",
+            "settings": {
+              "display_vendor": false,
+              "display_sku": true,
+              "enable_shopify_product_badges": true,
+              "display_savings": true,
+              "display_collections": false,
+              "display_type": false,
+              "display_tags": false,
+              "display_social_buttons": false,
+              "product_description_position": "top",
+              "show_payment_button": false,
+              "width": "half",
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "padding_left": 0,
+              "padding_right": 0,
+              "animation": "none"
+            }
+          },
+          "product-sections__main-1": {
+            "type": "product_gallery",
+            "settings": {
+              "gallery_arrows": true,
+              "enable_zoom": true,
+              "enable_product_lightbox": true,
+              "slideshow_speed": 3,
+              "slideshow_transition": "slide",
+              "thumbnail_position": "right-thumbnails",
+              "enable_thumbnail_slider": true,
+              "width": "half",
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "padding_left": 0,
+              "padding_right": 0,
+              "animation": "none"
+            }
+          },
+          "1579799914412": {
+            "type": "image_with_text",
+            "settings": {
+              "width": "wide",
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "animation": "none",
+              "image_position": "left",
+              "show-whole__image": true,
+              "image": "shopify:\/\/shop_images\/Rectangle_490_3x_d70aa350-d0e7-4821-8a91-dc73c57a0572.jpg",
+              "small-image1": "",
+              "small-image2": "",
+              "image-description1": "",
+              "image-description2": "",
+              "image_crop": "none",
+              "image_link": "",
+              "pre-title": "",
+              "title": "with 110° adjustable  wide-angle lens",
+              "heading_size": "regular",
+              "text": "<p>MobiCam Multi Purpose delivers the best video quality with full <br>room views and angles.<\/p>",
+              "custom_html": "<table style=\"width:100%\">\n  <tbody>\n  <tr>\n    <td class=\"icon-magnetic__mount\">Magnetic \nMount<\/td>\n    <td class=\"icon-mobicam__app\">MobiCam \nApp<\/td>\n  <\/tr>\n<tr class=\"spacer\"><\/tr>\n  <tr>\n    <td class=\"icon-mobicam_pc__software\">MobiCam PC \nSoftware<\/td>\n    <td class=\"icon-mobicam__manual\">MobiCam \nManual<\/td>\n  <\/tr>\n<\/tbody>\n<\/table>",
+              "background": "#fafafa",
+              "text_color": "rgba(0,0,0,0)",
+              "alignment": "left",
+              "vertical_position": "center"
+            }
+          },
+          "1579801321869": {
+            "type": "image_with_text",
+            "settings": {
+              "width": "standard",
+              "padding_top": 80,
+              "padding_bottom": 80,
+              "animation": "none",
+              "image_position": "right",
+              "show-whole__image": true,
+              "image": "shopify:\/\/shop_images\/Image_20_3x_2e7c8ac9-17c7-47a9-a18b-10cf8fc7f0a5.png",
+              "small-image1": "",
+              "small-image2": "",
+              "image-description1": "",
+              "image-description2": "",
+              "image_crop": "none",
+              "image_link": "",
+              "pre-title": "",
+              "title": "Two Way Audio using the Mobile device",
+              "heading_size": "regular",
+              "text": "",
+              "custom_html": "<div class=\"container is-medium has-padding-top has-padding-bottom\">\n    <div class=\"icon-audio1\"><\/div>\n    <div class=\"icon-audio2\"><\/div>\n<div class=\"icon-audio3\"><\/div>\n    <div class=\"icon-audio4\">\n<\/div>\n<\/div>\n<p>\nSoothe your baby or loved ones to sleep with the help\nof Two-way audio by singing or reading their\nfavorite stories with your mobile device\nfrom anywhere.\n<\/p>",
+              "background": "rgba(0,0,0,0)",
+              "text_color": "rgba(0,0,0,0)",
+              "alignment": "left",
+              "vertical_position": "center"
+            }
+          },
+          "1579780892316": {
+            "type": "video",
+            "settings": {
+              "aspect_ratio": "16:9",
+              "autoplay": false,
+              "autoloop": true,
+              "iframe_video": "",
+              "controls": true,
+              "html5_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0300\/4357\/0311\/files\/Bike_Export_20190129_74da40cf-8b3f-4cf3-9c58-f322539b09d1.mp4?2883",
+              "image": "",
+              "pretext": "",
+              "title": "Product Video",
+              "subtitle": "Easy Step-by-Step Video Tutorial",
+              "pretext_color": "#000000",
+              "heading_color": "#000000",
+              "subheading_color": "#000000",
+              "horizontal_text_position": "center",
+              "vertical_text_position": "center",
+              "text_align": "center",
+              "button_label": "Play video",
+              "button_style": "button--secondary",
+              "button_label1": "App Store",
+              "button_style1": "button--app-store",
+              "button_label2": "Google play",
+              "button_style2": "button--google-play",
+              "overlay_style": "none",
+              "video_overlay_color": "#ffffff",
+              "gradient": "rgba(0,0,0,0)",
+              "gradient_rotation": 180,
+              "background_opacity": 77,
+              "text_width": 70,
+              "width": "standard",
+              "padding_top": 20,
+              "padding_bottom": 80,
+              "padding_left": 0,
+              "padding_right": 0,
+              "animation": "none"
+            }
+          },
+          "1579804519245": {
+            "type": "image_with_text",
+            "settings": {
+              "width": "wide",
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "animation": "none",
+              "image_position": "right",
+              "show-whole__image": true,
+              "image": "shopify:\/\/shop_images\/Rectangle_490_3x_a0711e01-43fd-4b9d-b1e9-e89af777a47d.jpg",
+              "small-image1": "",
+              "small-image2": "",
+              "image-description1": "",
+              "image-description2": "",
+              "image_crop": "none",
+              "image_link": "",
+              "pre-title": "Engineered to Protect",
+              "title": "Clear Night Vision",
+              "heading_size": "regular",
+              "text": "<p>Advanced Night Vision uses IR-Cut Infrared LED&rsquo;s for ultra clear video with a 40 ft. range in complete darkness.<\/p>",
+              "custom_html": "",
+              "background": "#fafafa",
+              "text_color": "rgba(0,0,0,0)",
+              "alignment": "left",
+              "vertical_position": "center"
+            }
+          },
+          "1579806051168": {
+            "type": "icon_with_text",
+            "settings": {
+              "title": "View up to 4 cameras<br>simultaneously",
+              "icons_per_row": 3,
+              "icon_size": "medium",
+              "align_text": "center",
+              "button_style": "button--primary",
+              "icon_color": "rgba(0,0,0,0)",
+              "text_color": "rgba(0,0,0,0)",
+              "background": "#cccccc",
+              "gradient": "rgba(0,0,0,0)",
+              "gradient_rotation": 0,
+              "width": "wide",
+              "show_gutter": true,
+              "padding_top": 80,
+              "padding_bottom": 80,
+              "padding_left": 0,
+              "padding_right": 0,
+              "animation": "none",
+              "icon_label_1": "memory-card",
+              "title_1": "Optional Micro SD Card",
+              "text_1": "<p>Snapshot and recording<br>without internet with optional<br>micro SD card<\/p>",
+              "button_label_1": "",
+              "link_1": "",
+              "icon_label_2": "live-stream",
+              "title_2": "24\/7 Live Stream",
+              "text_2": "<p>From anywhere in the world<br>for your peace of mind<\/p>",
+              "button_label_2": "",
+              "link_2": "",
+              "icon_label_3": "wifi",
+              "title_3": "WiFi access",
+              "text_3": "<p>Secure video encryption for <br>up to 15 users prevents <br>unauthorized access even <br>with WiFi access<\/p>",
+              "button_label_3": "",
+              "link_3": "",
+              "icon_label_4": "truck",
+              "title_4": "Icon with text",
+              "text_4": "<p>Describe the feature, service or product that this icon represents.<\/p>",
+              "button_label_4": "Learn more",
+              "link_4": ""
+            }
+          },
+          "1579898784139": {
+            "type": "image_with_text",
+            "settings": {
+              "width": "standard",
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "animation": "none",
+              "image_position": "right",
+              "show-whole__image": false,
+              "image": "",
+              "small-image1": "shopify:\/\/shop_images\/Image_40.png",
+              "small-image2": "shopify:\/\/shop_images\/Group_1673.png",
+              "image-description1": "2 DAYS 8 DAYS",
+              "image-description2": "*Estimates based on 32GB microSD card",
+              "image_crop": "none",
+              "image_link": "",
+              "pre-title": "",
+              "title": "Local Storage For<br>Continuous Recording",
+              "heading_size": "regular",
+              "text": "<p>MobiCam supports up to a 128GB microSD card for continuous local storage. Use the MobiCam App to manage recordings and playbacks.<\/p>",
+              "custom_html": "",
+              "background": "rgba(0,0,0,0)",
+              "text_color": "rgba(0,0,0,0)",
+              "alignment": "left",
+              "vertical_position": "center"
+            }
+          },
+          "1579780946053": {
+            "type": "featured_collection",
+            "settings": {
+              "title": "Related Products",
+              "collection": "frontpage",
+              "products_per": 3,
+              "mobile_products_per_row": "1",
+              "products_limit": 6,
+              "align_height": true,
+              "collection_height": 200,
+              "collection_style": "slider",
+              "width": "wide",
+              "show_gutter": true,
+              "padding_top": 20,
+              "padding_bottom": 20,
+              "animation": "none"
+            }
+          },
+          "1579780979392": {
+            "type": "logo_list",
+            "settings": {
+              "logos_per_row": 3,
+              "logo_size": "large",
+              "show_logo1": true,
+              "image1": "shopify:\/\/shop_images\/Image_44_68fb32f4-9b92-4089-a87d-580129f8fcfa.png",
+              "title1": "“Pretty good security for the cheap cost”",
+              "link1": "",
+              "show_logo2": true,
+              "image2": "shopify:\/\/shop_images\/Image_42_05e1d5f8-8168-4474-b8a6-46fc498c84ea.png",
+              "title2": "“Took like a second to get the  temperatur reading”",
+              "link2": "",
+              "show_logo3": true,
+              "image3": "shopify:\/\/shop_images\/Image_45_50aae418-e467-4132-ad56-bb5b77236425.png",
+              "title3": "“Pretty good security for the cheap cost”",
+              "link3": "",
+              "show_logo4": false,
+              "image4": "",
+              "title4": "",
+              "link4": "",
+              "show_logo5": false,
+              "image5": "",
+              "title5": "",
+              "link5": "",
+              "show_logo6": false,
+              "image6": "",
+              "title6": "",
+              "link6": "",
+              "show_logo7": false,
+              "image7": "",
+              "title7": "",
+              "link7": "",
+              "show_logo8": false,
+              "image8": "",
+              "title8": "",
+              "link8": "",
+              "padding_top": 20,
+              "padding_bottom": 80,
+              "animation": "none"
+            }
+          },
+          "1579781015687": {
+            "type": "product_reviews",
+            "settings": {
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "animation": "none"
+            }
+          },
+          "1579808137129": {
+            "type": "newsletter",
+            "settings": {
+              "display_first_name": false,
+              "display_last_name": false,
+              "newsletter_title": "Sign Up For The Newsletter",
+              "newsletter_richtext": "<p>Be the first to hear about our latest launches, new products, and events.<\/p>",
+              "newsletter_section_text_align": "center",
+              "background_color": "#fafafa",
+              "text_color": "#000000",
+              "background_image": "",
+              "image_darken": false,
+              "image": "",
+              "image_cropping": "center",
+              "image_position": "left",
+              "width": "standard",
+              "padding_top": 0,
+              "padding_bottom": 0,
+              "padding_left": 0,
+              "padding_right": 0,
+              "animation": "none"
+            }
+          }
+        },
+        "block_order": [
+          "product-sections__main-0",
+          "product-sections__main-1",
+          "1579799914412",
+          "1579801321869",
+          "1579780892316",
+          "1579804519245",
+          "1579806051168",
+          "1579898784139",
+          "1579780946053",
+          "1579780979392",
+          "1579781015687",
+          "1579808137129"
+        ],
+        "settings": {
+          "product_breadcrumb": true,
+          "is_video": true,
+          "anchor_text_video": "Play Video",
+          "is_faq": true,
+          "anchor_text_faq": "Faq",
+          "is_reviews": true,
+          "anchor_text_reviews": "Reviews",
+          "is_specs": true,
+          "anchor_text_specs": "Tech Specs",
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "page-faq__column1": {
+        "type": "page-faq__column1",
+        "blocks": {
+          "page-faq__column1-0": {
+            "type": "heading",
+            "settings": {
+              "title": "Section heading"
+            }
+          },
+          "page-faq__column1-1": {
+            "type": "content",
+            "settings": {
+              "title": "What is your question?",
+              "answer": "<p>Provide the answer to the question here.<\/p>"
+            }
+          },
+          "page-faq__column1-2": {
+            "type": "content",
+            "settings": {
+              "title": "What is your question?",
+              "answer": "<p>Provide the answer to the question here.<\/p>"
+            }
+          },
+          "page-faq__column1-3": {
+            "type": "content",
+            "settings": {
+              "title": "What is your question?",
+              "answer": "<p>Provide the answer to the question here.<\/p>"
+            }
+          },
+          "page-faq__column1-4": {
+            "type": "heading",
+            "settings": {
+              "title": "Section heading"
+            }
+          },
+          "page-faq__column1-5": {
+            "type": "content",
+            "settings": {
+              "title": "What is your question?",
+              "answer": "<p>Provide the answer to the question here.<\/p>"
+            }
+          },
+          "page-faq__column1-6": {
+            "type": "content",
+            "settings": {
+              "title": "What is your question?",
+              "answer": "<p>Provide the answer to the question here.<\/p>"
+            }
+          },
+          "page-faq__column1-7": {
+            "type": "content",
+            "settings": {
+              "title": "What is your question?",
+              "answer": "<p>Provide the answer to the question here.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "page-faq__column1-0",
+          "page-faq__column1-1",
+          "page-faq__column1-2",
+          "page-faq__column1-3",
+          "page-faq__column1-4",
+          "page-faq__column1-5",
+          "page-faq__column1-6",
+          "page-faq__column1-7"
+        ],
+        "settings": {
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "css_class": "",
+          "custom_css": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "1578397648458",
+      "1579608316537",
+      "1557099168881",
+      "1579792562708",
+      "1557099063267",
+      "1579964742016",
+      "1579980390381",
+      "1578397140271",
+      "1578397169843",
+      "1578397218500"
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+/* # Video
+================================================== */
+
+$play-icon-size: 81px;
+.featured-video.is-width-half.has-video-added {
+
+  @include respond-to('medium-down') {
+    background-color: transparent;
+  }
+
+  .video-wrapper {
+    @include flex(1);
+  }
+}
+
+.featured-video {
+  width: 100%;
+}
+
+.video__container {
+  width: 100%;
+
+  @include respond-to('medium-down') {
+    .column {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .one-whole {
+      width:100%;
+    };
+  }
+  
+  .video-title {
+    padding-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .video-title.is-regular {
+    font-size: 35px;
+
+    @include respond-to('medium-down') {
+      font-size: 24px;
+    }
+  }
+
+  .video-subtitle{
+    padding-bottom: 30px;
+  }
+
+  .video-wrapper {
+    position: relative;
+    background-color: $black;
+
+    &.overlay--text_only {
+      .video__text-wrapper {
+        position: relative;
+      }
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    video[poster] {
+      @include object-fit(cover);
+    }
+
+    .poster-enabled {
+      background-size: cover;
+
+      iframe {
+        z-index: -1;
+      }
+    }
+
+    [data-video-element] {
+      @include respond-to('medium-down') {
+        @include order(2);
+      }
+    }
+
+    .video__text-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 5;
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: -1;
+      }
+
+      @include respond-to('medium-down') {
+        margin: 0;
+      }
+    }
+
+    .video__text {
+      height: 100%;
+      text-align: center;
+      @include flexbox();
+      @include flex-direction(column);
+    }
+
+    .video__text-wrapper {
+      margin: 0;
+      padding: 30px;
+
+      .button {
+        max-width: 50%;
+
+        @include respond-to('medium-down') {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .video__watch-now-btn {
+      position: absolute;
+      left: 0%;
+      width: 221px;
+      height: 63px;
+      line-height: 50px;
+      background-color: #fff6f4;
+      border-radius: 0px 90px 90px 0;
+      text-align: center;
+
+      @include respond-to('medium-down') {
+        width: 40%;
+        height: 20%;
+      }
+
+      p{
+        font-size : 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+        @include respond-to('medium-down') {
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    @include respond-to('medium-down') {
+      @include flexbox();
+      @include flex-direction(column);
+    }
+  }
+
+  .play-icon {
+    .icon {
+      width: $play-icon-size;
+      height: $play-icon-size;
+      cursor: pointer;
+
+      @include respond-to('medium-down') {
+        width: 27px;
+        height: 27px;
+      }
+
+      .cls-1 {
+        fill: $btn-primary-bg-color;
+      }
+      .cls-2 {
+        fill: $btn-primary-bg-color-highlight;
+      }
+      &:hover {
+        .cls-1 {
+          fill: $btn-primary-bg-color-highlight;
+        }
+        .cls-2 {
+          fill: $btn-primary-bg-color;
+        }
+      }
+    }
+  }
+
+  .button-wrapper {
+    padding-top: 24px;
+    
+    .button--app-store {
+      width: 115px;
+      height: 35px;
+      display: block;
+      background: url('{{ "appstore.svg" | asset_url }}') no-repeat 0 0 transparent;
+      font-size: 0 !important;
+      border: none !important;
+      margin-right: 7px;
+    }
+
+    .button--google-play {
+      width: 115px;
+      height: 35px;
+      display: block;
+      background: url('{{ "gplay.svg" | asset_url }}') no-repeat 0 0 transparent;
+      font-size: 0 !important;
+      border: none !important;
+      margin-right: 7px;
+    }
+  }
+
+}

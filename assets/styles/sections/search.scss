@@ -1,0 +1,258 @@
+/* # Search
+================================================== */
+
+$search-border: thin solid $border !default;
+$search-border-radius: 0;
+
+.search-form {
+  @include respond-to('medium-down') {
+    padding-top: $gutter;
+  }
+
+  .search__fields {
+    input[type="text"] {
+      outline: none;
+      border-radius: $search-border-radius;
+      border: $search-border;
+      color: $grey;
+
+      &:active,
+      &:focus {
+        color: $black;
+        box-shadow: none;
+      }
+    }
+
+    [data-icon="search"] {
+      padding: 5px;
+      color: $black;
+    }
+  }
+}
+
+/* # Search page - default view and results
+================================================== */
+
+.search-result__image-container {
+  @include respond-to('small-down') {
+    padding-bottom: 20px;
+  }
+}
+
+/* # Search overlay & Popup
+================================================== */
+
+{% assign dropdown_alpha = settings.dropdown_background_opacity | divided_by: 100.00 %}
+
+$search-overlay-bg-color: {{ settings.dropdown_background | color_modify: 'alpha', dropdown_alpha }};
+$search-menu-link: {{ settings.dropdown_link_color }};
+$search-menu-hover-link: {{ settings.dropdown_link_hover_color }};
+$search-menu-title: {{ settings.search_heading_color }};
+$search-popup-bg-color: {{ settings.search_popup_bg }};
+$search-item-border: {{ settings.border_color }};
+
+// Shared
+
+[data-show-search-trigger] {
+  cursor: pointer;
+
+  * {
+    pointer-events: none;
+  }
+  @include respond-to('medium-down') {
+    display: none;
+  }
+}
+
+.search-overlay__title,
+.search-popup__title {
+  color: $search-menu-title;
+}
+
+.search-overlay__form,
+.search-popup__form {
+  padding: 20px 0;
+
+  .field:not(:last-child) {
+    padding-bottom: 0;
+  }
+}
+
+.search-menu__list {
+  display: inline;
+  list-style: none;
+  padding-left: 5px;
+
+  @include respond-to('medium-down') {
+    padding-left: 0;
+    padding-top: 5px;
+  }
+}
+
+.search-menu__item {
+  display: inline-block;
+  padding: 0 5px;
+
+  @include respond-to('medium-down') {
+    width: 100%;
+    padding: 0;
+  }
+
+  a,
+  a:visited {
+    color: $search-menu-link;
+
+    &:hover,
+    &:focus {
+      color: $search-menu-hover-link
+    }
+  }
+}
+
+// Overlay
+
+.search-overlay {
+  background-color: $search-overlay-bg-color;
+  color: $search-menu-title;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
+  z-index: 5;
+
+  &.sticky-search {
+    position: fixed;
+  }
+
+  &.is-opened {
+    display: block;
+  }
+
+  .search-menu {
+
+    @include respond-to('large-up') {
+      max-width: 70%;
+      margin: 0px auto;
+    }
+  }
+}
+
+.search-overlay__close {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.search-overlay__wrapper {
+  padding: 60px 0;
+}
+
+// Popup
+
+.search-popup {
+  display: none;
+  background-color: $search-popup-bg-color;
+  color: $search-menu-title;
+  max-width: 600px;
+  padding: 60px 0 45px;
+  font-size: 1.2em;
+
+  .search-overlay__wrapper {
+    padding: 0 45px;
+  }
+
+  .search-menu {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+  }
+
+  .search-menu__title {
+    padding-bottom: 20px;
+
+    @include respond-to('medium-down') {
+      padding-bottom: 0;
+    }
+  }
+
+  .search-menu__item {
+    width: 45%;
+    padding: 0;
+    display: block;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.search-popup__form {
+
+  @include respond-to('large-up') {
+    margin: 0px auto;
+  }
+}
+
+// Predictive search
+
+.predictive-results {
+  opacity: 0;
+  list-style: none;
+  background-color: white;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 10;
+  transition: opacity 0.25s ease-in-out;
+  box-shadow: 0 8px 8px rgba($black, 0.1);
+
+  li {
+    border-top: 1px solid $search-item-border;
+    padding: 10px;
+
+    a,
+    a:visited {
+      color: $text;
+    }
+
+    a:hover,
+    a:active {
+      color: $text-light-opacity;
+    }
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
+
+.result-link {
+  @include flexbox();
+  @include align-items(center);
+}
+
+.result-image {
+  max-width: 40px;
+  margin-right: 10px;
+}
+
+.result-info {
+  @include flexbox();
+  @include flex-direction(column);
+
+  .money {
+    font-weight: bold;
+  }
+}
+
+.search__lightbox .predictive-results {
+  position: relative;
+}

@@ -1,0 +1,123 @@
+{% comment %}Assign object as block or section{% endcomment %}
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+{% assign image = object.settings.image %}
+{% assign image_crop = object.settings.image_cropping %}
+{% assign image_position = object.settings.image_position %}
+{% assign background_image = object.settings.background_image %}
+{% assign background_color = object.settings.background_color %}
+{% assign show_icons = settings.show_form_icons %}
+{% comment %} Text {% endcomment %}
+{% assign heading = object.settings.newsletter_title %}
+{% assign subheading = object.settings.newsletter_richtext %}
+{% assign text_alignment = object.settings.newsletter_section_text_align %}
+{% assign text_color = object.settings.text_color %}
+{% assign display_first_name = object.settings.display_first_name %}
+{% assign display_last_name = object.settings.display_last_name %}
+{% capture button_classes %}
+  is-{{ settings.form_border_style }} is-{{ settings.form_size }}
+{% endcapture %}
+{% comment %} Layout {% endcomment %}
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign padding_left = object.settings.padding_left %}
+{% assign padding_right = object.settings.padding_right %}
+{% assign animation = object.settings.animation | default: 'none' %}
+
+{% comment %} Is the color set to transparent? {% endcomment %}
+{% assign text_alpha = text_color | color_extract: 'alpha' %}
+
+{%- capture section_css -%}
+
+  {% if background_image != blank %}
+    .section.has-background {
+      background-image: url({{ background_image | img_url: '2000x' }} );
+    }
+  {% endif %}
+
+  .section {
+  }
+
+  .newsletter-container {
+    background-color: {{ background_color }};
+    {% if width == 'wide' %}
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    {% endif %}
+  }
+
+  .newsletter__text {
+    color: {% if text_alpha != 0 %}{{ text_color }}{% else %}{{ settings.regular_color }}{% endif %}
+  }
+
+{%- endcapture -%}
+
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+    padding-left: {{ padding_left }}px;
+    padding-right: {{ padding_right }}px;
+    {% if width == 'wide' %}
+      width: 100%;
+    {% elsif width == 'half' %}
+      width: 50%;
+    {% endif %}
+  }
+
+  #shopify-section-{{ id }} .newsletter__wrapper {
+    {% if width == 'half' %}
+      max-width: 100%;
+    {% endif %}
+  }
+
+  {% include 'css-loop', css: section_css, id: id %}
+  {% include 'css-loop', css: custom_css, id: id %}
+{% endstyle %}
+
+{% comment %} HTML markup {% endcomment %}
+{% if image != blank %}
+<div class="newsletter__image--mobile-wrapper {% if image_crop != 'none' %}has-image-crop{% endif %} image-crop--{{ image_crop }}">
+  {% include 'image-element', image: object.settings.image, alt: object.settings.image.alt, stretch_width: true %}
+</div>
+{% endif %}
+<section class="section newsletter-section
+                {{ css_class }}
+                {{ newsletter_class }}
+                is-width-{{ width }}
+                {% if image != blank and image_crop != 'none' %}
+                  has-full-width-crop
+                {% endif %}
+                {% if background_alpha != 0 or gradient_alpha != 0 or background_image != blank %}
+                  has-background
+                {% endif %}
+                {% if background_image != blank %}
+                  dark-overlay-{{ object.settings.image_darken }}
+                {% endif %}"
+                {% if animation != "none" %}
+                  data-scroll-class="{{ animation }}"
+                {% endif %} >
+  <div class="newsletter-container is-flex
+              {% if image_position == 'right' %}is-flex-row-reverse{% endif %}">
+    {% if image != blank %}
+      <div class="newsletter__image one-half column has-image-crop image-crop--{{ image_crop }}">
+        {% include 'image-element', image: object.settings.image, alt: object.settings.image.alt, stretch_width: true, calculate_wrap: true %}
+      </div>
+    {% endif %}
+
+    <div class="newsletter__wrapper column one-whole medium-down--one-whole">
+      <div class="newsletter__text-wrapper text-align-{{ text_alignment }}">
+        <h2 class="newsletter__heading newsletter__text title">{{ heading }}</h2>
+        <div class="newsletter__subheading newsletter__text">{{ subheading }}</div>
+      </div>
+
+      {% include 'newsletter-form' %}
+    </div>
+  </div>
+</section>

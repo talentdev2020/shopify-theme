@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="35" viewBox="0 0 115 35">
+    <defs>
+        <style>
+            .cls-1{fill:#f4364c}.cls-2,.cls-4{fill:#fff}.cls-2{font-size:14px;font-family:Nunito-Regular,Nunito}.cls-3{fill:none}
+        </style>
+    </defs>
+    <g id="Elements_Buttons_Badges_App_Store_Copy" data-name="Elements / Buttons / Badges / App Store Copy" transform="translate(14 -3)">
+        <g id="Button_Copy" data-name="Button Copy" transform="translate(-14 3)">
+            <rect id="Base" width="115" height="35" class="cls-1" rx="5"/>
+            <text id="Google_Play" class="cls-2" data-name="Google Play" transform="translate(31 22)">
+                <tspan x="0" y="0">Google Play</tspan>
+            </text>
+            <g id="Icons_Flash_Rounded" data-name="Icons / Flash Rounded" transform="translate(9.462 8)">
+                <g id="Play">
+                    <path id="Rectangle" d="M0 0h16.923v17.927H0z" class="cls-3"/>
+                    <path id="Shape" d="M.905 15.563l6.322-7.449 1.911 2.221-8.059 5.134a1.314 1.314 0 0 1-.174.094zm-.548 0a1.041 1.041 0 0 1-.3-.848C.056 13.95 0 1.834 0 .926A.925.925 0 0 1 .325.092l6.626 7.7-6.593 7.769zm9.137-5.454L7.5 7.791l1.993-2.345 2.742 1.741a.692.692 0 0 1 .388.566.788.788 0 0 1-.388.61l-2.74 1.745zM7.225 7.471L.8 0a.732.732 0 0 1 .281.1l8.056 5.12-1.911 2.25z" class="cls-4" transform="translate(2.637 1.191)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

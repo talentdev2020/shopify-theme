@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33.156" height="42.226" viewBox="0 0 33.156 42.226">
+    <defs>
+        <style>
+            .nws-1{fill:#ff671f}.nws-2{fill:#fbc100}.nws-3{fill:#1a1a1a}
+        </style>
+    </defs>
+    <g id="newsletter_icon" transform="translate(-22.069 -10.46)">
+        <path id="Path_8285" d="M49.229 11.075a.615.615 0 0 0-1.229 0v6.147h1.229z" class="nws-1" data-name="Path 8285" transform="translate(-9.992)"/>
+        <path id="Path_8286" d="M27.659 23.019l1.063-.615-3.073-5.323a.615.615 0 0 0-1.063.615z" class="nws-2" data-name="Path 8286" transform="translate(-.943 -2.442)"/>
+        <path id="Path_8287" d="M70.777 17.7a.615.615 0 0 0-1.063-.615L66.64 22.4l1.063.615z" class="nws-2" data-name="Path 8287" transform="translate(-17.175 -2.442)"/>
+        <path id="Path_8289" d="M55.218 42.967a1.229 1.229 0 0 0-.338-.615l-15.821-9.386a.615.615 0 0 0-.873 0l-15.772 9.387a1.229 1.229 0 0 0-.338.615.971.971 0 0 0 0 .234v21a.615.615 0 0 0 .615.615H54.6a.615.615 0 0 0 .615-.615v-21a.971.971 0 0 0 .003-.235zM38.161 34.68a.615.615 0 0 1 .873 0l14.574 8.14-14.549 8.053-15.422-8.053zm15.828 28.909H23.256V44.172l15.373 8a.615.615 0 0 0 .805.055l.068-.055.517-.37 13.971-7.628z" class="nws-3" data-name="Path 8289" transform="translate(0 -12.132)"/>
+    </g>
+</svg>

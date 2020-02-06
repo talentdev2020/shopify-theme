@@ -1,0 +1,58 @@
+{% comment %}
+  Snippet can be used in section or block
+  eg. {% include 'include-video-inner' %}
+{% endcomment %}
+
+{% comment %} Assign object as block or section {% endcomment %}
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+{% assign aspect_ratio = object.settings.aspect_ratio %}
+{% assign autoplay = object.settings.autoplay %}
+{% assign autoloop = object.settings.autoloop %}
+{% assign controls = object.settings.controls %}
+
+{% assign iframe_video = object.settings.iframe_video %}
+{% assign html5_video = object.settings.html5_video %}
+{% if iframe_video != blank or html5_video != blank %}
+  {% assign video_exists = true %}
+{% else %}
+  {% assign video_exists = false %}
+{% endif %}
+
+
+
+      {% comment %} Checks there is an iframe video (YouTube or Vimeo) {% endcomment %}
+      {% if iframe_video != blank %}
+        <div class="lazyframe lazyvideo video-{{ id }}" data-video-element>
+        </div>
+        {% comment %} Checks there is an HTML5 video {% endcomment %}
+      {% elsif html5_video != blank %}
+        <video class="video-{{ id }}" onclick="this.paused?this.play():this.pause()" data-video-element data-html5-video {% if controls %} controls {% endif %}>
+          <source src="{{ html5_video }}">
+        </video>
+      {% endif %}
+
+
+  {% comment %} JavaScript {% endcomment %}
+  <script
+    type="application/json"
+    data-section-id="{{ mainid }}"
+    data-section-data
+  >
+    {
+      "autoplay": {{ object.settings.autoplay | json }},
+      "autoloop": {{ object.settings.autoloop | json }},
+      "video_id": {{ object.settings.iframe_video.id | json }},
+      "video_type": {{ object.settings.iframe_video.type | json }},
+      "iframe_video": {{ object.settings.iframe_video | json }},
+      "html5_video": {{ object.settings.html5_video | json }},
+      "aspect_ratio": {{ object.settings.aspect_ratio | json }},
+      "id": {{ mainid | json }}
+    }
+  </script>
+  <script data-theme-editor-load-script src="{{ 'z__jsVideoInner.js' | asset_url }}"></script>

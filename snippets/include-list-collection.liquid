@@ -1,0 +1,200 @@
+{% comment %}
+** Collection list - main content area **
+- Template
+- This template can be viewed by going to /collections of the shop.
+{% endcomment %}
+
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+
+{% comment %}Layout{% endcomment %}
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign background_color = object.settings.background_color | default: '#ffffff' %}
+{% comment %} Buttons {% endcomment %}
+{% assign button_style = object.settings.button_style %}
+{% comment %} Advanced {% endcomment %}
+{% assign css_class = object.settings.css_class %}
+{% assign custom_css = object.settings.custom_css %}
+
+{% comment %} Is the color set to transparent? {% endcomment %}
+{% assign background_color_alpha = background_color | color_extract: 'alpha' %}
+
+
+{% if object.settings.align_height %}
+  {% assign collection_height = object.settings.collection_height %}
+{% endif %}
+
+{%- capture section_css -%}
+
+  {% if object.settings.align_height != blank %}
+    .placeholder-svg {
+      height: {{ collection_height }}px;
+      max-height: {{ collection_height }}px;
+    }
+  {% endif %}
+
+  .collection-info__caption span {
+    color: {%- if overlay_text_alpha != 0 -%}{{ overlay_text }}{% endif %}
+  }
+{%- endcapture -%}
+
+{% comment %} CSS {% endcomment %}
+{% style %}
+  #shopify-section-{{ id }} {
+    background: {%- if background_color_alpha != 0 -%}{{ background_color }}{%- endif -%};
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+    {% if width == 'wide' -%}
+      width: 100%;
+    {%- endif %}
+  }
+
+  {% include 'css-loop', css: section_css, id: id %}
+  {% include 'css-loop', css: custom_css, id: id %}
+{% endstyle %}
+
+{% comment %} HTML markup {% endcomment %}
+<section class="section
+            {{ css_class }}
+            is-width-{{ width }}
+            has-padding-bottom
+            has-padding-top
+            ">
+ 
+    <div class="container">
+    {% if object.settings.title != blank %}
+    <div 
+        class="column one-fourth medium-down--one-whole  
+            is-flex
+            is-flex-wrap
+            is-align-center">
+        <div>
+        <h3 class="list-collection__title image-with-text__heading text-align-left is-small">
+            <a href="{{ collections.all.url }}">{{ object.settings.title }}</a>
+        </h2>
+
+        <div class="image-with-text__text text-align-left content"> 
+            <p>{{ object.settings.subtitle }}</p>
+        </div>
+
+        <a class="list-collection__morelink button button--link-style medium-down--hide highlight__text" href="{{ collections.all.url }}">
+            <img src="{{ 'ionic-ios-arrow-dropright-mobile.svg' | asset_url }}" /> See All
+        </a>
+        </div>
+    {% endif %}
+    </div>
+
+
+    <div class="list-collection__sliderwrap column three-fourths medium-down--one-whole has-column-padding-bottom">
+      {% if section.blocks.size > 3%}
+        <div class="list-collection-slider__nav--next">
+          <img src="{{ 'red-arrow-right.svg' | asset_url }}" />
+        </div>
+        <div class="list-collection-slider__nav--prev">
+          <img src="{{ 'red-arrow-left.svg' | asset_url }}" />
+        </div>
+      {% endif%}
+        <div class="list-collection-wrapper container list-collection {% if section.blocks.size > 3%} layout--slider {% endif%}" data-load-more--grid>
+          {% if type == 'block' %}
+            {% for collection in collections %}
+              {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+              <div class="{%- include 'column-width', value: object.settings.collections_per_row  -%} column thumbnail {% if object.settings.align_height %}list-collection--align-height{% endif %} medium-down--one-half has-thumbnail-sticker" data-load-more--grid-item>
+                <div class="product-wrap">
+                    {% if collection.image != blank %}
+                    {% assign collection_image = collection.image %}
+                    {% assign collection_image_alt = collection.image.alt | escape %}
+                    {% else collection.empty? == false %}
+                    {% assign collection_image = collection.products.first.list_image %}
+                    {% assign collection_image_alt = collection.products.first.list_image.alt | escape %}
+                    {% endif %}
+
+                    {% if collection_image != nil %}
+
+                    <div class="product-review__wrapper text-align-center">
+                      <span class="stamped-product-reviews-badge" data-product-sku="{{ collection.products.first.handle }}" data-id="{{ collection.products.first.id }}" style="display:block;">{{ collection.products.first.stamped.badge }}</span>
+                    </div>
+                    <div class="product-image__wrapper">
+                      <div class="image__container product__imageContainer">
+                        <a href="{{ product.url | within: collection }}">
+                          {% include 'image-element', image: collection_image.src, alt: collection_image_alt, image_crop: true, max_height: collection_height %}
+                        </a>
+                      </div>
+                    </div>
+
+                    {% else %}
+                    {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: num | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+
+                    <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
+                      <div class="product-thumbnail">
+                        {% if settings.display_vendor %}
+                          <span class="product-thumbnail__vendor">{{ product.vendor }}</span>
+                        {% endif %}
+                        <a href="{{ collection.url }}" class="product-thumbnail__title highlight__text">{{ collection.title }}</a>
+                      </div>                    
+                    </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            {% for block in section.blocks %} 
+            {% assign coll = block.settings.list_collection %}
+            {% assign collection = collections[coll] %}
+            {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+            <div class="{%- include 'column-width', value: object.settings.collections_per_row  -%} column thumbnail {% if object.settings.align_height %}list-collection--align-height{% endif %} medium-down--one-half has-thumbnail-sticker" data-load-more--grid-item>
+              <div class="product-wrap">
+                  {% if collection.image != blank %}
+                  {% assign collection_image = collection.image %}
+                  {% assign collection_image_alt = collection.image.alt | escape %}
+                  {% else %}
+                  {% assign collection_image = collection.products.first.list_image %}
+                  {% assign collection_image_alt = collection.products.first.list_image.alt | escape %}
+                  {% endif %}
+
+                  {% if collection_image != nil %}
+
+                  <div class="product-review__wrapper text-align-center">
+                    <span class="stamped-product-reviews-badge" data-product-sku="{{ collection.products.first.handle }}" data-id="{{ collection.products.first.id }}" style="display:block;">{{ collection.products.first.stamped.badge }}</span>
+                  </div>
+                  <div class="product-image__wrapper">
+                    <div class="image__container product__imageContainer">
+                      <a href="{{ product.url | within: collection }}">
+                        {% include 'image-element', image: collection_image.src, alt: collection_image_alt, image_crop: true, max_height: collection_height %}
+                      </a>
+                    </div>
+                  </div>
+
+                  {% else %}
+                  {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                  {{ 'collection-' | append: num | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+
+                  <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
+                    <div class="product-thumbnail">
+                      {% if settings.display_vendor %}
+                        <span class="product-thumbnail__vendor">{{ product.vendor }}</span>
+                      {% endif %}
+                      <a href="{{ collection.url }}" class="product-thumbnail__title highlight__text">{{ collection.title }}</a>
+                    </div>                    
+                  </div>
+              </div>
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+    </div>
+    
+    <a class="medium-down--show list-collection__morelink button button--link-style highlight__text" href="{{ collections[col].url }}">
+      <img src="{{ 'ionic-ios-arrow-dropright.png' | asset_img_url : 'master' }}" /> See All
+    </a>
+</section>
+
+<script data-theme-editor-load-script src="{{ 'z__jsListCollection.js' | asset_url }}"></script>

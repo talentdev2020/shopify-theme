@@ -1,0 +1,16 @@
+{% comment %}
+  Product healthcare page with moveable sections template
+{% endcomment %}
+
+<div id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section product-page">
+    <section class="is-width-standard">
+
+      <div class="container">
+        {% section 'product__sidebar_2' %}
+        {% section 'product-sections__main_2' %}
+        {% section 'product__recommendations_2' %}
+        {% section 'page-faq__column_2' %}
+      </div>
+
+    </section>
+  </div>

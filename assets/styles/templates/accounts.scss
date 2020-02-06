@@ -1,0 +1,119 @@
+/* # Accounts
+================================================== */
+
+.register__image img,
+.login__image img {
+  width: 100%;
+}
+
+.register__form img,
+.login__form img {
+  max-width: 200px;
+  margin: 0;
+}
+
+.or {
+  margin-left: 10px;
+}
+
+// Recover
+
+.login__recover {
+  display: none;
+}
+
+.recover-note {
+  margin: 0.75rem 0;
+}
+
+.action_bottom .button,
+.recover-options .button {
+  margin-right: 5px;
+}
+
+.login-page {
+  .content__wrapper {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    .section__wrapper {
+      position: relative;
+      &.is-width-standard {
+        background: $white;
+        max-width: 600px;
+        padding: $gutter * 1.5 $gutter * 5.5;
+        @include respond-to('medium-down') {
+          padding: $gutter $gutter * 2;
+        }
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .social__login {
+      @include respond-to('medium-down') {
+        display: block;
+      }
+      .facebook__login {
+        @include respond-to('medium-down') {
+          text-align: center;
+          img {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+      }
+      .google__login {
+        padding-left: 20px;
+        @include respond-to('medium-down') {
+          text-align: center;
+          padding-left: 0px;
+          img {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+    &.reset__wrapper {
+      display: none;
+      .recover-note {
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+.register-page {
+  .register__wrapper {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    .section__wrapper {
+      position: relative;
+      &.is-width-standard {
+        background: $white;
+        max-width: 750px;
+        padding: $gutter * 1.5 $gutter * 5.5;
+        @include respond-to('medium-down') {
+          padding: $gutter $gutter * 2;
+        }
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+}

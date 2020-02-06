@@ -1,0 +1,77 @@
+/* # Vendor override styles
+================================================== */
+
+[data-scroll-class] {
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+// Fancybox
+
+.fancybox-thumbs__list a:before {
+  border: 6px solid {{ settings.link_color }};
+}
+
+.fancybox-button {
+  transition: opacity $transition-speed ease-in-out;
+}
+
+// Flickity
+
+.flickity-viewport {
+  width: 100%;
+}
+
+.flickity-prev-next-button {
+  position: absolute;
+  @include flexbox();
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+  position: static;
+  top: initial;
+  left: initial;
+  margin: auto;
+}
+
+.flickity-button {
+  transition: background-color $transition-speed ease-in-out;
+}
+
+// Shopify
+
+.shopify-challenge__container {
+  padding: 40px 0;
+}
+
+// Fix for fade glitch
+.quick-shop {
+  .slideshow_animation--fade {
+    .gallery-cell {
+      opacity: 0 !important;
+      transition: opacity 1s ease !important;
+      &.is-selected {
+        opacity: 1 !important;
+      }
+    }
+  }
+}
+
+.flickity-resize .image-slideshow__slide {
+  min-height: 100%;
+}
+
+.image-slideshow--fade .image-slideshow__slide {
+  opacity: 0 !important;
+  transition: opacity 1s ease !important;
+  &.is-selected {
+    opacity: 1 !important;
+  }
+}
+
+
+//LazyFrame
+
+.lazyframe {
+  background-color: #000 !important; // Used to override styling created by LazyFrame
+}
