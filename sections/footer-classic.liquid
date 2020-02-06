@@ -55,8 +55,37 @@
                   has-padding-bottom">
     <div class="container has-limit is-justify-space-between">
       {% for block in section.blocks %}
+        {% if block.type == 'newsletter' %}
         <div id="shopify-section-{{ block.id }}" class="footer__block block__{{ block.id }} block__{{ block.type | downcase | replace: '_', '-' }}
-                    {% include 'column-width', value: section.blocks.size %}
+        one-whole column is-flex is-marginless"
+                    {{ block.shopify_attributes }}>
+              {% comment %} Newsletter {% endcomment %}
+              <div class="one-half medium-down--one-whole column is-flex is-justify-left">
+                {% if block.settings.newsletter_title != blank %}
+                  <p class="footer__heading">{{ block.settings.newsletter_title }}</p>
+                {% endif %}
+
+                {% if block.settings.newsletter_richtext != blank %}
+                  <div class="content">
+                    {{ block.settings.newsletter_richtext }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="one-half medium-down--one-whole column is-flex is-justify-right">
+                {% include 'newsletter-form', type: 'block' %}
+
+                {% if block.settings.social_icons_footer %}
+                  <div class="has-padding-bottom has-padding-top">
+                    {% include 'social-icons' %}
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %} 
+      {% endfor%}
+      {% for block in section.blocks %}
+        <div id="shopify-section-{{ block.id }}" class="footer__block block__{{ block.id }} block__{{ block.type | downcase | replace: '_', '-' }}
+                    {% include 'column-width', value: section.blocks.size-1 %}
                     {% if block.type == 'link_list' %}
                     medium-down--one-half column
                     {% else %}
@@ -112,25 +141,6 @@
               </div>
             {% endif %}
 
-            {% elsif block.type == 'newsletter' %}
-              {% comment %} Newsletter {% endcomment %}
-              {% if block.settings.newsletter_title != blank %}
-                <p class="footer__heading">{{ block.settings.newsletter_title }}</p>
-              {% endif %}
-
-              {% if block.settings.newsletter_richtext != blank %}
-                <div class="content">
-                  {{ block.settings.newsletter_richtext }}
-                </div>
-              {% endif %}
-
-              {% include 'newsletter-form', type: 'block' %}
-
-              {% if block.settings.social_icons_footer %}
-                <div class="has-padding-bottom has-padding-top">
-                  {% include 'social-icons' %}
-                </div>
-              {% endif %}
           {% endif %}
         </div>
       {% endfor %}
@@ -139,22 +149,8 @@
   <section class="footer__extra-content section">
     <div class="container has-padding-top has-padding-bottom">
       <div class="footer__social_icons one-third column small-down--one-whole is-flex is-justify-start is-flex-wrap">
-          {% include 'social-icons' %}
-      </div>
-      <div class="footer__credits one-third  column small-down--one-whole is-justify-center">
-        {% comment %}{{ shop.name | link_to: '/' }}{% endcomment %}
-        {{ section.settings.copyright_text }}
-        <p> {{ "now" | date: "%Y" }} &copy;</p>
-        
-        
-        {% if section.settings.display_designed_by %}
-          <p>{{ 'layout.general.designer_credits_html' | t }}</p>
-        {% endif %}
-        {% if section.settings.display_shopify %}
-          <p>{{ powered_by_link | split: '" ' | join: '&ref=out-of-the-sandbox" ' | split: '">' | join: '&ref=out-of-the-sandbox">' }}</p>
-        {% endif %}
         {% assign footer_only_mobile_menu = linklists[settings.footer_only_mobile_menu] %}
-        <div class="footer_only_mobile_menu  is-hidden-desktop-only">
+        <div class="footer_only_mobile_menu">
           <div class="footer_only_mobile_menu-items
                       is-flex
                       is-flex-wrap
@@ -174,6 +170,21 @@
             {% endfor %}
           </div>
         </div>
+      </div>
+      <div class="footer__credits one-third  column small-down--one-whole is-justify-end">
+        {% comment %}{{ shop.name | link_to: '/' }} {{ "now" | date: "%Y" }}  {% endcomment %}
+        <p> &copy;</p>
+        {{ section.settings.copyright_text }}
+        
+        
+        
+        {% if section.settings.display_designed_by %}
+          <p>{{ 'layout.general.designer_credits_html' | t }}</p>
+        {% endif %}
+        {% if section.settings.display_shopify %}
+          <p>{{ powered_by_link | split: '" ' | join: '&ref=out-of-the-sandbox" ' | split: '">' | join: '&ref=out-of-the-sandbox">' }}</p>
+        {% endif %}
+
       </div>
       <hr>
       {% if section.settings.display_payment_methods %}

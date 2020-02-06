@@ -60,7 +60,7 @@ https://github.com/vb/lazyframe
 /* # Variables
 ================================================== */
 
-$site-max-width: 1108px;
+$site-max-width: 1008px;
 $site-width: 95%;
 $transition-default: all 0.3s ease;
 
@@ -2907,9 +2907,9 @@ $button-static-color: $grey !default;
 $button-static-background-color: $white-ter !default;
 $button-static-border-color: $grey-lighter !default;
 
-$button-width-limit: 232px;
-$button-height: 3.75rem;
-$button-large-height: 4.75rem;
+$button-width-limit: 180px;
+$button-height: 2.813rem;
+$button-large-height: 2.813rem;
 $button-large-mobile-height: 60px;
 $button-large-border-radius: 38px;
 $button-mobile-height: 40px;
@@ -2929,7 +2929,7 @@ $button-mobile-height: 40px;
 
 @mixin button-large {
   font-size: $size-large;
-  line-height: 1.25em;
+  line-height: 1.21em;
   width: 100%;
 }
 
@@ -3206,7 +3206,7 @@ $button-mobile-height: 40px;
   $btn-primary-width: auto;
 {% else %}
   $btn-primary-font-size: 1.1875rem;
-  $btn-primary-line-height: 1.25;
+  $btn-primary-line-height: 1.21;
   $btn-primary-width: 100%;
 {% endif %}
 
@@ -3228,7 +3228,7 @@ $btn-primary-border-color-highlight: {{ settings.button_primary_border_color--hi
   $btn-secondary-width: auto;
 {% else %}
   $btn-secondary-font-size: 1.1875rem;
-  $btn-secondary-line-height: 1.25;
+  $btn-secondary-line-height: 1.21;
   $btn-secondary-width: 100%;
 {% endif %}
 
@@ -3247,8 +3247,8 @@ $btn-secondary-border-color-highlight: {{ settings.button_secondary_border_color
   $btn-link-style-font-size: 1rem;
   $btn-link-style-line-height: inherit;
 {% else %}
-  $btn-link-style-font-size: 1.25rem;
-  $btn-link-style-line-height: 1.25;
+  $btn-link-style-font-size: 1.1875rem;
+  $btn-link-style-line-height: 1.21;
 {% endif %}
 
 $btn-link-style-text-color: {{ settings.button_link_text_color }};
@@ -3285,7 +3285,6 @@ $btn-add-to-cart-border-color-highlight: {{ settings.button_cart_border_color--h
   height: $button-height;
   max-width: $button-width-limit;
   white-space: normal;
-  text-transform: uppercase;
   font-weight: bold;
 
   // States
@@ -6181,7 +6180,7 @@ $message-header-body-border-width: 0 !default;
 $navbar-background-color: $white !default;
 $navbar-box-shadow-size: 0 2px 0 0 !default;
 $navbar-box-shadow-color: $background !default;
-$navbar-height: 3.25rem !default;
+$navbar-height: 5.063rem !default;
 $navbar-padding-vertical: 1rem !default;
 $navbar-padding-horizontal: 2rem !default;
 $navbar-z: 30 !default;
@@ -6336,9 +6335,8 @@ body {
 .navbar-link {
   display: block;
   line-height: 1.5;
-  padding: 1rem 0.75rem;
+  padding: 1rem 1.1rem;
   position: relative;
-  font-weight: 600;
   line-height: 1.38;
   letter-spacing: 0.16px;
   text-align: left;
@@ -10418,7 +10416,10 @@ $footer_headings_color: {{ settings.footer_headings_color }};
 
 .footer__container {
   width: 100%;
-  background-color: $footer_background_color;
+  //background-color: $footer_background_color;
+  background: url('{{ "footer-bgr.svg" | asset_url }}') repeat-x 50% 0 transparent;
+  background-size: cover;
+  padding-top: 5rem;
 }
 .footer__scroll_to_top {
   .scroll-to-top {
@@ -10431,7 +10432,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
   }
 }
 .footer__content {
-  background-color: $footer_background_color;
+  //background-color: $footer_background_color;
   color: $footer_text_color;
   font-size: $footer_font_size;
   @include respond-to('medium-down') {
@@ -10443,7 +10444,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
   a:visited {
     color: $footer_link_color;
     line-height: 1.64;
-    font-size: $footer_heading_font_size;
+    font-size: $footer_font_size;
     @include respond-to('medium-down') {
       line-height: 1.58;
       font-size: 12px;
@@ -10593,7 +10594,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
 
 .footer__credits {
   color: $footer_text_color;
-  font-size: $footer_heading_font_size;
+  font-size: $footer_font_size;
   text-align: center;
   @include respond-to('medium-down') {
     color: #fbc100;
@@ -11256,6 +11257,9 @@ $footer_headings_color: {{ settings.footer_headings_color }};
 
   .action-area__link {
     padding-left: 1.5625rem;
+  }
+  a {
+    color: {{ settings.header_cart_badge_color }};
   }
 }
 

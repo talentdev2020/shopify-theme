@@ -41,9 +41,9 @@ $button-static-color: $grey !default;
 $button-static-background-color: $white-ter !default;
 $button-static-border-color: $grey-lighter !default;
 
-$button-width-limit: 232px;
-$button-height: 3.75rem;
-$button-large-height: 4.75rem;
+$button-width-limit: 180px;
+$button-height: 2.813rem;
+$button-large-height: 2.813rem;
 $button-large-mobile-height: 60px;
 $button-large-border-radius: 38px;
 $button-mobile-height: 40px;
@@ -63,7 +63,7 @@ $button-mobile-height: 40px;
 
 @mixin button-large {
   font-size: $size-large;
-  line-height: 1.25em;
+  line-height: 1.21em;
   width: 100%;
 }
 
@@ -340,7 +340,7 @@ $button-mobile-height: 40px;
   $btn-primary-width: auto;
 {% else %}
   $btn-primary-font-size: 1.1875rem;
-  $btn-primary-line-height: 1.25;
+  $btn-primary-line-height: 1.21;
   $btn-primary-width: 100%;
 {% endif %}
 
@@ -362,7 +362,7 @@ $btn-primary-border-color-highlight: {{ settings.button_primary_border_color--hi
   $btn-secondary-width: auto;
 {% else %}
   $btn-secondary-font-size: 1.1875rem;
-  $btn-secondary-line-height: 1.25;
+  $btn-secondary-line-height: 1.21;
   $btn-secondary-width: 100%;
 {% endif %}
 
@@ -381,8 +381,8 @@ $btn-secondary-border-color-highlight: {{ settings.button_secondary_border_color
   $btn-link-style-font-size: 1rem;
   $btn-link-style-line-height: inherit;
 {% else %}
-  $btn-link-style-font-size: 1.25rem;
-  $btn-link-style-line-height: 1.25;
+  $btn-link-style-font-size: 1.1875rem;
+  $btn-link-style-line-height: 1.21;
 {% endif %}
 
 $btn-link-style-text-color: {{ settings.button_link_text_color }};
@@ -419,7 +419,6 @@ $btn-add-to-cart-border-color-highlight: {{ settings.button_cart_border_color--h
   height: $button-height;
   max-width: $button-width-limit;
   white-space: normal;
-  text-transform: uppercase;
   font-weight: bold;
 
   // States

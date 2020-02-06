@@ -4,7 +4,7 @@
 $navbar-background-color: $white !default;
 $navbar-box-shadow-size: 0 2px 0 0 !default;
 $navbar-box-shadow-color: $background !default;
-$navbar-height: 3.25rem !default;
+$navbar-height: 5.063rem !default;
 $navbar-padding-vertical: 1rem !default;
 $navbar-padding-horizontal: 2rem !default;
 $navbar-z: 30 !default;
@@ -159,9 +159,8 @@ body {
 .navbar-link {
   display: block;
   line-height: 1.5;
-  padding: 1rem 0.75rem;
+  padding: 1rem 1.1rem;
   position: relative;
-  font-weight: 600;
   line-height: 1.38;
   letter-spacing: 0.16px;
   text-align: left;

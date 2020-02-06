@@ -97,29 +97,6 @@
                     is-width-{{ width }}">
       <div class="container">
         <div class="navbar is-align-center is-justify-space-between vertical-alignment-{{ section.settings.vertical_alignment }} one-whole column">
-          <div class="header__menu is-justify-{{ section.settings.menu_alignment }}">
-            <nav class="header__menu-items is-flex is-flex-wrap is-justify-{{ section.settings.menu_alignment }} header__dropdown--{{ settings.dropdown_position }}" role="navigation" aria-label="main navigation">
-              {% assign main_menu = linklists[section.settings.main_linklist] %}
-              {% for link in main_menu.links %}
-                {% if link.links == blank %}
-                  <div class="navbar-item header__item {% if link.active or link.child_active %}is-active{% endif %}" data-navlink-handle="{{ link.title | handleize }}">
-                    <a href="{{ link.url }}" class="navbar-link header__link {% if link.active %}is-active{% endif %} is-arrowless">
-                      {{ link.title }}
-                    </a>
-                  </div>
-                {% else %}
-                  <div class="navbar-item header__item has-dropdown has-dropdown--{{ settings.dropdown_style }} is-hoverable {% if link.active or link.child_active %}is-active{% endif %}" aria-haspopup="true" aria-expanded="false" data-navlink-handle="{{ link.title | handleize }}">
-                    <a class="navbar-link header__link {% if link.active or link.child_active %}is-active{% endif %}"
-                      {% unless link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %} href="{{ link.url }}" {% endunless %}>
-                      {{ link.title }}
-                    </a>
-                    {% include 'header__dropdown-menu' %}
-                  </div>
-                {% endif %}
-              {% endfor %}
-            </nav>
-          </div>
-          
           <div class="header__brand">
             {% if section.settings.enable_overlay and section.settings.overlay_logo != blank %}
               {% if template contains 'index' %}
@@ -165,8 +142,38 @@
               {% endif %}
             {% endif %}
           </div>
-
+          
+          <div class="header__menu is-justify-{{ section.settings.menu_alignment }}">
+            <nav class="header__menu-items is-flex is-flex-wrap is-justify-{{ section.settings.menu_alignment }} header__dropdown--{{ settings.dropdown_position }}" role="navigation" aria-label="main navigation">
+              {% assign main_menu = linklists[section.settings.main_linklist] %}
+              {% for link in main_menu.links %}
+                {% if link.links == blank %}
+                  <div class="navbar-item header__item {% if link.active or link.child_active %}is-active{% endif %}" data-navlink-handle="{{ link.title | handleize }}">
+                    <a href="{{ link.url }}" class="navbar-link header__link {% if link.active %}is-active{% endif %} is-arrowless">
+                      {{ link.title }}
+                    </a>
+                  </div>
+                {% else %}
+                  <div class="navbar-item header__item has-dropdown has-dropdown--{{ settings.dropdown_style }} is-hoverable {% if link.active or link.child_active %}is-active{% endif %}" aria-haspopup="true" aria-expanded="false" data-navlink-handle="{{ link.title | handleize }}">
+                    <a class="navbar-link header__link {% if link.active or link.child_active %}is-active{% endif %}"
+                      {% unless link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %} href="{{ link.url }}" {% endunless %}>
+                      {{ link.title }}
+                    </a>
+                    {% include 'header__dropdown-menu' %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </nav>
+          </div>
+          
           {% include 'header__action-icons' %}
+          {% unless template contains 'product'%}
+            {% if section.settings.button_label != blank %}
+            <div class="header__button is-flex is-justify-{{ section.settings.menu_alignment }} is-align-center has-padding-left">
+              {% include 'button', label: section.settings.button_label, href: section.settings.link, type: "link", style: section.settings.button_style %}
+            </div>
+              {% endif %}
+          {% endunless %}
         </div>
       </div>
     </section>
@@ -250,6 +257,40 @@
         }
       ],
       "default": "start"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "button--primary",
+          "label": "Primary"
+        },
+        {
+          "value": "button--secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "button--link-style",
+          "label": "Link style"
+        }
+      ],
+      "default": "button--primary"
     },
     {
       "type": "header",
