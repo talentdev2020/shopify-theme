@@ -81,17 +81,25 @@
     .image-element__wrap {
       min-height: 60px;
     }
-
-    p {
-      font-size: 12px;
-      font-weight: 600;
+    h5 {
+      font-size: 24px;
+      font-weight: 900;
       font-stretch: normal;
       font-style: normal;
-      line-height: 1.25;
+      line-height: 1.42;
       letter-spacing: normal;
       text-align: center;
-      color: #2e2e2e;
-      margin-top: 21px;
+      color: $dark-sky-blue;
+      padding: 40px 0 20px;
+    }
+    p {
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
     }
   }
 }

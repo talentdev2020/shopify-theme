@@ -16,5 +16,17 @@
       font-style: normal; }
 */
 
+
+@font-face {
+    font-family: 'Cooper Std';
+    src: url('../assets/CooperBlackStd.woff2') format('woff2'),
+        url('../assets/CooperBlackStd.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
 /* # Custom Styles
 ================================================== */
+
+h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
+{ font-family: 'Cooper Std' !important; }

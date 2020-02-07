@@ -61,7 +61,7 @@
         {% assign mobile_preheading_alpha = block.settings.pretext_color_mobile | color_extract: 'alpha' %}
         {% assign mobile_subtitle_alpha = block.settings.subheading_color_mobile | color_extract: 'alpha' %}
         {% assign caption_background_alpha = block.settings.background_color | color_extract: 'alpha' %}
-        {% assign show_review = block.settings.show_review | default: 'true' %}
+        {% assign show_review = block.settings.show_review | default: 'false' %}
         {% assign review_product = all_products[block.settings.review_product] %}
 
         {% if button_1 != blank and button_2 != blank %}
@@ -158,10 +158,10 @@
 
               {% if  show_review  and review_product.id %}
               <div class="slideshow-classic__review">
-                <hr class="short">
                 <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product.handle }}" data-id="{{ review_product.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
               </div>
               {% endif %}
+              
             </div>
           </div>
         {% endif %}
@@ -169,29 +169,6 @@
     {% endfor %}
   </div>
 </section>
-<a class="button_move_down" href="#">
-  <span>
-      <svg data-name="arrow down" height="30" id="arrow-down" viewbox="0 0 30 30" width="30" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-              <style>
-                .arrd-1 {
-                  fill: #fff
-                }
-
-                .arrd-2 {
-                  fill: #f05423;
-                  stroke: #fff
-                }
-              </style>
-          </defs>
-          <circle class="arrd-1" cx="15" cy="15" data-name="Ellipse 1" id="Ellipse_1" r="15"/>
-          <g data-name="Icon ionic-ios-arrow-dropright" id="Icon_ionic-ios-arrow-dropright" transform="rotate(90 10.825 14.825)">
-              <path class="arrd-2" d="M.3.293a1.008 1.008 0 0 1 1.421 0l4.961 4.98a1 1 0 0 1 .031 1.384l-4.891 4.908A1 1 0 1 1 .4 10.15l4.159-4.221L.3 1.708A.993.993 0 0 1 .3.293z" data-name="Path 8163" id="Path_8163" transform="translate(8.171 4.891)"/>
-              <path class="arrd-2" d="M0 10.825A10.825 10.825 0 1 0 10.825 0 10.823 10.823 0 0 0 0 10.825zm1.665 0A9.156 9.156 0 0 1 17.3 4.351 9.156 9.156 0 1 1 4.351 17.3a9.081 9.081 0 0 1-2.686-6.475z" data-name="Path 8164" id="Path_8164"/>
-          </g>
-      </svg>
-  </span>
-</a>
 </div>
 
 {% comment %}JavaScript{% endcomment %}
@@ -582,7 +559,7 @@
           "type": "checkbox",
           "id": "show_review",
           "label": "Show review",
-          "default": true
+          "default": false
         },
         {
           "type": "product",
