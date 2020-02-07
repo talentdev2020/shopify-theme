@@ -1,0 +1,38 @@
+/* # icon-with-text-button.scss
+================================================== */
+
+.icon-with-text-button__container {
+
+    .icon-with-text-button__wrapper {
+        text-align: center;
+        margin: auto;
+        padding-top: $gutter;
+        padding-bottom: $gutter;
+
+        .icon-with-text-button__icon {
+            padding-bottom: 15px;
+
+            span.icon {
+                width: 90.7px;
+                height: 80px;
+                object-fit: contain;
+            }
+        }
+
+        .icon-with-text-button__heading{
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.29;
+            text-align: center;
+            padding: $gutter/2;
+        }
+
+        .button{
+            width: 266px;
+            max-width: none;
+            height: 50px;
+            border-radius: 25px;
+            margin: $gutter;
+        }
+    }
+}

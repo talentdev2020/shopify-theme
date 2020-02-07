@@ -75,32 +75,6 @@
           </a>
         </div>
 
-        {% if collection_handles contains 'coming-soon' %}
-          {% if settings.stickers_enabled == false %}
-            {{ 'collections.general.coming_soon' | t }}
-          {% endif %}
-        {% else %} 
-          <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %} highlight__text">
-            {% if product.available %}
-              {% if product.price_varies and product.price_min > 0 %}
-                <small><em>{{ 'products.general.from' | t }}</em></small>
-              {% endif %}
-              {% if product.price_min > 0 %}
-                <span class="money">{{ product.price_min | money }}</span>
-              {% else %}
-                {{ settings.free_price_text }}
-              {% endif %}
-              {% if product.compare_at_price_max > product.price %}
-                <span class="product-thumbnail__was-price was-price">
-                  <span class="money">{{ product.compare_at_price_max | money }}</span>
-                </span>
-              {% endif %}
-            {% else %}
-              <span class="product-thumbnail__sold-out sold-out">{{ 'products.product.sold_out' | t }}</span>
-            {% endif %}
-          </span>
-        {% endif %} 
-
         {% if hover_enabled or settings.enable_quickshop %}
           <div class="thumbnail-overlay__container">
             <a class="hidden-product-link" href="{{ product.url | within: collection }}">{{ product.title }}</a>
@@ -160,10 +134,35 @@
  
       <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
         {% include 'product-thumbnail__product-info' %}
+
+        {% if collection_handles contains 'coming-soon' %}
+          {% if settings.stickers_enabled == false %}
+            {{ 'collections.general.coming_soon' | t }}
+          {% endif %}
+        {% else %} 
+          <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+            {% if product.available %}
+              {% if product.price_varies and product.price_min > 0 %}
+                <small><em>{{ 'products.general.from' | t }}</em></small>
+              {% endif %}
+              {% if product.price_min > 0 %}
+                <span class="money">{{ product.price_min | money }}</span>
+              {% else %}
+                {{ settings.free_price_text }}
+              {% endif %}
+              {% if product.compare_at_price_max > product.price %}
+                <span class="product-thumbnail__was-price was-price">
+                  <span class="money">{{ product.compare_at_price_max | money }}</span>
+                </span>
+              {% endif %}
+            {% else %}
+              <span class="product-thumbnail__sold-out sold-out">{{ 'products.product.sold_out' | t }}</span>
+            {% endif %}
+          </span>
+        {% endif %} 
       </div>
 
   </div>
-
   {% include 'product-thumbnail__swatch' %}
 
   {% if hover_enabled == false %}
