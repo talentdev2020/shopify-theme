@@ -1,0 +1,33 @@
+{% comment %}
+page-monthly-box__wideimage.liquid
+{% endcomment %}
+
+{% include 'include-wide-image' %}
+
+{% style %}
+#shopify-section-{{ section.id }} section{
+    {% if section.settings.background_image != blank %}
+      background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 50% 0 transparent;
+      background-repeat: no-repeat;
+    	background-position: right top;
+    {%- endif %}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Monthly Box Wide Image",
+  "class": "wide-image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,4 +1,7 @@
-{% comment %}Assign object as block or section{% endcomment %}
+{% comment %}
+Assign object as block or section
+include-icon-with-text-button.liquid
+{% endcomment %}
 {% if type == 'block' %}
   {% assign object = block %}
 {% else %}
@@ -13,8 +16,6 @@
 {% assign title = object.settings.title %}
 {% assign subtitle = object.settings.subtitle %}
 {% assign buttonlabel = object.settings.button %}
-
-
 
 
 {% assign padding_top = object.settings.padding_top %}

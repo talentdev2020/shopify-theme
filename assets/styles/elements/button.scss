@@ -70,7 +70,6 @@ $button-mobile-height: 40px;
 .button {
   @extend %control;
   @extend %unselectable;
-  font-family: $button-font, $button-font-fallback;
   font-weight: $button-font-weight;
   font-style: $button-font-style;
   letter-spacing: $button-letter-spacing;

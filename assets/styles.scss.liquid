@@ -2947,7 +2947,6 @@ $button-mobile-height: 40px;
 .button {
   @extend %control;
   @extend %unselectable;
-  font-family: $button-font, $button-font-fallback;
   font-weight: $button-font-weight;
   font-style: $button-font-style;
   letter-spacing: $button-letter-spacing;
@@ -16485,8 +16484,17 @@ $subtotal-bg-color: #F2F2F2;
 
 .page-faq__column-wrap {
   width: 100%;
-  max-width: 700px;
+  max-width: 850px;
 }
+
+.faq-contents {
+
+  .groups {
+    width: 48%;
+    margin: 0 1% 20px 1%;
+  }
+}
+
 
 .product-faq-container2 {
   @include respond-to('medium-down') {
@@ -16506,16 +16514,26 @@ $subtotal-bg-color: #F2F2F2;
   .faq-accordion {
     width: 100%;
 
+    .faq-icon {
+      .icon {
+        width: 82px;
+        height: 52px;
+      }
+    }
     .image-element__wrap {
       padding: 0;
       &:first-child {
         margin-bottom: 20px;
       }
     }
+
+    .more-links {
+      padding-top: 46px;
+    }
   }
 
   .faq-title {
-    margin-bottom: $gutter;
+    margin-bottom: $gutter*2.5;
     font-size: 1.8rem;
 
     @include respond-to('medium-down') {
@@ -16524,15 +16542,16 @@ $subtotal-bg-color: #F2F2F2;
   }
 
   .faq-title:not(:first-child) {
-    margin-top: 40px;
+    margin-top: $gutter;
   }
 
 }
 
 .accordion dt,
 .faq-accordion dt {
-  border-bottom: 1px solid $cart-border-color;
+  border: 1px solid #8f9cb2;
   position: relative;
+  padding: 15px;
 
   a,
   button {
@@ -16542,11 +16561,10 @@ $subtotal-bg-color: #F2F2F2;
     cursor: pointer;
     display: block;
     font-size: 1rem;
-    padding: $gutter/2 $gutter $gutter/2 0px;
     text-align: left;
     width: 100%;
+    font-weight: 600;
     transition: background-color 0.2s linear;
-    margin-top: $gutter/2;
 
     @include respond-to('medium-down') {
       font-size: 1rem;
@@ -16561,11 +16579,11 @@ $subtotal-bg-color: #F2F2F2;
   small,
   .icon {
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.2s linear;
-    width: 1rem;
+    width: 0.7rem;
   }
 
   .accordion-style--plus_and_minus .icon {
@@ -16590,6 +16608,9 @@ $subtotal-bg-color: #F2F2F2;
   padding: 10px;
 }
 
+.faq-page_link a {
+  text-decoration: underline;
+}
 // Content creator accordion
 
 .accordion dt:first-of-type {

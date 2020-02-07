@@ -1,0 +1,13 @@
+{% comment %}
+include-wide-image.liquid
+{% endcomment %}
+{% assign image = section.settings.background_image %}
+
+<div class="wide-image__wrapper">
+
+    {% if image != blank %}
+        {% include 'image-element', image: image, alt: image.alt, stretch_width: true %}
+    {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+</div>
