@@ -84,8 +84,6 @@
 }
 
 .header {
-  background-color: $header-background;
-  transition: background-color 0.3s linear, height 0.2s linear;
 
   @include respond-to('medium-down') {
     display: none;

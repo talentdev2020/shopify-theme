@@ -11018,8 +11018,6 @@ $footer_headings_color: {{ settings.footer_headings_color }};
 }
 
 .header {
-  background-color: $header-background;
-  transition: background-color 0.3s linear, height 0.2s linear;
 
   @include respond-to('medium-down') {
     display: none;
@@ -15446,6 +15444,20 @@ $play-icon-size: 81px;
 
 }
 
+
+.cookies-bgr {
+  position: absolute;
+  max-width: 210px;
+  display: block;
+  
+  &.right {
+    right: 0;
+  }
+  &.left {
+    left: 0;
+    transform: scale(-1,1);
+  }
+}
 /* # Blog
 ================================================== */
 

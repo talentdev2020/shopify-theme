@@ -27,7 +27,7 @@
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 <section class="section section__wrapper is-width-{{ width }} {{ css_class }}">
- 
+  {% include 'cookies', position: 'right' %}
   <div class="container">
     <div id="loginbackground" class="one-half medium-down--one-whole column is-flex is-flex-column is-justify-center  is-align-center">
       <div id="recover" class="login has-padding" style='display:none'>
