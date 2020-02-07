@@ -2,19 +2,19 @@
 ================================================== */
 
 $input-color: $grey-darker !default;
-$input-background-color: $white !default;
-$input-border-color: $grey-darker !default;
+$input-background-color: $inpute-bkg !default;
+$input-border-color: $pale-sky-blue !default;
 $input-height: $control-height !default;
 $input-shadow: none;
 $input-placeholder-color: rgba($input-color, 0.5) !default;
 
 $input-hover-color: $grey-darker !default;
-$input-hover-border-color: $grey-light !default;
+$input-hover-border-color: $pale-sky-blue !default;
 
-$input-focus-color: $grey-darker !default;
-$input-focus-border-color: $link !default;
+$input-focus-color: $pale-sky-blue !default;
+$input-focus-border-color: $pale-sky-blue !default;
 $input-focus-box-shadow-size: 0 0 0 0.125em !default;
-$input-focus-box-shadow-color: rgba($link, 0.25) !default;
+$input-focus-box-shadow-color: rgba($pale-sky-blue, 0.25) !default;
 
 $input-disabled-color: $text-light !default;
 $input-disabled-background-color: $background !default;
@@ -41,7 +41,7 @@ $file-name-border-style: solid !default;
 $file-name-border-width: 1px 1px 1px 0 !default;
 $file-name-max-width: 16em !default;
 
-$label-color: $grey-darker !default;
+$label-color: $body-text !default;
 $label-weight: $weight-bold;
 
 $help-size: $size-small !default;
