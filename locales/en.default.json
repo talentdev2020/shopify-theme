@@ -260,11 +260,11 @@
       "or": "or"
     },
     "login": {
-      "title": "Customer Login",
+      "title": "Log In",
       "returning_customers": "Returning Customers",
       "new_customers": "New Customers",
       "forgot_password": "Forgot your password?",
-      "sign_up_html": "Or Create An Account",
+      "sign_up_html": "Register",
       "new_customer_label": "New Customer?",
       "sign_in": "Login",
       "cancel": "Return to Store",

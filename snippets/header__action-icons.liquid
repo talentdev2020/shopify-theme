@@ -15,6 +15,23 @@
     </a>
   {% endif %}
 
+  {% if shop.customer_accounts_enabled %}
+    {% comment %} Account icon {% endcomment %}
+    {% if customer %}
+      {% comment %} Logout {% endcomment %}
+      <a href="{{ routes.account_url }}" class="header__link action-area__link" >
+          {% include settings.icon, name: 'avatar-2', icon_class: 'header__icon' %}
+          <span class="icon-caption">{{ 'layout.customer.my_account' | t | escape }}</span>
+      </a>
+    {% else %}
+      {% comment %} Login {% endcomment %}
+      <a href="{{ routes.account_login_url }}" class="header__link action-area__link" >
+          {% include settings.icon, name: 'avatar-2', icon_class: 'header__icon' %}
+          <span class="icon-caption">{{ 'layout.customer.log_in' | t | escape }}</span>
+      </a>
+    {% endif %}
+  {% endif %}
+
   {% if settings.show_multiple_currencies %}
     {% comment %} Currency converter select {% endcomment %}
     <div class="header__currency-dropdown header__link action-area__link">

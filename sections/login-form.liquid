@@ -12,126 +12,28 @@
 {% assign custom_css = section.settings.custom_css %}
 
 {% style %}
-
-  {% if section.settings.login_image != nil %}
-  .login__wrapper {
-    background: url({{ section.settings.login_image | img_url: 'original' }}) no-repeat;
-    padding-top: {{ padding_top }}px;
-    padding-bottom: {{ padding_bottom }}px;
+  .heading-wrapper--login.heading-wrapper.heading-wrapper--.one-whole.column.is-flex.is-flex-column.is-align-left.text-align-left {
+      margin-left: 0px;
   }
-  {% endif %}
-
-  .login__wrapper:before {
-    background: {{ section.settings.login_overlay_color }};
-    opacity: {{ section.settings.login_overlay_opacity }};
+  .section__wrapper {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
   }
-
-  {% if section.settings.reset_image != nil %}
-  .reset__wrapper {
-    background: url({{ section.settings.reset_image | img_url: 'original' }}) no-repeat;
-    padding-top: {{ padding_top }}px;
-    padding-bottom: {{ padding_bottom }}px;
-  }
-  {% endif %}
-
-  .reset__wrapper:before {
-    background: {{ section.settings.reset_overlay_color }};
-    opacity: {{ section.settings.reset_overlay_opacity }};
+  div#rc_login {
+      text-align: left !important;
   }
 
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
+<section class="section section__wrapper is-width-{{ width }} {{ css_class }}">
+ 
+  <div class="container">
+    <div id="loginbackground" class="one-half medium-down--one-whole column is-flex is-flex-column is-justify-center  is-align-center">
+      <div id="recover" class="login has-padding" style='display:none'>
+        <div class="animated fadeInUp ">
 
-<div class="content__wrapper login__wrapper" id="login" >
-  <section class="section section__wrapper is-width-{{ width }} {{ css_class }}">
-    <header class="container">
-      {%- capture title -%}{{ 'customer.login.title' | t }}{%- endcapture -%}
-      {% include 'heading', title: title, heading_tag: 'h1', context: 'login', text_alignment: 'center' %}
-    </header>
-
-    <div class="container">
-
-      <div class="login one-whole medium-down--one-whole column has-padding-bottom">
-
-        <div id="customer" class="login__form">
-
-          {% if section.settings.richtext != blank %}
-            <div class="login__text has-padding-bottom">
-              {{ section.settings.richtext }}
-            </div>
-          {% endif %}
-
-          {% form 'customer_login' %}
-            {{ form.errors | default_errors }}
-
-            <div class="field">
-              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.login.email' | t }}*</label>
-              <div class="control">
-                <input type="email" value="" name="customer[email]" id="customer_email" class="input" size="30"  autocorrect="off" autocapitalize="off" tabindex="1" />
-              </div>
-            </div>
-
-            {% if form.password_needed %}
-
-              {% comment %}
-                Customer Account Login
-              {% endcomment %}
-
-            {% endif %}
-            <div class="field">
-              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.login.password' | t }}*</label>
-              <div class="control">
-                <input type="password" value="" name="customer[password]" id="customer_password" class="input" size="16" tabindex="2" />
-              </div>
-            </div>
-
-            <p class="text-align-right">
-              <span class="has-margin-left"><a class="js-recover-password highlight__text" href="#">{{ 'customer.login.forgot_password' | t }}</a></span>
-            </p>
-
-            <div class="is-flex social__login has-padding-top">
-              <div class="facebook__login">
-                <img src="{{ 'facebook_login.png' | asset_img_url : 'master' }}" />
-              </div>
-              <div class="google__login">
-                <img src="{{ 'btn_google_signin_dark_normal.png' | asset_img_url : 'master' }}" />
-              </div>
-            </div>
-
-            <div class="is-justify-space-between has-large-padding-top is-align-center">
-              <div class="text-align-center">
-                <input class="button button--secondary" type="submit" value="{{ 'customer.login.sign_in' | t | upcase }}" style="margin-bottom: 5px !important" tabindex="3" />
-              </div>
-              {% unless shop.checkout.guest_login %}
-              <div class="text-align-center">
-                {{ 'customer.login.sign_up_html' | t | customer_register_link | replace: 'id="customer_register_link"', 'class="hoverButton highlight__text"' }}
-              </div>
-              {% endunless %}
-            </div>
-
-          {% endform %}
-          {% if shop.checkout.guest_login %}
-            <span class="has-padding-top"> {{ 'customer.login.or' | t }} </span>
-            {% form 'guest_login' %}
-              <input class="button button--secondary" type="submit" value="{{ 'customer.login.guest_title_html' | t }}" />
-            {% endform %}
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="content__wrapper reset__wrapper" id="recover">
-  <section class="section section__wrapper is-width-{{ width }} {{ css_class }}">
-    <header class="container">
-      {%- capture title -%}{{ 'customer.recover_password.title' | t }}{%- endcapture -%}
-      {% include 'heading', title: title, heading_tag: 'h1', context: 'login', text_alignment: 'center' %}
-    </header>
-    <div class="container">
-      <div class="login one-whole column has-padding-bottom">
-        <div class="animated fadeInUp">
+          <h2 class="has-padding-bottom">{{ 'customer.recover_password.title' | t }}</h2>
 
           {% form 'recover_customer_password' %}
             {{ form.errors | default_errors }}
@@ -149,27 +51,108 @@
               </div>
             </div>
 
-            <p class="recover-note has-padding-bottom text-align-center">
-              {{ 'customer.recover_password.subtext' | t }}
+            <p class="recover-note has-padding-top has-padding-bottom">
+              <em>{{ 'customer.recover_password.subtext' | t }}</em>
             </p>
 
-            <div class="recover-options is-align-center">
-              <div class="text-align-center">
-                <input class="button button--secondary" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
-              </div>
-              <div class="has-large-padding-top text-align-center">
-                <span><a href="#" class="cancel-recover-password highlight__text">{{ 'customer.recover_password.cancel' | t }}</a></span>
-              </div>
+            <div class="recover-options is-flex is-align-center is-justify-space-between">
+              <input class="button button--secondary" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
+              <span class="has-margin-left"><a href="#" class="cancel-recover-password">{{ 'customer.recover_password.cancel' | t }}</a></span>
             </div>
           {% endform %}
         </div>
       </div>
+
+      <div id="login" class="login has-padding">
+      {%- capture title -%}{{ 'customer.login.title' | t }}{%- endcapture -%}
+      {% include 'heading', title: title, heading_tag: 'h1', context: 'login', text_alignment: 'left' %}
+  
+        <div id="customer" class="login__form">
+
+          {% form 'customer_login' %}
+            {{ form.errors | default_errors }}
+
+            <div class="field">
+              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.login.email' | t }}*</label>
+              <div class="control">
+                {% comment %}
+                  placeholder="{{ 'customer.login.email' | t }}"
+                {% endcomment %}
+                <input type="email" value="" name="customer[email]" id="customer_email" class="input" size="30"  autocorrect="off" autocapitalize="off" tabindex="1"/>
+              </div>
+            </div>
+
+            {% if form.password_needed %}
+
+              {% comment %}
+                Customer Account Login
+              {% endcomment %}
+
+            {% endif %}
+            <div class="field pass-field">
+              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.login.password' | t }}*</label>
+              <div class="control">
+                <input type="password" value="" name="customer[password]" id="customer_password" class="input" size="16" tabindex="2"/>
+              </div>           
+            </div>
+
+            <div class="is-flex is-flex-column is-justify-space-between  is-align-start">
+              <small class="right has-margin-bottom forgot-pass"><a class="js-recover-password" href="#">{{ 'customer.login.forgot_password' | t }}</a></small>
+            
+              <input class="button button--secondary has-margin-bottom " type="submit" value="{{ 'customer.login.sign_in' | t }}" tabindex="3" />
+              
+              {% if section.settings.richtext != blank %}
+              <div class="login__text">
+                {{ section.settings.richtext }}
+              </div>
+              {% endif %}
+
+              {% unless shop.checkout.guest_login %}
+              <p class="has-padding-top new-customer">
+                {{ 'customer.login.sign_up_html' | t | customer_register_link | replace: 'id="customer_register_link"', 'class="button button--secondary button--submit"' }}
+              </p>
+            {% endunless %} 
+            </div>
+  {% comment %}
+            {% unless shop.checkout.guest_login %}
+              <p class="has-padding-top">
+                {{ 'customer.login.new_customer_label' | t }} {{ 'customer.login.sign_up_html' | t | customer_register_link | replace: 'id="customer_register_link"', 'class="hoverButton"' }}
+              </p>
+            {% endunless %}
+  {% endcomment %}
+          {% endform %}
+          {% if shop.checkout.guest_login %}
+            <span class="has-padding-top"> {{ 'customer.login.or' | t }} </span>
+            {% form 'guest_login' %}
+              <input class="button button--secondary" type="submit" value="{{ 'customer.login.guest_title_html' | t }}" />
+            {% endform %}
+          {% endif %}
+        </div>
+  {% comment %}      
+        <!-- Begin ReCharge code -->
+        {% include 'subscription-account-login' %}
+        <!-- End ReCharge code -->
+  {% endcomment %}      
+      </div>
     </div>
-  </section>
-</div>
+ 
+    <div class="login__image one-half medium-down--one-whole column is-order-aligned-{{ section.settings.image_position }}">
+      {% if section.settings.image %}
+        {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt,  additional_classes: 'login__image__element' %}
+
+      {% endif %}
+
+      {% if section.settings.reset_image %}
+        {% include 'image-element', image: section.settings.reset_image, alt: section.settings.reset_image.alt, additional_classes: 'reset__image__element' %}
+      {% endif %}
+    </div>
+
+  </div>
+</section>
 
 {% comment %}JavaScript{% endcomment %}
 <script src="{{ 'z__jsAccounts.js' | asset_url }}"></script>
+
 
 
 {% schema %}
@@ -183,58 +166,36 @@
         "label": "Text"
       },
       {
-        "type": "header",
-        "content": "Login Background"
-      },
-      {
         "type": "image_picker",
-        "id": "login_image",
+        "id": "image",
         "label": "Image",
-        "info": "2048 x 968px recommended"
+        "info": "1000 x 700px recommended"
       },
       {
-        "type": "color",
-        "id": "login_overlay_color",
-        "label": "Overlay Color",
-        "default": "#FFF"
-      },
-      {
-        "type": "range",
-        "id": "login_overlay_opacity",
-        "label": "Overlay Opacity",
-        "min": 0,
-        "max": 1,
-        "step": 0.1,
-        "default": 0
-      },
-      {
-        "type": "header",
-        "content": "Reset Password Background"
-      },
-      {
-        "type": "image_picker",
-        "id": "reset_image",
-        "label": "Image",
-        "info": "2048 x 968px recommended"
-      },
-      {
-        "type": "color",
-        "id": "reset_overlay_color",
-        "label": "Overlay Color",
-        "default": "#FFF"
-      },
-      {
-        "type": "range",
-        "id": "reset_overlay_opacity",
-        "label": "Overlay Opacity",
-        "min": 0,
-        "max": 1,
-        "step": 0.1,
-        "default": 0
+        "type": "select",
+        "id": "image_position",
+        "label": "Image position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
       },
       {
         "type": "header",
         "content": "Layout"
+      },
+      {
+        "type": "image_picker",
+        "id": "reset_image",
+        "label": "Reset mage",
+        "info": "1000 x 700px recommended"
       },
       {
         "type": "select",
@@ -257,8 +218,8 @@
         "id": "padding_top",
         "label": "Top spacing",
         "min": 0,
-        "max": 100,
-        "default": 100,
+        "max": 80,
+        "default": 40,
         "unit": "px"
       },
       {
@@ -266,8 +227,8 @@
         "id": "padding_bottom",
         "label": "Bottom spacing",
         "min": 0,
-        "max": 100,
-        "default": 100,
+        "max": 80,
+        "default": 40,
         "unit": "px"
       },
       {

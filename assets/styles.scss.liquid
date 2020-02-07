@@ -251,8 +251,8 @@ $transition-zoom: scale(1.1);
 
 $easing: ease-out !default;
 $radius-small: 2px !default;
-$radius: 4px !default;
-$radius-large: 6px !default;
+$radius: 10px !default;
+$radius-large: 16px !default;
 $radius-rounded: 290486px !default;
 $speed: 86ms !default;
 $truncation-fade: linear-gradient(to bottom, {{ settings.shop_bg_color | color_to_rgb | color_modify: 'alpha', 0 }}, {{ settings.shop_bg_color | color_to_rgb | color_modify: 'alpha', 1 }});
@@ -4958,19 +4958,19 @@ $card-footer-border-top: 1px solid $border !default;
 ================================================== */
 
 $input-color: $grey-darker !default;
-$input-background-color: $white !default;
-$input-border-color: $grey-darker !default;
+$input-background-color: $inpute-bkg !default;
+$input-border-color: $pale-sky-blue !default;
 $input-height: $control-height !default;
 $input-shadow: none;
 $input-placeholder-color: rgba($input-color, 0.5) !default;
 
 $input-hover-color: $grey-darker !default;
-$input-hover-border-color: $grey-light !default;
+$input-hover-border-color: $pale-sky-blue !default;
 
-$input-focus-color: $grey-darker !default;
-$input-focus-border-color: $link !default;
+$input-focus-color: $pale-sky-blue !default;
+$input-focus-border-color: $pale-sky-blue !default;
 $input-focus-box-shadow-size: 0 0 0 0.125em !default;
-$input-focus-box-shadow-color: rgba($link, 0.25) !default;
+$input-focus-box-shadow-color: rgba($pale-sky-blue, 0.25) !default;
 
 $input-disabled-color: $text-light !default;
 $input-disabled-background-color: $background !default;
@@ -4997,7 +4997,7 @@ $file-name-border-style: solid !default;
 $file-name-border-width: 1px 1px 1px 0 !default;
 $file-name-max-width: 16em !default;
 
-$label-color: $grey-darker !default;
+$label-color: $body-text !default;
 $label-weight: $weight-bold;
 
 $help-size: $size-small !default;
@@ -15391,90 +15391,59 @@ $play-icon-size: 81px;
 }
 
 .login-page {
-  .content__wrapper {
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    .section__wrapper {
-      position: relative;
-      &.is-width-standard {
-        background: $white;
-        max-width: 600px;
-        padding: $gutter * 1.5 $gutter * 5.5;
-        @include respond-to('medium-down') {
-          padding: $gutter $gutter * 2;
-        }
-      }
+  .has-padding {
+    padding: 14px 33px 14px 91px;
+    @include respond-to('medium-down') {
+      padding: $gutter;
     }
-    &:before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
+  }
+  .heading-divider {
+    display: none;
+  }
+  .heading-wrapper {
+    margin: 0;
+
+    .title {
+      margin-bottom: 10px;
     }
-    .social__login {
-      @include respond-to('medium-down') {
-        display: block;
+  }
+  .button {
+    max-width: 135px;
+    width: 100%;
+    min-width: 135px;
+  }
+
+  .button--submit {
+      background-color: $purpley-grey !important;
+      color: $white !important;
+      &:hover {
+        color: $black !important;
+        background-color: $soft-pink !important;
       }
-      .facebook__login {
-        @include respond-to('medium-down') {
-          text-align: center;
-          img {
-            width: 100%;
-            max-width: 100%;
-          }
-        }
-      }
-      .google__login {
-        padding-left: 20px;
-        @include respond-to('medium-down') {
-          text-align: center;
-          padding-left: 0px;
-          img {
-            width: 100%;
-            max-width: 100%;
-          }
-        }
-      }
-    }
-    &.reset__wrapper {
-      display: none;
-      .recover-note {
-        max-width: 250px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
+  }
+  .reset__image__element {
+    display: none;
   }
 }
 
-.register-page {
-  .register__wrapper {
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    .section__wrapper {
-      position: relative;
-      &.is-width-standard {
-        background: $white;
-        max-width: 750px;
-        padding: $gutter * 1.5 $gutter * 5.5;
-        @include respond-to('medium-down') {
-          padding: $gutter $gutter * 2;
-        }
-      }
-    }
-    &:before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
+.register {
+  padding-left: 47px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  @include respond-to('medium-down') {
+    padding: $gutter;
   }
+}
+#create-customer {
+  .input {
+    max-width: 172px;
+    max-height: 40px;
+  }
+  .field {
+    max-width: 172px;
+  }
+
 }
 
 /* # Blog

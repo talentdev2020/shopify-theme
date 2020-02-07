@@ -12,99 +12,95 @@
 {% assign custom_css = section.settings.custom_css %}
 
 {% style %}
-
-  {% if section.settings.image != nil %}
-  .register__wrapper {
-    background: url({{ section.settings.image | img_url: 'original' }}) no-repeat;
+  .heading-wrapper--register.heading-wrapper.heading-wrapper--.one-whole.column.is-flex.is-flex-column.is-align-left.text-align-left {
+      margin-left: 0;
+  }
+  .section__wrapper {
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
-  }
-  {% endif %}
-
-  .register__wrapper:before {
-    background: {{ section.settings.overlay_color }};
-    opacity: {{ section.settings.overlay_opacity }};
   }
 
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
-<div class="register__wrapper">
-  <section class="section section__wrapper is-width-{{ width }} {{ css_class }}">
-    <header class="container">
-      {%- capture title -%}{{ 'customer.register.title' | t }}{%- endcapture -%}
-      {% include 'heading', title: title, heading_tag: 'h1', context: 'register', text_alignment: 'center' %}
-    </header>
+<section class="section section__wrapper is-width-{{ width }} {{ css_class }}">
+ 
 
-    <div class="container">
-      <div class="register one-whole medium-down--one-whole column has-padding-bottom">
-        <div id="customer" class="register__form">
+  <div class="container">
+    <div class="register one-half medium-down--one-whole column has-padding-bottom">
+        {%- capture title -%}{{ 'customer.register.title' | t }}{%- endcapture -%}
+    {% include 'heading', title: title, heading_tag: 'h1', context: 'register', text_alignment: 'left' %}
+      <div id="customer" class="register__form">
 
-          <!-- Create Customer -->
-          <div id="create-customer">
+        <!-- Create Customer -->
+        <div id="create-customer">
 
-            {% if section.settings.richtext != blank %}
-              <div class="login__text has-padding-bottom">
-                {{ section.settings.richtext }}
+          {% if section.settings.richtext != blank %}
+            <div class="login__text has-padding-bottom">
+              {{ section.settings.richtext }}
+            </div>
+          {% endif %}
+
+          {% form 'create_customer' %}
+
+          {{ form.errors | default_errors }}
+
+          <div class="container">
+            <div id="first_name" class="field column one-half medium-down--one-whole">
+              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.first_name' | t }}</label>
+              <div class="control">
+                <input type="text" value="" name="customer[first_name]" id="first_name" class="input" size="30" placeholder="{{ 'customer.register.first_name' | t }}" />
               </div>
-            {% endif %}
+            </div>
 
-            {% form 'create_customer' %}
-
-              {{ form.errors | default_errors }}
-
-              <div class="container">
-                <div id="first_name" class="field column one-half medium-down--one-whole">
-                  <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.first_name' | t }}</label>
-                  <div class="control">
-                    <input type="text" value="" name="customer[first_name]" id="first_name" class="input" size="30" placeholder="{{ 'customer.register.first_name' | t }}" />
-                  </div>
-                </div>
-
-                <div id="last_name" class="field column one-half medium-down--one-whole">
-                  <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.last_name' | t }}</label>
-                  <div class="control">
-                    <input type="text" value="" name="customer[last_name]" id="last_name" class="input" size="30" placeholder="{{ 'customer.register.last_name' | t }}" />
-                  </div>
-                </div>
-
-                <div id="email" class="field column one-half medium-down--one-whole has-padding-top">
-                  <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.email' | t }}*</label>
-                  <div class="control">
-                    <input type="email" value="" name="customer[email]" id="email" class="input" size="30" placeholder="{{ 'customer.register.email' | t }}*" />
-                  </div>
-                </div>
-
-                <div id="password" class="field column one-half medium-down--one-whole has-padding-top">
-                  <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.password' | t }}*</label>
-                  <div class="control">
-                    <input type="password" value="" name="customer[password]" id="password" class="input" size="30" placeholder="{{ 'customer.register.password' | t }}" />
-                  </div>
-                </div>
-
-                <div class="one-whole column">
-                  <div class="is-flex has-large-padding-top">
-                    <input class="button button--secondary" type="submit" value="{{ 'customer.register.sign_up' | t }}" />
-                    <p class="text-align-left has-padding-left">
-                      <a href="{{ routes.account_login_url }}" class="hoverButton highlight__text">{{ 'customer.register.returning_customer_label' | t }} <br> {{ 'customer.register.sign_in_html' | t }} {% include 'icon_solid', name: 'right-caret', icon_class: 'is-small' %}</a>
-                    </p>
-                  </div>
-                </div>
+            <div id="last_name" class="field column one-half medium-down--one-whole">
+              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.last_name' | t }}</label>
+              <div class="control">
+                <input type="text" value="" name="customer[last_name]" id="last_name" class="input" size="30" placeholder="{{ 'customer.register.last_name' | t }}" />
               </div>
+            </div>
 
-            {% endform %}
-          </div><!-- /#create-customer -->
-        </div>
+            <div id="email" class="field column one-half medium-down--one-whole has-padding-top">
+              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.email' | t }}*</label>
+              <div class="control">
+                <input type="email" value="" name="customer[email]" id="email" class="input" size="30" placeholder="{{ 'customer.register.email' | t }}*" />
+              </div>
+            </div>
+
+            <div id="password" class="field column one-half medium-down--one-whole has-padding-top">
+              <label class="label" for="{{ label | replace: ' ', '_' }}">{{ 'customer.register.password' | t }}*</label>
+              <div class="control">
+                <input type="password" value="" name="customer[password]" id="password" class="input" size="30" placeholder="{{ 'customer.register.password' | t }}" />
+              </div>
+            </div>
+
+            <div class="one-whole column">
+              <div class="is-flex has-large-padding-top">
+                <input class="button button--secondary" type="submit" value="{{ 'customer.register.sign_up' | t }}" />
+                <p class="text-align-left has-padding-left">
+                  <a href="{{ routes.account_login_url }}" class="hoverButton highlight__text">{{ 'customer.register.returning_customer_label' | t }} <br> {{ 'customer.register.sign_in_html' | t }} {% include 'icon_solid', name: 'right-caret', icon_class: 'is-small' %}</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        {% endform %}
+      </div><!-- /#create-customer -->
       </div>
-
     </div>
-  </section>
-</div>
+
+    <div class="register__image one-half medium-down--one-whole column is-order-aligned-{{ section.settings.image_position }}">
+      {% if section.settings.image %}
+        {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt %}
+      {% endif %}
+    </div>
+  </div>
+</section>
 
 {% schema %}
   {
     "name": "Register",
-    "class": "register-section register-page",
+    "class": "register-section",
     "settings": [
       {
         "type": "richtext",
@@ -112,29 +108,25 @@
         "label": "Text"
       },
       {
-        "type": "header",
-        "content": "Background"
-      },
-      {
         "type": "image_picker",
         "id": "image",
-        "label": "Image",
-        "info": "2048 x 968px recommended"
+        "label": "Image"
       },
       {
-        "type": "color",
-        "id": "overlay_color",
-        "label": "Overlay Color",
-        "default": "#FFF"
-      },
-      {
-        "type": "range",
-        "id": "overlay_opacity",
-        "label": "Overlay Opacity",
-        "min": 0,
-        "max": 1,
-        "step": 0.1,
-        "default": 0
+        "type": "select",
+        "id": "image_position",
+        "label": "Image position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
       },
       {
         "type": "header",
@@ -161,8 +153,8 @@
         "id": "padding_top",
         "label": "Top spacing",
         "min": 0,
-        "max": 100,
-        "default": 100,
+        "max": 80,
+        "default": 40,
         "unit": "px"
       },
       {
@@ -170,8 +162,8 @@
         "id": "padding_bottom",
         "label": "Bottom spacing",
         "min": 0,
-        "max": 100,
-        "default": 100,
+        "max": 80,
+        "default": 40,
         "unit": "px"
       },
       {
