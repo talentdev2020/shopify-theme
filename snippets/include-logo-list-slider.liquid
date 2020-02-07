@@ -102,6 +102,7 @@
         {% capture image %}image{{ index }}{% endcapture %}
         {% capture link %}link{{ index }}{% endcapture %}
         {% capture title %}title{{ index }}{% endcapture %}
+        {% capture text %}text{{ index }}{% endcapture %}
         {% capture show_logo %}show_logo{{ index }}{% endcapture %}
 
         {% if block.settings[show_logo] or object != block %}
@@ -127,7 +128,10 @@
               {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
             {% endif %}
             {% if block.settings[title] != blank %}
-                <p>{{ block.settings[title] }}</p>
+                <h5>{{ block.settings[title] }}</h5>
+            {% endif %}
+            {% if block.settings[text] != blank %}
+                {{ block.settings[text] }}
             {% endif %}
             {% if block.settings[link] != blank %}
               </a>
