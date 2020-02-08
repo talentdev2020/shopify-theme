@@ -37,6 +37,12 @@ include-icon-with-text-button.liquid
   #shopify-section-{{ id }} {
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
+
+    {% if object.settings.background_image != blank %}
+      background: url({{ object.settings.background_image | img_url: 'original' }}) repeat-x 50% 0 transparent;
+      background-repeat: no-repeat;
+    	background-position: right top;
+    {%- endif %}
   }
 
   {% if width == 'wide' %}
@@ -62,20 +68,25 @@ include-icon-with-text-button.liquid
                 equal-columns--outside-trim
               {% endif %}">        
         <div class="icon-with-text-button__wrapper">
-            <div class="icon-with-text-button__icon">
-            {% if icon != blank %}
-                {% include settings.icon, name: icon %}
-            {% endif %}
-            </div>
 
+            {% if icon != blank %}
+            <div class="icon-with-text-button__icon">
+                {% include settings.icon, name: icon %}
+            </div>
+            {% endif %}
+
+            {% if title != blank %}
             <div class="icon-with-text-button__txts">
                 <h2 class="icon-with-text-button__heading">{{ title }}</h2>
                 <span class="icon-with-text-button__text">{{ subtitle }}</span>
             </div>
+            {% endif %}
 
+            {% if buttonlabel != blank %}
             <div class="icon-with-text-button__button">
                 <a class="button button--primary ">{{ buttonlabel }}</a>
             </div>
+            {% endif %}
         </div>
     </div>
  </section>

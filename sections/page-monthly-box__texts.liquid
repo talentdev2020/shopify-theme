@@ -1,14 +1,13 @@
 {% comment %}
-** Icon with text and button - dynamic **
-collection__icon-with-text-button.liquid
+page-monthly-box__texts.liquid
 {% endcomment %}
 
 {% include 'include-icon-with-text-button' %}
 
 {% schema %}
 {
-  "name": "Icon with text and Button",
-  "class": "icon-with-text-button",
+  "name": "Text with Background",
+  "class": "text-with_background",
   "settings": [
     {
       "type": "checkbox",
@@ -16,30 +15,17 @@ collection__icon-with-text-button.liquid
       "label": "Show Icon With Text Button",
       "default": true
     },
-    {
-        "type": "text",
-        "id": "icon",
-        "label": "Icon",
-        "default": "icon-heart_sweet",
-        "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)"
-    },
-    {
+     {
         "type": "text",
         "id": "title",
         "label": "Title",
-        "default": "#Blessed Are Those Who Give"
+        "default": "Eat Cookies, Give Cookies, Make<br>Cookie Sandwiches, And Love <br>More People With A Meal."
     },
     {
         "type": "text",
         "id": "subtitle",
         "label": "Sub Title",
-        "default": "Join the movement to end hunger with love filled cookies like nun-other."
-    },
-    {
-        "type": "text",
-        "id": "button",
-        "label": "Button Label",
-        "default": "Join the movement"
+        "default": "For every box we’ll donate 2 meals to our partner soup <br> kitchens. Subscribe for a 3, 6, 12 month contribution to end <br> hunger with us deliciously!"
     },
     {
       "type": "select",
@@ -82,10 +68,9 @@ collection__icon-with-text-button.liquid
         "default": "#ffffff"
     },
     {
-        "type": "color",
-        "id": "button_color",
-        "label": "Button Color",
-        "default": "#ffb0b2"
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Backgroud Image"
     },
     {
       "type": "text",
