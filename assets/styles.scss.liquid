@@ -9031,8 +9031,14 @@ $mobile-padding : 15px;
 .thumbnail-sticker {
   @include flexbox();
   width: 100%;
-  padding: 5px 10px;
+  padding: 3px 8px;
   text-align: center;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  width: 69px;
+  height: 24px;
+  object-fit: contain;
+  margin-top: 8px;
 
   &.sale-sticker {
     @include sale-sticker;
@@ -9063,7 +9069,16 @@ $mobile-padding : 15px;
 // Banner text
 
 .sticker-text {
-  font-size: 1em;
+  font-size: 1rem;
+  font-family: 'Caveat', cursive;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.31;
+  letter-spacing: normal;
+  text-align: center;
+  color: $white;
+  
 
   @include respond-to('large-down') {
     font-size: 0.8em;
@@ -10096,9 +10111,9 @@ $product-height__mobile: 195px;
     border-bottom-color: transparent!important;    
   }
 
-  .medium-down--visible.featured-collection__morelink  {
-    display: none;
-    margin-left: $gutter/2;
+  .featured-collection__morelink  {
+    max-width: 218px !important;
+    height: 45px !important;
   }
 
   .flickity-prev-next-button {
@@ -10146,13 +10161,13 @@ $product-height__mobile: 195px;
   .product-review__wrapper {
     min-height: $product-review__height;
   }
-  .has-thumbnail-sticker:hover {
+  /*.has-thumbnail-sticker:hover {
     border-bottom: $input-border-width solid $red;
 
     .product-thumbnail__title {
       font-weight: bold;
     }
-  }
+  }*/
 
   .flickity-button {
     display: none;
@@ -10188,16 +10203,18 @@ body.index .featured-collection-section {
   .thumbnail__caption {
 
     .product-thumbnail {
-      padding: $gutter/2 13px 0;
+      padding: $gutter/2 0 0;
     }
     .product-thumbnail__title {
+      font-family: 'Cooper Std';
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 900;
       font-stretch: normal;
       font-style: normal;
-      line-height: 1.15;
+      line-height: 1.5;
       letter-spacing: normal;
-      text-align: left;
+      text-align: center;
+      color: $purpley-grey;
       min-height: 60px;
     }
   }

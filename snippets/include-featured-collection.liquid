@@ -62,6 +62,7 @@
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
+{% include 'cookies', position: 'right' %}
 {% comment %} HTML markup {% endcomment %}
 <section class="section
                 {{ css_class }}
@@ -78,62 +79,71 @@
                 {% endif %}>
 
     <div class="container">
-    {% if object.settings.title != blank %}
-    <div 
-        class="column one-fourth medium-down--one-whole  
-          is-flex
-          is-flex-wrap
-          is-align-center">
-      <div>
-        <h3 class="featured-collection__title image-with-text__heading text-align-left is-small">
-          <a href="{{ collections[col].url }}">{{ object.settings.title }}</a>
-        </h2>
 
-        <div class="image-with-text__text text-align-left content"> 
-          <p>{{ object.settings.subtitle }}</p>
+
+      {% if object.settings.title != blank %}
+      <div 
+          class="column one-whole  
+            is-flex
+            is-flex-wrap
+            is-justify-center
+            is-align-center">
+        <div>
+          <h3 class="featured-collection__title image-with-text__heading text-align-center is-small h2">
+            <a href="{{ collections[col].url }}">{{ object.settings.title }}</a>
+          </h3>
+
+          <div class="image-with-text__text text-align-left content"> 
+            <p>{{ object.settings.subtitle }}</p>
+          </div>
+
+        </div>
+      </div>
+      {% endif %}
+    
+     
+      <div class="{% if layout == 'grid' %} container {% endif %} one-whole has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
+  
+        <div class="featured-collection-slider__nav--next" style="display:none;">
+          <img src="{{ 'ionic-ios-arrow-dropright-mobile.svg' | asset_url }}" />
         </div>
 
-        <a class="featured-collection__morelink button button--link-style medium-down--hide highlight__text" href="{{ collections[col].url }}">
-          <img src="{{ 'ionic-ios-arrow-dropright-mobile.svg' | asset_url }}" /> See All
-        </a>
-      </div>
-    {% endif %}
-    </div>
-     
-    <div class="{% if layout == 'grid' %} container {% endif %}{% if object.settings.title != blank %} column three-fourths medium-down--one-whole {% else %} one-whole {% endif %}has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
- 
-      <div class="featured-collection-slider__nav--next" style="display:none;">
-        <img src="{{ 'ionic-ios-arrow-dropright-mobile.svg' | asset_url }}" />
-      </div>
-
-       {% if section_onboarding == false %}
-        {% comment %} Loop through products {% endcomment %}
-        {% if layout == 'slider' %}
-          {% if collections[col].all_products_count > 0 %}
-            {% include 'product-slider', show_gutter: show_gutter %}
+        {% if section_onboarding == false %}
+          {% comment %} Loop through products {% endcomment %}
+          {% if layout == 'slider' %}
+            {% if collections[col].all_products_count > 0 %}
+              {% include 'product-slider', show_gutter: show_gutter %}
+            {% endif %}
+          {% else %}
+            {% if collections[col].all_products_count > 0 %}
+              {% include 'product-loop', align_height: align_height, height: height %}
+            {% endif %}
           {% endif %}
         {% else %}
-          {% if collections[col].all_products_count > 0 %}
-            {% include 'product-loop', align_height: align_height, height: height %}
-          {% endif %}
+          {% comment %} Placeholder images {% endcomment %}
+          {% for i in (1..10) %} <!--@TODO make sure the section onboarding also shows slider styles -->
+            <div class="collection__item
+                one-fifth
+                medium-down--one-half
+                thumbnail column">
+              {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+              {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+            </div>
+          {% endfor %}
         {% endif %}
-      {% else %}
-        {% comment %} Placeholder images {% endcomment %}
-        {% for i in (1..10) %} <!--@TODO make sure the section onboarding also shows slider styles -->
-          <div class="collection__item
-              one-fifth
-              medium-down--one-half
-              thumbnail column">
-            {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
-            {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
+      </div>
 
-    <a class="medium-down--visible featured-collection__morelink button button--link-style highlight__text" href="{{ collections[col].url }}">
-      <img src="{{ 'ionic-ios-arrow-dropright-mobile.svg' | asset_url }}" /> See All
-    </a>
+      <div 
+          class="column one-whole  
+            is-flex
+            is-flex-wrap
+            is-justify-center
+            is-align-center
+            has-padding">
+        <a class="featured-collection__morelink button button--secondary" href="{{ collections[col].url }}">
+          View All Flavors
+        </a>
+      </div>
 
   </div>
   
