@@ -24,9 +24,9 @@ $product-height__mobile: 195px;
     border-bottom-color: transparent!important;    
   }
 
-  .medium-down--visible.featured-collection__morelink  {
-    display: none;
-    margin-left: $gutter/2;
+  .featured-collection__morelink  {
+    max-width: 218px !important;
+    height: 45px !important;
   }
 
   .flickity-prev-next-button {
@@ -74,13 +74,13 @@ $product-height__mobile: 195px;
   .product-review__wrapper {
     min-height: $product-review__height;
   }
-  .has-thumbnail-sticker:hover {
+  /*.has-thumbnail-sticker:hover {
     border-bottom: $input-border-width solid $red;
 
     .product-thumbnail__title {
       font-weight: bold;
     }
-  }
+  }*/
 
   .flickity-button {
     display: none;
@@ -116,16 +116,18 @@ body.index .featured-collection-section {
   .thumbnail__caption {
 
     .product-thumbnail {
-      padding: $gutter/2 13px 0;
+      padding: $gutter/2 0 0;
     }
     .product-thumbnail__title {
+      font-family: 'Cooper Std';
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 900;
       font-stretch: normal;
       font-style: normal;
-      line-height: 1.15;
+      line-height: 1.5;
       letter-spacing: normal;
-      text-align: left;
+      text-align: center;
+      color: $purpley-grey;
       min-height: 60px;
     }
   }
