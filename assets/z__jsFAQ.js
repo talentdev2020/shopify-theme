@@ -2,8 +2,9 @@
 
 Shopify.theme.jsFAQ = {
   init: function init() {
-    var $faqHeading = $('.faq-accordion > dt > button');
-    $('.faq-accordion > dd').attr('aria-hidden', true);
+    console.log("Shopify.theme.jsFAQ ");
+    var $faqHeading = $('.faq-accordion > .groups dt > button');
+    $('.faq-accordion > .groups > dd').attr('aria-hidden', true);
     $faqHeading.attr('aria-expanded', false);
     $faqHeading.on('click activate', function () {
       var faqTitle = $(this);
@@ -27,7 +28,7 @@ Shopify.theme.jsFAQ = {
     });
   },
   unload: function unload() {
-    $('.faq-accordion > dt > button').off('click activate');
-    $('.faq-accordion > dt > button').off('keydown');
+    $('.faq-accordion > .groups > dt > button').off('click activate');
+    $('.faq-accordion > .groups > dt > button').off('keydown');
   }
 };

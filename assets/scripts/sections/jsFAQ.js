@@ -1,9 +1,10 @@
 Shopify.theme.jsFAQ = {
   init: function() {
 
-    const $faqHeading = $('.faq-accordion > dt > button');
+    console.log("Shopify.theme.jsFAQ ");  
+    const $faqHeading = $('.faq-accordion > .groups dt > button');
 
-    $('.faq-accordion > dd').attr('aria-hidden',true);
+    $('.faq-accordion > .groups > dd').attr('aria-hidden',true);
 
     $faqHeading.attr('aria-expanded',false);
 
@@ -19,7 +20,7 @@ Shopify.theme.jsFAQ = {
         if(faqIcons.hasClass('icon--active')) {
           faqIcons.toggleClass('icon--active');
         }
-
+ 
       });
         $(this).parent().next().attr('aria-hidden',!state);
       return false;
@@ -31,10 +32,10 @@ Shopify.theme.jsFAQ = {
         $(this).trigger('activate');
       }
     });
-
+ 
   },
   unload: function() {
-    $('.faq-accordion > dt > button').off('click activate');
-    $('.faq-accordion > dt > button').off('keydown');
+    $('.faq-accordion > .groups > dt > button').off('click activate');
+    $('.faq-accordion > .groups > dt > button').off('keydown');
   }
-}
+} 

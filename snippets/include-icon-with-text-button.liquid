@@ -47,11 +47,11 @@ include-icon-with-text-button.liquid
     	background-position: right top;
     {%- endif %}
   }
-
+ 
   .icon-with-text-button__wrapper .icon-with-text-button__button .button {
-    background-color: {{ button_color }};
+    background-color: {{ button_color }}!important;
   }
-
+ 
   {% if width == 'wide' %}
   #shopify-section-{{ id }} .section {
     width: 100vw;

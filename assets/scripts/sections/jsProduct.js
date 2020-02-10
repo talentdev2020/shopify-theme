@@ -134,7 +134,7 @@ Shopify.theme.jsProduct = {
           element.classList.remove('sticky');
           element.nextElementSibling.classList.remove('sticky-enabled');
       }
-    }
+    } 
   },
   enableStickyScroll($el) {
     let announcementHeight = 0;

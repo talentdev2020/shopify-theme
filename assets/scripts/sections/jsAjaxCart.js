@@ -9,7 +9,7 @@ Shopify.theme.jsAjaxCart = {
     } else {
       this.initializeAjaxCartOnMobile();
     }
-
+ 
     if (this.cart_action == 'drawer') {
 
       this.ajaxCartDrawer = $('[data-ajax-cart-drawer]');
