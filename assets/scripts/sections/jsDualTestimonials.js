@@ -6,8 +6,9 @@ Shopify.theme.jsDualTestimonials = {
     const $dual_testimonialSlider = $('[data-dual-testimonial-slider]').flickity({
       wrapAround: true,
       cellSelector: '.testimonial-item',
-      initialIndex: 1,
+      initialIndex: 0,
       prevNextButtons: false,
+      imagesLoaded: true,
       pageDots: false,
       cellAlign: 'left',
       contain: true

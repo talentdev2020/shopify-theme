@@ -85,6 +85,7 @@ gulp.task('combine_css', done => {
     'assets/styles/sections/article.scss',
     'assets/styles/sections/banner.scss',
     'assets/styles/sections/contact-form.scss',
+    'assets/styles/sections/dual-testimonial.scss',
     'assets/styles/sections/featured-collection.scss',
     'assets/styles/sections/featured-promotions.scss',
     'assets/styles/sections/featured-product.scss',
