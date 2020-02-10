@@ -45,8 +45,8 @@
     position: static;
   }
   #shopify-section-{{ id }}  .dual_testimonials__slider-column {
-    position: absolute;
-    right: 0;
+    /*position: absolute;
+   right: 0;*/
   }
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
@@ -56,154 +56,160 @@
                 {{ css_class }}
                 is-width-{{ width }}
                 {% if section.blocks.size <= 1 %}desktop-slider--disabled{% endif %}
-                is-flex
-                is-flex-wrap
+                has-gutter-enabled
                 "
           {% if animation != "none" %}
             data-scroll-class="{{ animation }}"
           {% endif %}>
+          <div class="container">
+            <div class="dual_testimonials__text-column
+            dual_testimonials__column
+            one-half
+            medium-down--one-whole
+            column
+            has-padding-left
+            has-padding-right
+            is-flex
+            is-flex-wrap
+            is-justify-{{ object.settings.card_alignment }}
+            is-align-center
+            "
+            {% if type != 'block' %}
+              {{ object.shopify_attributes }} 
+            {% endif %}>
 
-          <div class="dual_testimonials__text-column
-          dual_testimonials__column
-          one-half
-          medium-down--one-whole
-          column
-          has-padding-left
-          has-padding-right
-          is-flex
-          is-flex-wrap
-          is-justify-{{ object.settings.alignment }}
-          is-align-{{ object.settings.vertical_position }}
-          "
-          {% if type != 'block' %}
-            {{ object.shopify_attributes }} 
-          {% endif %}>
-            <div class="dual_testimonials__text__wrapper">
-              {% if object.settings.total_reviews_text != blank %}
-                <p class="dual_testimonials__text__total_reviews_text text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
-                  {{ object.settings.total_reviews_text }}
-                </p>
-              {% endif %}
-              {% if object.settings.title != blank %}
-                <h3 class="dual_testimonials__text__heading text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
-                  {{ object.settings.title }}
-                </h3>
-              {% endif %}
-              {% if object.settings.subtitle != blank %}
-                <h3 class="dual_testimonials__text__subtitle text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
-                  {{ object.settings.subtitle }}
-                </h3>
-              {% endif %}
-              {% if object.settings.text != blank %}
-                <div class="dual_testimonials__text__text text-align-{{ object.settings.alignment }} content">
-                  {{ object.settings.text }}
-                </div>
-              {% endif %}
+            {% include 'square-shape' %}
 
-              {% if object.settings.button_label != blank %}
-                <div class="buttons is-{{ object.settings.alignment }}">
-                  {% include 'button', label: object.settings.button_label, href: object.settings.link, style: object.settings.button_style, type: "link" %}
-                </div>
-              {% endif %}
+              <div class="dual_testimonials__text__wrapper">
+                {% if object.settings.total_reviews_text != blank %}
+                  <p class="dual_testimonials__text__total_reviews_text text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    {{ object.settings.total_reviews_text }}
+                  </p>
+                {% endif %}
+                {% if object.settings.title != blank %}
+                  <h3 class="dual_testimonials__text__heading text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    {{ object.settings.title }}
+                  </h3>
+                {% endif %}
+                {% if object.settings.subtitle != blank %}
+                  <h3 class="dual_testimonials__text__subtitle text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    {{ object.settings.subtitle }}
+                  </h3>
+                {% endif %}
+                {% if object.settings.text != blank %}
+                  <div class="dual_testimonials__text__text text-align-{{ object.settings.alignment }} content">
+                    {{ object.settings.text }}
+                  </div>
+                {% endif %}
+
+                {% if object.settings.button_label != blank %}
+                  <div class="buttons is-{{ object.settings.alignment }}">
+                    {% include 'button', label: object.settings.button_label, href: object.settings.link, style: object.settings.button_style, type: "link" %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="dual_testimonials__slider-column
+              dual_testimonials__column
+              one-half
+              medium-down--one-whole
+              column
+              is-marginless
+              is-flex
+              is-flex-wrap
+              is-justify-{{ object.settings.card_alignment }}
+              is-align-center
+              "
+                {% if type != 'block' %}
+                  {{ object.shopify_attributes }}
+                {% endif %} data-dual-testimonial-slider >
+
+                  {% for item in loop %}
+              
+                  {% assign show_review_1 = item.settings.show_review_1 | default: 'true' %}
+                  {% assign review_product_1 = all_products[item.settings.review_product_1] %}
+
+                  {% assign show_review_2 = item.settings.show_review_2 | default: 'true' %}
+                  {% assign review_product_2 = all_products[item.settings.review_product_2] %}
+              
+                  <div class="testimonial-item
+                              item--{{ item.id }}
+                              column
+                              has-images-enabled-{{ object.settings.enable_images }}
+                              testimonial-align--{{ object.settings.card_alignment }}
+                              two-fifths
+                              medium-down--one-whole" data-testimonial-index={{ forloop.index0 }} {{ item.shopify_attributes }}>
+                    <div class="testimonial__card">
+                      <div class="top-part is-flex is-flex-wrap is-justify-start is-align-center">
+                        <div class="dual_testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
+                          {% if object.settings.enable_images == true %}
+                            {% if item.settings.image_1 != blank %}
+                              {% include 'image-element', image: item.settings.image_1, alt: item.settings.image_1.alt %}
+                            {% else %}
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                          {% endif %}
+                        </div>
+                        <div class="right-part">
+                          {% if  show_review_1  and review_product_1.id %}
+                              <!--         YOTPO STAR RATINGS -->
+                                <div class="yotpo bottomLine star2" style="display:inline-block"
+                                  data-product-id="{{ review_product_1.id }}">
+                                </div>
+                          {% endif %}
+                          <div class="testimonial__description-title title">
+                            {{ item.settings.name_1 }}
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="testimonial__description-review">
+                        {{ item.settings.review_1 }}
+                      </div>
+              
+                    </div>
+                    <div class="testimonial__card">
+                      <div class="top-part is-flex is-flex-wrap is-justify-start is-align-center">
+                        <div class="dual_testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
+                          {% if object.settings.enable_images == true %}
+                            {% if item.settings.image_2 != blank %}
+                              {% include 'image-element', image: item.settings.image_2, alt: item.settings.image_2.alt %}
+                            {% else %}
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                          {% endif %}
+                        </div>
+                        <div class="right-part">
+                          {% if  show_review_2  and review_product_2.id %}
+                          <div class="testimonial__description__review">
+                            <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product_2.handle }}" data-id="{{ review_product_2.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
+                          </div>
+                          {% endif %}
+                          <div class="testimonial__description-title title">
+                            {{ item.settings.name_2 }}
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="testimonial__description-review">
+                        {{ item.settings.review_2 }}
+                      </div>
+              
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% if object.blocks.size > 1 %}
+                  <div class="dual_testimonial__nav-wrap">
+                    <div class="dual_testimonial__nav dual_testimonial__nav--prev">
+                        {% include 'arrow', orientation: 'left' %}
+                    </div>
+                    <div class="dual_testimonial__nav dual_testimonial__nav--next ">
+                        {% include 'arrow', orientation: 'right' %}
+                    </div>
+                  </div>
+                {% endif %}
             </div>
           </div>
-          <div class="dual_testimonials__slider-column
-          dual_testimonials__column
-          one-half
-          medium-down--one-whole
-          column
-          has-padding-left
-          has-padding-right
-          is-flex
-          is-flex-wrap
-          "
-            {% if type != 'block' %}
-              {{ object.shopify_attributes }}
-            {% endif %} data-dual-testimonial-slider >
-
-              {% for item in loop %}
-          
-              {% assign show_review_1 = item.settings.show_review_1 | default: 'true' %}
-              {% assign review_product_1 = all_products[item.settings.review_product_1] %}
-
-              {% assign show_review_2 = item.settings.show_review_2 | default: 'true' %}
-              {% assign review_product_2 = all_products[item.settings.review_product_2] %}
-          
-              <div class="testimonial-item
-                          item--{{ item.id }}
-                          column
-                          has-images-enabled-{{ object.settings.enable_images }}
-                          testimonial-border--{{ object.settings.show_border }}
-                          testimonial-align--{{ object.settings.card_alignment }}
-                          two-fifths
-                          medium-down--one-whole" data-testimonial-index={{ forloop.index0 }} {{ item.shopify_attributes }}>
-                <div class="testimonial__card">
-                  <div class="top-part">
-                    <div class="testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
-                      {% if object.settings.enable_images == true %}
-                        {% if item.settings.image_1 != blank %}
-                          {% include 'image-element', image: item.settings.image_1, alt: item.settings.image_1.alt %}
-                        {% else %}
-                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                        {% endif %}
-                      {% endif %}
-                    </div>
-                    <div class="right-part">
-                      {% if  show_review_1  and review_product_1.id %}
-                      <div class="testimonial__description__review">
-                        <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product_1.handle }}" data-id="{{ review_product_1.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
-                      </div>
-                      {% endif %}
-                      <div class="testimonial__description-title title">
-                        {{ item.settings.name_1 }}
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="testimonial__description-review">
-                    {{ item.settings.review_1 }}
-                  </div>
-          
-                </div>
-                <div class="testimonial__card">
-                  <div class="top-part">
-                    <div class="testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
-                      {% if object.settings.enable_images == true %}
-                        {% if item.settings.image_2 != blank %}
-                          {% include 'image-element', image: item.settings.image_2, alt: item.settings.image_2.alt %}
-                        {% else %}
-                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                        {% endif %}
-                      {% endif %}
-                    </div>
-                    <div class="right-part">
-                      {% if  show_review_2  and review_product_2.id %}
-                      <div class="testimonial__description__review">
-                        <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product_2.handle }}" data-id="{{ review_product_2.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
-                      </div>
-                      {% endif %}
-                      <div class="testimonial__description-title title">
-                        {{ item.settings.name_2 }}
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="testimonial__description-review">
-                    {{ item.settings.review_2 }}
-                  </div>
-          
-                </div>
-              </div>
-              {% endfor %}
-              {% if object.blocks.size > 1 %}
-              <div class="dual_testimonial__nav dual_testimonial__nav--prev">
-                <img src="{{ 'red-arrow-left.svg' | asset_url }}" />
-              </div>
-              <div class="dual_testimonial__nav dual_testimonial__nav--next ">
-                <img src="{{ 'red-arrow-right.svg' | asset_url }}" />
-              </div>
-            {% endif %}
-        </div>
 </section>
 
 {% comment %}JavaScript{% endcomment %}

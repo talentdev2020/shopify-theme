@@ -1,0 +1,52 @@
+{% comment %}
+Required values
+orientation: <arrow orientation>
+______________
+Optional value
+border_color: <string>
+background_color: <string>
+arrow_color: <string>
+{% endcomment %}
+
+{% assign background_color = background_color | default: '#fff' %}
+{% assign border_color = border_color | default: '#a57096' %}
+{% assign arrow_color = arrow_color | default: '#a57096' %}
+
+{% if orientation == 'right' %}
+<svg xmlns="http://www.w3.org/2000/svg" id="forward-arrow" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <style>
+            .arrow-1{fill: {{ background_color }};stroke: {{ border_color }};stroke-width:2px}.arrow-2{fill: {{ arrow_color }}}.arrow-3{stroke:none}.arrow-4{fill:none}
+        </style>
+    </defs>
+    <g id="Rectangle_1066" class="arrow-1" data-name="Rectangle 1066">
+        <rect width="40" height="40" class="arrow-3" rx="20"/>
+        <rect width="38" height="38" x="1" y="1" class="arrow-4" rx="19"/>
+    </g>
+    <g id="Symbol_82" data-name="Symbol 82" transform="translate(11.706 12)">
+        <path id="Path_10" d="M8 0L6.545 1.455l5.506 5.506H0v2.078h12.052l-5.507 5.506L8 16l8-8z" class="arrow-2" data-name="Path 10"/>
+    </g>
+</svg>
+
+{% elsif orientation == 'left' %}
+<svg xmlns="http://www.w3.org/2000/svg" id="Group_3742" width="40" height="40" data-name="Group 3742" viewBox="0 0 40 40">
+    <defs>
+        <style>
+            .arrow-1{fill: {{ background_color }};stroke: {{ border_color }};stroke-width:2px}.arrow-2{fill: {{ arrow_color }}}.arrow-3{stroke:none}.arrow-4{fill:none}
+        </style>
+
+    </defs> 
+    <g id="Rectangle_1067" class="arrow-1" data-name="Rectangle 1067">
+        <rect width="40" height="40" class="arrow-3" rx="20"/>
+        <rect width="38" height="38" x="1" y="1" class="arrow-4" rx="19"/>
+    </g>
+    <g id="Symbol_83" data-name="Symbol 83" transform="rotate(180 13.853 14)">
+        <path id="Path_10" d="M8 0L6.545 1.455l5.506 5.506H0v2.078h12.052l-5.507 5.506L8 16l8-8z" class="arrow-2" data-name="Path 10"/>
+    </g>
+</svg>
+
+{% else %}
+    
+
+<p>?</p>
+  {% endif %}
