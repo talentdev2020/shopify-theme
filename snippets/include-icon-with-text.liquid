@@ -96,7 +96,7 @@ eg. {% include 'include-icon-with-text' %}
                   has-padding
                   {% include 'column-width', value: object.settings.icons_per_row %}
                   text-align-{{ object.settings.align_text }}
-                  medium-down--one-whole">
+                  medium-down--one-half">
 
         {%- capture icon_size -%}
           is-{{ object.settings.icon_size }}
@@ -111,7 +111,7 @@ eg. {% include 'include-icon-with-text' %}
           </div>
         {% endif %}
 
-      </div>
+      </div> 
       {% if object.settings.icons_per_row > 1 %}
       <div class="icon-with-text-column__column
                   {% if show_gutter %}
@@ -120,7 +120,7 @@ eg. {% include 'include-icon-with-text' %}
                   has-padding
                   {% include 'column-width', value: object.settings.icons_per_row %}
                   text-align-{{ object.settings.align_text }}
-                  medium-down--one-whole">
+                  medium-down--one-half">
 
         {%- capture icon_size -%}
           is-{{ object.settings.icon_size }}
@@ -145,7 +145,7 @@ eg. {% include 'include-icon-with-text' %}
                   has-padding
                   {% include 'column-width', value: object.settings.icons_per_row %}
                   text-align-{{ object.settings.align_text }}
-                  medium-down--one-whole">
+                  medium-down--one-half">
 
         {%- capture icon_size -%}
           is-{{ object.settings.icon_size }}
@@ -170,7 +170,7 @@ eg. {% include 'include-icon-with-text' %}
                     has-padding
                     {% include 'column-width', value: object.settings.icons_per_row %}
                     text-align-{{ object.settings.align_text }}
-                    medium-down--one-whole">
+                    medium-down--one-half">
 
           {%- capture icon_size -%}
             is-{{ object.settings.icon_size }}

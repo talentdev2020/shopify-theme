@@ -3,12 +3,11 @@
 
   - https://help.shopify.com/en/themes/development/templates/collection-liquid
 {% endcomment %}
-
+ 
 <div id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section collection-page" data-check-for-order="true">
   {% comment %} Collection banner {% endcomment %}
   {% section 'collection__banner' %}
-  {% section 'collection__menu' %}
-  <section class="section__wrapper
+  <section class="section__wrapper 
                   section
                   ">
     <div class="container {% if settings.heading_divider_style == 'long' %}has-heading-divider-below {% endif %}">

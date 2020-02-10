@@ -9,10 +9,8 @@ Shopify.theme.jsFeaturedCollection = {
     }
 
     if(this.collection_style == 'slider') {
-      this.createSlider();
+        this.createSlider();
     }
-
-
   },
   createSlider: function() {
 

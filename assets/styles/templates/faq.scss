@@ -11,9 +11,13 @@
   .groups {
     width: 48%;
     margin: 0 1% 20px 1%;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+      margin: 0 1% 10px 1%;
+    }
   }
 }
-
 
 .product-faq-container2 {
   @include respond-to('medium-down') {

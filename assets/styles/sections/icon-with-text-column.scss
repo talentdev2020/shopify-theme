@@ -6,8 +6,11 @@
   text-align: center;
   line-height: 1.34;
   margin-bottom : $gutter*4;
+
   @include respond-to('medium-down') {
     font-size: 24px;
+    margin-bottom : $gutter*2.5;
+    padding: 0;
   }
 }
 
@@ -18,7 +21,6 @@
 
 }
 .icon-with-text-column__column {
-
   .icon {
     color: $black;
     @include respond-to('medium-down') {
@@ -30,8 +32,8 @@
     }
 
     &.is-medium {
-      height: 3.6rem;
-      width: 3.6rem;
+      height: 4rem;
+      width: 4rem;
     }
 
     &.is-large {

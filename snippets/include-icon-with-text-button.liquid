@@ -16,6 +16,9 @@ include-icon-with-text-button.liquid
 {% assign title = object.settings.title %}
 {% assign subtitle = object.settings.subtitle %}
 {% assign buttonlabel = object.settings.button %}
+{% assign buttonlink = object.settings.button_link %}
+
+{% assign button_color = object.settings.button_color %}
 
 
 {% assign padding_top = object.settings.padding_top %}
@@ -43,6 +46,10 @@ include-icon-with-text-button.liquid
       background-repeat: no-repeat;
     	background-position: right top;
     {%- endif %}
+  }
+
+  .icon-with-text-button__wrapper .icon-with-text-button__button .button {
+    background-color: {{ button_color }};
   }
 
   {% if width == 'wide' %}
@@ -84,7 +91,7 @@ include-icon-with-text-button.liquid
 
             {% if buttonlabel != blank %}
             <div class="icon-with-text-button__button">
-                <a class="button button--primary ">{{ buttonlabel }}</a>
+                <a class="button button--primary" href="{{ buttonlink }}">{{ buttonlabel }}</a>
             </div>
             {% endif %}
         </div>

@@ -3,30 +3,15 @@ include-faq.liquid
 {% endcomment %}
 
 {% assign width = section.settings.width %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {% for block in section.blocks %}
-      {% unless block.type == 'heading' or block.type == 'image' %}
-        {
-          "@type": "Question",
-          "name": "{{ block.settings.title | escape }}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{{ block.settings.answer | strip_html }}"
-          }
-        }{% unless forloop.last %},{% endunless %}
-      {% endunless %}
-    {% endfor %}
-  ]
-}
-</script>
+
 
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
-   #shopify-section-{{ section.id }} { 
+   {% comment %}
+   #shopify-section-{{ section.id }}
+   {% endcomment %}
+
+   .faq-wrapper { 
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
@@ -52,6 +37,29 @@ include-faq.liquid
   {% include settings.icon, name: 'minus' %}
 {% endif %}
 {% endcapture %}
+
+<div class="faq-wrapper">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for block in section.blocks %}
+      {% unless block.type == 'heading' or block.type == 'image' %}
+        {
+          "@type": "Question",
+          "name": "{{ block.settings.title | escape }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ block.settings.answer | strip_html }}"
+          }
+        }{% unless forloop.last %},{% endunless %}
+      {% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
 
 <section class="section
                 {{ section.settings.css_class }}
@@ -114,3 +122,5 @@ include-faq.liquid
 </div>
 </section>
 <script data-theme-editor-load-script src="{{ 'z__jsFAQ.js' | asset_url }}"></script>
+
+</div>
