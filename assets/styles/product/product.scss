@@ -99,13 +99,12 @@
 
   .product-thumbnail__title {
     color: $sale-color;
-
-    font-size: 1.3rem;
     font-weight: 900;
     line-height: 1.52;
+    font-size: 1.6rem;
 
     @include respond-to('medium-down') {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
   }
 }

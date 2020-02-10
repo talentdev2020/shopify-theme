@@ -35,7 +35,8 @@ product-thumbnail.liquid
   product__thumbnail
   product__grid-item
   thumbnail__hover-overlay--{{ hover_enabled }}
-  has-padding-bottom"
+  "
+
   {% if section.settings.pagination_type != 'basic_pagination' %}
     data-load-more--grid-item
   {% endif %}>
@@ -63,7 +64,6 @@ product-thumbnail.liquid
     </div>
 
     <div class="product-review__wrapper">
-      <span class=" stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
     </div>
 
     <div class="product-image__wrapper"> 
@@ -104,7 +104,7 @@ product-thumbnail.liquid
                   {% if collection_handles contains 'coming-soon' %}
                     <span>{{ 'collections.general.coming_soon' | t }}</span>
                   {% else %}
-                    <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+                    <span class="product-thumbnail__price price {% comment %}{% if product.compare_at_price_max > product.price %}sale{% endif %}{% endcomment %}">
                       {% if product.available %}
                         {% if product.price_varies and product.price_min > 0 %}
                           <small><em>{{ 'products.general.from' | t }}</em></small>
@@ -150,7 +150,7 @@ product-thumbnail.liquid
           {{ 'collections.general.coming_soon' | t }}
         {% endif %}
       {% else %} 
-        <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+        <span class="product-thumbnail__price price {% comment %}{% if product.compare_at_price_max > product.price %}sale{% endif %}{% endcomment %}">
           {% if product.available %}
             {% if product.price_varies and product.price_min > 0 %}
               <small><em>{{ 'products.general.from' | t }}</em></small>

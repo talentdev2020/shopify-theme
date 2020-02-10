@@ -3,7 +3,7 @@
     <span class="product-thumbnail__vendor">{{ product.vendor }}</span>
   {% endif %}
 
-  <h2>
-  <a href="{{ product.url | within: collection }}" class="product-thumbnail__title headline">{{ product.title }}</a>
-  </h2>
+  <a href="{{ product.url | within: collection }}" class="product-thumbnail__title headline">
+    {{ product.title }}
+  </a>
 </div>

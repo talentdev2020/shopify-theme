@@ -145,6 +145,11 @@ $mobile-padding : 15px;
 }
 
 .has-thumbnail-sticker {
+  margin: 40px 0;
+
+  @include respond-to('medium-down') {
+    margin: 15px 0;
+  }
 
   .image__container {
     position: relative;
@@ -234,8 +239,22 @@ $mobile-padding : 15px;
 .thumbnail-sticker {
   @include flexbox();
   width: 100%;
-  padding: 5px 10px;
+  padding: 5px 10px 5px 4px;
   text-align: center;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  margin: 10px 0;
+
+  .sticker-text {
+    font-size: 1.2rem;
+    font-family: Caveat;
+    color: $white;
+    font-weight: bold;
+
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+  }
 
   &.sale-sticker {
     @include sale-sticker;

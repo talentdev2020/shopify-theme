@@ -118,13 +118,6 @@
   }
 }
 
-.accordion dt a[aria-expanded="true"],
-.accordion dt a:hover,
-.faq-accordion dt button[aria-expanded="true"],
-.faq-accordion dt button:hover {
-  background-color: {{ settings.heading_color | color_modify: 'alpha', 0.03 }};
-}
-
 .accordion dd,
 .faq-accordion dd {
   display: none;

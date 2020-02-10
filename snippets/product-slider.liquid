@@ -112,8 +112,7 @@ product_recommendations: <boolean>
              
               <div class="footer-tag">
                 {% for tag in product.tags %}
-                  <a>{% include settings.icon, name: "icon-meal" %} {{ tag }}</a>
-                  {% endif %}
+                  <a>{% include settings.icon, name: "icon-meal" %}{{ tag }}</a>
                 {% endfor %}
               </div>
       </div>
