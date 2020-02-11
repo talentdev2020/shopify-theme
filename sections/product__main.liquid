@@ -14,6 +14,10 @@ product__main.liquid
 
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
+  .product-section__background {
+    background-color: {{ section.settings.thumbnail_background_color }};
+  } 
+
   .section__wrapper {
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
@@ -35,6 +39,9 @@ product__main.liquid
     .breadcrumb__container {
       display: none;
     }
+    .section__breadcrumb {
+      display: none;
+    }
   {% endif %}
 
   {% include 'css-loop', css: custom_css, id: id %}
@@ -44,6 +51,7 @@ product__main.liquid
 {% assign variant = product.selected_or_first_available_variant %}
 {% assign product_tags = product.tags | join: ' ' %}
 
+<div class="product-section__background">
 {% include 'product__structured-data' %}
 
 {% comment %} HTML markup {% endcomment %}
@@ -120,6 +128,7 @@ product__main.liquid
             {% endif %}
 
             {% comment %} Price {% endcomment %}
+
             <p class="modal_price subtitle">
               {% if collection_handles contains 'coming-soon' %}
                 {% if settings.stickers_enabled == false %}
@@ -274,6 +283,7 @@ product__main.liquid
   }
 </script>
 <script src="{{ 'z__jsProduct.js' | asset_url }}"></script>
+</div>
 
 {% if section.blocks.size > 0 %}
 
@@ -579,6 +589,12 @@ product__main.liquid
         }
       ],
       "default": "standard"
+    },
+    {
+      "type": "color",
+      "id": "thumbnail_background_color",
+      "label": "Background",
+      "default": "#f6f2ed"
     },
     {
       "type": "range",

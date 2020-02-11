@@ -2,7 +2,6 @@
 
 Shopify.theme.jsFAQ = {
   init: function init() {
-    console.log("Shopify.theme.jsFAQ ");
     var $faqHeading = $('.faq-accordion > .faq-contents > .groups dt > button');
     $('.faq-accordion > .faq-contents > .groups > dd').attr('aria-hidden', true);
     $faqHeading.attr('aria-expanded', false);

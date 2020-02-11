@@ -245,9 +245,11 @@
                 </div>
                 <div class="one-whole column is-flex is-align-center is-justify-end">
                   {% if content_for_additional_checkout_buttons %}
-                    <div class="additional-checkout-buttons">
-                      {{ content_for_additional_checkout_buttons }}
-                    </div>
+                    <span class="additional-checkout-buttons">
+                      <div class="additional-checkout-buttons">
+                        {{ content_for_additional_checkout_buttons }}
+                      </div>
+                    </span>
                   {% endif %}
                 </div>
               </div>
