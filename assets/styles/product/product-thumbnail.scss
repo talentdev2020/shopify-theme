@@ -473,9 +473,6 @@ $mobile-padding : 15px;
     margin: 0;
   }
 
-  .product-form-container {
-  }
-
   .purchase-details__buttons .button {
     height: auto;
     min-height: auto;
@@ -606,5 +603,31 @@ $mobile-padding : 15px;
     opacity: 0;
     visibility: hidden;
     height: 0;
+  }
+}
+
+.product-form-container {
+  .rc_block__type {
+    border-radius: 10px;
+  }
+  .rc_block__type__onetime {
+
+  }
+  .rc_block__type__autodeliver  {
+    margin-top: 10px;
+  }
+  .rc_label {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    .icon {
+      float: right;
+      margin: 5px;
+    }
+  }
+  .rc_price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.26;
   }
 }

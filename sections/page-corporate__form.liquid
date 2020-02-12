@@ -1,0 +1,98 @@
+{% comment %}
+page-monthly-box__texts.liquid
+{% endcomment %}
+
+{% include 'include-corporate__form' %}
+
+{% schema %}
+{
+  "name": "Corporate Page Form",
+  "class": "page-corporate__form",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_this_section",
+      "label": "Show This",
+      "default": true
+    },
+    {
+        "type": "text",
+        "id": "title_1",
+        "label": "Title",
+        "default": "How To Build A <br> Nunbelievable Culture"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Title",
+        "default": "Choose your gift level: 25, 50, or 100 boxes.<br>We’ll deliver each box directly to your<br> customers & employees."
+    },
+    {
+        "type": "text",
+        "id": "title_2",
+        "label": "Bottom Title",
+        "default": "Let No One <br> Go Nun-Loved"
+    },
+    {
+        "type": "textarea",
+        "id": "custom_html",
+        "label": "Custom Html"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Backgroud color",
+        "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Backgroud Image"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ] 
+} 
+{% endschema %}

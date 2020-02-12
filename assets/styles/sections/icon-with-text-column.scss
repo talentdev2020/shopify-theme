@@ -22,7 +22,6 @@
 }
 .icon-with-text-column__column {
   .icon {
-    color: $black;
     @include respond-to('medium-down') {
     }
 

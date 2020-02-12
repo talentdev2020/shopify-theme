@@ -8,7 +8,7 @@ Shopify.theme.jsTestimonials = {
     var $testimonialSlider = $('[data-testimonial-slider]').flickity({
       wrapAround: true,
       initialIndex: 1,
-      prevNextButtons: false,
+      prevNextButtons: true,
       pageDots: true,
       watchCSS: true
     }); // Reset layout to avoid collapsing issues

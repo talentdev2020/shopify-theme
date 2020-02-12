@@ -90,9 +90,13 @@
 			{% assign show_poweredby = true %}
 		{% endif %}
     	{% comment %}Custom styling{% endcomment %}
-    	{% assign widget_label_color = widget_settings.font_color | default: "#000000" %}
-    	{% assign widget_active_color = widget_settings.active_color | default: "#676767" %}
-    	{% assign widget_active_bg = widget_settings.background_color | default: "#F8F8F8" %}
+		{% assign widget_label_color = widget_settings.font_color | default: "#8c8c8c" %}
+		{% assign widget_price_color = widget_settings.font_color | default: "#d2b8cb" %}
+
+    	{% assign widget_active_color = widget_settings.active_color | default: "#191919" %}
+		{% assign widget_active_bg = widget_settings.background_color | default: "#ffffff" %}
+		{% assign widget_active_price_color = widget_settings.background_color | default: "#a57096" %}
+
     	{% assign widget_icon = widget_settings.widget_icon | default: "black" %}
     	{% if widget_icon == "white" %}
     		{% assign widget_icon = "//rechargestatic-bootstrapheroes.netdna-ssl.com/static/images/widget/rc_widget__icon__white@2x.png" %}
@@ -131,11 +135,29 @@
 		label.rc_label {
 			color: {{ widget_label_color }};
 		}
-		div.rc_block__type--active {
+		.rc_price {
+			color: {{ widget_price_color }};
+		}
+		div.rc_block__type {
 			background-color: {{ widget_active_bg }};
+		}
+		div.rc_block__type label.rc_label .icon.active {
+			display: none;
+		}
+		div.rc_block__type label.rc_label .icon.disactive {
+			display: block;
 		}
 		div.rc_block__type--active label.rc_label {
 			color: {{ widget_active_color }};
+		}
+		div.rc_block__type--active label.rc_label .icon.active {
+			display: block;
+		}
+		div.rc_block__type--active label.rc_label .icon.disactive {
+			display: none;
+		}
+		div.rc_block__type--active .rc_price {
+			color: {{ widget_active_price_color }};
 		}
 		/* Widget: Popup */
 		div.rc_popup__block {
@@ -178,10 +200,18 @@
 						<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
 						{% endif %}
 						{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
+						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
+  						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
 					</label>
-				</div>
-				<div id="rc_onetime_options" class="rc_block rc_block__type__options">
-						
+					<div id="rc_onetime_options" class="rc_block rc_block__type__options">
+						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: 3 Meals</p>
+						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
+						<div class="swatch_options collection_swatches">
+							{% for option in product.options %}
+								{% include 'product__swatch', option: option %}
+							{% endfor %}
+						</div>
+					</div>
 				</div>
 			{% endunless %}
 			<div class="rc_block rc_block__type rc_block__type__autodeliver {% if select_subscription_first %}rc_block__type--active{% endif %}" {% if subscription_only and shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
@@ -195,6 +225,8 @@
 						{% if discount_percentage > 0 %}
 							<span class="rc_label__discount" aria-label="subscription discount">({{ discount_percentage }}%):</span>
 						{% endif %}
+						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
+						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
 					</label>
 				{% endunless %}
 				<div id="rc_autodeliver_options" class="rc_block rc_block__type__options">
@@ -210,23 +242,35 @@
 							</span>
 						{% endif %}
 
-						{% comment %}
-						<div id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
-							{% for frequency in shipping_interval_frequency %}
-								<input type="radio" name="frequency" id="frequency-{{ frequency }}" value="{{ frequency }}" {% if forloop.first %} checked {% endif %}>
-								<label for="frequency-{{ frequency }}" value="{{ frequency }}">
-									{{ frequency }}
-									{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
-										{{ label_unit_type | remove: 's' }}
-									{% else %}
-										{{ label_unit_type }}
-									{% endif %}
-								</label>
-							{% endfor %}
+						<div class="swatch_options">
+							<div class="swatch is-flex is-flex-wrap rc_select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
+								{% for frequency in shipping_interval_frequency %}						
+								<input type="radio" name="radio-frequency" id="frequency-{{ frequency }}" value="{{ frequency }}" 
+									{% if forloop.first %} checked {% endif %}>
+								<div class="swatch-element">	
+									<label for="frequency-{{ frequency }}" value="{{ frequency }}">
+										{{ frequency }}
+										{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
+											{{ label_unit_type | remove: 's' }}
+										{% else %}
+											{{ label_unit_type }}
+										{% endif %}
+									</label>
+								</div>
+								{% endfor %}
+							</div>
 						</div>
-						{% endcomment %}
 
-						<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
+						<script>
+							$('input[name="radio-frequency"]').on("click", function(e) {
+								var value = $(this).val();
+								$("select.rc_select").val(value);
+							});
+						</script>
+
+						<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" 
+							{% comment %}{% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}{% endcomment %}
+							style="display: none;">
 							{% for frequency in shipping_interval_frequency %}
 								<option value="{{ frequency }}">
 									{{ frequency }}
@@ -238,8 +282,17 @@
 								</option>
 							{% endfor %}
 						</select>
-					</label>
 
+						<div class="swatch_options collection_swatches">
+						{% for option in product.options %}
+							{% include 'product__swatch', option: option %}
+						{% endfor %}
+						</div>
+					</label>
+					<div>
+						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: 3 Meals</p>
+						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
+					</div>
 				</div>
 			</div>
 		</div>

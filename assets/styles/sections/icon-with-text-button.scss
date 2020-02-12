@@ -57,4 +57,15 @@
             margin: $gutter;
         }
     }
+
+    .contact-form {
+        margin: auto;
+    }
+}
+
+
+.page-corporate__form {
+    .icon-with-text-button__container .icon-with-text-button__wrapper {
+        margin: unset;
+    }
 }
