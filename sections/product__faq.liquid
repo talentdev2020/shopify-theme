@@ -1,0 +1,187 @@
+{% comment %}
+** FAQ page - static **
+- Column section
+- Page template section
+- Uses blocks
+product__faq.liquid
+{% endcomment %}
+
+{% include 'include-faq' %}
+
+{% style %}
+#shopify-section-{{ section.id }} section{
+    {% if section.settings.background_image != blank %}
+      background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 50% 0 transparent;
+      background-repeat: no-repeat;
+    	background-position: right top;
+    {%- endif %}
+
+    {% comment %}
+    background-color : {{ section.settings.background-color }};
+    {% endcomment %}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product Page Faq",
+  "class": "product_faq jsFAQ",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon",
+      "default": "butter",
+      "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)"
+    },
+    {
+      "type": "text",
+      "id": "more-question_txt",
+      "label": "More question Label",
+      "default": "More questions?"
+    },
+    {
+      "type": "text",
+      "id": "faq-page-link_txt",
+      "label": "Faq page Link Label",
+      "default": "View Our FAQs Page"
+    },
+    {
+      "type": "color",
+      "id": "background-color",
+      "label": "Background Color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "default": 80,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "default": 80,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "wide"
+    },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Frequently asked question",
+      "type": "content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Provide the answer to the question here.</p>"
+        }
+      ]
+    },
+    {
+      "name": "Heading",
+      "type": "heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Section heading"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      {
+        "type": "heading",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

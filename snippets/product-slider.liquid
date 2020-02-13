@@ -36,7 +36,11 @@ product_recommendations: <boolean>
   {% assign hover_enabled = settings.thumbnail_hover_enabled %}
 {% endif %}
 
-<div class="slider-gallery {% if show_gutter == false %}has-no-side-gutter{% endif %} products-slider products-length-{{ products_length }} transparentBackground--{{settings.slideshow_button_style}}"
+<div class="slider-gallery {% if show_gutter == false %}has-no-side-gutter{% endif %}
+       products-slider 
+       products-length-{{ products_length }} 
+       transparentBackground--{{settings.slideshow_button_style}}"
+
       data-products-per-slide="{{ products_per_row }}"
       data-products-limit="{{ limit }}"
       data-products-available="{{ products_length }}">
@@ -102,12 +106,15 @@ product_recommendations: <boolean>
 
               </div>
 
-            {% if hover_enabled == false %}
               <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
                 {% include 'product-thumbnail__product-info' %}
               </div>
-            {% endif %}
-
+             
+              <div class="footer-tag">
+                {% for tag in product.tags %}
+                  <a>{% include settings.icon, name: "icon-meal" %}{{ tag }}</a>
+                {% endfor %}
+              </div>
       </div>
 
 

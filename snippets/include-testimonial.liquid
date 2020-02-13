@@ -30,11 +30,12 @@
 {% capture section_css -%}
 
   .testimonial-block {
+    border-radius: 5px;
     background-color: {%- if card_background_alpha != 0 -%}{{ card_background }}{%- endif -%};
   }
 
   .testimonial__description {
-    color: {%- if card_text_alpha != 0 -%}{{ card_text }}{%- endif -%};
+    color: {{ card_text }};
   }
 {%- endcapture -%}
 
@@ -46,6 +47,8 @@
     {% if width == 'wide' %}
       width: 100%;
     {% endif %}
+
+    background-color: {{ object.settings.background }};
   }
   #shopify-section-{{ id }}  section {
     position: relative;
@@ -64,13 +67,19 @@
           {% endif %}>
 
           {% if section.blocks.size > 1 %}
-                <div class="testimonial__nav testimonial__nav--prev">
-                  <img src="{{ 'red-arrow-left.svg' | asset_url }}" />
-                </div>
-                <div class="testimonial__nav testimonial__nav--next ">
-                  <img src="{{ 'red-arrow-right.svg' | asset_url }}" />
-                </div>
+            <div style="display: none">
+              <div class="testimonial__nav testimonial__nav--prev">
+                <img src="{{ 'red-arrow-left.svg' | asset_url }}" />
+              </div>
+              <div class="testimonial__nav testimonial__nav--next ">
+                <img src="{{ 'red-arrow-right.svg' | asset_url }}" />
+              </div>
+            </div>
           {% endif %}
+    
+  {% if object.settings.section_title != blank %}
+  <h1 class="testimonial_title">{{ object.settings.section_title }}</h1>
+  {% endif %}
 
   <div class="testimonials container" data-testimonial-slider >
 
@@ -99,34 +108,44 @@
           }
       </style>
 
-      <div class="testimonial__description">
-        <div class="testimonial__description-title title">
-          {{ block.settings.title }}
-        </div>
-        {% if  show_review  and review_product.id %}
-        <div class="testimonial__description__review">
-          <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product.handle }}" data-id="{{ review_product.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
-        </div>
-        {% endif %}
-        <div class="testimonial__description-quote">
-          {{ block.settings.quote }}
-        </div>
-
-      </div>
-      <div class="testimonial__name">
-
-        {{ block.settings.text }}
-
-        <div class="testimonial__image has-image-crop image-style--{{ section.settings.crop_shape }}">
-            {% if section.settings.enable_images == true %}
-              {% if block.settings.image != blank %}
-                {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}
-              {% else %}
-                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-              {% endif %}
-            {% endif %}
+      <div class="one-third medium-down--one-whole ">
+        <div class="testimonial__description">
+          {% if block.settings.title != blank %}
+          <div class="testimonial__description-title title">
+            {{ block.settings.title }}
           </div>
+          {% endif %}
+
+          {% if block.settings.percent != blank %}
+          <div class="testimonial__description__review">
+            <div class="circle_percent">
+              {{ block.settings.percent }}
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="testimonial__description-quote">
+            {{ block.settings.quote }}
+          </div>
+        </div>
+
+        <div class="testimonial__name">
+          <div class="middle">
+            {{ block.settings.text }}       
+          </div> 
+        </div>
       </div>
+
+      <div class="two-thirds medium-down--one-whole  testimonial__image has-image-crop image-style--{{ section.settings.crop_shape }}">
+          {% if section.settings.enable_images == true %}
+            {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          {% endif %}
+        </div>
+
     </div>
     {% endfor %}
   </div>

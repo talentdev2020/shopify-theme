@@ -28,6 +28,10 @@
 {% assign pretext = object.settings.pretext %}
 {% assign title = object.settings.title %}
 {% assign subtitle = object.settings.subtitle %}
+
+{% assign review_content = object.settings.review_content %}
+{% assign review_name = object.settings.review_name %}
+
 {% assign button_label = object.settings.button_label %}
 {% assign button_style = object.settings.button_style %}
 
@@ -107,6 +111,7 @@
     padding-bottom: {{ padding_bottom }}px;
     padding-left: {{ padding_left }}px;
     padding-right: {{ padding_right }}px;
+
     {% if width == 'wide' %}
       width: 100%;
     {% elsif width == 'half' %}
@@ -120,6 +125,8 @@
 
 {% comment %} HTML markup {% endcomment %}
 <section id="product__video-section" class="featured-video
+                has-padding-left
+                has-padding-right
                 section
                 {{ css_class }}
                 is-width-{{ width }}
@@ -132,7 +139,7 @@
               {% if width == 'wide' or width == 'half' %}
                 equal-columns--outside-trim
               {% endif %}">
-    <div class="one-whole column">
+    <div class="one-whole">
       <div class="text-align-center">
   
         {% if title != blank %}
@@ -171,11 +178,6 @@
         </video>
       {% endif %}
         <div class="video__text-container {% if pretext == blank and title == blank and subtitle == blank and button_label == blank %} hidden{% endif %}" data-video-text-container>
-          <div class="text-outer-wrapper is-flex is-justify-left">
-              <div class="video__watch-now-btn">
-                <p>Watch Now!</p>                
-              </div>
-          </div>
           <div class="video__text is-justify-{{ vertical_text_position }}">            
             <div class="text-outer-wrapper is-flex is-justify-{{ horizontal_text_position }}">
               <div class="video__text-wrapper text-align-{{ text_align }}">
@@ -194,7 +196,11 @@
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="review"> 
+        <p class="review_content">{{ review_content }}</p>
+        <p class="review_name">{{ review_name }}</p>
       </div>
 
       <div class="container button-wrapper is-justify-center">

@@ -58,6 +58,8 @@
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
+{% if section.settings.show_collection_menu %}
+  
 {% comment %} HTML markup {% endcomment %}
 <section class="section
                 has-padding-top
@@ -97,6 +99,8 @@
 {% comment %}JavaScript{% endcomment %}
 <script data-theme-editor-load-script src="{{ 'z__jsCollectionMenu.js' | asset_url }}"></script>
 
+{% endif %}
+
 {% schema %}
 
 {
@@ -105,6 +109,12 @@
   "max_blocks": 6,
   "settings": [
     {
+      "type": "checkbox",
+      "id": "show_collection_menu",
+      "label": "Show Collection Menu",
+      "default": false
+    },
+    { 
       "type": "select",
       "id": "alignment",
       "label": "Alignment",

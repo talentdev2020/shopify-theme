@@ -11,7 +11,7 @@
     "404": {
       "title": "Página não encontrada",
       "subtext": "Pedimos desculpas, mas a página solicitada não existe.",
-      "continue_shopping_html": "Experimente pesquisar ou <a href=\"/collections/all\">continuar comprando →</a>"
+      "continue_shopping_html": "Experimente pesquisar ou <a href=\"\/collections\/all\">continuar comprando →<\/a>"
     },
     "password_page": {
       "opening_soon": "Abertura em Breve",
@@ -26,7 +26,7 @@
       "signup_form_success": "Iremos enviar-lhe um e-mail para a direita antes de abrirmos!",
       "admin_link_html": "Você é o dono da loja? <a href=\"\/admin\" class=\"text-link\">Faça login aqui<\/a>",
       "password_link": "Entre usando a senha",
-      "powered_by_shopify_html": "Esta loja será patrocinada por <a href=\"https:\/\/www.shopify.com/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify<\/a>"
+      "powered_by_shopify_html": "Esta loja será patrocinada por <a href=\"https:\/\/www.shopify.com\/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify<\/a>"
     },
     "meta": {
       "tagged_html": "Marcado \"{{ tags }}\"",
@@ -34,7 +34,7 @@
     },
     "forms": {
       "post_error": "Nem todos os campos foram preenchidos corretamente",
-      "post_field_error_html": "O <strong>{{ field }}</strong> {{ error }}",
+      "post_field_error_html": "O <strong>{{ field }}<\/strong> {{ error }}",
       "required_field": "Indica um campo obrigatório"
     },
     "newsletter_form": {
@@ -70,11 +70,11 @@
       "common_terms": "Comumente pesquisado"
     }
   },
-    "gallery": {
-      "filter": {
-        "all": "Todos"
-      }
-    },
+  "gallery": {
+    "filter": {
+      "all": "Todos"
+    }
+  },
   "blogs": {
     "general": {
       "pagination_button": "Carregar Mais",
@@ -99,7 +99,7 @@
       "next_article_html": "Próximo",
       "tags": "Marcas",
       "author": "Autor",
-      "comment_meta_html": "<strong>{{ author }}</strong> em <strong><time datetime=\"{{ date }}\">{{ date }}</time></strong>"
+      "comment_meta_html": "<strong>{{ author }}<\/strong> em <strong><time datetime=\"{{ date }}\">{{ date }}<\/time><\/strong>"
     },
     "counts": {
       "comments_with_count": {
@@ -418,7 +418,7 @@
       "pick_a_currency": "Selecione uma moeda",
       "social": "Social",
       "close_window": "Fechar",
-      "designer_credits_html": "<a href=\"http://outofthesandbox.com/\" target=\"_blank\" title=\"Flex Shopify Theme by Out of the Sandbox\">Criado por Out of the Sandbox</a>."
+      "designer_credits_html": "<a href=\"http:\/\/outofthesandbox.com\/\" target=\"_blank\" title=\"Flex Shopify Theme by Out of the Sandbox\">Criado por Out of the Sandbox<\/a>."
     },
     "social_sharing": {
       "title": "Compartilhar",

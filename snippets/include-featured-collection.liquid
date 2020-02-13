@@ -78,46 +78,25 @@
                   data-scroll-class="{{ animation }}"
                 {% endif %}>
 
-    <div class="container">
+  <div class="container">
+    {% if object.settings.title != blank %}
+    <h3 class="featured-collection__title text-align-center is-small">
+      <a href="{{ collections[col].url }}">{{ object.settings.title }}</a>
+    </h2>
+    {% endif %}
+         
+    <div class="{% if layout == 'grid' %} container {% endif %}one-whole has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
 
-
-      {% if object.settings.title != blank %}
-      <div 
-          class="column one-whole  
-            is-flex
-            is-flex-wrap
-            is-justify-center
-            is-align-center">
-        <div>
-          <h3 class="featured-collection__title image-with-text__heading text-align-center is-small h2">
-            <a href="{{ collections[col].url }}">{{ object.settings.title }}</a>
-          </h3>
-
-          <div class="image-with-text__text text-align-left content"> 
-            <p>{{ object.settings.subtitle }}</p>
-          </div>
-
-        </div>
+      <div class="featured-collection__icon">
+        <p>See More Flavors</p>
+        {% include settings.icon, name: "icon-finger" %}
       </div>
-      {% endif %}
-    
-     
-      <div class="{% if layout == 'grid' %} container {% endif %} one-whole has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
-  
-        <div class="featured-collection-slider__nav--next" style="display:none;">
-          <img src="{{ 'ionic-ios-arrow-dropright-mobile.svg' | asset_url }}" />
-        </div>
 
-        {% if section_onboarding == false %}
-          {% comment %} Loop through products {% endcomment %}
-          {% if layout == 'slider' %}
-            {% if collections[col].all_products_count > 0 %}
-              {% include 'product-slider', show_gutter: show_gutter %}
-            {% endif %}
-          {% else %}
-            {% if collections[col].all_products_count > 0 %}
-              {% include 'product-loop', align_height: align_height, height: height %}
-            {% endif %}
+      {% if section_onboarding == false %}
+        {% comment %} Loop through products {% endcomment %}
+        {% if layout == 'slider' %}
+          {% if collections[col].all_products_count > 0 %}
+            {% include 'product-slider', show_gutter: show_gutter %}
           {% endif %}
         {% else %}
           {% comment %} Placeholder images {% endcomment %}
@@ -133,18 +112,11 @@
         {% endif %}
       </div>
 
-      <div 
-          class="column one-whole  
-            is-flex
-            is-flex-wrap
-            is-justify-center
-            is-align-center
-            has-padding">
-        <a class="featured-collection__morelink button button--secondary" href="{{ collections[col].url }}">
-          View All Flavors
-        </a>
-      </div>
-
+    {% if object.settings.button_label != blank %}
+    <div class="featured-collection__btn">
+      <a class="button button--primary ">{{ object.settings.button_label }}</a>
+    </div>
+    {% endif %}
   </div>
   
   </section>

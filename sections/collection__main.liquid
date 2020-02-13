@@ -71,7 +71,7 @@
 
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
-
+ 
 {% paginate collection.products by object.settings.pagination_limit %}
 
 <div class="collection__main {{ css_class }}">
@@ -247,8 +247,8 @@
       "min": 2,
       "max": 7,
       "step": 1,
-      "default": 3
-    },
+      "default": 4
+    }, 
     {
       "type": "select",
       "id": "mobile_products_per_row",

@@ -20,10 +20,9 @@ Shopify.theme.jsFeaturedCollection = {
       products_available: this.products_available,
       products_limit: this.products_limit,
       cellAlign: "left",
-      wrapAround: true
+      wrapAround: false
     };
     $(featuredCollectionSlider).flickity({
-      lazyLoad: 2,
       freeScroll: true,
       imagesLoaded: true,
       draggable: true,

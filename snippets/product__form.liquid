@@ -23,7 +23,11 @@
       {% endif %}
       data-product-id="{{ product.id }}"
       >
-  {% form 'product', product %}
+  {% form 'product', product, data-productid: product.id %}
+
+  {% if product.available %}
+    {% include 'subscription-product' %}
+  {% endif %} 
 
   {% if product.variants.size > 1 %}
     {% if product.options.size > 1 %}
@@ -31,7 +35,7 @@
           {% if type == 'quickshop' %}
             <div class="select">
           {% endif %}
-          <select id="product-select-{{ product.id }}{{ product-form }}{{ object.id }}{{ block.id }}" name="id" class="multi_select" data-variant-selector>
+          <select id="product-select-{{ product.id }}{{ product-form }}{{ object.id }}{{ block.id }}" data-productid="{{product.id}}" name="id" class="multi_select" data-variant-selector>
             {% for v in product.variants %}
               <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-image-id="{{ v.featured_image.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
             {% endfor %}
@@ -47,7 +51,7 @@
           {% if type == 'quickshop' %}
             <div class="select">
           {% endif %}
-          <select id="product-select-{{ product.id }}{{ product-form }}{{ object.id }}{{ block.id }}" name="id" data-variant-selector>
+          <select id="product-select-{{ product.id }}{{ product-form }}{{ object.id }}{{ block.id }}" data-productid="{{product.id}}" name="id" data-variant-selector>
             {% for v in product.variants %}
               <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-image-id="{{ v.featured_image.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
             {% endfor %}
@@ -59,7 +63,7 @@
       </div>
     {% endif %}
   {% else %}
-    <input type="hidden" name="id" value="{{ variant.id }}" />
+    <input type="hidden" name="id" value="{{ variant.id }}" data-productid="{{product.id}}"/>
   {% endif %}
 
   {% if product.variants.size > 1 %}

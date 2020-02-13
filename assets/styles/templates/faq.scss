@@ -3,7 +3,20 @@
 
 .page-faq__column-wrap {
   width: 100%;
-  max-width: 700px;
+  max-width: 850px;
+}
+
+.faq-contents {
+
+  .groups {
+    width: 48%;
+    margin: 0 1% 20px 1%;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+      margin: 0 1% 10px 1%;
+    }
+  }
 }
 
 .product-faq-container2 {
@@ -24,16 +37,26 @@
   .faq-accordion {
     width: 100%;
 
+    .faq-icon {
+      .icon {
+        width: 82px;
+        height: 52px;
+      }
+    }
     .image-element__wrap {
       padding: 0;
       &:first-child {
         margin-bottom: 20px;
       }
     }
+
+    .more-links {
+      padding-top: 46px;
+    }
   }
 
   .faq-title {
-    margin-bottom: $gutter;
+    margin-bottom: $gutter*2.5;
     font-size: 1.8rem;
 
     @include respond-to('medium-down') {
@@ -42,15 +65,16 @@
   }
 
   .faq-title:not(:first-child) {
-    margin-top: 40px;
+    margin-top: $gutter;
   }
 
 }
 
 .accordion dt,
 .faq-accordion dt {
-  border-bottom: 1px solid $cart-border-color;
+  border: 1px solid #8f9cb2;
   position: relative;
+  padding: 15px;
 
   a,
   button {
@@ -60,11 +84,10 @@
     cursor: pointer;
     display: block;
     font-size: 1rem;
-    padding: $gutter/2 $gutter $gutter/2 0px;
     text-align: left;
     width: 100%;
+    font-weight: 600;
     transition: background-color 0.2s linear;
-    margin-top: $gutter/2;
 
     @include respond-to('medium-down') {
       font-size: 1rem;
@@ -79,11 +102,11 @@
   small,
   .icon {
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.2s linear;
-    width: 1rem;
+    width: 0.7rem;
   }
 
   .accordion-style--plus_and_minus .icon {
@@ -95,19 +118,15 @@
   }
 }
 
-.accordion dt a[aria-expanded="true"],
-.accordion dt a:hover,
-.faq-accordion dt button[aria-expanded="true"],
-.faq-accordion dt button:hover {
-  background-color: {{ settings.heading_color | color_modify: 'alpha', 0.03 }};
-}
-
 .accordion dd,
 .faq-accordion dd {
   display: none;
   padding: 10px;
 }
 
+.faq-page_link a {
+  text-decoration: underline;
+}
 // Content creator accordion
 
 .accordion dt:first-of-type {

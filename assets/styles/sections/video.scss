@@ -213,5 +213,42 @@ $play-icon-size: 81px;
       margin-right: 7px;
     }
   }
+}
 
+.review {
+  text-align: center;
+  padding: 20px;
+
+  .review_content {
+    
+    font-size: 1.2rem;
+    color: #2e2e2e;
+
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+  }
+
+  .review_name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 2.81;
+
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+  }
+}
+
+.video-wrapper {
+
+  @include respond-to('medium-down') {
+    border-radius: 10px;
+    .video-page-corporate__video {
+      border-radius: 10px;
+      iframe {
+        border-radius: 10px;
+      }
+    }
+  }
 }

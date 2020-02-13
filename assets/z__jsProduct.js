@@ -7,8 +7,6 @@ Shopify.theme.jsProduct = {
 
     var $mainProductGallery = $section.find('.product-gallery__main');
     var $stickyElement = $section.find('.sticky-product-scroll');
-    var $productTabBar = 'product__tab--bar';
-    this.enableStickyTabBar($productTabBar);
 
     if (this.template === 'image-scroll') {
       if (isScreenSizeLarge()) {
@@ -97,18 +95,11 @@ Shopify.theme.jsProduct = {
     }
 
     if ($('.product-faq-container2').length) {
-      var faqCode = $('#shopify-section-page-faq__column1').html();
+      var faqCode = $('#shopify-section-product__faq').html();
 
       if (faqCode != null) {
         $('.product-faq-container2').html(faqCode);
-        $('#shopify-section-page-faq__column1').empty();
-      }
-
-      var faqCode1 = $('#shopify-section-page-faq__column_2').html();
-
-      if (faqCode1 != null) {
-        $('.product-faq-container2').html(faqCode1);
-        $('#shopify-section-page-faq__column_2').empty();
+        $('#shopify-section-product__faq').empty();
       }
     }
 

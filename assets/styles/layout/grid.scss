@@ -33,7 +33,7 @@
   margin-right: auto;
 
   @include respond-to('medium-down') {
-    width: 100%;
+    width: 90%;
   }
 
   &.has-background {

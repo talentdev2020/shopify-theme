@@ -1,0 +1,12 @@
+{% comment %}
+  page.monthly-box.liquid
+  To edit the contents of this file, look inside the `sections` folder for the file name that comes directly after `section`. Eg. {% section 'contact__main' %} or {% section 'contact__banner' %}
+{% endcomment %}
+
+<main id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section monthly-box-page" data-check-for-order="true">
+  {% section 'page-monthly-box__banner' %}
+  {% section 'page-monthly-box__texts' %}
+  {% section 'page-monthly-box__icontexts' %}
+  {% section 'page-monthly-box__wideimage' %}
+  {% section 'page-monthly-box__faq' %}
+</main>
