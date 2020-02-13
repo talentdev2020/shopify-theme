@@ -7,10 +7,8 @@
 <div id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section collection-page" data-check-for-order="true">
   {% comment %} Collection banner {% endcomment %}
   {% section 'collection__banner' %}
-  <section class="section__wrapper 
-                  section
-                  ">
-    <div class="container {% if settings.heading_divider_style == 'long' %}has-heading-divider-below {% endif %}">
+  <section class="section__wrapper">
+    <div class="container section {% if settings.heading_divider_style == 'long' %}has-heading-divider-below {% endif %}">
       <div class="collection__breadcrumb two-fifths medium-down--one-whole column has-padding-bottom">
         {% comment %} Collection breadcrumb {% endcomment %}
         <div class="breadcrumb__container">
@@ -50,9 +48,10 @@
     {% endif %}
 
     {% comment %} Collection sidebar and main content area {% endcomment %}
-    <div class="container collection__content">
+    <div class="container">
       {% section 'collection__sidebar' %}
       {% section 'collection__main' %}
+      {% section 'collection__dualtestimonial' %}
       {% section 'collection__icon-with-text-button' %}
     </div>
   </section>

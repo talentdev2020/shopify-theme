@@ -65,7 +65,17 @@
 
 
 .page-corporate__form {
-    .icon-with-text-button__container .icon-with-text-button__wrapper {
-        margin: unset;
-    }
+    .icon-with-text-button__container {
+        .icon-with-text-button__wrapper {
+            margin: unset;
+            .icon-with-text-button__heading {
+                text-align: left;
+            }
+            .icon-with-text-button__text {
+                display: block;
+                padding: 10px;
+                text-align: left;
+            }
+        }
+    }    
 }

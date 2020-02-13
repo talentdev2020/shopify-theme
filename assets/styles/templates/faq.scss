@@ -20,6 +20,7 @@
 }
 
 .product-faq-container2 {
+
   @include respond-to('medium-down') {
     width: 100%!important;
     margin: 0!important;
@@ -87,6 +88,7 @@
     text-align: left;
     width: 100%;
     font-weight: 600;
+    outline: 0;
     transition: background-color 0.2s linear;
 
     @include respond-to('medium-down') {
@@ -103,7 +105,7 @@
   .icon {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 25px;
     transform: translateY(-50%);
     transition: transform 0.2s linear;
     width: 0.7rem;
@@ -118,10 +120,11 @@
   }
 }
 
-.accordion dd,
-.faq-accordion dd {
+.accordion .dd,
+.faq-accordion .dd {
   display: none;
-  padding: 10px;
+  padding-top: 15px;
+  padding-left: 5px;
 }
 
 .faq-page_link a {
@@ -141,7 +144,7 @@
   }
 }
 
-.accordion dd {
+.accordion .dd {
   margin-left: 0;
   display: none;
 }
@@ -150,7 +153,7 @@
   font-family: "Arial"; /* Force font family to ensure accordion carets are displayed on iOS devices */
 }
 
-.accordion dd:first-of-type {
+.accordion .dd:first-of-type {
   display: block;
 }
 

@@ -595,3 +595,161 @@
     font-size: 2.2rem;
   }
 }
+
+#rc_container {
+  .rc_label {
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+
+    .rc_price {
+      padding-right: 10px;
+
+      @include respond-to('medium-down') {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .rc_radio {
+    width: 25px;
+    height: 25px;
+
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+
+    padding: 6px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #fadc8a;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  /* appearance for checked radiobutton */
+  .rc_radio:checked {
+    background-color: #f7ba17;
+    border: 2px solid #f7ba17;
+  }
+
+  .swatch .swatch-element {
+    @include respond-to('medium-down') {
+      width: 48%;
+      margin: 0px 2% 8px 0;
+    }
+  }
+  .button {
+    width: 200px;
+    max-width: none;
+    height: 45px;
+    border-radius: 23px;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+  }
+
+  .freeshipping_txt{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    text-align: center;
+    color: #a57096;
+    padding: 10px;
+    white-space: normal;
+  }
+  .meal_txt {
+    width: 120px;
+    font-family: Caveat;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 2.81;
+    color: #4899d4;
+    padding-left: 15px;
+
+    @include respond-to('medium-down') {
+      margin: auto;
+      padding-left: 0;
+      padding-top: 10px;
+    }
+  }
+
+  .swatch {
+    padding: 15px 10px 0px 10px;
+  }
+
+  .button-container {
+    padding: 10px;
+  }
+}
+
+.toggle-info {
+  .accordion {
+   cursor: pointer;
+   padding: 15px 0 7px 0;
+   width: 100%;
+   border: none;
+   text-align: left;
+   outline: none;
+   font-size: 15px;
+   transition: 0.4s;
+   display: flex;
+   color: #4f2b01;
+   background-color: transparent;
+   border-bottom: 1px solid #4f2b01;
+ }
+  
+ .accordion:after {
+   content: "More +";
+   float: right;
+   margin-left: 5px;
+   position: absolute;
+   right: 20px;
+ }
+ 
+ .active:after {
+   content: "Less -";
+ }
+ 
+ .panel {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.2s ease-out;
+
+   .panel-padding {
+    padding: 18px 0px;
+   }
+ }
+}
+
+.allergens_info {
+  .icon-container {
+    padding-right: 30px;
+
+    .icon {
+      height: 3rem;
+      width: 3rem;
+    }
+
+    p{
+      font-family: Caveat;
+      font-weight: bold;
+    }
+  }  
+}
+
+.product__header {
+  .product-review__wrapper {
+    .standalone-bottomline {
+      text-align: center;
+
+      .yotpo-bottomline {
+        
+      }
+    }
+  }
+}

@@ -101,13 +101,12 @@ include-faq.liquid
                                 {{ icon_set }}
                                 {{ block.settings.title }}
                             </button>
-                        </dt>
-
-                        <dd id="panel-{{ block.id }}" aria-hidden="false">
-                            <div class="content">
-                                {{ block.settings.answer }}
+                            <div id="panel-{{ block.id }}" class="dd" aria-hidden="false">
+                                <div class="content">
+                                    {{ block.settings.answer }}
+                                </div>
                             </div>
-                        </dd>
+                        </dt>                
                     </div>
                 {% endif %}
             {% endif %}

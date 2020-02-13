@@ -1,24 +1,3 @@
-<!--   YOTPO STAR RATING -->
-  <div class="yotpo bottomLine star2"
-  data-product-id="{{ product.id }}">
-  {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
-{%- assign time_now = 'now' | date: '%s' %}
-{%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
-{%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
-{%- assign yotpo_bottomline_last_updated = product.metafields.yotpo.bottomline_update_time | date: '%s' %}
-{%- assign diff_seconds_from_last_bottomline_update = time_now | minus: yotpo_bottomline_last_updated %}
-{%- if yotpo_live_time and diff_seconds_from_live < 86400 and yotpo_bottomline_last_updated and diff_seconds_from_last_bottomline_update < 86400 -%}
-{%- assign yotpo_bottomline_obsolete = false %}
-{%- else %}
-{%- assign yotpo_bottomline_obsolete = true %}
-{%- endif %}
-{%- if yotpo_offload_content == 'yes' and yotpo_bottomline_obsolete != true -%}
-{{ product.metafields.yotpo.bottomline }}
-{%- endif %}
-</div>
-<!--  END YOTPO STAR RATING -->
-<br>
-
 <!-- Subscriptions Powered by ReCharge Payments: Begin Liquid Code -->
 <!--
 	Subscription Product
@@ -182,6 +161,7 @@
 		/* Add Custom CSS Below */
 
 	</style>
+
 	<!-- Subscriptions Powered by ReCharge Payments: HTML -->
 	<div id="rc_container" {% if subscription_only %}class="rc_subscription-only"{% endif %} style="display: none;">
 		<input type="hidden" name="" id="rc_subscription_id" value="{{ subscription_id }}">
@@ -193,26 +173,28 @@
 		</select>
 		<div id="rc_radio_options" role="radiogroup" aria-labelledby="Purchase options">
 			{% unless subscription_only %}
-				<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
-					<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
-					<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
-						{% if discount_percentage > 0 %}
-						<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
-						{% endif %}
-						{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
-						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
-  						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
-					</label>
-					<div id="rc_onetime_options" class="rc_block rc_block__type__options">
-						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: 3 Meals</p>
-						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
-						<div class="swatch_options collection_swatches">
-							{% for option in product.options %}
-								{% include 'product__swatch', option: option %}
-							{% endfor %}
-						</div>
+			<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
+				<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
+				<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
+					{% if discount_percentage > 0 %}
+					<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
+					{% endif %}
+					{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
+					{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
+					{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+				</label>
+
+				<div id="rc_onetime_options" class="rc_block rc_block__type__options">		
+							
+					<div class="swatch_options collection_swatches">
+						{% for option in product.options %}
+							{% include 'product__options', option: option, id: '1' %}
+						{% endfor %}
 					</div>
+
+					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_one', class2 : 'meals_one' %}				
 				</div>
+			</div>
 			{% endunless %}
 			<div class="rc_block rc_block__type rc_block__type__autodeliver {% if select_subscription_first %}rc_block__type--active{% endif %}" {% if subscription_only and shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
 				<input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
@@ -241,62 +223,60 @@
 								{% endif %}
 							</span>
 						{% endif %}
+					</label>
 
-						<div class="swatch_options">
-							<div class="swatch is-flex is-flex-wrap rc_select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
-								{% for frequency in shipping_interval_frequency %}						
-								<input type="radio" name="radio-frequency" id="frequency-{{ frequency }}" value="{{ frequency }}" 
-									{% if forloop.first %} checked {% endif %}>
-								<div class="swatch-element">	
-									<label for="frequency-{{ frequency }}" value="{{ frequency }}">
-										{{ frequency }}
-										{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
-											{{ label_unit_type | remove: 's' }}
-										{% else %}
-											{{ label_unit_type }}
-										{% endif %}
-									</label>
-								</div>
-								{% endfor %}
-							</div>
-						</div>
-
-						<script>
-							$('input[name="radio-frequency"]').on("click", function(e) {
-								var value = $(this).val();
-								$("select.rc_select").val(value);
-							});
-						</script>
-
-						<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" 
-							{% comment %}{% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}{% endcomment %}
-							style="display: none;">
-							{% for frequency in shipping_interval_frequency %}
-								<option value="{{ frequency }}">
+					<div class="swatch_options">
+						<div class="swatch is-flex is-flex-wrap rc_select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
+							{% for frequency in shipping_interval_frequency %}						
+							<input type="radio" name="radio-frequency" id="frequency-{{ frequency }}" value="{{ frequency }}" 
+								{% if forloop.first %} checked {% endif %}>
+							<div class="swatch-element">	
+								<label for="frequency-{{ frequency }}" value="{{ frequency }}">
 									{{ frequency }}
 									{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
 										{{ label_unit_type | remove: 's' }}
 									{% else %}
 										{{ label_unit_type }}
 									{% endif %}
-								</option>
+								</label>
+							</div>
 							{% endfor %}
-						</select>
-
-						<div class="swatch_options collection_swatches">
-						{% for option in product.options %}
-							{% include 'product__swatch', option: option %}
-						{% endfor %}
 						</div>
-					</label>
-					<div>
-						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: 3 Meals</p>
-						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
 					</div>
+
+					<script>
+						$('input[name="radio-frequency"]').on("click", function(e) {
+							var value = $(this).val();
+							$("select.rc_select").val(value);
+						});
+					</script>
+
+					<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" 
+						{% comment %}{% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}{% endcomment %}
+						style="display: none;">
+						{% for frequency in shipping_interval_frequency %}
+							<option value="{{ frequency }}">
+								{{ frequency }}
+								{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
+									{{ label_unit_type | remove: 's' }}
+								{% else %}
+									{{ label_unit_type }}
+								{% endif %}
+							</option>
+						{% endfor %}
+					</select>
+
+					<div class="swatch_options collection_swatches">
+					{% for option in product.options %}
+						{% include 'product__options', option: option, id: '2' %}
+					{% endfor %}
+					</div>
+
+					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_subscribe', class2 : 'meals_subscribe' %}
 				</div>
 			</div>
 		</div>
-		<div class="rc_popup">
+		<div class="rc_popup" style="display:none">
 			{% if show_widget %}
 				<div class="rc_popup__hover">
 					{% if show_widget_icon %}
@@ -355,5 +335,6 @@
 			}
 		})();
 	</script>
+  
 {% endif %}
 <!-- Subscriptions Powered by ReCharge Payments: End Liquid Code -->

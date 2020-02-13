@@ -16,7 +16,21 @@ product__main.liquid
 {% style %}
   .product-section__background {
     background-color: {{ section.settings.thumbnail_background_color }};
+
+    {% if section.settings.background_image != blank %}
+      background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 100% 0 {{ section.settings.thumbnail_background_color }};
+      background-repeat: no-repeat;
+      background-position: right 0px top 100px;
+      background-attachment: fixed;
+    {%- endif %}
   } 
+
+  @media only screen and (max-width: 798px)
+  {
+    .product-section__background {
+      background-position: unset;
+    }
+  }
 
   .section__wrapper {
     padding-top: {{ padding_top }}px;
@@ -62,30 +76,13 @@ product__main.liquid
       <div class="product__header">
         {% comment %} Review stars {% endcomment %}
         {% if section.settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
-          <div class="product-review__wrapper text-align-center">
-            <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
-          </div> 
-        {% endif %}
+          <div class="product-review__wrapper text-align-center">                        
+            <div class="yotpo bottomLine star2" style="display:inline-block"
+              data-product-id="{{ review_product_1.id }}"> </div> 
+          </div>
+          {% endif %}
 
-        <div class="yotpo bottomLine"
-            data-product-id="{{ product.id }}">
-          {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
-          {%- assign time_now = 'now' | date: '%s' %}
-          {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
-          {%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
-          {%- assign yotpo_bottomline_last_updated = product.metafields.yotpo.bottomline_update_time | date: '%s' %}
-          {%- assign diff_seconds_from_last_bottomline_update = time_now | minus: yotpo_bottomline_last_updated %}
-          {%- if yotpo_live_time and diff_seconds_from_live < 86400 or yotpo_bottomline_last_updated and diff_seconds_from_last_bottomline_update < 86400 -%}
-            {%- assign yotpo_bottomline_obsolete = false %}
-          {%- else %}
-            {%- assign yotpo_bottomline_obsolete = true %}
-          {%- endif %}
-          {%- if yotpo_offload_content == 'yes' and yotpo_bottomline_obsolete != true -%}
-            {{ product.metafields.yotpo.bottomline }}
-          {%- endif %}
-        </div>
-
-        {% comment %} Name {% endcomment %}
+          {% comment %} Name {% endcomment %}
         <h1 class="product_name title">{{ product.title }}</h1>
       </div>
 
@@ -110,11 +107,11 @@ product__main.liquid
                     column
                     medium-down--one-whole">
 
-          {% comment %} Sale sticker {% endcomment %}
+          {% comment %} Sale sticker 
           {% if settings.stickers_enabled %}
             {% include 'product-thumbnail__sticker', context: 'product' %}
           {% endif %}
-
+          {% endcomment %}
 
 
           {% comment %} Vendor {% endcomment %}
@@ -147,6 +144,7 @@ product__main.liquid
 
             {% comment %} Price {% endcomment %}
 
+            {% unless product.metafields.subscriptions.subscription_id %}
             <p class="modal_price subtitle">
               {% if collection_handles contains 'coming-soon' %}
                 {% if settings.stickers_enabled == false %}
@@ -191,19 +189,87 @@ product__main.liquid
                 {% endif %}
               {% endif %}
             </p>
+            {% endunless %}
           </div>
 
           {% comment %} Description - top {% endcomment %}
           {% if section.settings.product_description_position == "top" %}
             {% if product.description != blank %}
-              <div class="description content has-padding-top">
-                {{ product.description | split: '<!-- split -->' | first }}
+            <div class="description content has-padding-top">
+              <div class="product_info toggle-info">
+                <button class="accordion">
+                  <p class="description_title">Product Info</p>
+                </button>
+                <div class="panel">
+                  <div class="panel-padding">
+                  {{ product.description | split: '<!-- split -->' | first }}
+                  </div>
+                </div>
               </div>
+
+              <div class="cookie_care_info toggle-info">
+                <button class="accordion">
+                  <p class="cookie-care_title">Cookie Care</p>
+                </button>
+                
+                <div class="panel container is-justify-left">
+                  <div class="panel-padding">
+                    {% if section.settings.cookiecare_content != blank %}
+                    <p>{{ section.settings.cookiecare_content }}</p>
+                    {% else %}
+                    <p>Cookie Care</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              
+              {% if section.settings.allergens_show %}
+              <div class="allergens_info toggle-info">
+                <button class="accordion">
+                  <p class="allergens-title">Allergens</p>
+                </button>
+                
+                <div class="panel">
+                  <div class="panel-padding container is-justify-left">
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-dairy' %}
+                      <div><p>Dairy</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-eggs' %}
+                      <div><p>Eggs</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-soy' %}
+                      <div><p>Soy</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-wheat' %}
+                      <div><p>Wheat</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-peanutss' %}
+                      <div><p>Peanutss</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-treenuts' %}
+                      <div><p>Tree nuts</p></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
             {% endif %}
           {% endif %}
 
           {% comment %} Purchase form {% endcomment %}
-          <div class="product-form-container has-padding-top">
+          <div class="product-form-container">
 
             {% comment %} Notify form {% endcomment %}
             {% include 'product__notify-me-form' %}
@@ -217,11 +283,97 @@ product__main.liquid
           {% comment %} Description - bottom {% endcomment %}
           {% if section.settings.product_description_position == "bottom" %}
             {% if product.description != blank %}
-              <div class="description content bottom has-padding-top">
-                {{ product.description | split: '<!-- split -->' | first }}
+              <div class="description content has-padding-top">
+                <div class="product_info toggle-info">
+                  <button class="accordion">
+                    <p class="description_title">Product Info</p>
+                  </button>
+                  <div class="panel">
+                    <div class="panel-padding">
+                    {{ product.description | split: '<!-- split -->' | first }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cookie_care_info toggle-info">
+
+                  <button class="accordion">
+                    <p class="cookie-care_title">Cookie Care</p>
+                  </button>
+                  
+                  <div class="panel container is-justify-left">
+                    <div class="panel-padding">
+                      {% if section.settings.cookiecare_content != blank %}
+                      <p>{{ section.settings.cookiecare_content }}</p>
+                      {% else %}
+                      <p>Cookie Care</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+
+                
+                {% if section.settings.allergens_show %}
+                <div class="allergens_info toggle-info">
+                  <button class="accordion">
+                    <p class="allergens-title">Allergens</p>
+                  </button>
+                  
+                  <div class="panel">
+                    <div class="panel-padding container is-justify-left">
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-dairy' %}
+                        <div><p>Dairy</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-eggs' %}
+                        <div><p>Eggs</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-soy' %}
+                        <div><p>Soy</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-wheat' %}
+                        <div><p>Wheat</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-peanutss' %}
+                        <div><p>Peanutss</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-treenuts' %}
+                        <div><p>Tree nuts</p></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
               </div>
             {% endif %}
           {% endif %}
+
+          <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                  panel.style.maxHeight = null;
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+              });
+            }
+          </script>
 
           {% comment %} Collections, type, tags {% endcomment %}
           {% if section.settings.display_collections or section.settings.display_tags or section.settings.display_type %}
@@ -274,6 +426,7 @@ product__main.liquid
     {% if product.description contains "<!-- split -->"  %}
       <div class="product-description-split">
         <div class="description content">
+          <p class="description_title">Product Info</p>
           {{ product.description | split: '<!-- split -->' | last }}
         </div>
       </div>
@@ -591,6 +744,22 @@ product__main.liquid
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "textarea",
+      "id": "cookiecare_content",
+      "label": "Cookie care content"
+    },
+    {
+      "type": "checkbox",
+      "id": "allergens_show",
+      "label": "Allergens Show",
+      "default": true
     },
     {
       "type": "select",
@@ -1163,6 +1332,11 @@ product__main.liquid
           "id": "button_label",
           "label": "Cookie Button",
           "default": "View All Cookies"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
         }
       ]
     },

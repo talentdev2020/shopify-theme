@@ -22,16 +22,6 @@ $product-height__mobile: 195px;
     padding: 8px 0;
   }
 
-  .image-element__wrap img {
-    width: $product-width__desktop;
-    height: $product-height__desktop;
-
-    @include respond-to('medium-down') {
-      width: $product-width__mobile;
-      height: $product-height__mobile;
-    }
-  }
-
   .product-thumbnail__title.headline {
     font-size: 1rem;
   }
@@ -47,7 +37,7 @@ $product-height__mobile: 195px;
   .has-thumbnail-sticker {
     display: block;
     border-bottom: $input-border-width solid transparent;
-    margin: 40px 15px!important;
+    margin: 10px!important;
   }
 
   .flickity-slider 
@@ -85,6 +75,10 @@ $product-height__mobile: 195px;
     font-size: 2.2rem;
     margin: auto;
     margin-bottom: 80px;
+
+    @include respond-to('medium-down') {
+      margin-bottom: 10px;
+    }
   }
 
   .featured-collection__btn {
@@ -97,6 +91,12 @@ $product-height__mobile: 195px;
       border-radius: 25px;
       margin: 20px;
       background-color: $soft-pink;
+    }
+  }
+
+  .featured-collection__icon_container {
+    @include respond-to('medium-down') {
+      display: none;
     }
   }
 
@@ -116,10 +116,6 @@ $product-height__mobile: 195px;
       width: 57px;
       height: 38px;
       color: $black;
-    }
-
-    @include respond-to('medium-down') {
-      display: none;
     }
   }
 
