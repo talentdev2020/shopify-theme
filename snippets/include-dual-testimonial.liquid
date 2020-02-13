@@ -156,6 +156,17 @@
                                 <div class="yotpo bottomLine star2" style="display:inline-block"
                                   data-product-id="{{ review_product_1.id }}">
                                 </div>
+                                <div class="yotpo bottomLine"
+                                    data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                                    data-domain="{{shop.permanent_domain | escape }}"
+                                    data-product-id="{{ review_product_1.id }}"
+                                    data-product-models="{{ review_product_1.id }}"
+                                    data-name="{{ review_product_1.title | escape }}"
+                                    data-url="{{ shop.url }}{{ review_product_1.url }}"
+                                    data-image-url="{{ review_product_1.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                                    data-description="{{ review_product_1.description | escape }}"
+                                    data-bread-crumbs="{% for tag in review_product_1.tags %}{{ tag | escape }};{% endfor %}">
+                                </div>
                           {% endif %}
                           <div class="testimonial__description-title title">
                             {{ item.settings.name_1 }}
