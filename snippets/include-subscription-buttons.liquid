@@ -1,0 +1,10 @@
+
+{% assign button_class = class1 %}
+{% assign meal_class = class2 %}
+
+<div class="is-flex is-flex-wrap is-justify-start button-container">
+<a class="button button--primary {{ button_class }}" id="{{ button_class }}" onclick="clickaddcart()"></a>
+<p class="meal_txt">{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="{{ meal_class }}">2</span> Meals</p>
+</div>
+
+<p class="freeshipping_txt">Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>

@@ -100,6 +100,12 @@ $product-height__mobile: 195px;
     }
   }
 
+  .featured-collection__icon_container {
+    @include respond-to('medium-down') {
+      display: none;
+    }
+  }
+
   .featured-collection__icon{
     position: absolute;
     right: -100px;
@@ -116,10 +122,6 @@ $product-height__mobile: 195px;
       width: 57px;
       height: 38px;
       color: $black;
-    }
-
-    @include respond-to('medium-down') {
-      display: none;
     }
   }
 

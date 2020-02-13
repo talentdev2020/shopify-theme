@@ -17,7 +17,6 @@
 {%- endif %}
 </div>
 <!--  END YOTPO STAR RATING -->
-<br>
 
 <!-- Subscriptions Powered by ReCharge Payments: Begin Liquid Code -->
 <!--
@@ -182,6 +181,7 @@
 		/* Add Custom CSS Below */
 
 	</style>
+
 	<!-- Subscriptions Powered by ReCharge Payments: HTML -->
 	<div id="rc_container" {% if subscription_only %}class="rc_subscription-only"{% endif %} style="display: none;">
 		<input type="hidden" name="" id="rc_subscription_id" value="{{ subscription_id }}">
@@ -203,18 +203,16 @@
 					{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
 					{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
 				</label>
-				<div id="rc_onetime_options" class="rc_block rc_block__type__options">		
-					<a class="button button--primary fake_addcartbtn_one" id="fake_addcartbtn_one" onclick="clickaddcart()">
-					</a>				
-					<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="meals_one">3</span> Meals</p>
-					<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
 
+				<div id="rc_onetime_options" class="rc_block rc_block__type__options">		
+							
 					<div class="swatch_options collection_swatches">
 						{% for option in product.options %}
 							{% include 'product__options', option: option, id: '1' %}
 						{% endfor %}
 					</div>
 
+					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_one', class2 : 'meals_one' %}				
 				</div>
 			</div>
 			{% endunless %}
@@ -245,60 +243,56 @@
 								{% endif %}
 							</span>
 						{% endif %}
+					</label>
 
-						<div class="swatch_options">
-							<div class="swatch is-flex is-flex-wrap rc_select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
-								{% for frequency in shipping_interval_frequency %}						
-								<input type="radio" name="radio-frequency" id="frequency-{{ frequency }}" value="{{ frequency }}" 
-									{% if forloop.first %} checked {% endif %}>
-								<div class="swatch-element">	
-									<label for="frequency-{{ frequency }}" value="{{ frequency }}">
-										{{ frequency }}
-										{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
-											{{ label_unit_type | remove: 's' }}
-										{% else %}
-											{{ label_unit_type }}
-										{% endif %}
-									</label>
-								</div>
-								{% endfor %}
-							</div>
-						</div>
-
-						<script>
-							$('input[name="radio-frequency"]').on("click", function(e) {
-								var value = $(this).val();
-								$("select.rc_select").val(value);
-							});
-						</script>
-
-						<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" 
-							{% comment %}{% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}{% endcomment %}
-							style="display: none;">
-							{% for frequency in shipping_interval_frequency %}
-								<option value="{{ frequency }}">
+					<div class="swatch_options">
+						<div class="swatch is-flex is-flex-wrap rc_select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
+							{% for frequency in shipping_interval_frequency %}						
+							<input type="radio" name="radio-frequency" id="frequency-{{ frequency }}" value="{{ frequency }}" 
+								{% if forloop.first %} checked {% endif %}>
+							<div class="swatch-element">	
+								<label for="frequency-{{ frequency }}" value="{{ frequency }}">
 									{{ frequency }}
 									{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
 										{{ label_unit_type | remove: 's' }}
 									{% else %}
 										{{ label_unit_type }}
 									{% endif %}
-								</option>
+								</label>
+							</div>
 							{% endfor %}
-						</select>
-
-						<div class="swatch_options collection_swatches">
-						{% for option in product.options %}
-							{% include 'product__options', option: option, id: '2' %}
-						{% endfor %}
 						</div>
-					</label>
-					<div>
-						<a class="button button--primary fake_addcartbtn_subscribe" id="fake_addcartbtn_subscribe" onclick="clickaddcart()">
-						</a>
-						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="meals_subscribe">3</span> Meals</p>
-						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
 					</div>
+
+					<script>
+						$('input[name="radio-frequency"]').on("click", function(e) {
+							var value = $(this).val();
+							$("select.rc_select").val(value);
+						});
+					</script>
+
+					<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced" 
+						{% comment %}{% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}{% endcomment %}
+						style="display: none;">
+						{% for frequency in shipping_interval_frequency %}
+							<option value="{{ frequency }}">
+								{{ frequency }}
+								{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
+									{{ label_unit_type | remove: 's' }}
+								{% else %}
+									{{ label_unit_type }}
+								{% endif %}
+							</option>
+						{% endfor %}
+					</select>
+
+					<div class="swatch_options collection_swatches">
+					{% for option in product.options %}
+						{% include 'product__options', option: option, id: '2' %}
+					{% endfor %}
+					</div>
+
+					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_subscribe', class2 : 'meals_subscribe' %}
 				</div>
 			</div>
 		</div>

@@ -596,10 +596,100 @@
   }
 }
 
+#rc_container {
+  .rc_label {
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+
+    .rc_price {
+      padding-right: 10px;
+
+      @include respond-to('medium-down') {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .rc_radio {
+    width: 25px;
+    height: 25px;
+
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+
+    padding: 6px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #fadc8a;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  /* appearance for checked radiobutton */
+  .rc_radio:checked {
+    background-color: #f7ba17;
+    border: 2px solid #f7ba17;
+  }
+
+  .swatch .swatch-element {
+    @include respond-to('medium-down') {
+      width: 48%;
+      margin: 0px 2% 8px 0;
+    }
+  }
+  .button {
+    width: 200px;
+    max-width: none;
+    height: 45px;
+    border-radius: 23px;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+  }
+
+  .freeshipping_txt{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    text-align: center;
+    color: #a57096;
+    padding: 10px;
+    white-space: normal;
+  }
+  .meal_txt {
+    width: 120px;
+    font-family: Caveat;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 2.81;
+    color: #4899d4;
+    padding-left: 15px;
+
+    @include respond-to('medium-down') {
+      margin: auto;
+      padding-left: 0;
+      padding-top: 10px;
+    }
+  }
+
+  .swatch {
+    padding: 15px 10px 0px 10px;
+  }
+
+  .button-container {
+    padding: 10px;
+  }
+}
 
 .allergens_info {
-  .one-sixth {
-    width: 16%;
+  .icon-container {
+    padding-right: 30px;
 
     .icon {
       height: 3rem;

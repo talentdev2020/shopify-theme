@@ -23,7 +23,14 @@
 {% endfor %}
 
 <div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}">
-  <div class="option-title label" aria-label="{{ value | escape }}" tabindex="0">{{ swatch }}</div>
+  <div class="option-title label" aria-label="{{ value | escape }}" tabindex="0">
+    {% if swatch == "Size" %}
+      Choose Pack Size:
+    {% else %}
+      {{ swatch }}
+    {% endif %}
+  </div>
+
   {% assign values = '' %}
   {% for variant in product.variants %}
     {% assign value = variant.options[option_index] %}
@@ -88,31 +95,3 @@
     {% endunless %}
   {% endfor %}
 </div>
-
-
-<script> 
-  $('input[name="option-{{ option_index }}{{ id }}"]').on("click", function(e) {
-    var getvalue = $(this).val();
-
-    console.log(getvalue);
-    $("input[name='option-{{ option_index }}'][value=" + getvalue + "]").prop("checked",true);  
-    $("input[name='option-{{ option_index }}1'][value=" + getvalue + "]").prop("checked",true);   
-    $("input[name='option-{{ option_index }}2'][value=" + getvalue + "]").prop("checked",true);   
-
-    var meal_one = document.getElementById('meals_one'); 
-    var meal_subscribe = document.getElementById('meals_subscribe'); 
-
-    if (getvalue == '6-Pack')
-    {
-      meal_one.innerHTML = 2;
-      meal_subscribe.innerHTML = 2;
-      console.log('6-pack');
-    }
-    else if (getvalue == '12-Pack')
-    {
-      meal_one.innerHTML = 3;
-      meal_subscribe.innerHTML = 3;
-      console.log('12-pack');
-    }
-  });   
-</script>

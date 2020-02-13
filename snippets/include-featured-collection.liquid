@@ -86,9 +86,11 @@
          
     <div class="{% if layout == 'grid' %} container {% endif %}one-whole has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
 
-      <div class="featured-collection__icon">
-        <p>See More Flavors</p>
-        {% include settings.icon, name: "icon-finger" %}
+      <div class="featured-collection__icon_container">
+        <div class="featured-collection__icon">
+          <p>See More Flavors</p>
+          {% include settings.icon, name: "icon-finger" %}
+        </div>
       </div>
 
       {% if section_onboarding == false %}

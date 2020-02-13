@@ -98,7 +98,9 @@
       </p>
     {% endif %}
 
-    <div class="purchase-details {% if settings.display_product_quantity %}has-quantity-box{% endif %}">
+    <div class="purchase-details {% if settings.display_product_quantity %}has-quantity-box{% endif %}"
+        {% if product.metafields.subscriptions.subscription_id %} style="position: absolute;" {% endif %} 
+        >
       {% if settings.display_product_quantity %}
         <div class="purchase-details__quantity product-quantity-box quantity-box--{{ settings.qty_box_style }}">
           {% include 'quantity-box' %}
@@ -115,7 +117,6 @@
 
         {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
 
-        
         <button id="button--add-to-cart"
               {% if product.metafields.subscriptions.subscription_id %} style="visibility: hidden;" {% endif %} 
               type="{% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %}button{% else %}submit{% endif %}" name="add" class="button {% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %} ajax-submit {% endif %}action_button button--add-to-cart {% if show_payment_button %} action_button--secondary {% else %} action_button--primary {% endif %}" data-label={{ add_to_cart_label | json }} data-add-to-cart-trigger>
@@ -161,7 +162,6 @@
 
   function clickaddcart() {
     $("#button--add-to-cart").click();
-    console.log("add to cart");
   }
 </script>
 {% endif %}

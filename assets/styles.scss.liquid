@@ -8038,10 +8038,100 @@ ul.tabs {
   }
 }
 
+#rc_container {
+  .rc_label {
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+
+    .rc_price {
+      padding-right: 10px;
+
+      @include respond-to('medium-down') {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .rc_radio {
+    width: 25px;
+    height: 25px;
+
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+
+    padding: 6px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #fadc8a;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  /* appearance for checked radiobutton */
+  .rc_radio:checked {
+    background-color: #f7ba17;
+    border: 2px solid #f7ba17;
+  }
+
+  .swatch .swatch-element {
+    @include respond-to('medium-down') {
+      width: 48%;
+      margin: 0px 2% 8px 0;
+    }
+  }
+  .button {
+    width: 200px;
+    max-width: none;
+    height: 45px;
+    border-radius: 23px;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+  }
+
+  .freeshipping_txt{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    text-align: center;
+    color: #a57096;
+    padding: 10px;
+    white-space: normal;
+  }
+  .meal_txt {
+    width: 120px;
+    font-family: Caveat;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 2.81;
+    color: #4899d4;
+    padding-left: 15px;
+
+    @include respond-to('medium-down') {
+      margin: auto;
+      padding-left: 0;
+      padding-top: 10px;
+    }
+  }
+
+  .swatch {
+    padding: 15px 10px 0px 10px;
+  }
+
+  .button-container {
+    padding: 10px;
+  }
+}
 
 .allergens_info {
-  .one-sixth {
-    width: 16%;
+  .icon-container {
+    padding-right: 30px;
 
     .icon {
       height: 3rem;
@@ -9602,7 +9692,7 @@ $swatch-label-size: 34px;
   }
 
   .swatch_options {
-    margin-bottom: 1.5rem;
+    font-weight: bold;
   }
 
   .swatch .option-title {
@@ -9616,17 +9706,16 @@ $swatch-label-size: 34px;
   }
 
   .swatch label {
-    float: left;
     min-width: $swatch-element-size;
     height: $swatch-element-size;
     margin: 0;
     font-size: 13px;
     text-align: center;
-    line-height: $swatch-element-size;
+    line-height: 35px;
     white-space: nowrap;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 0 10px;
+    color: #191919;
   }
 
   .swatch .color label {
@@ -9667,7 +9756,8 @@ $swatch-label-size: 34px;
   }
 
   .swatch_options input:checked + .swatch-element {
-    border-color: black ;
+    border-color: #fdb12f ;
+    background-color: white;
     box-shadow: 0px 0px 0px 2px rgba(255,255,255,1);
   }
 
@@ -9679,6 +9769,13 @@ $swatch-label-size: 34px;
     margin: 0px 8px 8px 0;
     position: relative;
     outline: none;
+
+    width: 100px;
+    height: 40px;
+    border-radius: 31px;
+    text-align: center;
+    border: solid 2px #f1f1f1;
+    background-color: #f1f1f1;
   }
 
   .crossed-out {
@@ -10192,6 +10289,12 @@ $product-height__mobile: 195px;
     }
   }
 
+  .featured-collection__icon_container {
+    @include respond-to('medium-down') {
+      display: none;
+    }
+  }
+
   .featured-collection__icon{
     position: absolute;
     right: -100px;
@@ -10208,10 +10311,6 @@ $product-height__mobile: 195px;
       width: 57px;
       height: 38px;
       color: $black;
-    }
-
-    @include respond-to('medium-down') {
-      display: none;
     }
   }
 

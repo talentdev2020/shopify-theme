@@ -102,11 +102,11 @@ product__main.liquid
                     column
                     medium-down--one-whole">
 
-          {% comment %} Sale sticker {% endcomment %}
+          {% comment %} Sale sticker 
           {% if settings.stickers_enabled %}
             {% include 'product-thumbnail__sticker', context: 'product' %}
           {% endif %}
-
+          {% endcomment %}
 
 
           {% comment %} Vendor {% endcomment %}
@@ -206,7 +206,7 @@ product__main.liquid
           {% endif %}
 
           {% comment %} Purchase form {% endcomment %}
-          <div class="product-form-container has-padding-top">
+          <div class="product-form-container">
 
             {% comment %} Notify form {% endcomment %}
             {% include 'product__notify-me-form' %}
@@ -234,32 +234,32 @@ product__main.liquid
                 <div class="allergens_info">
                   <p>Allergens</p>
                   <div class="container is-justify-left">
-                    <div class="one-sixth text-align-center">
+                    <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-dairy' %}
                       <div><p>Dairy</p></div>
                     </div>
 
-                    <div class="one-sixth text-align-center">
+                    <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-eggs' %}
                       <div><p>Eggs</p></div>
                     </div>
 
-                    <div class="one-sixth text-align-center">
+                    <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-soy' %}
                       <div><p>Soy</p></div>
                     </div>
 
-                    <div class="one-sixth text-align-center">
+                    <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-wheat' %}
                       <div><p>Wheat</p></div>
                     </div>
 
-                    <div class="one-sixth text-align-center">
+                    <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-peanutss' %}
                       <div><p>Peanutss</p></div>
                     </div>
 
-                    <div class="one-sixth text-align-center">
+                    <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-treenuts' %}
                       <div><p>Tree nuts</p></div>
                     </div>
