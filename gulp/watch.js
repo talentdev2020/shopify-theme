@@ -101,6 +101,7 @@ gulp.task('combine_css', done => {
     'assets/styles/sections/icon-bar.scss',
     'assets/styles/sections/icon-with-text-column.scss',
     'assets/styles/sections/image-with-text.scss',
+    'assets/styles/sections/image-with-text-column.scss',
     'assets/styles/sections/image-with-text-overlay.scss',
     'assets/styles/sections/list-collection.scss',
     'assets/styles/sections/list-collections.scss',
