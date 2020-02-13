@@ -20,6 +20,7 @@
 }
 
 .product-faq-container2 {
+
   @include respond-to('medium-down') {
     width: 100%!important;
     margin: 0!important;

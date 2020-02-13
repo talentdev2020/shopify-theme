@@ -22,16 +22,6 @@ $product-height__mobile: 195px;
     padding: 8px 0;
   }
 
-  .image-element__wrap img {
-    width: $product-width__desktop;
-    height: $product-height__desktop;
-
-    @include respond-to('medium-down') {
-      width: $product-width__mobile;
-      height: $product-height__mobile;
-    }
-  }
-
   .product-thumbnail__title.headline {
     font-size: 1rem;
   }

@@ -8184,6 +8184,18 @@ ul.tabs {
   }  
 }
 
+.product__header {
+  .product-review__wrapper {
+    .standalone-bottomline {
+      text-align: center;
+
+      .yotpo-bottomline {
+        
+      }
+    }
+  }
+}
+
 /* # Product form
 ================================================== */
 
@@ -8912,8 +8924,10 @@ $product-hover-bg: {{ settings.product_hover_bg_color | color_modify: 'alpha', 0
 $mobile-padding : 15px;
 
 .product__header {
+  padding-top: 50px;
+  padding-bottom: 30px;
+
   .product-review__wrapper {
-    padding: 14px 0 14px 0;
     min-height: $gutter*1.25;
     text-align: center;
 
@@ -8930,7 +8944,6 @@ $mobile-padding : 15px;
 
   .product_name {
     font-size: 2.2rem;
-    padding: 15px 0 30px;
     text-align: center;
   }
 }
@@ -10373,16 +10386,6 @@ $product-height__mobile: 195px;
   }
   .product-thumbnail {
     padding: 8px 0;
-  }
-
-  .image-element__wrap img {
-    width: $product-width__desktop;
-    height: $product-height__desktop;
-
-    @include respond-to('medium-down') {
-      width: $product-width__mobile;
-      height: $product-height__mobile;
-    }
   }
 
   .product-thumbnail__title.headline {
@@ -16965,6 +16968,7 @@ $subtotal-bg-color: #F2F2F2;
 }
 
 .product-faq-container2 {
+
   @include respond-to('medium-down') {
     width: 100%!important;
     margin: 0!important;

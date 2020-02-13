@@ -6,8 +6,10 @@ $product-hover-bg: {{ settings.product_hover_bg_color | color_modify: 'alpha', 0
 $mobile-padding : 15px;
 
 .product__header {
+  padding-top: 50px;
+  padding-bottom: 30px;
+
   .product-review__wrapper {
-    padding: 14px 0 14px 0;
     min-height: $gutter*1.25;
     text-align: center;
 
@@ -24,7 +26,6 @@ $mobile-padding : 15px;
 
   .product_name {
     font-size: 2.2rem;
-    padding: 15px 0 30px;
     text-align: center;
   }
 }

@@ -112,15 +112,27 @@
             </div>
           {% endfor %}
         {% endif %}
-      </div>
+      {% else %}
+        {% comment %} Placeholder images {% endcomment %}
+        {% for i in (1..10) %} <!--@TODO make sure the section onboarding also shows slider styles -->
+          <div class="collection__item
+              one-fifth
+              medium-down--one-half
+              thumbnail column">
+            {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+            {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
 
     {% if object.settings.button_label != blank %}
     <div class="featured-collection__btn">
       <a class="button button--primary" href="{{ object.settings.button_link }}">{{ object.settings.button_label }}</a>
     </div>
     {% endif %}
+
   </div>
-  
   </section>
 
 {% comment %} JavaScript {% endcomment %}

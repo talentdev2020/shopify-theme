@@ -118,7 +118,17 @@
                     {% if collection_image != nil %}
 
                     <div class="product-review__wrapper text-align-center">
-                      <span class="stamped-product-reviews-badge" data-product-sku="{{ collection.products.first.handle }}" data-id="{{ collection.products.first.id }}" style="display:block;">{{ collection.products.first.stamped.badge }}</span>
+                      <div class="yotpo bottomLine"
+                        data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                        data-domain="{{shop.permanent_domain | escape }}"
+                        data-product-id="{{ product.id }}"
+                        data-product-models="{{ product.id }}"
+                        data-name="{{ product.title | escape }}"
+                        data-url="{{ shop.url }}{{ product.url }}"
+                        data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                        data-description="{{ product.description | escape }}"
+                        data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                      </div>
                     </div>
                     <div class="product-image__wrapper">
                       <div class="image__container product__imageContainer">
@@ -162,7 +172,17 @@
                   {% if collection_image != nil %}
 
                   <div class="product-review__wrapper text-align-center">
-                    <span class="stamped-product-reviews-badge" data-product-sku="{{ collection.products.first.handle }}" data-id="{{ collection.products.first.id }}" style="display:block;">{{ collection.products.first.stamped.badge }}</span>
+                    <div class="yotpo bottomLine"
+                        data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                        data-domain="{{shop.permanent_domain | escape }}"
+                        data-product-id="{{ product.id }}"
+                        data-product-models="{{ product.id }}"
+                        data-name="{{ product.title | escape }}"
+                        data-url="{{ shop.url }}{{ product.url }}"
+                        data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                        data-description="{{ product.description | escape }}"
+                        data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                      </div>  
                   </div>
                   <div class="product-image__wrapper">
                     <div class="image__container product__imageContainer">

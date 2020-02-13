@@ -76,22 +76,13 @@ product__main.liquid
       <div class="product__header">
         {% comment %} Review stars {% endcomment %}
         {% if section.settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
-          <div class="product-review__wrapper text-align-center">
-            <div class="yotpo bottomLine"
-              data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
-              data-domain="{{shop.permanent_domain | escape }}"
-              data-product-id="{{ product.id }}"
-              data-product-models="{{ product.id }}"
-              data-name="{{ product.title | escape }}"
-              data-url="{{ shop.url }}{{ product.url }}"
-              data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
-              data-description="{{ product.description | escape }}"
-              data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+          <div class="product-review__wrapper text-align-center">                        
+            <div class="yotpo bottomLine star2" style="display:inline-block"
+              data-product-id="{{ review_product_1.id }}"> </div> 
           </div>
-        </div> 
-        {% endif %}
+          {% endif %}
 
-        {% comment %} Name {% endcomment %}
+          {% comment %} Name {% endcomment %}
         <h1 class="product_name title">{{ product.title }}</h1>
       </div>
 
