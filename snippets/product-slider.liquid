@@ -36,7 +36,9 @@ product_recommendations: <boolean>
   {% assign hover_enabled = settings.thumbnail_hover_enabled %}
 {% endif %}
 
-<div class="slider-gallery {% if show_gutter == false %}has-no-side-gutter{% endif %}
+<div class="slider-gallery 
+      container
+      {% if show_gutter == false %}has-no-side-gutter{% endif %}
        products-slider 
        products-length-{{ products_length }} 
        transparentBackground--{{settings.slideshow_button_style}}"
@@ -53,7 +55,17 @@ product_recommendations: <boolean>
       <div class="gallery-cell thumbnail {% include 'column-width', value: products_per_row %} medium-down--one-half column has-thumbnail-sticker">
         <div class="product-wrap {% if product.images[1] != blank and settings.show_secondary_image == true %}swap--true{% endif %}">
             <div class="product-review__wrapper text-align-center">
-              <span class="stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
+              <div class="yotpo bottomLine"
+                data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                data-domain="{{shop.permanent_domain | escape }}"
+                data-product-id="{{ product.id }}"
+                data-product-models="{{ product.id }}"
+                data-name="{{ product.title | escape }}"
+                data-url="{{ shop.url }}{{ product.url }}"
+                data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                data-description="{{ product.description | escape }}"
+                data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+              </div>  
             </div>
             <div class="product-image__wrapper">
                 <div class="image__container product__imageContainer">

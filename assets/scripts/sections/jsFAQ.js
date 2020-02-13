@@ -8,10 +8,7 @@ Shopify.theme.jsFAQ = {
     $('.faq-accordion > .faq-contents > .groups > .dd').attr('aria-hidden',true);
 
     $faqHeading.attr('aria-expanded',false);
-
     $faqHeading.on('click activate',function(){
-
-      console.log("click activate");
 
       const faqIcons = $(this).find('.icon');
 

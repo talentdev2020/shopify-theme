@@ -16,7 +16,21 @@ product__main.liquid
 {% style %}
   .product-section__background {
     background-color: {{ section.settings.thumbnail_background_color }};
+
+    {% if section.settings.background_image != blank %}
+      background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 100% 0 {{ section.settings.thumbnail_background_color }};
+      background-repeat: no-repeat;
+      background-position: right 0px top 100px;
+      background-attachment: fixed;
+    {%- endif %}
   } 
+
+  @media only screen and (max-width: 798px)
+  {
+    .product-section__background {
+      background-position: unset;
+    }
+  }
 
   .section__wrapper {
     padding-top: {{ padding_top }}px;
@@ -190,50 +204,42 @@ product__main.liquid
           {% comment %} Description - top {% endcomment %}
           {% if section.settings.product_description_position == "top" %}
             {% if product.description != blank %}
-              <div class="description content has-padding-top">
-                <div class="product_info">
+            <div class="description content has-padding-top">
+              <div class="product_info toggle-info">
+                <button class="accordion">
                   <p class="description_title">Product Info</p>
+                </button>
+                <div class="panel">
+                  <div class="panel-padding">
                   {{ product.description | split: '<!-- split -->' | first }}
-                </div>
-                <div class="cookie_care_info">
-                  <p>Cookie Care</p>
-                </div>
-                <div class="allergens">
-                  <p>Allergens</p>
-                </div>
-              </div>
-            {% endif %}
-          {% endif %}
-
-          {% comment %} Purchase form {% endcomment %}
-          <div class="product-form-container">
-
-            {% comment %} Notify form {% endcomment %}
-            {% include 'product__notify-me-form' %}
-
-            {% comment %} Product form {% endcomment %}
-            {% unless collection_handles contains 'coming-soon' %}
-              {% include 'product__form' with 'product', type: 'product' %}
-            {% endunless %}
-          </div>
-
-          {% comment %} Description - bottom {% endcomment %}
-          {% if section.settings.product_description_position == "bottom" %}
-            {% if product.description != blank %}
-              <div class="description content has-padding-top">
-                <div class="product_info">
-                  <p class="description_title">Product Info</p>
-                  {{ product.description | split: '<!-- split -->' | first }}
-                </div>
-                <div class="cookie_care_info">
-                  <p>Cookie Care</p>
-                  <div class="container is-justify-left">
-                    <p>cookie care contents</p>
                   </div>
                 </div>
-                <div class="allergens_info">
-                  <p>Allergens</p>
-                  <div class="container is-justify-left">
+              </div>
+
+              <div class="cookie_care_info toggle-info">
+                <button class="accordion">
+                  <p class="cookie-care_title">Cookie Care</p>
+                </button>
+                
+                <div class="panel container is-justify-left">
+                  <div class="panel-padding">
+                    {% if section.settings.cookiecare_content != blank %}
+                    <p>{{ section.settings.cookiecare_content }}</p>
+                    {% else %}
+                    <p>Cookie Care</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              
+              {% if section.settings.allergens_show %}
+              <div class="allergens_info toggle-info">
+                <button class="accordion">
+                  <p class="allergens-title">Allergens</p>
+                </button>
+                
+                <div class="panel">
+                  <div class="panel-padding container is-justify-left">
                     <div class="icon-container text-align-center">
                       {% include settings.icon, name: 'icon-dairy' %}
                       <div><p>Dairy</p></div>
@@ -266,8 +272,117 @@ product__main.liquid
                   </div>
                 </div>
               </div>
+              {% endif %}
+            </div>
             {% endif %}
           {% endif %}
+
+          {% comment %} Purchase form {% endcomment %}
+          <div class="product-form-container">
+
+            {% comment %} Notify form {% endcomment %}
+            {% include 'product__notify-me-form' %}
+
+            {% comment %} Product form {% endcomment %}
+            {% unless collection_handles contains 'coming-soon' %}
+              {% include 'product__form' with 'product', type: 'product' %}
+            {% endunless %}
+          </div>
+
+          {% comment %} Description - bottom {% endcomment %}
+          {% if section.settings.product_description_position == "bottom" %}
+            {% if product.description != blank %}
+              <div class="description content has-padding-top">
+                <div class="product_info toggle-info">
+                  <button class="accordion">
+                    <p class="description_title">Product Info</p>
+                  </button>
+                  <div class="panel">
+                    <div class="panel-padding">
+                    {{ product.description | split: '<!-- split -->' | first }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cookie_care_info toggle-info">
+
+                  <button class="accordion">
+                    <p class="cookie-care_title">Cookie Care</p>
+                  </button>
+                  
+                  <div class="panel container is-justify-left">
+                    <div class="panel-padding">
+                      {% if section.settings.cookiecare_content != blank %}
+                      <p>{{ section.settings.cookiecare_content }}</p>
+                      {% else %}
+                      <p>Cookie Care</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+
+                
+                {% if section.settings.allergens_show %}
+                <div class="allergens_info toggle-info">
+                  <button class="accordion">
+                    <p class="allergens-title">Allergens</p>
+                  </button>
+                  
+                  <div class="panel">
+                    <div class="panel-padding container is-justify-left">
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-dairy' %}
+                        <div><p>Dairy</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-eggs' %}
+                        <div><p>Eggs</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-soy' %}
+                        <div><p>Soy</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-wheat' %}
+                        <div><p>Wheat</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-peanutss' %}
+                        <div><p>Peanutss</p></div>
+                      </div>
+
+                      <div class="icon-container text-align-center">
+                        {% include settings.icon, name: 'icon-treenuts' %}
+                        <div><p>Tree nuts</p></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endif %}
+
+          <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                  panel.style.maxHeight = null;
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+              });
+            }
+          </script>
 
           {% comment %} Collections, type, tags {% endcomment %}
           {% if section.settings.display_collections or section.settings.display_tags or section.settings.display_type %}
@@ -638,6 +753,22 @@ product__main.liquid
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "textarea",
+      "id": "cookiecare_content",
+      "label": "Cookie care content"
+    },
+    {
+      "type": "checkbox",
+      "id": "allergens_show",
+      "label": "Allergens Show",
+      "default": true
     },
     {
       "type": "select",
@@ -1210,6 +1341,11 @@ product__main.liquid
           "id": "button_label",
           "label": "Cookie Button",
           "default": "View All Cookies"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
         }
       ]
     },

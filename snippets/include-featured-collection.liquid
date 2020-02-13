@@ -86,7 +86,7 @@
          
     <div class="{% if layout == 'grid' %} container {% endif %}one-whole has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
 
-      <div class="featured-collection__icon_container">
+      <div class="featured-collection__icon_container ">
         <div class="featured-collection__icon">
           <p>See More Flavors</p>
           {% include settings.icon, name: "icon-finger" %}
@@ -120,7 +120,7 @@
 
     {% if object.settings.button_label != blank %}
     <div class="featured-collection__btn">
-      <a class="button button--primary ">{{ object.settings.button_label }}</a>
+      <a class="button button--primary" href="{{ object.settings.button_link }}">{{ object.settings.button_label }}</a>
     </div>
     {% endif %}
   </div>

@@ -8129,6 +8129,45 @@ ul.tabs {
   }
 }
 
+.toggle-info {
+  .accordion {
+   cursor: pointer;
+   padding: 15px 0 7px 0;
+   width: 100%;
+   border: none;
+   text-align: left;
+   outline: none;
+   font-size: 15px;
+   transition: 0.4s;
+   display: flex;
+   color: #4f2b01;
+   background-color: transparent;
+   border-bottom: 1px solid #4f2b01;
+ }
+  
+ .accordion:after {
+   content: "More +";
+   float: right;
+   margin-left: 5px;
+   position: absolute;
+   right: 20px;
+ }
+ 
+ .active:after {
+   content: "Less -";
+ }
+ 
+ .panel {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.2s ease-out;
+
+   .panel-padding {
+    padding: 18px 0px;
+   }
+ }
+}
+
 .allergens_info {
   .icon-container {
     padding-right: 30px;
@@ -10236,7 +10275,7 @@ $product-height__mobile: 195px;
   .has-thumbnail-sticker {
     display: block;
     border-bottom: $input-border-width solid transparent;
-    margin: 40px 15px!important;
+    margin: 10px!important;
   }
 
   .flickity-slider 
@@ -10274,6 +10313,10 @@ $product-height__mobile: 195px;
     font-size: 2.2rem;
     margin: auto;
     margin-bottom: 80px;
+
+    @include respond-to('medium-down') {
+      margin-bottom: 10px;
+    }
   }
 
   .featured-collection__btn {
