@@ -193,26 +193,30 @@
 		</select>
 		<div id="rc_radio_options" role="radiogroup" aria-labelledby="Purchase options">
 			{% unless subscription_only %}
-				<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
-					<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
-					<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
-						{% if discount_percentage > 0 %}
-						<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
-						{% endif %}
-						{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
-						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
-  						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
-					</label>
-					<div id="rc_onetime_options" class="rc_block rc_block__type__options">
-						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: 3 Meals</p>
-						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
-						<div class="swatch_options collection_swatches">
-							{% for option in product.options %}
-								{% include 'product__swatch', option: option %}
-							{% endfor %}
-						</div>
+			<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
+				<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
+				<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
+					{% if discount_percentage > 0 %}
+					<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
+					{% endif %}
+					{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
+					{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
+					{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+				</label>
+				<div id="rc_onetime_options" class="rc_block rc_block__type__options">		
+					<a class="button button--primary fake_addcartbtn_one" id="fake_addcartbtn_one" onclick="clickaddcart()">
+					</a>				
+					<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="meals_one">3</span> Meals</p>
+					<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
+
+					<div class="swatch_options collection_swatches">
+						{% for option in product.options %}
+							{% include 'product__options', option: option, id: '1' %}
+						{% endfor %}
 					</div>
+
 				</div>
+			</div>
 			{% endunless %}
 			<div class="rc_block rc_block__type rc_block__type__autodeliver {% if select_subscription_first %}rc_block__type--active{% endif %}" {% if subscription_only and shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
 				<input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
@@ -285,18 +289,20 @@
 
 						<div class="swatch_options collection_swatches">
 						{% for option in product.options %}
-							{% include 'product__swatch', option: option %}
+							{% include 'product__options', option: option, id: '2' %}
 						{% endfor %}
 						</div>
 					</label>
 					<div>
-						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: 3 Meals</p>
+						<a class="button button--primary fake_addcartbtn_subscribe" id="fake_addcartbtn_subscribe" onclick="clickaddcart()">
+						</a>
+						<p>{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="meals_subscribe">3</span> Meals</p>
 						<p>Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="rc_popup">
+		<div class="rc_popup" style="display:none">
 			{% if show_widget %}
 				<div class="rc_popup__hover">
 					{% if show_widget_icon %}
@@ -355,5 +361,6 @@
 			}
 		})();
 	</script>
+  
 {% endif %}
 <!-- Subscriptions Powered by ReCharge Payments: End Liquid Code -->

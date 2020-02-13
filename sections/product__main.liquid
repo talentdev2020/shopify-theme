@@ -63,8 +63,18 @@ product__main.liquid
         {% comment %} Review stars {% endcomment %}
         {% if section.settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
           <div class="product-review__wrapper text-align-center">
-            <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
-          </div> 
+            <div class="yotpo bottomLine"
+              data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+              data-domain="{{shop.permanent_domain | escape }}"
+              data-product-id="{{ product.id }}"
+              data-product-models="{{ product.id }}"
+              data-name="{{ product.title | escape }}"
+              data-url="{{ shop.url }}{{ product.url }}"
+              data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+              data-description="{{ product.description | escape }}"
+              data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+          </div>
+        </div> 
         {% endif %}
 
         {% comment %} Name {% endcomment %}
@@ -129,6 +139,7 @@ product__main.liquid
 
             {% comment %} Price {% endcomment %}
 
+            {% unless product.metafields.subscriptions.subscription_id %}
             <p class="modal_price subtitle">
               {% if collection_handles contains 'coming-soon' %}
                 {% if settings.stickers_enabled == false %}
@@ -173,13 +184,23 @@ product__main.liquid
                 {% endif %}
               {% endif %}
             </p>
+            {% endunless %}
           </div>
 
           {% comment %} Description - top {% endcomment %}
           {% if section.settings.product_description_position == "top" %}
             {% if product.description != blank %}
               <div class="description content has-padding-top">
-                {{ product.description | split: '<!-- split -->' | first }}
+                <div class="product_info">
+                  <p class="description_title">Product Info</p>
+                  {{ product.description | split: '<!-- split -->' | first }}
+                </div>
+                <div class="cookie_care_info">
+                  <p>Cookie Care</p>
+                </div>
+                <div class="allergens">
+                  <p>Allergens</p>
+                </div>
               </div>
             {% endif %}
           {% endif %}
@@ -199,8 +220,51 @@ product__main.liquid
           {% comment %} Description - bottom {% endcomment %}
           {% if section.settings.product_description_position == "bottom" %}
             {% if product.description != blank %}
-              <div class="description content bottom has-padding-top">
-                {{ product.description | split: '<!-- split -->' | first }}
+              <div class="description content has-padding-top">
+                <div class="product_info">
+                  <p class="description_title">Product Info</p>
+                  {{ product.description | split: '<!-- split -->' | first }}
+                </div>
+                <div class="cookie_care_info">
+                  <p>Cookie Care</p>
+                  <div class="container is-justify-left">
+                    <p>cookie care contents</p>
+                  </div>
+                </div>
+                <div class="allergens_info">
+                  <p>Allergens</p>
+                  <div class="container is-justify-left">
+                    <div class="one-sixth text-align-center">
+                      {% include settings.icon, name: 'icon-dairy' %}
+                      <div><p>Dairy</p></div>
+                    </div>
+
+                    <div class="one-sixth text-align-center">
+                      {% include settings.icon, name: 'icon-eggs' %}
+                      <div><p>Eggs</p></div>
+                    </div>
+
+                    <div class="one-sixth text-align-center">
+                      {% include settings.icon, name: 'icon-soy' %}
+                      <div><p>Soy</p></div>
+                    </div>
+
+                    <div class="one-sixth text-align-center">
+                      {% include settings.icon, name: 'icon-wheat' %}
+                      <div><p>Wheat</p></div>
+                    </div>
+
+                    <div class="one-sixth text-align-center">
+                      {% include settings.icon, name: 'icon-peanutss' %}
+                      <div><p>Peanutss</p></div>
+                    </div>
+
+                    <div class="one-sixth text-align-center">
+                      {% include settings.icon, name: 'icon-treenuts' %}
+                      <div><p>Tree nuts</p></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             {% endif %}
           {% endif %}
@@ -256,6 +320,7 @@ product__main.liquid
     {% if product.description contains "<!-- split -->"  %}
       <div class="product-description-split">
         <div class="description content">
+          <p class="description_title">Product Info</p>
           {{ product.description | split: '<!-- split -->' | last }}
         </div>
       </div>
