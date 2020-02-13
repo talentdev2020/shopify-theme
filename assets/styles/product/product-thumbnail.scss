@@ -285,7 +285,16 @@ $mobile-padding : 15px;
 // Banner text
 
 .sticker-text {
-  font-size: 1em;
+  font-size: 1rem;
+  font-family: 'Caveat', cursive;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.31;
+  letter-spacing: normal;
+  text-align: center;
+  color: $white;
+  
 
   @include respond-to('large-down') {
     font-size: 0.8em;

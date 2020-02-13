@@ -142,16 +142,18 @@ body.index .featured-collection-section {
   .thumbnail__caption {
 
     .product-thumbnail {
-      padding: $gutter/2 13px 0;
+      padding: $gutter/2 0 0;
     }
     .product-thumbnail__title {
+      font-family: 'Cooper Std';
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 900;
       font-stretch: normal;
       font-style: normal;
-      line-height: 1.15;
+      line-height: 1.5;
       letter-spacing: normal;
-      text-align: left;
+      text-align: center;
+      color: $purpley-grey;
       min-height: 60px;
     }
   }

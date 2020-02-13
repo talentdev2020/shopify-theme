@@ -1,0 +1,235 @@
+{% comment %}
+  Snippet can be used in section or block
+  eg. {% include 'include-testimonial' %}
+{% endcomment %}
+
+{% comment %}Assign object as block or section{% endcomment %}
+{% if type == 'block' %}
+  {% assign object = block %}
+  {% assign loop = "1,2,3,4,5,6,7,8" | split: ',' %}
+{% else %}
+  {% assign object = section %}
+  {% assign loop = section.blocks %}
+{% endif %}
+
+{% assign id = object.id %}
+{% comment %}Layout{% endcomment %}
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign animation = object.settings.animation | default: 'none' %}
+{% assign card_text = object.settings.card_text %}
+{% assign card_background = object.settings.card_background %}
+{% comment %} Content {% endcomment %}
+
+{% comment %} Advanced {% endcomment %}
+{% assign css_class = object.settings.css_class %}
+{% assign custom_css = object.settings.custom_css %}
+
+
+
+{% capture section_css -%}
+
+{%- endcapture -%}
+
+
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+    {% if width == 'wide' %}
+      width: 100%;
+    {% endif %}
+  }
+  #shopify-section-{{ id }}  section {
+    position: static;
+  }
+  #shopify-section-{{ id }}  .dual_testimonials__slider-column {
+    /*position: absolute;
+   right: 0;*/
+  }
+  {% include 'css-loop', css: section_css, id: id %}
+  {% include 'css-loop', css: custom_css, id: id %}
+{% endstyle %}
+
+<section class="section
+                {{ css_class }}
+                is-width-{{ width }}
+                {% if section.blocks.size <= 1 %}desktop-slider--disabled{% endif %}
+                has-gutter-enabled
+                "
+          {% if animation != "none" %}
+            data-scroll-class="{{ animation }}"
+          {% endif %}>
+          <div class="container">
+            <div class="dual_testimonials__text-column
+            dual_testimonials__column
+            one-half
+            medium-down--one-whole
+            column
+            has-padding-left
+            has-padding-right
+            is-flex
+            is-flex-wrap
+            is-justify-{{ object.settings.card_alignment }}
+            is-align-center
+            "
+            {% if type != 'block' %}
+              {{ object.shopify_attributes }} 
+            {% endif %}>
+
+            {% include 'square-shape' %}
+
+              <div class="dual_testimonials__text__wrapper">
+                {% if object.settings.total_reviews_text != blank %}
+                  <p class="dual_testimonials__text__total_reviews_text text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    {{ object.settings.total_reviews_text }}
+                  </p>
+                {% endif %}
+                {% if object.settings.title != blank %}
+                  <h3 class="dual_testimonials__text__heading text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    {{ object.settings.title }}
+                  </h3>
+                {% endif %}
+                {% if object.settings.subtitle != blank %}
+                  <h3 class="dual_testimonials__text__subtitle text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    {{ object.settings.subtitle }}
+                  </h3>
+                {% endif %}
+                {% if object.settings.text != blank %}
+                  <div class="dual_testimonials__text__text text-align-{{ object.settings.alignment }} content">
+                    {{ object.settings.text }}
+                  </div>
+                {% endif %}
+
+                {% if object.settings.button_label != blank %}
+                  <div class="buttons is-{{ object.settings.alignment }}">
+                    {% include 'button', label: object.settings.button_label, href: object.settings.link, style: object.settings.button_style, type: "link" %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="dual_testimonials__slider-column
+              dual_testimonials__column
+              one-half
+              medium-down--one-whole
+              column
+              is-marginless
+              is-flex
+              is-flex-wrap
+              is-justify-{{ object.settings.card_alignment }}
+              is-align-center
+              "
+                {% if type != 'block' %}
+                  {{ object.shopify_attributes }}
+                {% endif %} data-dual-testimonial-slider >
+
+                  {% for item in loop %}
+              
+                  {% assign show_review_1 = item.settings.show_review_1 | default: 'true' %}
+                  {% assign review_product_1 = all_products[item.settings.review_product_1] %}
+
+                  {% assign show_review_2 = item.settings.show_review_2 | default: 'true' %}
+                  {% assign review_product_2 = all_products[item.settings.review_product_2] %}
+              
+                  <div class="testimonial-item
+                              item--{{ item.id }}
+                              column
+                              has-images-enabled-{{ object.settings.enable_images }}
+                              testimonial-align--{{ object.settings.card_alignment }}
+                              two-fifths
+                              medium-down--one-whole" data-testimonial-index={{ forloop.index0 }} {{ item.shopify_attributes }}>
+                    <div class="testimonial__card">
+                      <div class="top-part is-flex is-flex-wrap is-justify-start is-align-center">
+                        <div class="dual_testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
+                          {% if object.settings.enable_images == true %}
+                            {% if item.settings.image_1 != blank %}
+                              {% include 'image-element', image: item.settings.image_1, alt: item.settings.image_1.alt %}
+                            {% else %}
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                          {% endif %}
+                        </div>
+                        <div class="right-part">
+                          {% if  show_review_1  and review_product_1.id %}
+                              <!--         YOTPO STAR RATINGS -->
+                                <div class="yotpo bottomLine star2" style="display:inline-block"
+                                  data-product-id="{{ review_product_1.id }}">
+                                </div>
+                                <div class="yotpo bottomLine"
+                                    data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                                    data-domain="{{shop.permanent_domain | escape }}"
+                                    data-product-id="{{ review_product_1.id }}"
+                                    data-product-models="{{ review_product_1.id }}"
+                                    data-name="{{ review_product_1.title | escape }}"
+                                    data-url="{{ shop.url }}{{ review_product_1.url }}"
+                                    data-image-url="{{ review_product_1.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                                    data-description="{{ review_product_1.description | escape }}"
+                                    data-bread-crumbs="{% for tag in review_product_1.tags %}{{ tag | escape }};{% endfor %}">
+                                </div>
+                          {% endif %}
+                          <div class="testimonial__description-title title">
+                            {{ item.settings.name_1 }}
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="testimonial__description-review">
+                        {{ item.settings.review_1 }}
+                      </div>
+              
+                    </div>
+                    <div class="testimonial__card">
+                      <div class="top-part is-flex is-flex-wrap is-justify-start is-align-center">
+                        <div class="dual_testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
+                          {% if object.settings.enable_images == true %}
+                            {% if item.settings.image_2 != blank %}
+                              {% include 'image-element', image: item.settings.image_2, alt: item.settings.image_2.alt %}
+                            {% else %}
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                          {% endif %}
+                        </div>
+                        <div class="right-part">
+                          {% if  show_review_2  and review_product_2.id %}
+                          <div class="testimonial__description__review">
+                            <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product_2.handle }}" data-id="{{ review_product_2.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
+                          </div>
+                          {% endif %}
+                          <div class="testimonial__description-title title">
+                            {{ item.settings.name_2 }}
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="testimonial__description-review">
+                        {{ item.settings.review_2 }}
+                      </div>
+              
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% if object.blocks.size > 1 %}
+                  <div class="dual_testimonial__nav-wrap">
+                    <div class="dual_testimonial__nav dual_testimonial__nav--prev">
+                        {% include 'arrow', orientation: 'left' %}
+                    </div>
+                    <div class="dual_testimonial__nav dual_testimonial__nav--next ">
+                        {% include 'arrow', orientation: 'right' %}
+                    </div>
+                  </div>
+                {% endif %}
+            </div>
+          </div>
+</section>
+
+{% comment %}JavaScript{% endcomment %}
+<script
+  type="application/json"
+  data-section-id="{{ object.id }}"
+  data-section-data
+>
+  {
+  }
+</script>
+<script data-theme-editor-load-script src="{{ 'z__jsDualTestimonials.js' | asset_url }}"></script>

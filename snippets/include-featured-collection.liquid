@@ -62,6 +62,7 @@
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
+{% comment %}  {% include 'cookies', position: 'right' %} {% endcomment %} 
 {% comment %} HTML markup {% endcomment %}
 <section class="section
                 {{ css_class }}
@@ -100,23 +101,18 @@
             {% include 'product-slider', show_gutter: show_gutter %}
           {% endif %}
         {% else %}
-          {% if collections[col].all_products_count > 0 %}
-            {% include 'product-loop', align_height: align_height, height: height %}
-          {% endif %}
+          {% comment %} Placeholder images {% endcomment %}
+          {% for i in (1..10) %} <!--@TODO make sure the section onboarding also shows slider styles -->
+            <div class="collection__item
+                one-fifth
+                medium-down--one-half
+                thumbnail column">
+              {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+              {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+            </div>
+          {% endfor %}
         {% endif %}
-      {% else %}
-        {% comment %} Placeholder images {% endcomment %}
-        {% for i in (1..10) %} <!--@TODO make sure the section onboarding also shows slider styles -->
-          <div class="collection__item
-              one-fifth
-              medium-down--one-half
-              thumbnail column">
-            {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
-            {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
+      </div>
 
     {% if object.settings.button_label != blank %}
     <div class="featured-collection__btn">
