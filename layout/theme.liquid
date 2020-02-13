@@ -82,6 +82,10 @@
   {% include 'social-meta-info' %}
   {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
   {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
+
+  <script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    </script>
 </head>
 
 {% if template.name == 'index' %}
@@ -206,7 +210,6 @@
     {% endif %}
   {% endif %}
 
-  <script async type="text/javascript" data-api-key="pubkey-zat3tMDQS54VIAGI70gsxY168tpU43" id="stamped-script-widget" src="https://cdn-stamped-io.azureedge.net/files/widget.min.js"></script>
   {% include 'subscription-theme-footer' %}
 </body>
 </html>
