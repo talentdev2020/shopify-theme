@@ -126,6 +126,9 @@ $product-height__mobile: 195px;
 }
 
 body.index .featured-collection-section {
+  .one-whole {
+    width: 100%;
+  }
   .section {
     border-top: none;
   }
@@ -169,5 +172,33 @@ body.index .featured-collection-section {
     left: 0;
   }
 
+  .featured-collection__icon {
+      position: absolute;
+      right: -70px;
+      top: 50%;
+      z-index: 5;
+      p {
+        width: 63px;
+        height: 52.1px;
+        font-family: 'Caveat';
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        text-align: left;
+        color: $dark-sky-blue;
+        transform: rotate(20deg);
+      }
 
+      .icon {
+          width: 56px;
+          height: 38px;
+          color: #000;
+          transform: rotate(10deg);
+          margin-top: -10px;
+          margin-left: -10px;
+      }
+  }
 }

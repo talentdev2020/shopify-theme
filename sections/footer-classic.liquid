@@ -16,6 +16,7 @@
 
 {% comment %} HTML markup {% endcomment %}
 <footer class="footer__container {{ css_class }}">
+  {% comment %}
   <div class="footer__scroll_to_top is-flex is-flex-wrap is-justify-center">
     <a class="scroll-to-top" href="javascript:;">
       <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
@@ -47,6 +48,7 @@
     </svg>
     </a>
   </div>
+  {% endcomment %}
   <section class="footer__content
                   section
                   is-width-wide
@@ -148,13 +150,13 @@
   </section>
   <section class="footer__extra-content section">
     <div class="container has-padding-top has-padding-bottom">
-      <div class="footer__social_icons one-third column small-down--one-whole is-flex is-justify-start is-flex-wrap">
+      <div class="footer__social_icons one-half column small-down--one-whole is-flex is-justify-start is-flex-wrap is-marginless">
         {% assign footer_only_mobile_menu = linklists[settings.footer_only_mobile_menu] %}
         <div class="footer_only_mobile_menu">
           <div class="footer_only_mobile_menu-items
                       is-flex
                       is-flex-wrap
-                      is-justify-center
+                      is-justify-start
                       ">
             {% for link in footer_only_mobile_menu.links %}
               {% if link.links == blank %}
@@ -163,7 +165,7 @@
                     {{ link.title }}
                   </a>
                   {% unless forloop.last == true %}
-                    <span class="dot"></span>
+                    <span class="line">|</span>
                   {% endunless %}
                 </div>
               {% endif %}
@@ -171,7 +173,7 @@
           </div>
         </div>
       </div>
-      <div class="footer__credits one-third  column small-down--one-whole is-justify-end">
+      <div class="footer__credits one-half  column small-down--one-whole is-justify-end is-align-end is-marginless">
         {% comment %}{{ shop.name | link_to: '/' }} {{ "now" | date: "%Y" }}  {% endcomment %}
         <p> &copy;</p>
         {{ section.settings.copyright_text }}
@@ -187,18 +189,20 @@
 
       </div>
       <hr>
+      {% comment %}
       {% if section.settings.display_payment_methods %}
         <div class="footer__payment-methods one-third column small-down--one-whole is-flex is-justify-end is-flex-wrap">
           <div class="payment-methods">
             <img src="{{ 'footer_payment_icons.png' | asset_img_url : 'master' }}" />
-            {% comment %}
+
             {% for type in shop.enabled_payment_types %}
               {{ type | payment_type_svg_tag: class:'payment-icon' }}
             {% endfor %}
-            {% endcomment %}
+
           </div>
         </div>
       {% endif %}
+      {% endcomment %}
     </div>
   </section>
 </footer>

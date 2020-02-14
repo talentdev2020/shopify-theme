@@ -28,11 +28,11 @@
   z-index: 10;
 
   @include respond-to('medium-down'){
-    padding: 0 35px;
+    padding: 0 25px;
   }
 
   @include respond-to('small-down'){
-    padding: 0 30px;
+    padding: 0 25px;
   }
 
   .icon {

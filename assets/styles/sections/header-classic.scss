@@ -7,9 +7,17 @@
   background-color: $header-background;
   transition: background-color 0.3s linear, height 0.2s linear;
   height: auto;
-  box-shadow: 0 0 26px 0 rgba(182, 182, 182, 0.25);
   background-color: #ffffff;
   margin-bottom: 0;
+
+  .section.is-width-wide {
+    width: 81%;
+    margin: 0 auto;
+  }
+
+  .header__button.has-padding-left {
+    padding-left: 24px;
+  }
 }
 
 .header__brand {
@@ -42,7 +50,12 @@
   @include flex(2 2 auto);
 
   .action-area__link {
-    padding-left: 1.5625rem;
+    padding-left: 1.15rem;
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
   }
   a {
     color: {{ settings.header_cart_badge_color }};

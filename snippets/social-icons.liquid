@@ -1,14 +1,19 @@
 <ul class="social-icons is-flex is-flex-wrap {{flex_alignment}}">
+  
+  {% if settings.instagram_link != '' %}
+    <li><a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" rel="me" target="_blank"  rel="noopener"class="icon-instagram">{% include settings.icon, name: 'instagram' %}</a></li>
+  {% endif %}
+
   {% if settings.twitter_link != '' %}
     <li><a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" rel="me" target="_blank"  rel="noopener"class="icon-twitter">{% include settings.icon, name: 'twitter' %}</a></li>
   {% endif %}
 
-  {% if settings.facebook_link != '' %}
-    <li><a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" rel="me" target="_blank"  rel="noopener"class="icon-facebook">{% include settings.icon, name: 'facebook' %}</a></li>
-  {% endif %}
-
   {% if settings.youtube_link != '' %}
     <li><a href="{{ settings.youtube_link }}" title="{{ shop.name }} on YouTube" rel="me" target="_blank"  rel="noopener"class="icon-youtube">{% include settings.icon, name: 'youtube' %}</a></li>
+  {% endif %}
+
+  {% if settings.facebook_link != '' %}
+    <li><a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" rel="me" target="_blank"  rel="noopener"class="icon-facebook">{% include settings.icon, name: 'facebook' %}</a></li>
   {% endif %}
 
   {% if settings.vimeo_link != '' %}
@@ -21,10 +26,6 @@
 
   {% if settings.tumblr_link != '' %}
     <li><a href="{{ settings.tumblr_link }}" title="{{ shop.name }} on Tumblr" rel="me" target="_blank"  rel="noopener"class="icon-tumblr">{% include settings.icon, name: 'tumblr' %}</a></li>
-  {% endif %}
-
-  {% if settings.instagram_link != '' %}
-    <li><a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" rel="me" target="_blank"  rel="noopener"class="icon-instagram">{% include settings.icon, name: 'instagram' %}</a></li>
   {% endif %}
 
   {% if settings.snapchat_link != '' %}

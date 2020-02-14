@@ -21,6 +21,7 @@
 {% assign card_text = object.settings.card_text %}
 {% assign card_background = object.settings.card_background %}
 {% comment %} Content {% endcomment %}
+{% assign fill_background_alpha = object.settings.fill_background | color_extract: 'alpha' %}
 
 {% comment %} Advanced {% endcomment %}
 {% assign css_class = object.settings.css_class %}
@@ -47,6 +48,9 @@
   #shopify-section-{{ id }}  .dual_testimonials__slider-column {
     /*position: absolute;
    right: 0;*/
+  }
+  #shopify-section-{{ id }}  .square-shape .square-shape-1 {
+    fill: {%- if text_block_background_alpha != 0 -%}{{ object.settings.fill_background }}{% endif %};
   }
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
@@ -83,6 +87,7 @@
               <div class="dual_testimonials__text__wrapper">
                 {% if object.settings.total_reviews_text != blank %}
                   <p class="dual_testimonials__text__total_reviews_text text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
+                    <img  src="{{ 'index_stars.png' | asset_img_url: '134x' }}" />
                     {{ object.settings.total_reviews_text }}
                   </p>
                 {% endif %}

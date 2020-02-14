@@ -80,9 +80,9 @@
 
   <div class="container">
     {% if object.settings.title != blank %}
-    <h3 class="featured-collection__title text-align-center is-small">
+    <h3 class="featured-collection__title text-align-center one-whole">
       <a href="{{ collections[col].url }}">{{ object.settings.title }}</a>
-    </h2>
+    </h3>
     {% endif %}
          
     <div class="{% if layout == 'grid' %} container {% endif %}one-whole has-column-padding-bottom featured-collection layout--{{ layout }} masonry--{{ object.settings.enable_masonry_layout }} is-justify-center">
