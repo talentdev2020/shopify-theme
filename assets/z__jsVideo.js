@@ -27,9 +27,9 @@ Shopify.theme.jsVideo = {
     var src;
 
     if (videoType == 'youtube') {
-      src = "https://www.youtube.com/embed/".concat(this.video_id, "?&autoplay=").concat(autoplay, "&loop=").concat(autoloop, "&playlist=").concat(this.video_id);
+      src = "https://www.youtube.com/embed/".concat(this.video_id, "?&autoplay=").concat(autoplay, "&loop=").concat(autoloop, "&playlist=").concat(this.video_id, "&showinfo=0&controls=0");
     } else {
-      src = "https://player.vimeo.com/video/".concat(this.video_id, "?autoplay=").concat(autoplay, "&loop=").concat(autoloop);
+      src = "https://player.vimeo.com/video/".concat(this.video_id, "?autoplay=").concat(autoplay, "&loop=").concat(autoloop, "&showinfo=0&controls=0");
     } // Set up element specific options
 
 

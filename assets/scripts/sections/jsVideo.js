@@ -29,9 +29,9 @@ Shopify.theme.jsVideo = {
     // Get the source of the video
     let src;
     if (videoType == 'youtube') {
-      src = `https://www.youtube.com/embed/${this.video_id}?&autoplay=${autoplay}&loop=${autoloop}&playlist=${this.video_id}`
+      src = `https://www.youtube.com/embed/${this.video_id}?&autoplay=${autoplay}&loop=${autoloop}&playlist=${this.video_id}&showinfo=0&controls=0`
     } else {
-      src = `https://player.vimeo.com/video/${this.video_id}?autoplay=${autoplay}&loop=${autoloop}`
+      src = `https://player.vimeo.com/video/${this.video_id}?autoplay=${autoplay}&loop=${autoloop}&showinfo=0&controls=0`
     }
 
     // Set up element specific options

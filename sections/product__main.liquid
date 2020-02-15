@@ -12,6 +12,15 @@ product__main.liquid
 {% assign css_class = section.settings.css_class %}
 {% assign custom_css = section.settings.custom_css %}
 
+ 
+{% assign autodeliver_form__show = false %}
+
+{% if product.metafields.subscriptions.subscription_id %}
+  {% unless product.metafields.subscriptions.is_subscription_only == 'true' %}
+    {% assign autodeliver_form__show = true %}
+  {% endunless %}
+{% endif %}
+
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
   .product-section__background {
@@ -144,58 +153,59 @@ product__main.liquid
 
             {% comment %} Price {% endcomment %}
 
-            {% unless product.metafields.subscriptions.subscription_id %}
-            <p class="modal_price subtitle">
-              {% if collection_handles contains 'coming-soon' %}
-                {% if settings.stickers_enabled == false %}
-                  {{ 'collections.general.coming_soon' | t }}
-                {% endif %}
-              {% else %}
-
-                {% comment %} Sold out {% endcomment %}
-                <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
-
-                {% comment %} Current price {% endcomment %}
-                <span class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
-                  <span class="current_price {% if product.available == false %}hidden{% endif %}">
-                    {% if variant.price > 0 %}
-                      <span class="money">{{ variant.price | money }}</span>
-                    {% else %}
-                      {{ settings.free_price_text }}
-                    {% endif %}
-                  </span>
-                </span>
-
-                {% comment %} Compare at (original) price {% endcomment %}
-                <span class="was-price">
-                  {% if variant.price < variant.compare_at_price and variant.available %}
-                    <span class="money">{{ variant.compare_at_price | money }}</span>
+            {% unless autodeliver_form__show %} 
+              <p class="modal_price subtitle">
+                {% if collection_handles contains 'coming-soon' %}
+                  {% if settings.stickers_enabled == false %}
+                    {{ 'collections.general.coming_soon' | t }}
                   {% endif %}
-                </span>
+                {% else %}
 
-                {% comment %} Size chart {% endcomment %}
-                {% if settings.size_chart != blank or meta-size-chart %}
-                  <a href="javascript:;" class="product__size-chart medium-down--hidden" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
-                  {% include 'popup-size-chart', product_id: product.id %}
-                {% endif %}
+                  {% comment %} Sold out {% endcomment %}
+                  <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
 
-                {% comment %} Savings {% endcomment %}
-                {% if section.settings.display_savings %}
-                  <span class="sale savings">
+                  {% comment %} Current price {% endcomment %}
+                  <span class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                    <span class="current_price {% if product.available == false %}hidden{% endif %}">
+                      {% if variant.price > 0 %}
+                        <span class="money">{{ variant.price | money }}</span>
+                      {% else %}
+                        {{ settings.free_price_text }}
+                      {% endif %}
+                    </span>
+                  </span>
+
+                  {% comment %} Compare at (original) price {% endcomment %}
+                  <span class="was-price">
                     {% if variant.price < variant.compare_at_price and variant.available %}
-                      {{ 'products.product.savings' | t }}  {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                      <span class="money">{{ variant.compare_at_price | money }}</span>
                     {% endif %}
                   </span>
+
+                  {% comment %} Size chart {% endcomment %}
+                  {% if settings.size_chart != blank or meta-size-chart %}
+                    <a href="javascript:;" class="product__size-chart medium-down--hidden" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
+                    {% include 'popup-size-chart', product_id: product.id %}
+                  {% endif %}
+
+                  {% comment %} Savings {% endcomment %}
+                  {% if section.settings.display_savings %}
+                    <span class="sale savings">
+                      {% if variant.price < variant.compare_at_price and variant.available %}
+                        {{ 'products.product.savings' | t }}  {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                      {% endif %}
+                    </span>
+                  {% endif %}
                 {% endif %}
-              {% endif %}
-            </p>
+              </p>
             {% endunless %}
           </div>
 
           {% comment %} Description - top {% endcomment %}
           {% if section.settings.product_description_position == "top" %}
-            {% if product.description != blank %}
+
             <div class="description content has-padding-top">
+              {% if product.description != blank %}
               <div class="product_info toggle-info">
                 <button class="accordion">
                   <p class="description_title">Product Info</p>
@@ -206,7 +216,9 @@ product__main.liquid
                   </div>
                 </div>
               </div>
+              {% endif %}
 
+              {% if section.settings.cookiecare_heading != blank %} 
               <div class="cookie_care_info toggle-info">
                 <button class="accordion">
                   <p class="cookie-care_title">Cookie Care</p>
@@ -216,13 +228,12 @@ product__main.liquid
                   <div class="panel-padding">
                     {% if section.settings.cookiecare_content != blank %}
                     <p>{{ section.settings.cookiecare_content }}</p>
-                    {% else %}
-                    <p>Cookie Care</p>
                     {% endif %}
                   </div>
                 </div>
               </div>
-              
+              {% endif %}
+
               {% if section.settings.allergens_show %}
               <div class="allergens_info toggle-info">
                 <button class="accordion">
@@ -265,7 +276,7 @@ product__main.liquid
               </div>
               {% endif %}
             </div>
-            {% endif %}
+            
           {% endif %}
 
           {% comment %} Purchase form {% endcomment %}
@@ -282,80 +293,80 @@ product__main.liquid
 
           {% comment %} Description - bottom {% endcomment %}
           {% if section.settings.product_description_position == "bottom" %}
-            {% if product.description != blank %}
-              <div class="description content has-padding-top">
-                <div class="product_info toggle-info">
-                  <button class="accordion">
-                    <p class="description_title">Product Info</p>
-                  </button>
-                  <div class="panel">
-                    <div class="panel-padding">
-                    {{ product.description | split: '<!-- split -->' | first }}
-                    </div>
+
+          <div class="description content has-padding-top">
+              {% if product.description != blank %}
+              <div class="product_info toggle-info">
+                <button class="accordion">
+                  <p class="description_title">Product Info</p>
+                </button>
+                <div class="panel">
+                  <div class="panel-padding">
+                  {{ product.description | split: '<!-- split -->' | first }}
                   </div>
                 </div>
-
-                <div class="cookie_care_info toggle-info">
-
-                  <button class="accordion">
-                    <p class="cookie-care_title">Cookie Care</p>
-                  </button>
-                  
-                  <div class="panel container is-justify-left">
-                    <div class="panel-padding">
-                      {% if section.settings.cookiecare_content != blank %}
-                      <p>{{ section.settings.cookiecare_content }}</p>
-                      {% else %}
-                      <p>Cookie Care</p>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-
-                
-                {% if section.settings.allergens_show %}
-                <div class="allergens_info toggle-info">
-                  <button class="accordion">
-                    <p class="allergens-title">Allergens</p>
-                  </button>
-                  
-                  <div class="panel">
-                    <div class="panel-padding container is-justify-left">
-                      <div class="icon-container text-align-center">
-                        {% include settings.icon, name: 'icon-dairy' %}
-                        <div><p>Dairy</p></div>
-                      </div>
-
-                      <div class="icon-container text-align-center">
-                        {% include settings.icon, name: 'icon-eggs' %}
-                        <div><p>Eggs</p></div>
-                      </div>
-
-                      <div class="icon-container text-align-center">
-                        {% include settings.icon, name: 'icon-soy' %}
-                        <div><p>Soy</p></div>
-                      </div>
-
-                      <div class="icon-container text-align-center">
-                        {% include settings.icon, name: 'icon-wheat' %}
-                        <div><p>Wheat</p></div>
-                      </div>
-
-                      <div class="icon-container text-align-center">
-                        {% include settings.icon, name: 'icon-peanutss' %}
-                        <div><p>Peanutss</p></div>
-                      </div>
-
-                      <div class="icon-container text-align-center">
-                        {% include settings.icon, name: 'icon-treenuts' %}
-                        <div><p>Tree nuts</p></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endif %}
               </div>
-            {% endif %}
+              {% endif %}
+
+              {% if section.settings.cookiecare_heading != blank %} 
+              <div class="cookie_care_info toggle-info">
+                <button class="accordion">
+                  <p class="cookie-care_title">Cookie Care</p>
+                </button>
+                
+                <div class="panel container is-justify-left">
+                  <div class="panel-padding">
+                    {% if section.settings.cookiecare_content != blank %}
+                    <p>{{ section.settings.cookiecare_content }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+
+              {% if section.settings.allergens_show %}
+              <div class="allergens_info toggle-info">
+                <button class="accordion">
+                  <p class="allergens-title">Allergens</p>
+                </button>
+                
+                <div class="panel">
+                  <div class="panel-padding container is-justify-left">
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-dairy' %}
+                      <div><p>Dairy</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-eggs' %}
+                      <div><p>Eggs</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-soy' %}
+                      <div><p>Soy</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-wheat' %}
+                      <div><p>Wheat</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-peanutss' %}
+                      <div><p>Peanutss</p></div>
+                    </div>
+
+                    <div class="icon-container text-align-center">
+                      {% include settings.icon, name: 'icon-treenuts' %}
+                      <div><p>Tree nuts</p></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+
           {% endif %}
 
           <script>
@@ -751,9 +762,16 @@ product__main.liquid
       "label": "Background image"
     },
     {
+      "type": "text",
+      "id": "cookiecare_heading",
+      "label": "Cookie Care Heading",
+      "default": "Cookie Care"
+    },
+    {
       "type": "textarea",
       "id": "cookiecare_content",
-      "label": "Cookie care content"
+      "label": "Cookie care content",
+      "default": "Cookie Care"
     },
     {
       "type": "checkbox",

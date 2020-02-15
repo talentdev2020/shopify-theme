@@ -1056,7 +1056,6 @@ Shopify.theme.responsiveVideo = {
 };
 
 var selectCallback = function selectCallback(variant, selector) {
-  console.log("selectCallback 11");
   var $product = $('.product-' + selector.product.id);
   var $notify_form = $('.notify-form-' + selector.product.id);
   var $productForm = $('.product_form, .shopify-product-form', $product);
@@ -1078,11 +1077,11 @@ var selectCallback = function selectCallback(variant, selector) {
     var meal_subscribe = document.getElementById('meals_subscribe');
 
     if (meal_one == null) {
-      console.log('meal_one = null');
+      return;
     }
 
     if (meal_subscribe == null) {
-      console.log('meal_subscribe = null');
+      return;
     }
 
     var length = variant.options.length;
