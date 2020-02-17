@@ -8,21 +8,6 @@ page-monthly-box__faq.liquid
 
 {% include 'include-faq' %}
 
-{% style %}
-
-#shopify-section-{{ section.id }} {
-  background-color : {{ section.settings.background-color }};
-}
-
-#shopify-section-{{ section.id }} section {
-     {% if section.settings.show_background_image %}
-      background: url({{ "image-montly_faq1.svg" | asset_url }}) repeat-x 50% 0 transparent;
-      background-repeat: no-repeat;
-    	background-position: right top; 
-    {% endif %}
-  }
-{% endstyle %}
-
 {% schema %}
 {
   "name": "Monthly Box Faq",

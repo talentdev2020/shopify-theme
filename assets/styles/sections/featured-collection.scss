@@ -74,7 +74,7 @@ $product-height__mobile: 195px;
   .featured-collection__title {
     font-size: 2.2rem;
     margin: auto;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 
     @include respond-to('medium-down') {
       margin-bottom: 10px;

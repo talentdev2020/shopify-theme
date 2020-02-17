@@ -7,13 +7,19 @@ include-faq.liquid
 
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
-   {% comment %}
-   #shopify-section-{{ section.id }}
-   {% endcomment %}
 
-   .faq-wrapper { 
+  #shopify-section-{{ section.id }} section{
+    {% if section.settings.show_background_image %}
+      background: url({{ "image-montly_faq1.svg" | asset_url }}) repeat-x 50% 0 transparent;
+      background-repeat: no-repeat;
+    	background-position: right top; 
+    {% endif %}
+  }
+
+  .faq-wrapper { 
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+     background-color : {{ section.settings.background-color }};
   }
 
   {% if section.blocks.size == 0 %}
