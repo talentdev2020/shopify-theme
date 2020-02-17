@@ -66,6 +66,8 @@ Shopify.theme.jsVideo = {
         _this.hideTextOnVideo($videoTextContainer);
 
         _this.hidePoster();
+
+        $video.src += "?autoplay=1";
       });
     } // Clicking anywhere on video should play the video
 
