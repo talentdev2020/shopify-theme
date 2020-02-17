@@ -1,12 +1,12 @@
 {% comment %}
 Assign object as block or section
 include-icon-with-text-button.liquid
-{% endcomment %}
+{% endcomment %} 
 {% if type == 'block' %}
   {% assign object = block %}
 {% else %}
   {% assign object = section %}
-{% endif %}
+{% endif %} 
  
 {% assign id = object.id %}
 
@@ -41,10 +41,10 @@ include-icon-with-text-button.liquid
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
 
-    {% if object.settings.background_image != blank %}
-      background: url({{ object.settings.background_image | img_url: 'original' }}) repeat-x 50% 0 transparent;
+    {% if object.settings.show_background_image %}
+      background: url({{ "image-montly_text.svg" | asset_url }}) repeat-x 50% 0 transparent;
       background-repeat: no-repeat;
-    	background-position: right top;
+    	background-position: right top; 
     {%- endif %}
   }
  

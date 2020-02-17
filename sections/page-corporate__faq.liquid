@@ -14,12 +14,13 @@ page-corporate__faq.liquid
 }
 
 #shopify-section-{{ section.id }} section{
-    {% if section.settings.background_image != blank %}
-      background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 50% 0 transparent;
+    {% if section.settings.show_background_image %}
+      background: url({{ "image-montly_faq1.svg" | asset_url }}) repeat-x 50% 0 transparent;
       background-repeat: no-repeat;
-    	background-position: right top;
-    {%- endif %}
+    	background-position: right top; 
+    {% endif %}
 }
+
 {% endstyle %}
 
 {% schema %}
@@ -57,9 +58,10 @@ page-corporate__faq.liquid
       "default": "#fafafa"
     },
     {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background image"
+      "type": "checkbox",
+      "id": "show_background_image",
+      "label": "Background Image",
+      "default": true
     },
     {
       "type": "range",

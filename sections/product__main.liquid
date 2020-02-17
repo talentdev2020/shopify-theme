@@ -29,8 +29,7 @@ product__main.liquid
     {% if section.settings.background_image != blank %}
       background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 100% 0 {{ section.settings.thumbnail_background_color }};
       background-repeat: no-repeat;
-      background-position: right 0px top 100px;
-      background-attachment: fixed;
+      background-position: right -100px top 100px;
     {%- endif %}
   } 
 
