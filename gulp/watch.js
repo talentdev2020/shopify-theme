@@ -121,6 +121,7 @@ gulp.task('combine_css', done => {
     'assets/styles/sections/top-bar.scss',
     'assets/styles/sections/video.scss',
     'assets/styles/sections/tech-specs.scss',
+    'assets/styles/sections/monthly-box.scss',
     //Templates
     'assets/styles/templates/accounts.scss',
     'assets/styles/templates/blog.scss',

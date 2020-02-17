@@ -32,6 +32,7 @@
       width: 50%;
     {%- endif %}
   }
+
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
@@ -44,7 +45,8 @@
         {% endif %}>
   <div class="container">
     <div class="one-whole column">
-
+      <div class="title">{{ object.settings.title }}</div>
+      <div class="subtitle">{{ object.settings.subtitle }}</div>
       <div class="shopify-reviews {% if settings.enable_shopify_review_comments == false %} is-hidden {% endif %}">
 
         <div class="yotpo yotpo-main-widget" 

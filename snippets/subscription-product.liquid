@@ -28,6 +28,7 @@
     	{% assign shipping_interval_unit_type = subscription_product.shipping_interval_unit_type | default: 'Days' %}
     	{% assign shipping_interval_frequency = subscription_product.shipping_interval_frequency | split: ',' | default: 30 %}
     	{% assign product_tags = product.tags | remove: ' ' | downcase %}
+
     	{% if subscription_product.is_subscription_only == 'true' or product_tags contains 'subscriptiononly' %}
     		{% assign subscription_only = true %}
     	{% else %}

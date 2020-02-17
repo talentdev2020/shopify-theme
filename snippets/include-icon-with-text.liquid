@@ -50,7 +50,7 @@ eg. {% include 'include-icon-with-text' %}
   .icon-column__text {
     color: {%- if text_alpha != 0 -%}{{ object.settings.text_color }}{%- endif -%};
   }
-
+ 
 {%- endcapture -%}
 
 {% style %}
@@ -65,11 +65,11 @@ eg. {% include 'include-icon-with-text' %}
       width: 50%;
     {% endif %}
 
-    {% if object.settings.background_image != blank %}
-      background: url({{ object.settings.background_image | img_url: 'original' }}) repeat-x 50% 0 transparent;
-      background-repeat: no-repeat;
-    	background-position: right top;
-    {%- endif %}
+    {% if object.settings.show_background_image %}	
+      background: url({{ "image-monthly-icons.svg" | asset_url }}) repeat-x 50% 0 transparent;	
+      background-repeat: no-repeat;	
+    	background-position: right top; 
+    {%- endif %}	
   }
 {% endstyle %}
 

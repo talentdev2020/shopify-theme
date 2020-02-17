@@ -1,7 +1,5 @@
 const selectCallback = function (variant, selector) {
 
-  console.log("selectCallback 11");
-
   var $product = $('.product-' + selector.product.id);
   var $notify_form = $('.notify-form-' + selector.product.id);
   var $productForm = $('.product_form, .shopify-product-form', $product);
@@ -26,12 +24,12 @@ const selectCallback = function (variant, selector) {
 
     if (meal_one == null)
     {
-        console.log('meal_one = null');
+        return;
     }
 
     if (meal_subscribe == null)
     {
-        console.log('meal_subscribe = null');
+        return;
     }
 
 

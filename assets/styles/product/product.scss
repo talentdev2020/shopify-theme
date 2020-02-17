@@ -93,22 +93,6 @@
   background-color: $product-thumb-background-color;
 }
 
-.product-thumbnail {
-  padding: $gutter/2 0;
-  line-height: 1.2;
-
-  .product-thumbnail__title {
-    color: $sale-color;
-    font-weight: 900;
-    line-height: 1.52;
-    font-size: 1.6rem;
-
-    @include respond-to('medium-down') {
-      font-size: 1rem;
-    }
-  }
-}
-
 .thumbnail-swatch {
   @include flexbox();
   padding: 3px 3px 0;
@@ -745,11 +729,60 @@
 .product__header {
   .product-review__wrapper {
     .standalone-bottomline {
-      text-align: center;
+      .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
+        float: none;
+        font-size: 19px;
 
-      .yotpo-bottomline {
-        
+        @include respond-to('medium-down') {
+          font-size: 12px;
+        }
+      }
+
+      .yotpo-bottomline.pull-left{
+        display: block;
+        text-align: center;
+        float: none;
+  
+        .text-m {
+          font-family: Montserrat;
+          font-size: 19px;
+          font-weight: 600;
+          padding-left: 10px;
+          color: black!important;
+
+          @include respond-to('medium-down') {
+            padding-left: 2px;
+            font-size: 12px;
+          }
+        }
       }
     }
   }
 }
+
+#product__reviews-section {
+  .title {
+    font-family: 'Cooper Std';
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .subtitle{
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .yotpo-display-wrapper {
+    .yotpo-regular-box {
+      .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
+        color: #163b66;
+      }
+
+      .yotpo-default-button.yotpo-icon-btn.pull-right.yotpo-hidden-mobile.write-button.write-review-button{
+        background: #163b66;
+      }
+    }
+  }
+}
+

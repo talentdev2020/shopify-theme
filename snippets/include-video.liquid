@@ -125,8 +125,6 @@
 
 {% comment %} HTML markup {% endcomment %}
 <section id="product__video-section" class="featured-video
-                has-padding-left
-                has-padding-right
                 section
                 {{ css_class }}
                 is-width-{{ width }}
@@ -198,10 +196,12 @@
         </div>
       </div>
 
+      {% comment %}
       <div class="review"> 
         <p class="review_content">{{ review_content }}</p>
         <p class="review_name">{{ review_name }}</p>
       </div>
+      {% endcomment %}
 
       <div class="container button-wrapper is-justify-center">
         <div class="buttons">
