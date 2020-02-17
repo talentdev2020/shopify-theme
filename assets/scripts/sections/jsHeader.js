@@ -13,7 +13,7 @@ Shopify.theme.jsHeader = {
     if (this.enable_overlay === true && isScreenSizeLarge()) {
       this.updateOverlayStyle(this.sectionUnderlayIsImage());
     }
-
+ 
     // Sticky header
     if (this.enable_sticky === true && isScreenSizeLarge()) {
       this.enableSticky(announcementHeight);

@@ -36,11 +36,16 @@
     {%- endif %}
   }
 
+  #shopify-section-{{ id }} .banner__text {
+    text-align: {{ heading_alignment }} !important;
+    text-transform: capitalize;
+  }
+
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
-  {% include 'banner', title: page.title, subtitle: section.settings.subtitle, image: section.settings.image %}
+  {% include 'banner', title: section.settings.title, subtitle: section.settings.subtitle, image: section.settings.image %}
 
 {% endif %}
 
@@ -70,9 +75,39 @@
     },
     {
       "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "type": "text",
       "id": "subtitle",
       "label": "Subheading",
       "default": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "justify",
+          "label": "Justify"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
     },
     {
       "type": "header",

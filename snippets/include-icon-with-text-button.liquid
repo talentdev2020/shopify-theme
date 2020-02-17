@@ -1,0 +1,99 @@
+{% comment %}
+Assign object as block or section
+include-icon-with-text-button.liquid
+{% endcomment %} 
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %} 
+ 
+{% assign id = object.id %}
+
+{% assign width = object.settings.width %}
+
+{% assign icon = object.settings.icon %}
+{% assign title = object.settings.title %}
+{% assign subtitle = object.settings.subtitle %}
+{% assign buttonlabel = object.settings.button %}
+{% assign buttonlink = object.settings.button_link %}
+
+{% assign button_color = object.settings.button_color %}
+
+
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign padding_left = object.settings.padding_left %}
+{% assign padding_right = object.settings.padding_right %}
+
+{% comment %}Advanced{% endcomment %}
+{% assign css_class = object.settings.css_class %}
+{% assign custom_css = object.settings.custom_css %}
+
+
+{% comment %}Section specific CSS{% endcomment %}
+{% capture section_css -%}
+
+{%- endcapture -%}
+
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+
+    {% if object.settings.show_background_image %}
+      background: url({{ "image-montly_text.svg" | asset_url }}) repeat-x 50% 0 transparent;
+      background-repeat: no-repeat;
+    	background-position: right top; 
+    {%- endif %}
+  }
+ 
+  .icon-with-text-button__wrapper .icon-with-text-button__button .button {
+    background-color: {{ button_color }}!important;
+  }
+ 
+  {% if width == 'wide' %}
+  #shopify-section-{{ id }} .section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+  {% endif %}
+
+  {% include 'css-loop', css: section_css, id: id %}
+  {% include 'css-loop', css: custom_css, id: id %}
+{% endstyle %}
+
+
+{% comment %} HTML markup {% endcomment %}
+<section class="section
+                {{ css_class }}
+                is-width-{{ width }}
+                ">
+  <div class="container
+              icon-with-text-button__container
+              {% if width == 'wide' or width == 'half' %}
+                equal-columns--outside-trim
+              {% endif %}">        
+        <div class="icon-with-text-button__wrapper">
+
+            {% if icon != blank %}
+            <div class="icon-with-text-button__icon">
+                {% include settings.icon, name: icon %}
+            </div>
+            {% endif %}
+
+            {% if title != blank %}
+            <div class="icon-with-text-button__txts">
+                <h2 class="icon-with-text-button__heading">{{ title }}</h2>
+                <span class="icon-with-text-button__text">{{ subtitle }}</span>
+            </div>
+            {% endif %}
+
+            {% if buttonlabel != blank %}
+            <div class="icon-with-text-button__button">
+                <a class="button button--primary" href="{{ buttonlink }}">{{ buttonlabel }}</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+ </section>

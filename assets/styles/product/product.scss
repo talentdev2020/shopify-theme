@@ -19,6 +19,10 @@
   }
 }
 
+.product-gallery__thumbnails .flickity-button {
+  display: none;
+}
+
 .product-gallery__main,
 .product-gallery__thumbnails.is-slide-nav--true {
   opacity: 0;
@@ -27,6 +31,17 @@
   &.flickity-enabled,
   &.vertical-slider-enabled {
     opacity: 1;
+  }
+}
+
+.product-gallery__main {
+  .flickity-prev-next-button {
+    top: auto;
+    bottom: 15px;
+  }
+  .flickity-button.flickity-prev-next-button.previous {
+    left: auto;
+    right: 55px;
   }
 }
 
@@ -59,16 +74,19 @@
     opacity: 1;
   }
 }
-
-.product-thumbnail {
-  padding: $gutter/2;
-  line-height: 1.2;
-}
-
-
 .product-thumbnail__vendor,
 .product-thumbnail__price {
-  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.26;
+
+  small {
+    text-transform: capitalize;
+  }
+  
+  @include respond-to('medium-down') {
+    font-size: 0.9rem;
+  }
 }
 
 .thumbnail__caption {
@@ -316,17 +334,19 @@
 ================================================== */
 
 .product-gallery {
-
+  
   &:hover .flickity-prev-next-button {
+    {% comment %}
     opacity: 1;
 
     @include respond-to('medium-down') {
       display: none;
     }
+    {% endcomment %}
   }
 
   .flickity-prev-next-button {
-    opacity: 0;
+    opacity: 1;
     transition: all 0.3s ease-in-out;
   }
 
@@ -508,6 +528,11 @@
 }
 
 .product-main {
+
+  .icon-with-text-column__column .icon {
+    color: {{ settings.regular_color }};
+  }
+
   .product_name {
     @include respond-to('medium-down') {
       font-size: 24px;
@@ -550,93 +575,214 @@
     }
   }
 
-  .product__tab--bar {
-    padding-top: 0;
-    border-radius: 50px;
-    box-shadow: 0 0 12px 0 rgba(46, 46, 46, 0.06);
+  .column-wrapper .faq-title {
+    font-size: 2.2rem;
+  }
+}
+
+#rc_container {
+  .rc_label {
+    @include respond-to('medium-down') {
+      font-size: 1rem;
+    }
+
+    .rc_price {
+      padding-right: 10px;
+
+      @include respond-to('medium-down') {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .rc_radio {
+    width: 25px;
+    height: 25px;
+
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+
+    padding: 6px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #fadc8a;
     background-color: #ffffff;
-    margin-top: 30px;
+    border-radius: 50%;
+  }
+  
+  /* appearance for checked radiobutton */
+  .rc_radio:checked {
+    background-color: #f7ba17;
+    border: 2px solid #f7ba17;
+  }
 
-    &.sticky {
-      position:fixed;
-      top:0;
-      margin: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9;
-      margin-top: 80px;
+  .swatch .swatch-element {
+    @include respond-to('medium-down') {
+      width: 48%;
+      margin: 0px 2% 8px 0;
+    }
+  }
+  .button {
+    width: 200px;
+    max-width: none;
+    height: 45px;
+    border-radius: 23px;
+
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+  }
+
+  .freeshipping_txt{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    text-align: center;
+    color: #a57096;
+    padding: 10px;
+    white-space: normal;
+  }
+  .meal_txt {
+    width: 120px;
+    font-family: Caveat;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 2.81;
+    color: #4899d4;
+    padding-left: 15px;
+
+    @include respond-to('medium-down') {
+      margin: auto;
+      padding-left: 0;
+      padding-top: 10px;
+    }
+  }
+
+  .swatch {
+    padding: 15px 10px 0px 10px;
+  }
+
+  .button-container {
+    padding: 10px;
+  }
+}
+
+.toggle-info {
+  .accordion {
+   cursor: pointer;
+   padding: 15px 0 7px 0;
+   width: 100%;
+   border: none;
+   text-align: left;
+   outline: none;
+   font-size: 15px;
+   transition: 0.4s;
+   display: flex;
+   color: #4f2b01;
+   background-color: transparent;
+   border-bottom: 1px solid #4f2b01;
+ }
+  
+ .accordion:after {
+   content: "More +";
+   float: right;
+   margin-left: 5px;
+   position: absolute;
+   right: 20px;
+ }
+ 
+ .active:after {
+   content: "Less -";
+ }
+ 
+ .panel {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.2s ease-out;
+
+   .panel-padding {
+    padding: 18px 0px;
+   }
+ }
+}
+
+.allergens_info {
+  .icon-container {
+    padding-right: 30px;
+
+    .icon {
+      height: 3rem;
+      width: 3rem;
     }
 
-    .product__bar--bar-pc {
-      .product-form-container {
-        margin-right: 10px;
-      }
-      .product-quantity-box {
-        &.purchase-details__quantity {
-          margin-top: 5px;
-          margin-bottom: 5px;
-        }
-      }
-      .purchase-details {
-        min-width: 250px;
-        .purchase-details__buttons {
-          margin-top: 5px;
-          margin-bottom: 5px;
-        }
-      }
-      .product__tab {
-        border: 0;
-        margin-bottom: 0;
-        -webkit-flex-grow: 1;
-        -moz-flex-grow: 1;
-        -ms-flex-grow: 1;
-        flex-grow: 1;
-        min-height: 70px;
-        li {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          a {
-            color: $black;
-            border: 2px solid transparent;
-            border-radius: 50px;
-            margin: 0 25px;
-            padding: 5px 15px;
-            min-width: 107px;
-            max-height: 40px;
-            text-align: center;
-          }
-          &:hover , &.is-active {
-            a {
-              border: 2px solid $border;
-            }
-          }
-        }
-      }
+    p{
+      font-family: Caveat;
+      font-weight: bold;
     }
+  }  
+}
 
-    .product__bar--bar-mobile {
-      display:none;
-      position: fixed;
-      z-index: 2;
+.product__header {
+  .product-review__wrapper {
+    .standalone-bottomline {
+      .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
+        float: none;
+        font-size: 19px;
 
-      li {
+        @include respond-to('medium-down') {
+          font-size: 12px;
+        }
+      }
+
+      .yotpo-bottomline.pull-left{
+        display: block;
         text-align: center;
-        a {
-          color: $black;
-        }
+        float: none;
+  
+        .text-m {
+          font-family: Montserrat;
+          font-size: 19px;
+          font-weight: 600;
+          padding-left: 10px;
+          color: black!important;
 
-        .icon svg
-        {
-          width: 15px;
-        }
-
-        &.is-active {
-          a{
-            color: $red;
+          @include respond-to('medium-down') {
+            padding-left: 2px;
+            font-size: 12px;
           }
         }
       }
     }
   }
 }
+
+#product__reviews-section {
+  .title {
+    font-family: 'Cooper Std';
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .subtitle{
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .yotpo-display-wrapper {
+    .yotpo-regular-box {
+      .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
+        color: #163b66;
+      }
+
+      .yotpo-default-button.yotpo-icon-btn.pull-right.yotpo-hidden-mobile.write-button.write-review-button{
+        background: #163b66;
+      }
+    }
+  }
+}
+

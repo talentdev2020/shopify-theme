@@ -1,0 +1,107 @@
+{% comment %}
+** Icon with text and button - dynamic **
+collection__icon-with-text-button.liquid
+{% endcomment %}
+
+{% include 'include-icon-with-text-button' %}
+ 
+{% schema %}
+{
+  "name": "Icon with text and Button",
+  "class": "icon-with-text-button",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_this_section",
+      "label": "Show Icon With Text Button",
+      "default": true
+    },
+    {
+        "type": "text",
+        "id": "icon",
+        "label": "Icon",
+        "default": "heart_sweet",
+        "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "#Blessed Are Those Who Give"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Title",
+        "default": "Join the movement to end hunger with love filled cookies like nun-other."
+    },
+    {
+        "type": "text",
+        "id": "button",
+        "label": "Button Label",
+        "default": "Join the movement"
+    }, 
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Backgroud color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#ffb0b2"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ] 
+} 
+{% endschema %}

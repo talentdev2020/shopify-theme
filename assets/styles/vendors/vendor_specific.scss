@@ -1,5 +1,6 @@
 /* # Vendor override styles
 ================================================== */
+$orange-yellow : #f7ba17;
 
 [data-scroll-class] {
   opacity: 0;
@@ -33,9 +34,11 @@
   left: initial;
   margin: auto;
 }
-
+ 
 .flickity-button {
   transition: background-color $transition-speed ease-in-out;
+  width: 33px;
+  height: 33px;
 }
 
 // Shopify
@@ -73,5 +76,5 @@
 //LazyFrame
 
 .lazyframe {
-  background-color: #000 !important; // Used to override styling created by LazyFrame
+  background-color:white !important; // Used to override styling created by LazyFrame
 }

@@ -11,7 +11,7 @@
     "404": {
       "title": "A Página Não Foi Encontrada",
       "subtext": "Lamentamos, mas a página que solicitou não existe.",
-      "continue_shopping_html": "Tente pesquisar ou <a href=\"/collections/all\">continuar a comprar →</a>"
+      "continue_shopping_html": "Tente pesquisar ou <a href=\"\/collections\/all\">continuar a comprar →<\/a>"
     },
     "password_page": {
       "opening_soon": "Abre Brevemente",
@@ -26,7 +26,7 @@
       "signup_form_success": "Iremos enviar-lhe um e-mail para a direita antes de abrirmos!",
       "admin_link_html": "É o dono da loja? <a href=\"\/admin\" class=\"text-link\">Inicie sessão aqui<\/a>",
       "password_link": "Entre usando a palavra-passe",
-      "powered_by_shopify_html": "Esta loja será movida <a href=\"https:\/\/www.shopify.com/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify<\/a>"
+      "powered_by_shopify_html": "Esta loja será movida <a href=\"https:\/\/www.shopify.com\/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify<\/a>"
     },
     "meta": {
       "tagged_html": "Marcado \"{{ tags }}\"",
@@ -34,7 +34,7 @@
     },
     "forms": {
       "post_error": "Nem todos os campos foram correctamente preenchidos",
-      "post_field_error_html": "O <strong>{{ field }}</strong> {{ error }}",
+      "post_field_error_html": "O <strong>{{ field }}<\/strong> {{ error }}",
       "required_field": "Indica um campo obrigatório"
     },
     "newsletter_form": {
@@ -99,7 +99,7 @@
       "next_article_html": "Seguinte",
       "tags": "Etiquetas",
       "author": "Autor",
-      "comment_meta_html": "<strong>{{ author }}</strong> em <strong><time datetime=\"{{ date }}\">{{ date }}</time></strong>"
+      "comment_meta_html": "<strong>{{ author }}<\/strong> em <strong><time datetime=\"{{ date }}\">{{ date }}<\/time><\/strong>"
     },
     "counts": {
       "comments_with_count": {
@@ -247,7 +247,7 @@
       "city": "Cidade",
       "country": "País",
       "province": "Província",
-      "zip": "Código Postal/Zip",
+      "zip": "Código Postal\/Zip",
       "phone": "Telefone",
       "set_default": "Definir como morada predefinida",
       "add": "Adicionar Morada",
@@ -387,7 +387,7 @@
       "estimated_shipping": "custo de envio estimado",
       "country": "País",
       "province": "Província",
-      "zip_code": "Código Postal/Zip",
+      "zip_code": "Código Postal\/Zip",
       "heading": "Calculadora de custos de envio ",
       "submit_button_label": "Calcular custos de envio",
       "submit_button_label_disabled": "A calcular...",
@@ -418,7 +418,7 @@
       "pick_a_currency": "Escolha uma moeda",
       "social": "Social",
       "close_window": "Fechar",
-      "designer_credits_html": "<a href=\"http://outofthesandbox.com/\" target=\"_blank\" title=\"Flex Shopify Theme by Out of the Sandbox\">Concebido por Out of the Sandbox</a>."
+      "designer_credits_html": "<a href=\"http:\/\/outofthesandbox.com\/\" target=\"_blank\" title=\"Flex Shopify Theme by Out of the Sandbox\">Concebido por Out of the Sandbox<\/a>."
     },
     "social_sharing": {
       "title": "Partilhar",

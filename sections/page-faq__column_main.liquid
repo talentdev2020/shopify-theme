@@ -1,0 +1,287 @@
+{% comment %}
+** FAQ page - static **
+- Column section
+- Page template section
+- Uses blocks
+{% endcomment %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for block in section.blocks %}
+        {% unless block.type == 'heading' or block.type == 'image' %}
+          {
+            "@type": "Question",
+            "name": "{{ block.settings.title | escape }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ block.settings.answer | strip_html }}"
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {% endunless %}
+      {% endfor %}
+    ]
+  }
+  </script>
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  #shopify-section-{{section.id}} .faq-accordion {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  {% if section.blocks.size == 0 %}
+    .faq__column-1 {
+      display: none;
+    }
+
+    .faq__column-2 {
+      width: 100%;
+    }
+  {% endif %}
+
+  {% include 'css-loop', css: section.settings.custom_css, id: section.id %}
+{% endstyle %}
+
+{% capture icon_set %}
+{% if settings.toggle_icon_style == 'carets' %}
+  {% include settings.icon, name: 'down-caret', icon_class: 'icon--rotate' %}
+{% else %}
+  {% include settings.icon, name: 'plus', icon_class: 'icon--active' %}
+  {% include settings.icon, name: 'minus' %}
+{% endif %}
+{% endcapture %}
+
+{% if page.title != blank %}
+<div class="container">
+  {% include 'heading', title: page.title, heading_tag: 'h1',  text_alignment: 'center'  %}
+</div>
+{% endif %}
+
+{% if section.blocks.size > 0 %}
+<div class="container">
+<div  class="one-fifth column small-down--one-whole">
+<nav role="navigation" class="tabbed-nav one-whole">
+    <div class="wrap">
+      <ul class="flex flex-change-2">
+      {% for block in section.blocks %}
+        {% if block.type == 'heading' %}
+            <li class="flex-1"><a href="#tab_{{ block.settings.heading_category }}">{{ block.settings.title }}</a></li> 
+        {% endif %}
+      {% endfor %}
+      </ul>                  
+    </div>       
+</nav>
+</div>
+{% endif %}
+
+
+{% if section.blocks.size > 0 %}
+<div class="tabs flex-1 four-fifths column small-down--one-whole">
+  {% for block in section.blocks %}
+    {% if block.type == 'heading' %}
+    <div id="tab_{{ block.settings.heading_category }}" class="one-whole column wrap tabbed-container 
+    {% if block.settings.heading_category == 'products' %} tabbed-container-active {% endif %}">
+    <div class="faq-accordion 
+            accordion-icon--{{ settings.toggle_icon_style }}">
+
+        <div class="flex flex-change-1 faq-contents">
+            {% assign heading_category = block.settings.heading_category %}
+            {% for block in section.blocks %}
+              {% if block.type == 'content' and heading_category == block.settings.category %}
+              <div class="groups">
+                  <dt>
+                      <button class="accordion-style--{{ settings.toggle_icon_style }} accordion__button" type="button" aria-controls="panel-{{ block.id }}" aria-expanded="false">
+                          {{ icon_set }}
+                          {{ block.settings.title }}
+                      </button>
+                      <div id="panel-{{ block.id }}" class="dd" aria-hidden="false">
+                          <div class="content">
+                              {{ block.settings.answer }}
+                          </div>
+                      </div>
+                  </dt>                
+              </div>
+              {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+</div>
+
+<script data-theme-editor-load-script src="{{ 'z__jsFAQ.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "FAQ column 1",
+  "class": "faq-template-column-1 jsFAQ",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Frequently asked question",
+      "type": "content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Provide the answer to the question here.</p>"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "products"
+        }
+      ]
+    },
+    {
+      "name": "Heading",
+      "type": "heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category title",
+          "default": "Section heading"
+        },
+        {
+          "type": "text",
+          "id": "heading_category",
+          "label": "Category identifier",
+          "default": "products"
+        }
+      ]
+    },
+    {
+      "name": "Image",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1000 x 1000px recommended"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      {
+        "type": "heading",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "heading",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      },
+      {
+        "type": "content",
+        "settings": {
+        }
+      }
+    ]
+  }
+}
+{% endschema %}
+
+{% javascript %}
+  var Tabs = {};
+
+Tabs.tabbedContainer = function(selector, containers, nav) {
+  $(selector+' #tab1').addClass('tabbed-container-active');
+  $(nav+' li:first-child a').addClass('nav-active');
+	$(nav+' li a').click(function(e) {
+		e.preventDefault();
+		$(nav+' li a').removeClass('nav-active');
+		$(this).addClass('nav-active');
+		$(containers).removeClass('tabbed-container-active');		
+		var $href = $(this).attr('href');
+		$($href).addClass('tabbed-container-active');
+
+	});
+};
+
+jQuery(document).ready(function($) {
+	Tabs.tabbedContainer('.tabs', '.tabbed-container', '.tabbed-nav');
+});
+{% endjavascript %}

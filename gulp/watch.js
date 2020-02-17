@@ -99,6 +99,7 @@ gulp.task('combine_css', done => {
     'assets/styles/sections/heading.scss',
     'assets/styles/sections/instagram.scss',
     'assets/styles/sections/icon-bar.scss',
+    'assets/styles/sections/icon-with-text-button.scss',
     'assets/styles/sections/icon-with-text-column.scss',
     'assets/styles/sections/image-with-text.scss',
     'assets/styles/sections/image-with-text-column.scss',
@@ -120,6 +121,7 @@ gulp.task('combine_css', done => {
     'assets/styles/sections/top-bar.scss',
     'assets/styles/sections/video.scss',
     'assets/styles/sections/tech-specs.scss',
+    'assets/styles/sections/monthly-box.scss',
     //Templates
     'assets/styles/templates/accounts.scss',
     'assets/styles/templates/blog.scss',

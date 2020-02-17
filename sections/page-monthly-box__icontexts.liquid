@@ -1,0 +1,320 @@
+{% comment %}
+page-monthly-box_icontexts.liquid
+{% endcomment %}
+
+{% style %}
+.monthly-box__icontext .icon-with-text-column__column .icon {
+  color: black;  
+}
+{% endstyle %}
+
+{% include 'include-icon-with-text' %}
+ 
+{% schema %}
+{
+  "name": "Monthly Box Icon Text",
+  "class": "monthly-box__icontext",
+  "settings": [
+      {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default" : "Why Subscribe?"
+        },
+        {
+          "type": "range",
+          "id": "icons_per_row",
+          "label": "Items per row",
+          "min": 1,
+          "max": 8,
+          "default": 4
+        },
+        {
+          "type": "select",
+          "id": "icon_size",
+          "label": "Icon size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "align_text",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icons",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "#CCCCCC"
+        },
+        {
+          "type": "color",
+          "id": "gradient",
+          "label": "Gradient",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_background_image",
+          "label": "Background Image",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "gradient_rotation",
+          "label": "Gradient rotation",
+          "min": 0,
+          "max": 180,
+          "step": 10,
+          "default": 0,
+          "unit": "deg"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "default": "standard",
+          "options": [
+            {
+              "value": "half",
+              "label": "Half"
+            },
+            {
+              "value": "standard",
+              "label": "Standard"
+            },
+            {
+              "value": "wide",
+              "label": "Wide"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gutter",
+          "label": "Show gutter",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Top spacing",
+          "min": 0,
+          "max": 80,
+          "default": 20,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Bottom spacing",
+          "min": 0,
+          "max": 80,
+          "default": 20,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_left",
+          "label": "Left spacing",
+          "min": 0,
+          "max": 80,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_right",
+          "label": "Right spacing",
+          "min": 0,
+          "max": 80,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "animation",
+          "label": "Animation",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "fadeIn",
+              "label": "Fade in"
+            },
+            {
+              "value": "fadeInDown",
+              "label": "Fade in down"
+            },
+            {
+              "value": "fadeInLeft",
+              "label": "Fade in left"
+            },
+            {
+              "value": "fadeInRight",
+              "label": "Fade in right"
+            },
+            {
+              "value": "slideInLeft",
+              "label": "Slide in left"
+            },
+            {
+              "value": "slideInRight",
+              "label": "Slide in right"
+            },
+            {
+              "value": "zoomIn",
+              "label": "Zoom in"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Block 1"
+        },
+        {
+          "type": "text",
+          "id": "icon_label_1",
+          "label": "Icon",
+          "placeholder": "Enter icon name",
+          "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)",
+          "default": "heart_sweet"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Heading",
+          "default": "Replace cookie guilt with giving"
+        },
+
+        {
+          "type": "richtext",
+          "id": "text_1",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Block 2"
+        },
+        {
+          "type": "text",
+          "id": "icon_label_2",
+          "label": "Icon",
+          "placeholder": "Enter icon name",
+          "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)",
+          "default": "icon-dots"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Heading",
+          "default": "40 million people are hungry in the United States."
+        },
+
+        {
+          "type": "richtext",
+          "id": "text_2",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Block 3"
+        },
+        {
+          "type": "text",
+          "id": "icon_label_3",
+          "label": "Icon",
+          "placeholder": "Enter icon name",
+          "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)",
+          "default": "icon-milk"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "Heading",
+          "default": "Your milk is lonely"
+        },
+
+        {
+          "type": "richtext",
+          "id": "text_3",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Block 4"
+        },
+        {
+          "type": "text",
+          "id": "icon_label_4",
+          "label": "Icon",
+          "placeholder": "Enter icon name",
+          "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)",
+          "default": "icon-vector_smart"
+        },
+        {
+          "type": "text",
+          "id": "title_4",
+          "label": "Heading",
+          "default": "Enjoy nun puns forever, and ever, and ever, amen"
+        },
+
+        {
+          "type": "richtext",
+          "id": "text_4",
+          "label": "Text"
+        }
+  ]
+}
+{% endschema %}

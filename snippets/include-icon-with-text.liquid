@@ -40,21 +40,21 @@ eg. {% include 'include-icon-with-text' %}
   }
 
   .icon-column__title {
-    color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- endif -%};
+    color: {%- if text_alpha != 0 -%}{{ object.settings.text_color }}{%- endif -%};
   }
 
   .icon {
-    fill: {%- if icon_alpha != 0 -%}{{ block.settings.icon_color }}{%- endif -%};
+    fill: {%- if icon_alpha != 0 -%}{{ object.settings.icon_color }}{%- endif -%};
   }
 
   .icon-column__text {
-    color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- endif -%};
+    color: {%- if text_alpha != 0 -%}{{ object.settings.text_color }}{%- endif -%};
   }
-
+ 
 {%- endcapture -%}
 
 {% style %}
-  #shopify-section-{{ block.id }} {
+  #shopify-section-{{ object.id }} {
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
     padding-left: {{ padding_left }}px;
@@ -64,6 +64,12 @@ eg. {% include 'include-icon-with-text' %}
     {% elsif width == 'half' %}
       width: 50%;
     {% endif %}
+
+    {% if object.settings.show_background_image %}	
+      background: url({{ "image-monthly-icons.svg" | asset_url }}) repeat-x 50% 0 transparent;	
+      background-repeat: no-repeat;	
+    	background-position: right top; 
+    {%- endif %}	
   }
 {% endstyle %}
 
@@ -80,129 +86,101 @@ eg. {% include 'include-icon-with-text' %}
                   equal-columns--outside-trim
                 {% endif %}">
        <div class="container is-justify-center">
-        <h1 class="icon-with-text__title">{{ block.settings.title }}</h1>
+        <h1 class="icon-with-text__title">{{ object.settings.title }}</h1>
        </div>           
   <div class="container is-justify-center">
       <div class="icon-with-text-column__column
                   {% if show_gutter %}
                     has-gutter
                   {% endif %}
-                  column
-                  has-padding
-                  {% include 'column-width', value: block.settings.icons_per_row %}
-                  text-align-{{ block.settings.align_text }}
-                  medium-down--one-whole">
+                  {% include 'column-width', value: object.settings.icons_per_row %}
+                  text-align-{{ object.settings.align_text }}
+                  medium-down--one-half">
 
         {%- capture icon_size -%}
-          is-{{ block.settings.icon_size }}
+          is-{{ object.settings.icon_size }}
         {%- endcapture -%}
 
-        {% include settings.icon, name: block.settings.icon_label_1, icon_class: icon_size %}
+        {% include settings.icon, name: object.settings.icon_label_1, icon_class: icon_size %}
 
-        {% if block.settings.title_1 != blank or block.settings.text_1 != blank %}
+        {% if object.settings.title_1 != blank or object.settings.text_1 != blank %}
           <div class="icon-column__text ">
-            <p class="icon-column__title">{{ block.settings.title_1 }}</p>
-            {{ block.settings.text_1 }}
+            <p class="icon-column__title">{{ object.settings.title_1 }}</p>
+            {{ object.settings.text_1 }}
           </div>
         {% endif %}
 
-        {% if block.settings.button_label_1 != blank %}
-          <div class="icon-column__action has-padding-top">
-            {% include 'button', label: block.settings.button_label_1, href: block.settings.link_1, style: block.settings.button_style, type: "link" %}
-          </div>
-        {% endif %}
-      </div>
-      {% if block.settings.icons_per_row > 1 %}
+      </div> 
+      {% if object.settings.icons_per_row > 1 %}
       <div class="icon-with-text-column__column
                   {% if show_gutter %}
                     has-gutter
                   {% endif %}
-                  column
-                  has-padding
-                  {% include 'column-width', value: block.settings.icons_per_row %}
-                  text-align-{{ block.settings.align_text }}
-                  medium-down--one-whole">
+                  {% include 'column-width', value: object.settings.icons_per_row %}
+                  text-align-{{ object.settings.align_text }}
+                  medium-down--one-half">
 
         {%- capture icon_size -%}
-          is-{{ block.settings.icon_size }}
+          is-{{ object.settings.icon_size }}
         {%- endcapture -%}
 
-        {% include settings.icon, name: block.settings.icon_label_2, icon_class: icon_size %}
+        {% include settings.icon, name: object.settings.icon_label_2, icon_class: icon_size %}
 
-        {% if block.settings.title_2 != blank or block.settings.text_2 != blank %}
+        {% if object.settings.title_2 != blank or object.settings.text_2 != blank %}
           <div class="icon-column__text ">
-            <p class="icon-column__title">{{ block.settings.title_2 }}</p>
-            {{ block.settings.text_2 }}
+            <p class="icon-column__title">{{ object.settings.title_2 }}</p>
+            {{ object.settings.text_2 }}
           </div>
         {% endif %}
 
-        {% if block.settings.button_label_2 != blank %}
-          <div class="icon-column__action has-padding-top">
-            {% include 'button', label: block.settings.button_label_2, href: block.settings.link_2, style: block.settings.button_style, type: "link" %}
-          </div>
-        {% endif %}
       </div>
       {% endif %}
-      {% if block.settings.icons_per_row > 2 %}
+      {% if object.settings.icons_per_row > 2 %}
       <div class="icon-with-text-column__column
                   {% if show_gutter %}
                     has-gutter
                   {% endif %}
-                  column
-                  has-padding
-                  {% include 'column-width', value: block.settings.icons_per_row %}
-                  text-align-{{ block.settings.align_text }}
-                  medium-down--one-whole">
+                  {% include 'column-width', value: object.settings.icons_per_row %}
+                  text-align-{{ object.settings.align_text }}
+                  medium-down--one-half">
 
         {%- capture icon_size -%}
-          is-{{ block.settings.icon_size }}
+          is-{{ object.settings.icon_size }}
         {%- endcapture -%}
 
-        {% include settings.icon, name: block.settings.icon_label_3, icon_class: icon_size %}
+        {% include settings.icon, name: object.settings.icon_label_3, icon_class: icon_size %}
 
-        {% if block.settings.title_3 != blank or block.settings.text_3 != blank %}
+        {% if object.settings.title_3 != blank or object.settings.text_3 != blank %}
           <div class="icon-column__text ">
-            <p class="icon-column__title">{{ block.settings.title_3 }}</p>
-            {{ block.settings.text_3 }}
+            <p class="icon-column__title">{{ object.settings.title_3 }}</p>
+            {{ object.settings.text_3 }}
           </div>
         {% endif %}
 
-        {% if block.settings.button_label_3 != blank %}
-          <div class="icon-column__action has-padding-top">
-            {% include 'button', label: block.settings.button_label_3, href: block.settings.link_3, style: block.settings.button_style, type: "link" %}
-          </div>
-        {% endif %}
       </div>
       {% endif %}
-      {% if block.settings.icons_per_row > 3 %}
+      {% if object.settings.icons_per_row > 3 %}
         <div class="icon-with-text-column__column
                     {% if show_gutter %}
                       has-gutter
                     {% endif %}
-                    column
-                    has-padding
-                    {% include 'column-width', value: block.settings.icons_per_row %}
-                    text-align-{{ block.settings.align_text }}
-                    medium-down--one-whole">
+                    {% include 'column-width', value: object.settings.icons_per_row %}
+                    text-align-{{ object.settings.align_text }}
+                    medium-down--one-half">
 
           {%- capture icon_size -%}
-            is-{{ block.settings.icon_size }}
+            is-{{ object.settings.icon_size }}
           {%- endcapture -%}
 
-          {% include settings.icon, name: block.settings.icon_label_4, icon_class: icon_size %}
+          {% include settings.icon, name: object.settings.icon_label_4, icon_class: icon_size %}
 
-          {% if block.settings.title_4 != blank or block.settings.text_4 != blank %}
+          {% if object.settings.title_4 != blank or object.settings.text_4 != blank %}
             <div class="icon-column__text ">
-              <p class="icon-column__title title">{{ block.settings.title_4 }}</p>
-              {{ block.settings.text_4 }}
+              <p class="icon-column__title">{{ object.settings.title_4 }}</p>
+              {{ object.settings.text_4 }}
             </div>
           {% endif %}
 
-          {% if block.settings.button_label_4 != blank %}
-            <div class="icon-column__action has-padding-top">
-              {% include 'button', label: block.settings.button_label_4, href: block.settings.link_4, style: block.settings.button_style, type: "link" %}
-            </div>
-          {% endif %}
         </div>
       {% endif %}
   </div>

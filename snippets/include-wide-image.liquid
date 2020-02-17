@@ -1,0 +1,45 @@
+{% comment %}
+include-wide-image.liquid
+{% endcomment %}
+
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign pc-image = object.settings.background_image %}
+{% assign mobile-image = object.settings.background_image_mobile %}
+
+<style>
+  .mobile-background {
+    display: none;
+  }
+
+  @media only screen and (max-width: 798px) {
+    {% if mobile-image != blank %}
+      .desktop-background {
+        display: none;
+      }
+      .mobile-background {
+        display: block;
+      }
+    {% endif %}
+  }
+</style>
+
+<div class="wide-image__wrapper">
+    <div class="desktop-background">
+    {% if image != blank %}
+        {% include 'image-element', image: pc-image, alt: pc-image.alt, stretch_width: true %}
+    {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+    </div>
+
+    {% if mobile-image != blank %}
+    <div class="mobile-background">
+      {% include 'image-element', image: mobile-image, alt: mobile-image.alt, stretch_width: true %}
+    </div>
+    {% endif %}
+</div>

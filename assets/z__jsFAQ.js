@@ -2,20 +2,47 @@
 
 Shopify.theme.jsFAQ = {
   init: function init() {
-    var $faqHeading = $('.faq-accordion > dt > button');
-    $('.faq-accordion > dd').attr('aria-hidden', true);
+    var $faqHeading = $('.faq-accordion > .faq-contents > .groups dt > button');
+    console.log("clicked");
+    $('.faq-accordion > .faq-contents > .groups > .dd').attr('aria-hidden', true);
     $faqHeading.attr('aria-expanded', false);
     $faqHeading.on('click activate', function () {
-      var faqTitle = $(this);
       var faqIcons = $(this).find('.icon');
       var state = $(this).attr('aria-expanded') === 'false' ? true : false;
+
+      if (state == true) {
+        var array = $('.faq-accordion > .faq-contents > .groups > dt > button').toArray();
+        var length = array.length;
+
+        var _loop = function _loop() {
+          var faq_this = $(array[i]);
+          var currentstate = faq_this.attr('aria-expanded') === 'false' ? true : false;
+
+          if (!currentstate) {
+            faq_this.attr('aria-expanded', false);
+            faq_this.next().slideToggle(function () {
+              var faqIcons1 = faq_this.find('.icon');
+
+              if (faqIcons1.hasClass('icon--active')) {
+                faqIcons1.toggleClass('icon--active');
+              }
+            });
+            faq_this.next().attr('aria-hidden', true);
+          }
+        };
+
+        for (var i = 0; i < length; i++) {
+          _loop();
+        }
+      }
+
       $(this).attr('aria-expanded', state);
-      $(this).parent().next().slideToggle(function () {
+      $(this).next().slideToggle(function () {
         if (faqIcons.hasClass('icon--active')) {
           faqIcons.toggleClass('icon--active');
         }
       });
-      $(this).parent().next().attr('aria-hidden', !state);
+      $(this).next().attr('aria-hidden', !state);
       return false;
     });
     $faqHeading.on('keydown', function (event) {
@@ -27,7 +54,7 @@ Shopify.theme.jsFAQ = {
     });
   },
   unload: function unload() {
-    $('.faq-accordion > dt > button').off('click activate');
-    $('.faq-accordion > dt > button').off('keydown');
+    $('.faq-accordion > .faq-contents > .groups > dt > button').off('click activate');
+    $('.faq-accordion > .faq-contents > .groups > dt > button').off('keydown');
   }
 };

@@ -25,6 +25,14 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Caveat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/caveat.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../assets/caveat.woff') format('woff'); /* Modern Browsers */
+  } 
+
 /* # Custom Styles
 ================================================== */
 

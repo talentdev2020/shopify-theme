@@ -1034,8 +1034,9 @@ $textarea-with-secondary-btn-style: {{ settings.button_secondary_border_radius |
 
       .input.is-primary-btn-style {
         border-radius: 0;
-        border: 2px solid #fbc100;
-        font-size: 1.1875rem;
+        border: none;
+        font-size: 1rem;
+        min-height: 40px;
         @include respond-to('medium-down') {
           height: 2.625rem;
         }
@@ -1043,16 +1044,19 @@ $textarea-with-secondary-btn-style: {{ settings.button_secondary_border_radius |
       .button {
         width: 100%;
         border-radius: 0;
-        background-color: #fbc100;
-        border-color: #fbc100;
+        background-color: $inpute-bkg;
+        border: none;
         font-weight: bold;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.26;
         letter-spacing: 0.19px;
         text-align: center;
-        color: #2e2e2e;
-        height: 2.625em;
+        color: $body-text;
+        height: 2.5rem;
+        min-height: 40px;
+        border: none;
+        font-size: 14px;
       }
     }
   }

@@ -113,6 +113,11 @@
               ">
     <div class="columns one-whole">
       <div class="rich-text__content card-content">
+        {% if object.settings.image != blank %}
+        <div class="rich-text__text has-columns--{{ columns }} text-align-{{ text_alignment }} ">
+          {% include 'image-element', image: object.settings.image, alt: object.settings.image.alt, stretch_width: false, additional_classes: 'rich_text__image' %}
+        </div>
+        {% endif %}
 
         {% if title != blank %}
           <h2 class="rich-text__heading title text-align-{{ heading_alignment }} {% if heading_size > 50 %}mobile-shrink-text{% endif %}"><span>{{ title }}</span></h2>

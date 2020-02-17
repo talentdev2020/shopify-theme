@@ -84,6 +84,7 @@
   <div class="container is-justify-center">
     <div class="image-with-text-column__title 
                 text-align-{{ section.settings.align_text }}
+                one-whole
               ">
       {% if section.settings.title != blank %}
         <h3 class="image-with-text__heading text-align-{{ section.settings.alignment }} is-{{ section.settings.heading_size }}" >
@@ -100,6 +101,7 @@
 
     {% for block in section.blocks %}
       <div class="image-with-text-column__column
+                  image-with-text-column__column_{{ forloop.index }}
                   {% if show_gutter %}
                     has-gutter
                   {% endif %}
@@ -121,7 +123,9 @@
 
         {% if block.settings.title != blank or block.settings.text != blank %}
           <div class="image-column__text ">
+            {% if block.settings.title != blank %}
             <h3 class="image-column__title title">{{ block.settings.title }}</h3>
+            {% endif %}
             {{ block.settings.text }}
           </div>
         {% endif %}

@@ -3,5 +3,7 @@
     <span class="product-thumbnail__vendor">{{ product.vendor }}</span>
   {% endif %}
 
-  <a href="{{ product.url | within: collection }}" class="product-thumbnail__title highlight__text">{{ product.title }}</a>
+  <a href="{{ product.url | within: collection }}" class="product-thumbnail__title headline">
+    {{ product.title }}
+  </a>
 </div>

@@ -4,8 +4,8 @@
     "theme_name": "Flex",
     "theme_author": "Out of the Sandbox",
     "theme_version": "1.1.3",
-    "theme_documentation_url": "https:\/\/help.outofthesandbox.com/",
-    "theme_support_url": "https:\/\/help.outofthesandbox.com\/hc\/en-us\/requests/new"
+    "theme_documentation_url": "https:\/\/help.outofthesandbox.com\/",
+    "theme_support_url": "https:\/\/help.outofthesandbox.com\/hc\/en-us\/requests\/new"
   },
   {
     "name": "Layout",
@@ -32,7 +32,7 @@
         "type": "select",
         "id": "header_layout",
         "label": "Header",
-        "info": "[Preview options](https://help.outofthesandbox.com/hc/en-us/articles/360022225073#header-settings-and-styles)",
+        "info": "[Preview options](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360022225073#header-settings-and-styles)",
         "options": [
           {
             "value": "centered",
@@ -57,7 +57,7 @@
         "type": "select",
         "id": "footer_layout",
         "label": "Footer",
-        "info": "[Preview options](https://help.outofthesandbox.com/hc/en-us/articles/360021506133#footer-styles)",
+        "info": "[Preview options](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360021506133#footer-styles)",
         "options": [
           {
             "value": "none",
@@ -81,15 +81,16 @@
       {
         "type": "header",
         "content": "Templates"
-      },      {
+      },
+      {
         "type": "paragraph",
-        "content": "Select a default template for each page. Alternate templates can also be used for individual pages. [Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022795733#product-page-templates)"
+        "content": "Select a default template for each page. Alternate templates can also be used for individual pages. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360022795733#product-page-templates)"
       },
       {
         "type": "select",
         "id": "product_layout",
         "label": "Product page",
-        "info": "[Preview options](https://help.outofthesandbox.com/hc/en-us/articles/360022795733#default-product-template)",
+        "info": "[Preview options](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360022795733#default-product-template)",
         "options": [
           {
             "value": "classic",
@@ -626,7 +627,7 @@
         "type": "text",
         "id": "button_cart_icon",
         "label": "Icon",
-        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)"
+        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360021570294)"
       },
       {
         "type": "select",
@@ -1206,7 +1207,7 @@
       {
         "type": "color",
         "id": "cart_background_color",
-        "label": "Mini cart/drawer background",
+        "label": "Mini cart\/drawer background",
         "default": "#fff"
       },
       {
@@ -2089,7 +2090,7 @@
         "type": "checkbox",
         "id": "collection_swatches",
         "label": "Show color swatches",
-        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](/admin/settings/files).",
+        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](\/admin\/settings\/files).",
         "default": true
       },
       {
@@ -2157,7 +2158,7 @@
         "id": "show_dynamic_checkout_button",
         "label": "Show dynamic checkout button",
         "default": false,
-        "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/en/manual/sell-online/online-store/dynamic-checkout)"
+        "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https:\/\/help.shopify.com\/en\/manual\/sell-online\/online-store\/dynamic-checkout)"
       },
       {
         "type": "checkbox",
@@ -2229,7 +2230,7 @@
       },
       {
         "type": "paragraph",
-        "content": "After enabling reviews you will need to install the free [Shopify Product Reviews](https://apps.shopify.com/product-reviews) app."
+        "content": "After enabling reviews you will need to install the free [Shopify Product Reviews](https:\/\/apps.shopify.com\/product-reviews) app."
       },
       {
         "type": "checkbox",
@@ -2287,7 +2288,7 @@
         "type": "radio",
         "id": "product_form_style",
         "label": "Options style",
-        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](/admin/settings/files).",
+        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](\/admin\/settings\/files).",
         "options": [
           {
             "value": "dropdown",
@@ -2298,7 +2299,7 @@
             "label": "Color swatches"
           }
         ],
-        "default": "dropdown"
+        "default": "swatches"
       },
       {
         "type": "select",
@@ -2330,7 +2331,7 @@
         "type": "richtext",
         "id": "notify_me_description",
         "label": "Text",
-        "default": "<p>Notify me when this product is available:</p>"
+        "default": "<p>Notify me when this product is available:<\/p>"
       },
       {
         "type": "header",
@@ -2408,7 +2409,7 @@
         "type": "checkbox",
         "id": "display_tos_checkbox",
         "label": "Show 'agree to terms' checkbox",
-        "info": "If the dynamic payment button is enabled, customers will be able to bypass these terms. [Learn more](https://help.outofthesandbox.com/hc/en-us/articles/115007101208-Terms-Conditions-on-the-Cart-Page) ",
+        "info": "If the dynamic payment button is enabled, customers will be able to bypass these terms. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115007101208-Terms-Conditions-on-the-Cart-Page) ",
         "default": false
       },
       {
@@ -2472,7 +2473,7 @@
       },
       {
         "type": "paragraph",
-        "content": "If native multi-currencies is configured on your store, the theme currency converter settings below will be disabled. [Learn more](https://help.shopify.com/en/manual/payments/shopify-payments/multi-currency/setup)"
+        "content": "If native multi-currencies is configured on your store, the theme currency converter settings below will be disabled. [Learn more](https:\/\/help.shopify.com\/en\/manual\/payments\/shopify-payments\/multi-currency\/setup)"
       },
       {
         "type": "select",
@@ -2518,7 +2519,7 @@
       {
         "type": "text",
         "id": "disqus_shortname",
-        "label": "[DISQUS](http:\/\/help.disqus.com/en/articles/1717111-what-s-a-shortname\/) shortname"
+        "label": "[DISQUS](http:\/\/help.disqus.com\/en\/articles\/1717111-what-s-a-shortname\/) shortname"
       }
     ]
   },
@@ -2529,79 +2530,79 @@
         "type": "text",
         "id": "twitter_link",
         "label": "Twitter link",
-        "info": "https://twitter.com/shopify"
+        "info": "https:\/\/twitter.com\/shopify"
       },
       {
         "type": "text",
         "id": "facebook_link",
         "label": "Facebook link",
-        "info": "https://facebook.com/shopify"
+        "info": "https:\/\/facebook.com\/shopify"
       },
       {
         "type": "text",
         "id": "youtube_link",
         "label": "YouTube link",
-        "info": "https://youtube.com/user/shopify"
+        "info": "https:\/\/youtube.com\/user\/shopify"
       },
       {
         "type": "text",
         "id": "vimeo_link",
         "label": "Vimeo link",
-        "info": "https://vimeo.com/shopify"
+        "info": "https:\/\/vimeo.com\/shopify"
       },
       {
         "type": "text",
         "id": "pinterest_link",
         "label": "Pinterest link",
-        "info": "https://pinterest.com/shopify"
+        "info": "https:\/\/pinterest.com\/shopify"
       },
       {
         "type": "text",
         "id": "tumblr_link",
         "label": "Tumblr link",
-        "info": "https://shopify.tumblr.com/"
+        "info": "https:\/\/shopify.tumblr.com\/"
       },
       {
         "type": "text",
         "id": "instagram_link",
         "label": "Instagram link",
-        "info": "https://instagram.com/shopify"
+        "info": "https:\/\/instagram.com\/shopify"
       },
       {
         "type": "text",
         "id": "snapchat_link",
         "label": "Snapchat link",
-        "info": "https://www.snapchat.com/add/shopify"
+        "info": "https:\/\/www.snapchat.com\/add\/shopify"
       },
       {
         "type": "text",
         "id": "houzz_link",
         "label": "Houzz link",
-        "info": "https://www.houzz.com/shopify"
+        "info": "https:\/\/www.houzz.com\/shopify"
       },
       {
         "type": "text",
         "id": "linkedin_link",
         "label": "LinkedIn link",
-        "info": "https://linkedin.com/company/shopify"
+        "info": "https:\/\/linkedin.com\/company\/shopify"
       },
       {
         "type": "text",
         "id": "dribbble_link",
         "label": "Dribbble link",
-        "info": "https://dribbble.com/shopify"
+        "info": "https:\/\/dribbble.com\/shopify"
       },
       {
         "type": "text",
         "id": "behance_link",
         "label": "Behance link",
-        "info": "https://behance.net/shopify"
+        "info": "https:\/\/behance.net\/shopify"
       },
       {
         "type": "text",
         "id": "flickr_link",
         "label": "Flickr link",
-        "info": "https://www.flickr.com/photos/shopify/"
+        "info": "https:\/\/www.flickr.com\/photos\/shopify\/"
       },
       {
         "type": "text",

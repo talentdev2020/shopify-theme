@@ -16,6 +16,57 @@ const selectCallback = function (variant, selector) {
     var notifyMessage = Shopify.translation.email_content + variant.name + ' | ' + notifyUrl + '?variant=' + variant.id;
   }
 
+  console.log(variant);
+
+  if (variant) {
+    var meal_one = document.getElementById('meals_one'); 
+    var meal_subscribe = document.getElementById('meals_subscribe'); 
+
+    if (meal_one == null)
+    {
+        return;
+    }
+
+    if (meal_subscribe == null)
+    {
+        return;
+    }
+
+
+    var length = variant.options.length;
+
+    for (var i = 0; i < length; i++)
+    { 
+      if (variant.options[i])
+      {
+        switch(variant.options[i]) {
+          case "6-Pack":
+            {
+              meal_one.innerHTML = 2;
+              meal_subscribe.innerHTML = 2;
+
+              $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked",true);  
+              $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked",true);   
+              $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked",true);   
+
+            }
+            break;
+          case "12-Pack":
+            {
+              meal_one.innerHTML = 3;
+              meal_subscribe.innerHTML = 3;
+
+              $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked",true);  
+              $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked",true);   
+              $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked",true);   
+            }
+            break;
+          default:
+        }
+      }
+    }
+  }
+
   if ($notifyFormInputs.hasClass('customer--true')) {
     var notifyCustomerEmail = Shopify.translation.customer_email;
     var notifyEmailInput = `

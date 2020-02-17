@@ -11,6 +11,8 @@
         left: -44px;
         width: 50%;
         z-index: -1;
+        max-width: 100%;
+
     }
 
     .dual_testimonials__text__total_reviews_text {
@@ -22,6 +24,13 @@
         letter-spacing: normal;
         text-align: left;
         color: $purpley-grey;
+        @include flexbox();
+        @include align-items(flex-end);
+        @include justify-content(flex-start);
+
+        img {
+            margin-right: 12px;
+        }
     }
     .dual_testimonials__text__heading {
         font-size: 35px;
@@ -77,16 +86,23 @@
         .testimonial__card {
             position:relative;
             width: 100%;
-            max-width: 282px;
+            min-width: 282px;
             height: 177px;
             border-radius: 5px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
             background-color: #fff;
             margin-bottom: $gutter;
             padding: 14px 22px;
+            @include respond-to('medium-down') {
+                min-width: inherit;
+                max-width: 282px;
+            }
 
             .top-part {
                 margin-bottom: 13px;
+            }
+            .right-part {
+                margin-left: 10px;
             }
 
             .dual_testimonial__image {

@@ -1,4 +1,5 @@
 {% comment %}
+  product.liquid
   Defaults to /sections/product-template.liquid, but default can be changed in Theme Settings > Layout > Product page default template
 {% endcomment %}
 
@@ -8,6 +9,7 @@
     <section class="section__wrapper
                     section
                     is-width-wide
+                    section__breadcrumb
                     ">
       <div class="container">
 
@@ -57,6 +59,7 @@
     <section class="section
                     is-width-wide
                     has-padding-top
+                    section__breadcrumb
                     ">
       <div class="container has-padding-left has-padding-right">
         <div class="one-whole column breadcrumb__container is-flex is-justify-space-between is-align-center">
@@ -100,6 +103,7 @@
                     is-width-standard
                     has-padding-top
                     has-padding-bottom
+                    section__breadcrumb
                     ">
       <div class="container">
         <div class="one-whole column is-flex is-justify-space-between is-align-center">
@@ -125,7 +129,6 @@
               {% endif %}
             </div>
           {% endif %}
-
         </div>
       </div>
     </section>
@@ -137,6 +140,7 @@
         {% section 'product__sidebar' %}
         {% section 'product__main' %}
         {% section 'product__recommendations' %}
+        {% section 'product__faq' %}
       </div>
     </section>
   </div>

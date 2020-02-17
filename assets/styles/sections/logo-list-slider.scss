@@ -54,6 +54,9 @@
         height: 36px;
       }
     }
+    body.index .logo-list-slider__nav-wrapper {
+      display: none !important;
+    }
   }
   
   .desktop-slider--disabled {
@@ -66,7 +69,7 @@
       }
     }
     .logo-list-slider__nav-wrapper {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -102,4 +105,10 @@
       text-align: center;
     }
   }
+}
+
+body.index .logo-list-slider {
+  background: url('{{ "text-with-icon-bkg.svg" | asset_url }}') no-repeat -75px 0 transparent;
+  background-size: calc(100% + 100px) auto;
+  z-index: 3;
 }

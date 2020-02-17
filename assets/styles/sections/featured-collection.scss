@@ -1,5 +1,7 @@
 /* # Featured collection
 ================================================== */
+$soft-pink : #ffb0b2;
+$dark-sky-blue : #4899d4;
 $product-review__height : 26px;
 
 $product-width__desktop : 250px;
@@ -17,99 +19,116 @@ $product-height__mobile: 195px;
     background: $white;
   }
   .product-thumbnail {
-    padding: $gutter 0 $gutter;
+    padding: 8px 0;
   }
 
-  .featured-collection__morelink {
-    border-bottom-color: transparent!important;    
+  .product-thumbnail__title.headline {
+    font-size: 1rem;
   }
 
-  .featured-collection__morelink  {
-    max-width: 218px !important;
-    height: 45px !important;
-  }
-
-  .flickity-prev-next-button {
-    @include respond-to('medium-down') {
-      display: none;
-    }
-  }
-
-  .image-element__wrap img {
-    width: $product-width__desktop;
-    height: $product-height__desktop;
-
-    @include respond-to('medium-down') {
-      width: $product-width__mobile;
-      height: $product-height__mobile;
-    }
+  .product-review__wrapper{
+    text-align: left;
   }
 
   .flickity-viewport {
     box-shadow: inset 0 $input-border-width/(-2) 0 $cart-border-color;
   }
-  .product-thumbnail__title,
-  .product-thumbnail__price {
-    color : $black;
-    text-align: left;
-    display: block;
-    font-size: 1.2rem;
-    @include respond-to('medium-down') {
-      font-size: 1rem;
-    }
-  }
 
   .has-thumbnail-sticker {
     display: block;
     border-bottom: $input-border-width solid transparent;
+    margin: 10px!important;
   }
 
   .flickity-slider 
   {
     .has-thumbnail-sticker {
-      min-height : 100%;
-    }
-  }
-
-  .product-review__wrapper {
-    min-height: $product-review__height;
-  }
-  /*.has-thumbnail-sticker:hover {
-    border-bottom: $input-border-width solid $red;
-
-    .product-thumbnail__title {
-      font-weight: bold;
-    }
-  }*/
-
-  .flickity-button {
-    display: none;
-
-    @include respond-to('medium-down') {
-      display: block;
-    }
-  }
-
-  .featured-collection-slider__nav--next {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    top: 45%;
-    right: 10%;
-
-    @include respond-to('medium-down') {
-      display: block;
+      // min-height : 100%;
     }
   }
 }
 
 .block__featured-collection {
+
+  .flickity-prev-next-button.previous {
+    left: -50px;
+    color:black;
+    background-color: #f7ba17;
+    @include respond-to('medium-down') {
+      display: none;
+    }
+  }
+  .flickity-prev-next-button.next {
+    right: -50px;
+    color:black;
+    background-color: #f7ba17;
+    @include respond-to('medium-down') {
+      display: none;
+    }
+  }
+
   .product-thumbnail__review-stars{
     display: none;
+  }
+
+  .featured-collection__title {
+    font-size: 2.2rem;
+    margin: auto;
+    margin-bottom: 50px;
+
+    @include respond-to('medium-down') {
+      margin-bottom: 10px;
+    }
+  }
+
+  .featured-collection__btn {
+    margin: auto;
+
+    .button {
+      width: 266px;
+      max-width: none;
+      height: 50px;
+      border-radius: 25px;
+      margin: 20px;
+      background-color: $soft-pink;
+    }
+  }
+
+  .featured-collection__icon_container {
+    @include respond-to('medium-down') {
+      display: none;
+    }
+  }
+
+  .featured-collection__icon{
+    position: absolute;
+    right: -100px;
+    top: 50%;
+
+    p {
+      width: 50px;
+      font-family: 'Caveat';
+      color: $dark-sky-blue;
+      transform: rotate(15deg);
+    } 
+
+    .icon {
+      width: 57px;
+      height: 38px;
+      color: $black;
+    }
+  }
+
+  .footer-tag {
+    font-weight: 600;
+    a {color: black;}
   }
 }
 
 body.index .featured-collection-section {
+  .one-whole {
+    width: 100%;
+  }
   .section {
     border-top: none;
   }
@@ -151,5 +170,35 @@ body.index .featured-collection-section {
     position: absolute;
     margin: 3px;
     left: 0;
-}
+  }
+
+  .featured-collection__icon {
+      position: absolute;
+      right: -70px;
+      top: 50%;
+      z-index: 5;
+      p {
+        width: 63px;
+        height: 52.1px;
+        font-family: 'Caveat';
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        text-align: left;
+        color: $dark-sky-blue;
+        transform: rotate(20deg);
+      }
+
+      .icon {
+          width: 56px;
+          height: 38px;
+          color: #000;
+          transform: rotate(10deg);
+          margin-top: -10px;
+          margin-left: -10px;
+      }
+  }
 }

@@ -12,6 +12,7 @@ $banner-badge-height: 50px !default;
   img {
     @include object-fit(cover);
     height: 100%;
+    object-position: bottom;
   }
 
   &.is-small {
@@ -20,18 +21,17 @@ $banner-badge-height: 50px !default;
       height: 30vh;
 
       @include respond-to('medium-down') {
-        height: auto;
+        height: 300px;
       }
     }
   }
 
   &.is-medium {
-
     .image-element__wrap {
-      height: 60vh;
+      height: auto;
 
       @include respond-to('medium-down') {
-        height: auto;
+        height: 400px;
       }
     }
   }
@@ -41,7 +41,7 @@ $banner-badge-height: 50px !default;
       height: 90vh;
 
       @include respond-to('medium-down') {
-        height: auto;
+        height: 500px;
       }
     }
   }
@@ -77,7 +77,8 @@ $banner-badge-height: 50px !default;
 
 .banner__text {
   margin: auto;
-  max-width: 900px;
+  max-width: $site-max-width;
+  width: $site-width;
 }
 
 .banner__heading {
@@ -89,7 +90,7 @@ $banner-badge-height: 50px !default;
   color: {{ settings.banner_heading_color }};
 
   @include respond-to('small-down') {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
 

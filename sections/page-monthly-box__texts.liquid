@@ -1,0 +1,88 @@
+{% comment %}
+page-monthly-box__texts.liquid
+{% endcomment %}
+
+{% include 'include-icon-with-text-button' %}
+
+{% schema %}
+{
+  "name": "Text with Background",
+  "class": "text-with_background",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_this_section",
+      "label": "Show Icon With Text Button",
+      "default": true
+    },
+     {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Eat Cookies, Give Cookies, Make<br>Cookie Sandwiches, And Love <br>More People With A Meal."
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Title",
+        "default": "For every box we’ll donate 2 meals to our partner soup <br> kitchens. Subscribe for a 3, 6, 12 month contribution to end <br> hunger with us deliciously!"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Backgroud color",
+        "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background_image",
+      "label": "Background Image",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ] 
+} 
+{% endschema %}

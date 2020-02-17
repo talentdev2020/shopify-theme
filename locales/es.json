@@ -11,7 +11,7 @@
     "404": {
       "title": "Página no encontrada",
       "subtext": "Lo sentimos, pero la página solicitada no existe.",
-      "continue_shopping_html": "Prueba a buscar o <a href=\"/collections/all\">sigue comprando →</a>"
+      "continue_shopping_html": "Prueba a buscar o <a href=\"\/collections\/all\">sigue comprando →<\/a>"
     },
     "password_page": {
       "opening_soon": "Próxima apertura",
@@ -26,7 +26,7 @@
       "signup_form_success": "Le enviaremos un correo electrónico correcta antes de abrir!",
       "admin_link_html": "Le enviaremos un correo electrónico correcta antes de abrir! <a href=\"\/admin\" class=\"text-link\">Entre aquí<\/a>",
       "password_link": "Entrar usando la contraseña",
-      "powered_by_shopify_html": "Esta tienda estará propulsado por <a href=\"https:\/\/www.shopify.com/\" target=\"_blank\">Shopify<\/a>"
+      "powered_by_shopify_html": "Esta tienda estará propulsado por <a href=\"https:\/\/www.shopify.com\/\" target=\"_blank\">Shopify<\/a>"
     },
     "meta": {
       "tagged_html": "Etiquetado \"{{ tags }}\"",
@@ -34,7 +34,7 @@
     },
     "forms": {
       "post_error": "No todos los campos han sido rellenados correctamente",
-      "post_field_error_html": "El <strong>{{ field }}</strong> {{ error }}",
+      "post_field_error_html": "El <strong>{{ field }}<\/strong> {{ error }}",
       "required_field": "Indica un campo obligatorio"
     },
     "newsletter_form": {
@@ -99,7 +99,7 @@
       "next_article_html": "Siguiente",
       "tags": "Etiquetas",
       "author": "Autor",
-      "comment_meta_html": "<strong>{{ author }}</strong> en <strong><time datetime=\"{{ date }}\">{{ date }}</time></strong>"
+      "comment_meta_html": "<strong>{{ author }}<\/strong> en <strong><time datetime=\"{{ date }}\">{{ date }}<\/time><\/strong>"
     },
     "counts": {
       "comments_with_count": {
@@ -418,7 +418,7 @@
       "pick_a_currency": "Elige una moneda",
       "social": "Social",
       "close_window": "Cerrar",
-      "designer_credits_html": "<a href=\"http://outofthesandbox.com/\" target=\"_blank\" title=\"Flex Shopify Theme by Out of the Sandbox\">Diseñado por Out of the Sandbox</a>."
+      "designer_credits_html": "<a href=\"http:\/\/outofthesandbox.com\/\" target=\"_blank\" title=\"Flex Shopify Theme by Out of the Sandbox\">Diseñado por Out of the Sandbox<\/a>."
     },
     "social_sharing": {
       "title": "Compartir",
