@@ -12,6 +12,7 @@ $banner-badge-height: 50px !default;
   img {
     @include object-fit(cover);
     height: 100%;
+    object-position: bottom;
   }
 
   &.is-small {
@@ -76,7 +77,8 @@ $banner-badge-height: 50px !default;
 
 .banner__text {
   margin: auto;
-  max-width: 900px;
+  max-width: $site-max-width;
+  width: $site-width;
 }
 
 .banner__heading {

@@ -24,6 +24,13 @@
         letter-spacing: normal;
         text-align: left;
         color: $purpley-grey;
+        @include flexbox();
+        @include align-items(flex-end);
+        @include justify-content(flex-start);
+
+        img {
+            margin-right: 12px;
+        }
     }
     .dual_testimonials__text__heading {
         font-size: 35px;

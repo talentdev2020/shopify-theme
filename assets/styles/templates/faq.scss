@@ -3,17 +3,16 @@
 
 .page-faq__column-wrap {
   width: 100%;
-  max-width: 850px;
 }
 
 .faq-contents {
 
   .groups {
-    width: 48%;
+    width: 98%;
     margin: 0 1% 20px 1%;
 
     @include respond-to('medium-down') {
-      width: 100%;
+      width: 98%;
       margin: 0 1% 10px 1%;
     }
   }
@@ -163,4 +162,61 @@
 
 .accordion [aria-expanded="true"] small {
   transform: translateY(-60%) rotate(270deg);
+}
+
+
+.faq-page {
+  .tabs {
+    position: relative;
+  }
+  .tabbed-container {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 1px;
+    overflow: hidden;
+  }
+  .tabbed-container.tabbed-container-active {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    height: auto;
+  }
+
+  ul.flex-change-2 {
+    li.flex-1 {
+      margin-bottom: 23px;
+      a {
+        font-size: 16px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: #a79580;
+
+        &.nav-active {
+          color: $body-text;
+        }
+      }
+    }
+  }
+
+
+  .banner__text.text-align-center {
+    padding: 10px;
+  }
+
+  .rich-text__text .image-element__wrap {
+    max-width: 91px !important;
+  }
+  .rich-text__text p {
+    max-width: 427px !important;
+  }
+  .rich-text__content .buttons .button {
+    max-width: 266px !important;
+  }
 }
