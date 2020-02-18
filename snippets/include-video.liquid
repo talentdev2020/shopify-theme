@@ -28,6 +28,10 @@
 {% assign pretext = object.settings.pretext %}
 {% assign title = object.settings.title %}
 {% assign subtitle = object.settings.subtitle %}
+{% assign background_color = object.settings.background_color | default: 'rgba(0,0,0,0)' %}
+{% assign under_heading_color = object.settings.under_heading_color | default: 'rgba(0,0,0,0)' %}
+{% assign under_title = object.settings.under_title %}
+{% assign under_rich_text = object.settings.under_rich_text %}
 
 {% assign review_content = object.settings.review_content %}
 {% assign review_name = object.settings.review_name %}
@@ -69,6 +73,10 @@
 {% assign preheading_alpha = object.settings.heading_color  | color_extract: 'alpha' %}
 {% assign heading_alpha = object.settings.subheading_color | color_extract: 'alpha' %}
 {% assign subheading_alpha = object.settings.pretext_color | color_extract: 'alpha' %}
+{% assign background_alpha = object.settings.pretext_color | color_extract: 'alpha' %}
+{% assign under_heading_alpha = object.settings.under_heading_color | color_extract: 'alpha' %}
+
+{% assign cookies_position = object.settings.cookies_position %}
 
 {% comment %} Section specific CSS {% endcomment %}
 {%- capture section_css -%}
@@ -96,6 +104,11 @@
 .video__text-container .hidden {
   display: none;
 }
+
+.under-title h3 {
+  color: {% if under_heading_alpha != 0 %}{{ under_heading_color }}{% else %}{{ settings.regular_color }}{% endif %}
+}
+
 {%- endcapture -%}
 
 {% style %}
@@ -111,12 +124,18 @@
     padding-bottom: {{ padding_bottom }}px;
     padding-left: {{ padding_left }}px;
     padding-right: {{ padding_right }}px;
+    position: relative;
+    overflow: hidden;
 
     {% if width == 'wide' %}
       width: 100%;
     {% elsif width == 'half' %}
       width: 50%;
     {% endif %}
+  }
+
+  #shopify-section-{{ id }}  .wave-shape .wave-shape-1 {
+    fill: {%- if background_alpha != 0 -%}{{ background_color }}{% endif %};
   }
 
   {% include 'css-loop', css: section_css, id: id %}
@@ -132,6 +151,12 @@
         {% if animation != "none" %}
           data-scroll-class="{{ animation }}"
         {% endif %}>
+  {% include 'wave-down-shape' %}
+  {% if cookies_position != blank %}
+  {% unless cookies_position == 'none' %}
+    {% include 'cookies2', position: cookies_position %}
+  {% endunless %}
+  {% endif %}
   <div class="container
               video__container
               {% if width == 'wide' or width == 'half' %}
@@ -202,6 +227,20 @@
         <p class="review_name">{{ review_name }}</p>
       </div>
       {% endcomment %}
+      {% if under_title != blank %}
+        <div class="under-title is-flex is-justify-center is-align-center">
+          <h3 class="video-title is-small">
+            {{ under_title }}
+          </h3>
+        </div>
+      {% endif %}
+
+      {% if under_rich_text != blank %}
+        <div class="under-rich-text is-flex is-justify-center is-align-center">
+            {{ under_rich_text }}
+        </div>
+      {% endif %}
+
 
       <div class="container button-wrapper is-justify-center">
         <div class="buttons">

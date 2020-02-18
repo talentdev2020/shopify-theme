@@ -1,0 +1,16 @@
+{% comment %}
+Optional value
+background_color: <string>
+{% endcomment %}
+
+{% assign wave_shape_background_color = wave_shape_background_color | default: '#f6f2ed' %}
+<div class="wave-shape">
+<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 136 104">
+    <defs>
+        <style>
+            .wave-shape-1{fill: {{ wave_shape_background_color }}}
+        </style>
+    </defs>
+    <path id="Path_57532" d="M1366-484.968H0V509.8s174.364 29.773 351.783 39.7 248.153-132.091 439.787-48.44 154.065-43.011 318.146-52.936S1366 474.751 1366 474.751z" class="wave-shape-1" data-name="Path 57532" transform="translate(0 484.968)"/>
+</svg>
+</div>

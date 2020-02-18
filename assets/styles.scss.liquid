@@ -14366,8 +14366,8 @@ body.page-press {
 .team-section {
 
     .image-element__wrap img {
-        max-width: 150px;
-        margin: 35px auto 35px;
+      max-width: 200px;
+      margin: 0 auto;
     }
     .person-column__text {
         font-size: 16px;
@@ -14381,7 +14381,7 @@ body.page-press {
       .person-column__title {
         font-size: 16px !important;
         font-weight: 600;
-        color: #f83547;
+        color: $purpley-grey;
         margin-bottom: 3px;
       }
     }
@@ -15994,6 +15994,18 @@ $play-icon-size: 81px;
       margin-right: 7px;
     }
   }
+
+  .buttons .button {
+    width: 180px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: 0.19px;
+    text-align: center;
+  }
 }
 
 .review {
@@ -16033,6 +16045,24 @@ $play-icon-size: 81px;
     }
   }
 }
+
+.under-title {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.under-rich-text p {
+  max-width: 584px;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: $body-text;
+}
+
 
 .product__tech-specs-section {
     .product-tech_specs {
@@ -16130,6 +16160,104 @@ $play-icon-size: 81px;
     }
 }
 
+.monthly-box-page {
+    .Monthly-box_products-section {
+        .product {
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+            .column {
+                &:hover {
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    position: absolute;
+                    top: -5px;
+                }
+            }
+
+            .featured-product__images {
+                margin-bottom: 0px;
+            }
+            .top_badge {
+                background-color: #f1f9ff;
+                min-height: 40px;
+                height: 40px;
+
+                p {
+                    color: #a57096;
+                    font-family: Caveat;
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 1.88;
+                    text-align: center;
+                }
+            }
+            @include respond-to($medium-down) {
+                max-width: none;
+            }
+
+            .modal_price.subtitle {
+                position: absolute;
+                background-color: white;
+                padding: 5px 10px;
+                border-bottom-right-radius: 15px;
+
+                span {
+                    font-size: 19px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+            .product-gallery__main {
+                opacity: 1;
+            }
+
+            .featured-product__details {
+                background-color: white;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                padding: 20px;
+
+                .product-thumbnail__title {
+                    font-size: 19px;
+                    text-align: center;
+                    color: #a57096;
+                    margin-bottom: 0;
+                }
+            } 
+            
+            .button--add-to-cart {
+                width:100%;
+                border-radius: 25px;
+
+                .text {
+                    font-weight: bold;
+                }
+            }
+
+
+            .select-container {
+                label.label{
+                    font-size: 16px;
+                    text-align: center;
+                    color: #191919;
+                }
+
+                select {
+                    border-radius: 25px;
+                    border: solid 2px #bce0fd;
+                    width: 100%;
+                    height: 45px;
+                    text-align: center;
+                    line-height: 1;
+                    outline: 0;
+                    padding: 0.65em 2.5em 0.55em 0.75em;
+                }
+            }
+        }
+    }
+}
 /* # Accounts
 ================================================== */
 
@@ -16219,20 +16347,6 @@ $play-icon-size: 81px;
 
 }
 
-
-.cookies-bgr {
-  position: absolute;
-  max-width: 210px;
-  display: block;
-  
-  &.right {
-    right: 0;
-  }
-  &.left {
-    left: 0;
-    transform: scale(-1,1);
-  }
-}
 /* # Blog
 ================================================== */
 
@@ -17677,3 +17791,124 @@ $subtotal-bg-color: #F2F2F2;
 
 h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
 { font-family: 'Cooper Std' !important; }
+
+/* # Cookies
+================================================== */
+.cookies-bgr {
+    position: absolute;
+    max-width: 210px;
+    display: block;
+    
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+      transform: scale(-1,1);
+    }
+  }
+
+.cookies2-bgr {
+    position: absolute;
+    max-width: 387px;
+    display: block;
+    
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+      transform: scale(-1,1);
+    }
+  }
+
+  .cookies3-bgr {
+    position: absolute;
+    max-width: 254px;
+    display: block;
+    
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+      transform: scale(-1,1);
+    }
+  }
+/* # Our mission page
+================================================== */
+.page-ourmission {
+    .block__rich-text {
+        margin-bottom: 30px;
+    }
+    .rich-text__heading {
+        margin-bottom: 55px;
+    }
+    .rich-text__text p {
+        max-width: 244px;
+        margin: 0 auto;
+    }
+    .wave-shape {
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        svg {
+            width: 100vw;
+            min-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    .cookies3-bgr {
+        top:-30px;
+    }
+    .team-section .image-with-text__text p {
+        max-width: 532px;
+        margin-bottom: 50px;
+    }
+
+    .meet-culinary-expert {
+
+        .image-element__wrap {
+            height: 250px;
+            width: 250px;
+        }
+        .image-with-text__image-column {
+            width: 30%;
+            margin: 105px auto;
+        }
+        .image-with-text__text-column {
+            width: 70%;
+        }
+
+        .image-with-text__text p {
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-align: left;
+            color: $body-text;
+          }
+    }
+    .blessed-are-those {
+        .image-element__wrap {
+            max-width: 91px !important;
+            margin: 0 auto 50px;
+        }
+        .rich-text__heading {
+            margin-bottom: 12px;
+        }
+        .rich-text__text p {
+            max-width: 427px;
+        }
+        .button {
+            width: 266px;
+            height: 50px;
+        }
+    }
+}

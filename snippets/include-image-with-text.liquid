@@ -17,6 +17,8 @@ eg. {% include 'include-image-with-text' %}
 {% assign padding_bottom = object.settings.padding_bottom %}
 {% assign animation = object.settings.animation %}
 {% assign image_position = object.settings.image_position %}
+{% assign cookies_position = object.settings.cookies_position %}
+{% assign css_class = object.settings.css_class %}
 
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
@@ -30,6 +32,11 @@ eg. {% include 'include-image-with-text' %}
 {% endstyle %}
 
 {% comment %} HTML markup {% endcomment %}
+{% if cookies_position != blank %}
+{% unless cookies_position == 'none' %}
+  {% include 'cookies2', position: cookies_position %}
+{% endunless %}
+{% endif %}
 <section class="section
                 {{ css_class }}
                 is-width-{{ width }}
@@ -46,6 +53,7 @@ eg. {% include 'include-image-with-text' %}
                 {% if animation != "none" %}
                   data-scroll-class="{{ animation }}"
                 {% endif %}>
+
   <div class="container is-justify-space-between">
 
     {% comment %} Is the color set to transparent? {% endcomment %}

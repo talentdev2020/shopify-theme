@@ -38,3 +38,124 @@
 
 h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
 { font-family: 'Cooper Std' !important; }
+
+/* # Cookies
+================================================== */
+.cookies-bgr {
+    position: absolute;
+    max-width: 210px;
+    display: block;
+    
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+      transform: scale(-1,1);
+    }
+  }
+
+.cookies2-bgr {
+    position: absolute;
+    max-width: 387px;
+    display: block;
+    
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+      transform: scale(-1,1);
+    }
+  }
+
+  .cookies3-bgr {
+    position: absolute;
+    max-width: 254px;
+    display: block;
+    
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+      transform: scale(-1,1);
+    }
+  }
+/* # Our mission page
+================================================== */
+.page-ourmission {
+    .block__rich-text {
+        margin-bottom: 30px;
+    }
+    .rich-text__heading {
+        margin-bottom: 55px;
+    }
+    .rich-text__text p {
+        max-width: 244px;
+        margin: 0 auto;
+    }
+    .wave-shape {
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        svg {
+            width: 100vw;
+            min-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    .cookies3-bgr {
+        top:-30px;
+    }
+    .team-section .image-with-text__text p {
+        max-width: 532px;
+        margin-bottom: 50px;
+    }
+
+    .meet-culinary-expert {
+
+        .image-element__wrap {
+            height: 250px;
+            width: 250px;
+        }
+        .image-with-text__image-column {
+            width: 30%;
+            margin: 105px auto;
+        }
+        .image-with-text__text-column {
+            width: 70%;
+        }
+
+        .image-with-text__text p {
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-align: left;
+            color: $body-text;
+          }
+    }
+    .blessed-are-those {
+        .image-element__wrap {
+            max-width: 91px !important;
+            margin: 0 auto 50px;
+        }
+        .rich-text__heading {
+            margin-bottom: 12px;
+        }
+        .rich-text__text p {
+            max-width: 427px;
+        }
+        .button {
+            width: 266px;
+            height: 50px;
+        }
+    }
+}
