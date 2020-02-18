@@ -8228,7 +8228,11 @@ ul.tabs {
   }
 }
 
-
+.medium-down--hide-cookie_bg {
+  @include respond-to('medium-down') {
+    background-image: none!important;
+  }
+}
 /* # Product form
 ================================================== */
 
@@ -15577,6 +15581,7 @@ $search-item-border: {{ settings.border_color }};
 ================================================== */
 
 $play-icon-size: 81px;
+
 .featured-video.is-width-half.has-video-added {
 
   @include respond-to('medium-down') {
@@ -15826,6 +15831,11 @@ $play-icon-size: 81px;
       }
     }
   }
+}
+
+.video-header-wave {
+  position: relative;
+  z-index: 6;
 }
 
 .product__tech-specs-section {

@@ -29,7 +29,7 @@ Shopify.theme.jsVideo = {
     // Get the source of the video
     let src;
     if (videoType == 'youtube') {
-      src = `https://www.youtube.com/embed/${this.video_id}?&autoplay=${autoplay}&loop=${autoloop}&playlist=${this.video_id}&showinfo=0&controls=0`
+      src = `https://www.youtube.com/embed/${this.video_id}`
     } else {
       src = `https://player.vimeo.com/video/${this.video_id}?autoplay=${autoplay}&loop=${autoloop}&showinfo=0&controls=0`
     }
@@ -53,6 +53,7 @@ Shopify.theme.jsVideo = {
         if ($video.find('iframe').length > 1) {
           $($video.find('iframe').first().remove());
         }
+        $($video.find('iframe')[0]).prop('allow', 'autoplay; encrypted-media');
       }
     });
 
@@ -67,9 +68,12 @@ Shopify.theme.jsVideo = {
      */
     if (this.button) {
       $playButton.on('click', () =>  {
+        //  $('body #lazyframe-undefined').prop('allow', 'autoplay; encrypted-media');
+
+      $video.find('iframe')[0].src += "?autoplay=1";
+      
         this.hideTextOnVideo($videoTextContainer);
-        this.hidePoster();
-        $video.src += "?autoplay=1";
+        this.hidePoster();      
       })
     }
 

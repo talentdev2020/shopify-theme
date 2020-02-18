@@ -43,7 +43,6 @@
 {% style %}
   #shopify-section-{{ id }} {
     padding-top: {{ padding_top }}px;
-    padding-bottom: {{ padding_bottom }}px;
     {% if width == 'wide' %}
       width: 100%;
     {% endif %}
@@ -51,6 +50,7 @@
     background-color: {{ object.settings.background }};
   }
   #shopify-section-{{ id }}  section {
+    padding-bottom: {{ padding_bottom }}px;
     position: relative;
   }
   {% include 'css-loop', css: section_css, id: id %}
@@ -148,6 +148,11 @@
     {% endfor %}
   </div>
 </section>
+{% if section.settings.show_wave_border %}
+<div class="product-header-wave">
+  {% include 'include-wave_background', color: 'white' %}
+</div>
+{% endif %}
 
 {% comment %}JavaScript{% endcomment %}
 <script

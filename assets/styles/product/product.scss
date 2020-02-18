@@ -786,3 +786,8 @@
   }
 }
 
+.medium-down--hide-cookie_bg {
+  @include respond-to('medium-down') {
+    background-image: none!important;
+  }
+}
