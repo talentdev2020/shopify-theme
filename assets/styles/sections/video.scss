@@ -2,6 +2,7 @@
 ================================================== */
 
 $play-icon-size: 81px;
+
 .featured-video.is-width-half.has-video-added {
 
   @include respond-to('medium-down') {
@@ -263,6 +264,11 @@ $play-icon-size: 81px;
       }
     }
   }
+}
+
+.video-header-wave {
+  position: relative;
+  z-index: 6;
 }
 
 .under-title {

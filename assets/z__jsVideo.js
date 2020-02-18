@@ -27,7 +27,7 @@ Shopify.theme.jsVideo = {
     var src;
 
     if (videoType == 'youtube') {
-      src = "https://www.youtube.com/embed/".concat(this.video_id, "?&autoplay=").concat(autoplay, "&loop=").concat(autoloop, "&playlist=").concat(this.video_id, "&showinfo=0&controls=0");
+      src = "https://www.youtube.com/embed/".concat(this.video_id);
     } else {
       src = "https://player.vimeo.com/video/".concat(this.video_id, "?autoplay=").concat(autoplay, "&loop=").concat(autoloop, "&showinfo=0&controls=0");
     } // Set up element specific options
@@ -49,6 +49,8 @@ Shopify.theme.jsVideo = {
         if ($video.find('iframe').length > 1) {
           $($video.find('iframe').first().remove());
         }
+
+        $($video.find('iframe')[0]).prop('allow', 'autoplay; encrypted-media');
       }
     }); // Set poster image if it exists
 
@@ -63,11 +65,12 @@ Shopify.theme.jsVideo = {
 
     if (this.button) {
       $playButton.on('click', function () {
+        //  $('body #lazyframe-undefined').prop('allow', 'autoplay; encrypted-media');
+        $video.find('iframe')[0].src += "?autoplay=1";
+
         _this.hideTextOnVideo($videoTextContainer);
 
         _this.hidePoster();
-
-        $video.src += "?autoplay=1";
       });
     } // Clicking anywhere on video should play the video
 

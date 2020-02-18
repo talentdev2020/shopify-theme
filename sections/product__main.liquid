@@ -20,14 +20,15 @@ product__main.liquid
     {% assign autodeliver_form__show = true %}
   {% endunless %}
 {% endif %}
-
+ 
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
   .product-section__background {
     background-color: {{ section.settings.thumbnail_background_color }};
 
-    {% if section.settings.background_image != blank %}
-      background: url({{ section.settings.background_image | img_url: 'original' }}) repeat-x 100% 0 {{ section.settings.thumbnail_background_color }};
+    {% if section.settings.background_image %}
+      background: url({{ "image-product-upper-right.svg" | asset_url }}) repeat-x 100% 0 {{ section.settings.thumbnail_background_color }};
+
       background-repeat: no-repeat;
       background-position: right -100px top 100px;
     {%- endif %}
@@ -36,7 +37,7 @@ product__main.liquid
   @media only screen and (max-width: 798px)
   {
     .product-section__background {
-      background-position: unset;
+      background-image: none;
     }
   }
 
@@ -44,7 +45,7 @@ product__main.liquid
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
   }
-
+ 
   .section--has-sidebar-option.has-sidebar-enabled {
     {% if width == 'wide' -%}
       width: 100%;
@@ -444,6 +445,12 @@ product__main.liquid
   </div>
 </section>
 
+{% if section.settings.show_wave_border %}
+<div class="product-header-wave">
+  {% include 'include-wave_background', color: 'white' %}
+</div>
+{% endif %}
+
 {% comment %} JavaScript {% endcomment %}
 <script
   type="application/json"
@@ -756,11 +763,6 @@ product__main.liquid
       "content": "Layout"
     },
     {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background image"
-    },
-    {
       "type": "text",
       "id": "cookiecare_heading",
       "label": "Cookie Care Heading",
@@ -799,6 +801,18 @@ product__main.liquid
       "id": "thumbnail_background_color",
       "label": "Background",
       "default": "#f6f2ed"
+    },
+    {
+      "type": "checkbox",
+      "id": "background_image",
+      "label": "Show Cookie Background image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wave_border",
+      "label": "Show Wave Border",
+      "default": true
     },
     {
       "type": "range",
