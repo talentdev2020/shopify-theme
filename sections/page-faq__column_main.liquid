@@ -82,7 +82,7 @@
   {% for block in section.blocks %}
     {% if block.type == 'heading' %}
     <div id="tab_{{ block.settings.heading_category }}" class="one-whole column wrap tabbed-container 
-    {% if block.settings.heading_category == 'products' %} tabbed-container-active {% endif %}">
+    {% if block.settings.heading_category == 'whats-inside' %} tabbed-container-active {% endif %}">
     <div class="faq-accordion 
             accordion-icon--{{ settings.toggle_icon_style }}">
 
@@ -92,7 +92,7 @@
               {% if block.type == 'content' and heading_category == block.settings.category %}
               <div class="groups">
                   <dt>
-                      <button class="accordion-style--{{ settings.toggle_icon_style }} accordion__button" type="button" aria-controls="panel-{{ block.id }}" aria-expanded="false">
+                      <button class="accordion-style--{{ settings.toggle_icon_style }} accordion__button" type="button" aria-controls="panel-{{ block.id }}" aria-expanded="true">
                           {{ icon_set }}
                           {{ block.settings.title }}
                       </button>

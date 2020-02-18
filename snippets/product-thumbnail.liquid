@@ -57,7 +57,7 @@ product-thumbnail.liquid
 
     <div class="header-tag">
       {% for tag in product.tags %}
-        {% if tag contains 'Meals' %}
+        {% if tag contains 'meals' %}
         <a>{% include settings.icon, name: "icon-meal" %} {{ tag }}</a>
         {% endif %}
       {% endfor %}

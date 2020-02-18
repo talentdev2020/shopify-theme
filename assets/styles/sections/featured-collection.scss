@@ -27,7 +27,7 @@ $product-height__mobile: 195px;
   }
 
   .product-review__wrapper{
-    text-align: left;
+    text-align: center;
   }
 
   .flickity-viewport {
@@ -120,8 +120,24 @@ $product-height__mobile: 195px;
   }
 
   .footer-tag {
+    font-size: 14px;
     font-weight: 600;
-    a {color: black;}
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: $purpley-grey;
+    height: 20px;
+    a {
+      color: $purpley-grey;
+
+      .icon {
+        color: $purpley-grey;
+        width: 15px;
+        height: 15px;
+      }
+    }
   }
 }
 
@@ -131,6 +147,10 @@ body.index .featured-collection-section {
   }
   .section {
     border-top: none;
+  }
+
+  .product-review__wrapper{
+    text-align: center;
   }
   .thumbnail__caption {
 
@@ -174,7 +194,7 @@ body.index .featured-collection-section {
 
   .featured-collection__icon {
       position: absolute;
-      right: -70px;
+      right: -80px;
       top: 50%;
       z-index: 5;
       p {
@@ -200,5 +220,66 @@ body.index .featured-collection-section {
           margin-top: -10px;
           margin-left: -10px;
       }
+  }
+
+  .footer-tag {
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: $purpley-grey;
+    height: 20px;
+    a {
+      color: $purpley-grey;
+
+      .icon {
+        color: $purpley-grey;
+        width: 16px;
+        height: 15px;
+      }
+    }
+  }
+
+  .yotpo  {
+    .yotpo-stars .yotpo-icon {
+      font-size: 14.5px  !important;
+      padding-top: 4px  !important;
+    }
+    a.text-m {
+      font-size: 14px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal  !important;
+      line-height: 1.43;
+      letter-spacing: normal;
+      text-align: left;
+      color: $black !important;
+      margin-left: 5px;
+    }
+  }
+  .flickity-prev-next-button .flickity-button-icon {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 9%;
+    left: 12%;
+  }
+  .flickity-button {
+    background: #fafafa;
+    border: 2px solid $inpute-bkg;
+    width: 40px;
+    height: 40px;
+  }
+  .flickity-button-icon {
+    fill: $dark-sky-blue;
+  }
+  .flickity-prev-next-button.next {
+    right: -10px;
+  }
+  .flickity-prev-next-button.previous {
+    left: -10px;
   }
 }
