@@ -86,18 +86,3 @@
   }
 
 }
-
-
-.cookies-bgr {
-  position: absolute;
-  max-width: 210px;
-  display: block;
-  
-  &.right {
-    right: 0;
-  }
-  &.left {
-    left: 0;
-    transform: scale(-1,1);
-  }
-}

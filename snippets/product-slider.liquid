@@ -54,6 +54,13 @@ product_recommendations: <boolean>
       {% assign feature_image = product.featured_image %}
       <div class="gallery-cell thumbnail {% include 'column-width', value: products_per_row %} medium-down--one-half column has-thumbnail-sticker">
         <div class="product-wrap {% if product.images[1] != blank and settings.show_secondary_image == true %}swap--true{% endif %}">
+            <div class="footer-tag">
+              {% for tag in product.tags %}
+                {% if tag contains 'meals' %}
+                  <a>{% include settings.icon, name: "icon-meal" %}{{ tag }}</a>
+                {% endif%}
+              {% endfor %}
+            </div>
             <div class="product-review__wrapper text-align-center">
               <div class="yotpo bottomLine star2" style="display:inline-block"
                                   data-product-id="{{ review_product_1.id }}"> </div> 
@@ -111,12 +118,6 @@ product_recommendations: <boolean>
 
               <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
                 {% include 'product-thumbnail__product-info' %}
-              </div>
-             
-              <div class="footer-tag">
-                {% for tag in product.tags %}
-                  <a>{% include settings.icon, name: "icon-meal" %}{{ tag }}</a>
-                {% endfor %}
               </div>
       </div>
 

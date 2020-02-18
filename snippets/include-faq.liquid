@@ -18,8 +18,11 @@ include-faq.liquid
 
   .faq-wrapper { 
     padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
      background-color : {{ section.settings.background-color }};
+  }
+
+  .page-faq__column-wrap {
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
   {% if section.blocks.size == 0 %}
@@ -67,7 +70,7 @@ include-faq.liquid
 }
 </script>
 
-<section class="section
+<section class="section medium-down--hide-cookie_bg
                 {{ section.settings.css_class }}
                 is-width-{{ width }}
                 ">
@@ -127,6 +130,13 @@ include-faq.liquid
     </div>
   </div>
 </div>
+
+{% if section.settings.show_wave_border %}
+<div class="product-header-wave">
+  {% include 'include-wave_background', color: 'white' %}
+</div>
+{% endif %}
+
 </section>
 <script data-theme-editor-load-script src="{{ 'z__jsFAQ.js' | asset_url }}"></script>
 

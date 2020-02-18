@@ -4,8 +4,8 @@
 .team-section {
 
     .image-element__wrap img {
-        max-width: 150px;
-        margin: 35px auto 35px;
+      max-width: 200px;
+      margin: 0 auto;
     }
     .person-column__text {
         font-size: 16px;
@@ -19,7 +19,7 @@
       .person-column__title {
         font-size: 16px !important;
         font-weight: 600;
-        color: #f83547;
+        color: $purpley-grey;
         margin-bottom: 3px;
       }
     }

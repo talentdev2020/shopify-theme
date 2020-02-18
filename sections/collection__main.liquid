@@ -69,6 +69,22 @@
     }
   {% endif %}
 
+
+  .collection-main {
+    {% if object.settings.show_background_image %}
+      background: url({{ "image-collection-list.svg" | asset_url }}) repeat-x 50% 0 transparent;
+      background-repeat: no-repeat;
+      background-position: right top;
+    {%- endif %}
+  }
+
+  @media only screen and (max-width: 798px)
+  {
+    .collection-main { 
+      background-image: none; 
+    }
+  }
+
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
  
@@ -185,6 +201,12 @@
       "type": "checkbox",
       "id": "image_darken",
       "label": "Darken banner image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background_image",
+      "label": "Show Background image",
       "default": true
     },
     {

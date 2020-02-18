@@ -1346,6 +1346,26 @@
           ]
         },
         {
+          "type": "select",
+          "id": "cookies_position",
+          "label": "Cookies image",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
           "type": "checkbox",
           "id": "show-whole__image",
           "label": "Show Whole Image",
@@ -1514,6 +1534,11 @@
             }
           ],
           "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "css_class",
+          "label": "CSS Class"
         }
       ]
     },
@@ -2311,6 +2336,12 @@
       "name": "Rich text",
       "settings": [
         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "400 x 400px recommended"
+        },
+        {
           "type": "header",
           "content": "Heading"
         },
@@ -2465,7 +2496,8 @@
         {
           "type": "select",
           "id": "button_style",
-          "label": "Style",
+          "label": "Button style",
+          "default": "button--primary",
           "options": [
             {
               "value": "button--primary",
@@ -2479,8 +2511,7 @@
               "value": "button--link-style",
               "label": "Link style"
             }
-          ],
-          "default": "button--primary"
+          ]
         },
         {
           "type": "header",
@@ -2607,6 +2638,11 @@
               "label": "Zoom in"
             }
           ]
+        },
+        {
+          "type": "text",
+          "id": "css_class",
+          "label": "CSS Class"
         }
       ]
     },
@@ -2667,6 +2703,26 @@
             }
           ],
           "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "cookies_position",
+          "label": "Cookies image",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
         },
         {
           "type": "richtext",
@@ -3067,6 +3123,74 @@
           "default": "Embed a Youtube or Vimeo video."
         },
         {
+          "type": "text",
+          "id": "under_title",
+          "label": "Heading",
+          "default": "Enter title"
+        },
+        {
+          "type": "richtext",
+          "id": "under_rich_text",
+          "label": "Text",
+          "default": "<p>Enter text.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label1",
+          "label": "Button label",
+          "default": "Button"
+        },
+        {
+          "type": "select",
+          "id": "button_style1",
+          "label": "Button style",
+          "default": "button--primary",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_label2",
+          "label": "Button label",
+          "default": "Button"
+        },
+        {
+          "type": "select",
+          "id": "button_style2",
+          "label": "Button style",
+          "default": "button--primary",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
           "type": "color",
           "id": "pretext_color",
           "label": "Preheading",
@@ -3083,6 +3207,38 @@
           "id": "subheading_color",
           "label": "Subheading",
           "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "under_heading_color",
+          "label": "Under Heading",
+          "default": "#000000"
+        },
+        {
+          "type": "select",
+          "id": "cookies_position",
+          "label": "Cookies image",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
         },
         {
           "type": "select",

@@ -32,9 +32,26 @@ $mobile-padding : 15px;
 }
 
 .header-tag {
-  text-align: center;
   font-size: 19px;
   font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: center;
+  color: $purpley-grey;
+  height: 23px;
+  text-transform: capitalize;
+  
+  a {
+    color: $purpley-grey;
+
+    .icon {
+      color: $purpley-grey;
+      width: 21px;
+      height: 20px;
+    }
+  }
 }
 
 .product-image__wrapper { 

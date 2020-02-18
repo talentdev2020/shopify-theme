@@ -24,6 +24,7 @@
 {% assign padding_left = object.settings.padding_left %}
 {% assign padding_right = object.settings.padding_right %}
 {% assign animation = object.settings.animation %}
+{% assign cookies_position = object.settings.cookies_position %}
 {% comment %} Advanced {% endcomment %}
 {% assign css_class = object.settings.css_class %}
 {% assign custom_css = object.settings.custom_css %}
@@ -57,6 +58,7 @@
     padding-bottom: {{ padding_bottom }}px;
     padding-left: {{ padding_left }}px;
     padding-right: {{ padding_right }}px;
+    position: relative;
     {% if width == 'wide' %}
       width: 100%;
     {% elsif width == 'half' %}
@@ -86,6 +88,12 @@
                 {% if animation != "none" %}
                   data-scroll-class="{{ animation }}"
                 {% endif %}>
+
+{% if cookies_position != blank %}
+{% unless cookies_position == 'none' %}
+  {% include 'cookies3', position: cookies_position %}
+{% endunless %}
+{% endif %}
   <div class="container is-justify-center">
     <div class="image-with-text__text-column
     image-with-text__column

@@ -2,6 +2,7 @@
 ================================================== */
 
 $play-icon-size: 81px;
+
 .featured-video.is-width-half.has-video-added {
 
   @include respond-to('medium-down') {
@@ -213,6 +214,18 @@ $play-icon-size: 81px;
       margin-right: 7px;
     }
   }
+
+  .buttons .button {
+    width: 180px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: 0.19px;
+    text-align: center;
+  }
 }
 
 .review {
@@ -251,4 +264,26 @@ $play-icon-size: 81px;
       }
     }
   }
+}
+
+.video-header-wave {
+  position: relative;
+  z-index: 6;
+}
+
+.under-title {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.under-rich-text p {
+  max-width: 584px;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: $body-text;
 }

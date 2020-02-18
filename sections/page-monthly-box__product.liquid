@@ -17,12 +17,16 @@
 {% style %}
   #shopify-section-{{ section.id }} {
     padding-top: {{ padding_top }}px;
-    padding-bottom: {{ padding_bottom }}px;
     {% if width == 'wide' -%}
       width: 100%;
     {%- endif %}
     background-color: {{ section.settings.background_color }};
   }
+
+  #shopify-section-{{ section.id }}  section{
+    padding-bottom: {{ padding_bottom }}px;
+  }
+
   {% include 'css-loop', css: custom_css, id: id %}
 
   {% if section.blocks.size > 0 %}
@@ -53,6 +57,11 @@
 {% endif %}
 
 </section>
+{% if section.settings.show_wave_border %}
+<div class="product-header-wave">
+  {% include 'include-wave_background', color: 'white' %}
+</div>
+{% endif %}
 
 {% schema %}
 { 
@@ -91,6 +100,12 @@
         "id": "background_color",
         "label": "Background Color",
         "default": "#f6f2ed"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wave_border",
+      "label": "Show Wave Border",
+      "default": true
     },
     {
         "type": "range",
