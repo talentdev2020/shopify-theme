@@ -3,12 +3,13 @@
 
 .page-faq__column-wrap {
   width: 100%;
+  max-width: 850px;
 }
 
 .faq-contents {
 
   .groups {
-    width: 98%;
+    width: 48%;
     margin: 0 1% 20px 1%;
 
     @include respond-to('medium-down') {
@@ -166,6 +167,10 @@
 
 
 .faq-page {
+  .page-faq__column-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
   .tabs {
     position: relative;
   }
@@ -183,6 +188,21 @@
     z-index: 2;
     opacity: 1;
     height: auto;
+  }
+
+  .faq-contents {
+
+    .groups {
+      width: 48%;
+      margin: 0 1% 20px 1%;
+      width: 98%;
+      margin: 0 1% 20px 1%;
+  
+      @include respond-to('medium-down') {
+        width: 98%;
+        margin: 0 1% 10px 1%;
+      }
+    }
   }
 
   ul.flex-change-2 {

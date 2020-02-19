@@ -255,7 +255,9 @@
         <div class="container button-wrapper is-justify-center">
             <div class="buttons">
              <a class="button {{ button_style1 }}">{{ button_label1 }}</a> 
+             {% if button_label2 != blank %}
              <a class="button {{ button_style2 }} ">{{ button_label2 }}</a>
+             {% endif %}
             </div>
         </div>
         {% endif %}
