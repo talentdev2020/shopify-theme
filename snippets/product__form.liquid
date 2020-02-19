@@ -52,7 +52,7 @@
       </div>
     {% elsif product.options.size == 1 and product.variants.size > 1 or product.options.size == 1 and product.options[0] != "Title" %}
       <div class="select-container">
-        <label class="label">{{ product.options[0] }}</label>
+        <label class="label">Choose {{ product.options[0] }}</label>
         <div>
           {% if type == 'quickshop' %}
             <div class="select">

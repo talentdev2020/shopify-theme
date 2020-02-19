@@ -75,6 +75,9 @@
         font-size: 24px;
       }
     }
+    @include respond-to('medium-down') {
+      text-align: center;
+    }
   }
 
   @include respond-to('medium-down') {
@@ -244,5 +247,50 @@
     opacity: 0.75;
     font-size: 0 !important;
     border: none !important;
+  }
+}
+
+
+.cookie-guilt {
+
+  .image-with-text__text {
+    @include respond-to('medium-down') {
+      display: none;
+    }
+  }
+
+  .buttons {
+    @include respond-to('medium-down') {
+      justify-content: center;
+    }
+  }
+  
+
+}
+
+.we-know-cookies {
+  .image-with-text__heading {
+    max-width: 439px;
+    font-family: 'Caveat', cursive !important;
+    font-size: 35px !important;
+    font-weight: bold !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29 !important;
+    letter-spacing: normal;
+    text-align: left;
+    text-transform: capitalize;
+  }
+
+  .image-with-text__subtitle {
+    font-family: 'Caveat', cursive !important;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.37;
+    letter-spacing: normal;
+    text-align: left;
+    text-transform: capitalize;
   }
 }

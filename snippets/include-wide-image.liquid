@@ -30,7 +30,7 @@ include-wide-image.liquid
 
 <div class="wide-image__wrapper">
     <div class="desktop-background">
-    {% if image != blank %}
+    {% if pc-image != blank %}
         {% include 'image-element', image: pc-image, alt: pc-image.alt, stretch_width: true %}
     {% else %}
         {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}

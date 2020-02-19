@@ -1,18 +1,15 @@
-
-
 .dual_testimonials__text-column {
     min-height: 573px;
     max-width: 504px;
     width: 97.5%;
     margin-left: calc(50% - 504px - 10px) !important;
 
-    .square-shape {
-        position: absolute;
-        left: -44px;
-        width: 50%;
-        z-index: -1;
-        max-width: 100%;
-
+    @include respond-to('medium-down') {
+        min-height: inherit;
+        max-width: inherit;
+        width: calc(100% - 20px);
+        margin-left: calc(20px / 2) !important;
+        margin-bottom: 25px;
     }
 
     .dual_testimonials__text__total_reviews_text {
@@ -30,6 +27,27 @@
 
         img {
             margin-right: 12px;
+        }
+    }
+    .yotpo.dual_testimonials__text__total_reviews_text {
+        .text-m {
+            font-size: 19px !important;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.05;
+            letter-spacing: normal;
+            text-align: left;
+            color: $purpley-grey !important;
+            margin-left: 7px;
+            @include flexbox();
+            @include align-items(flex-end);
+            @include justify-content(flex-start);
+        }
+
+        .yotpo-icon.yotpo-icon-star {
+            font-size: 23.4px !important;
+            color: $purpley-grey !important;
         }
     }
     .dual_testimonials__text__heading {
@@ -73,6 +91,11 @@
 .dual_testimonials__slider-column {
     flex-direction: column-reverse;
     width: 50%;
+    @include respond-to('medium-down') {
+        width: calc(100% - 27px);
+        margin-left: 27px !important;
+        margin-right: 0 !important;
+    }
     .dual_testimonial__nav-wrap {
         align-self: start;
         display: flex;
@@ -86,8 +109,7 @@
         .testimonial__card {
             position:relative;
             width: 100%;
-            min-width: 282px;
-            height: 177px;
+            min-height: 177px;
             border-radius: 5px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
             background-color: #fff;

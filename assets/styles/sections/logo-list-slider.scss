@@ -111,4 +111,23 @@ body.index .logo-list-slider {
   background: url('{{ "text-with-icon-bkg.svg" | asset_url }}') no-repeat -75px 0 transparent;
   background-size: calc(100% + 100px) auto;
   z-index: 3;
+  @include respond-to('medium-down') {
+    background: transparent;
+  }
+}
+
+body.index {
+
+
+  .rich-text__heading.title {
+    @include respond-to('medium-down') {
+      font-size: 19px !important;
+      font-weight: 900 !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.47 !important;
+      letter-spacing: normal !important;
+      text-align: center !important;
+    }
+  }
 }
