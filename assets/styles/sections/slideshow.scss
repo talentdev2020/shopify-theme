@@ -215,6 +215,9 @@
   .text-below-image--false .caption {
     top: 50%;
     @include prefix(transform, translateY(-50%), ms webkit spec);
+    @include respond-to('small-down') {
+      width: 60%;
+    }
   }
 
   .text-below-image--true .caption {
@@ -277,7 +280,7 @@
   .slideshow-classic__heading {
     font-size: 45px;
     @include respond-to('medium-down') {
-      font-size: 32px;
+      font-size: 24px;
       &.mobile-shrink-text span {
         font-size: inherit;
       }
@@ -293,6 +296,10 @@
         letter-spacing: normal;
         text-align: center;
         color: #ffffff;
+        @include respond-to('medium-down') {
+          font-size: 14px;
+          text-align: left;
+        }
     }
   }
   .slideshow-classic__review {
@@ -357,11 +364,18 @@
   }
 
   .button {
+    color: $black !important;
+    background: $white !important;
     @include flex(0 0 calc(50% - 6px));
     margin-bottom: 12px;
     white-space: normal;
     margin-left: 0;
     margin-right: 0;
+
+    &:hover {
+      background: $black !important;
+      color: $white !important;
+    }
 
     // Used to overwrite styling issues on IE11
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {

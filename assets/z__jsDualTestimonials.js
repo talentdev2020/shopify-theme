@@ -2,6 +2,8 @@
 
 Shopify.theme.jsDualTestimonials = {
   init: function init($section) {
+    // Add settings from schema to current object
+    Shopify.theme.jsSlideshowClassic = $.extend(this, Shopify.theme.getSectionData($section));
     this.createSlider();
   },
   createSlider: function createSlider() {
@@ -13,6 +15,7 @@ Shopify.theme.jsDualTestimonials = {
       imagesLoaded: true,
       pageDots: false,
       cellAlign: 'left',
+      autoPlay: this.auto_slide,
       contain: true
     }); // Reset layout to avoid collapsing issues
 

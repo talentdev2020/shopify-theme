@@ -46,6 +46,14 @@ $product-height__mobile: 195px;
       // min-height : 100%;
     }
   }
+  .has-no-arrows {
+    .flickity-button {
+      display: none !important;
+    }
+    .featured-collection__icon_container {
+      display: none !important;
+    }
+  }
 }
 
 .block__featured-collection {
@@ -168,6 +176,11 @@ body.index .featured-collection-section {
       text-align: center;
       color: $purpley-grey;
       min-height: 60px;
+
+      @include respond-to('medium-down') {
+        font-size: 14px;
+        line-height: 1;
+      }
     }
   }
   .has-thumbnail-sticker .product-thumbnail__review-stars {
@@ -281,5 +294,14 @@ body.index .featured-collection-section {
   }
   .flickity-prev-next-button.previous {
     left: -10px;
+  }
+
+  .has-no-arrows {
+    .flickity-button {
+      display: none !important;
+    }
+    .featured-collection__icon_container {
+      display: none !important;
+    }
   }
 }

@@ -59,6 +59,7 @@
         {% assign background_alpha = block.settings.background | color_extract: 'alpha' %}
         {% assign text_alpha = block.settings.text_color | color_extract: 'alpha' %}
         {% assign pretitle_alpha = block.settings.pretitle_color | color_extract: 'alpha' %}
+        {% assign subtitle_alpha = block.settings.subtitle_color | color_extract: 'alpha' %}
         {% comment %} Block specific CSS {% endcomment %}
         {% capture block_css -%}
 
@@ -71,6 +72,10 @@
           }
           .image-with-text__pretitle {
             color: {%- if pretitle_alpha != 0 -%}{{ block.settings.pretitle_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+          }
+
+          .image-with-text__subtitle {
+            color: {%- if subtitle_alpha != 0 -%}{{ block.settings.subtitle_color }}{%- else -%}{{ settings.heading_color }}{%- endif -%};
           }
         {%- endcapture -%}
 
@@ -113,6 +118,12 @@
               <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
                 {{ block.settings.text }}
               </div>
+            {% endif %}
+
+            {% if block.settings.subtitle != blank %}
+              <p class="image-with-text__subtitle text-align-{{ block.settings.alignment }} is-{{ block.settings.heading_size }}" >
+                {{ block.settings.subtitle }}
+              </p>
             {% endif %}
 
             {% if block.settings.button_label != blank %}
@@ -459,6 +470,11 @@
         },
         {
           "type": "text",
+          "id": "subtitle",
+          "label": "After title"
+        },
+        {
+          "type": "text",
           "id": "button_label",
           "label": "Button label",
           "default": "View all"
@@ -561,6 +577,12 @@
           "type": "color",
           "id": "pretitle_color",
           "label": "Before heading",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "After heading",
           "default": "rgba(0,0,0,0)"
         },
         {

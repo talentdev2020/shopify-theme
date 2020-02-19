@@ -38,7 +38,7 @@
 
 {% comment %} Check to see if enough products available to create slide {% endcomment %}
 {% if object.settings.collection_style == 'slider' %}
-  {% if object.settings.products_limit > products_per_row and collections[col].all_products_count > products_per_row %}
+  {% if object.settings.products_limit > 0 and collections[col].all_products_count > 0 %}
     {% assign layout = 'slider' %}
   {% else %}
     {% assign layout = 'grid' %}
@@ -72,6 +72,10 @@
                   has-background
                 {% else %}
                   has-gutter-enabled
+                {% endif %}
+
+                {% if collections[col].all_products_count <= products_per_row %}
+                  has-no-arrows
                 {% endif %}
                 "
                 {% if animation != "none" %}

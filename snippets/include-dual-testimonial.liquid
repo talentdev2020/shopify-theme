@@ -38,6 +38,7 @@
   #shopify-section-{{ id }} {
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;
+    position: relative;
     {% if width == 'wide' %}
       width: 100%;
     {% endif %}
@@ -45,12 +46,30 @@
   #shopify-section-{{ id }}  section {
     position: static;
   }
-  #shopify-section-{{ id }}  .dual_testimonials__slider-column {
-    /*position: absolute;
-   right: 0;*/
+  #shopify-section-{{ id }} .square-shape {
+    position: absolute;
+    left: -44px;
+    width: 63%;
+    z-index: -1;
   }
   #shopify-section-{{ id }}  .square-shape .square-shape-1 {
     fill: {%- if text_block_background_alpha != 0 -%}{{ object.settings.fill_background }}{% endif %};
+
+  }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ id }} .square-shape {
+      position: absolute;
+      left: -65px;
+      width: calc(100% + 65px);
+      z-index: -1;
+      max-width: calc(100% + 65px);
+      overflow: hidden;
+      top: 0;
+    }
+    #shopify-section-{{ id }}  .square-shape svg {
+      height: 85vh;
+    }
   }
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
@@ -65,6 +84,8 @@
           {% if animation != "none" %}
             data-scroll-class="{{ animation }}"
           {% endif %}>
+          {% include 'square-shape' %}
+          {% include 'cookies4', position: 'right' %}
           <div class="container">
             <div class="dual_testimonials__text-column
             dual_testimonials__column
@@ -82,15 +103,22 @@
               {{ object.shopify_attributes }} 
             {% endif %}>
 
-            {% include 'square-shape' %}
 
               <div class="dual_testimonials__text__wrapper">
+                <div class="yotpo bottomLine dual_testimonials__text__total_reviews_text"
+                  data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                  data-domain="{{shop.permanent_domain | escape }}"
+                  data-product-id=""
+                  data-product-models="">
+                </div>
+                {% comment %}Layout
                 {% if object.settings.total_reviews_text != blank %}
                   <p class="dual_testimonials__text__total_reviews_text text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
                     <img  src="{{ 'index_stars.png' | asset_img_url: '134x' }}" />
                     {{ object.settings.total_reviews_text }}
                   </p>
                 {% endif %}
+                {% endcomment %}
                 {% if object.settings.title != blank %}
                   <h3 class="dual_testimonials__text__heading text-align-{{ object.settings.alignment }} is-{{ object.settings.heading_size }}" >
                     {{ object.settings.title }}
@@ -143,7 +171,7 @@
                               has-images-enabled-{{ object.settings.enable_images }}
                               testimonial-align--{{ object.settings.card_alignment }}
                               two-fifths
-                              medium-down--one-whole" data-testimonial-index={{ forloop.index0 }} {{ item.shopify_attributes }}>
+                              medium-down--four-fifths" data-testimonial-index={{ forloop.index0 }} {{ item.shopify_attributes }}>
                     <div class="testimonial__card">
                       <div class="top-part is-flex is-flex-wrap is-justify-start is-align-center">
                         <div class="dual_testimonial__image has-image-crop image-style--{{ object.settings.crop_shape }}">
@@ -224,6 +252,7 @@
   data-section-data
 >
   {
+    "auto_slide" : {{ object.settings.enable_auto_slide }}
   }
 </script>
 <script data-theme-editor-load-script src="{{ 'z__jsDualTestimonials.js' | asset_url }}"></script>

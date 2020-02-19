@@ -77,7 +77,7 @@
                 {% include 'newsletter-form', type: 'block' %}
 
                 {% if block.settings.social_icons_footer %}
-                  <div class="has-padding-bottom has-padding-top">
+                  <div class="has-padding-bottom has-padding-top is-hidden-mobile-only">
                     {% include 'social-icons' %}
                   </div>
                 {% endif %}
@@ -89,7 +89,7 @@
         <div id="shopify-section-{{ block.id }}" class="footer__block block__{{ block.id }} block__{{ block.type | downcase | replace: '_', '-' }}
                     {% include 'column-width', value: section.blocks.size-1 %}
                     {% if block.type == 'link_list' %}
-                    medium-down--one-half column
+                    medium-down--one-whole column
                     {% else %}
                     medium-down--one-whole column
                     {% endif %} "
@@ -108,7 +108,7 @@
                 {{ block.settings.text }}
               {% endif %}
               {% if block.settings.social_icons_footer %}
-                <div class="has-padding-bottom has-padding-top">
+                <div class="has-padding-bottom has-padding-top is-hidden-mobile-only">
                   {% include 'social-icons' %}
                 </div>
               {% endif %}
@@ -149,7 +149,29 @@
     </div>
   </section>
   <section class="footer__extra-content section">
+    {% for block in section.blocks %}
+      {% if block.type == 'logo' %}
+        {% if block.settings.social_icons_footer %}
+        <div class="has-padding-bottom has-padding-top  is-hidden-desktop-only social-icons-extra">
+          {% include 'social-icons' %}
+        </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
     <div class="container has-padding-top has-padding-bottom">
+      {% if section.settings.display_payment_methods %}
+      <div class="footer__payment-methods one-whole is-flex is-justify-end is-flex-wrap is-hidden-desktop-only">
+        <div class="payment-methods">
+          <img src="{{ 'footer_payment_icons.png' | asset_img_url : 'master' }}" />
+
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag: class:'payment-icon' }}
+          {% endfor %}
+
+        </div>
+      </div>
+    {% endif %}
+
       <div class="footer__social_icons one-half column small-down--one-whole is-flex is-justify-start is-flex-wrap is-marginless">
         {% assign footer_only_mobile_menu = linklists[settings.footer_only_mobile_menu] %}
         <div class="footer_only_mobile_menu">
@@ -164,45 +186,26 @@
                   <a href="{{ link.url }}" class="navbar-link header__link {% if link.active %}is-active{% endif %} is-arrowless">
                     {{ link.title }}
                   </a>
-                  {% unless forloop.last == true %}
-                    <span class="line">|</span>
-                  {% endunless %}
+
                 </div>
               {% endif %}
             {% endfor %}
           </div>
         </div>
       </div>
+
       <div class="footer__credits one-half  column small-down--one-whole is-justify-end is-align-end is-marginless">
         {% comment %}{{ shop.name | link_to: '/' }} {{ "now" | date: "%Y" }}  {% endcomment %}
         <p> &copy;</p>
         {{ section.settings.copyright_text }}
-        
-        
-        
         {% if section.settings.display_designed_by %}
           <p>{{ 'layout.general.designer_credits_html' | t }}</p>
         {% endif %}
         {% if section.settings.display_shopify %}
           <p>{{ powered_by_link | split: '" ' | join: '&ref=out-of-the-sandbox" ' | split: '">' | join: '&ref=out-of-the-sandbox">' }}</p>
         {% endif %}
-
+  
       </div>
-      <hr>
-      {% comment %}
-      {% if section.settings.display_payment_methods %}
-        <div class="footer__payment-methods one-third column small-down--one-whole is-flex is-justify-end is-flex-wrap">
-          <div class="payment-methods">
-            <img src="{{ 'footer_payment_icons.png' | asset_img_url : 'master' }}" />
-
-            {% for type in shop.enabled_payment_types %}
-              {{ type | payment_type_svg_tag: class:'payment-icon' }}
-            {% endfor %}
-
-          </div>
-        </div>
-      {% endif %}
-      {% endcomment %}
     </div>
   </section>
 </footer>
