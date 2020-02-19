@@ -42,105 +42,107 @@
         {% comment %} Product gallery {% endcomment %}
         <div class="column">
           <div class="top_badge">
-            {% if collection_handles contains 'best-seller' %}
-              <p>{{ 'collections.general.best_seller' | t }}</p>
+            {% if object.settings.is-most_popular %}
+              <p>Most Popular</p>
             {% endif %}
           </div>
 
-          <div classs="product-title-top">
-            <h2 class="title-top">{{ object.settings.product_heading }}</h2>
-          </div>
+          <div class="product-bottom_info">
+            <div classs="product-title-top">
+              <h2 class="title-top">{{ object.settings.product_heading }}</h2>
+            </div>
 
-          {% comment %} Price {% endcomment %}
-          <p class="modal_price subtitle">
-            {% if collection_handles contains 'coming-soon' %}
-              {% if settings.stickers_enabled == false %}
-                {{ 'collections.general.coming_soon' | t }}
-              {% endif %}
-            {% else %}
-  
-              {% comment %} Sold out {% endcomment %}
-              <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
-  
-              {% comment %} Current price {% endcomment %}
-              <span content="{{ variant.price | money_without_currency | remove: "," }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
-                <span class="current_price {% if product.available == false %}hidden{% endif %}">
-                  {% if variant.price > 0 %}
-                    <span class="money">{{ variant.price | money }}</span>
-                  {% else %}
-                    {{ settings.free_price_text }}
+            {% comment %} Price {% endcomment %}
+            <p class="modal_price subtitle">
+              {% if collection_handles contains 'coming-soon' %}
+                {% if settings.stickers_enabled == false %}
+                  {{ 'collections.general.coming_soon' | t }}
+                {% endif %}
+              {% else %}
+    
+                {% comment %} Sold out {% endcomment %}
+                <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+    
+                {% comment %} Current price {% endcomment %}
+                <span content="{{ variant.price | money_without_currency | remove: "," }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                  <span class="current_price {% if product.available == false %}hidden{% endif %}">
+                    {% if variant.price > 0 %}
+                      <span class="money">{{ variant.price | money }}</span>
+                    {% else %}
+                      {{ settings.free_price_text }}
+                    {% endif %}
+                  </span>
+                </span>
+    
+                {% comment %} Compare at (original) price {% endcomment %}
+                <span class="was-price">
+                  {% if variant.price < variant.compare_at_price and variant.available %}
+                    <span class="money">{{ variant.compare_at_price | money }}</span>
                   {% endif %}
                 </span>
-              </span>
-  
-              {% comment %} Compare at (original) price {% endcomment %}
-              <span class="was-price">
-                {% if variant.price < variant.compare_at_price and variant.available %}
-                  <span class="money">{{ variant.compare_at_price | money }}</span>
+    
+                {% comment %} Size chart {% endcomment %}
+                {% if product_tags contains 'meta-size-chart-' %}
+                  {% for tag in product.tags %}
+                    {% if tag contains 'meta-size-chart-' %}
+                      <a href="javascript:;" class="product__size-chart" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
+                      {% include 'popup-size-chart', product_id: product.id %}
+                    {% endif %}
+                  {% endfor %}
+                {% elsif settings.size_chart != blank %}
+                  <a href="javascript:;" class="product__size-chart" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
+                  {% include 'popup-size-chart', product_id: product.id %}
                 {% endif %}
-              </span>
-  
-              {% comment %} Size chart {% endcomment %}
-              {% if product_tags contains 'meta-size-chart-' %}
-                {% for tag in product.tags %}
-                  {% if tag contains 'meta-size-chart-' %}
-                    <a href="javascript:;" class="product__size-chart" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
-                    {% include 'popup-size-chart', product_id: product.id %}
-                  {% endif %}
-                {% endfor %}
-              {% elsif settings.size_chart != blank %}
-                <a href="javascript:;" class="product__size-chart" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
-                {% include 'popup-size-chart', product_id: product.id %}
+    
+                {% comment %} Savings {% endcomment %}
               {% endif %}
+            </p>
+
+            <div class="featured-product__images product__images">
+              {% if section_onboarding %}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+              {% else %}
+                {% include 'product__images' %}
+              {% endif %}
+            </div>
   
-              {% comment %} Savings {% endcomment %}
-            {% endif %}
-          </p>
+            <div class="featured-product__details has-product-sticker product__information">
 
-          <div class="featured-product__images product__images">
-            {% if section_onboarding %}
-              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
-            {% else %}
-              {% include 'product__images' %}
-            {% endif %}
-          </div>
- 
-          <div class="featured-product__details has-product-sticker product__information">
+              {% comment %} Sale sticker 
+              {% if settings.stickers_enabled %}
+                {% include 'product-thumbnail__sticker', context: 'product' %}
+              {% endif %}
+              {% endcomment %}
 
-            {% comment %} Sale sticker 
-            {% if settings.stickers_enabled %}
-              {% include 'product-thumbnail__sticker', context: 'product' %}
-            {% endif %}
-            {% endcomment %}
+              {% if section_onboarding %}
+    
+                <div class="medium-down--hidden">
+                  <h2 class="product_name title">
+                    <a href="{{ product.url }}">{{ 'homepage.onboarding.product_title' | t }}</a>
+                  </h2>
+                </div>
 
-            {% if section_onboarding %}
-  
-              <div class="medium-down--hidden">
-                <h2 class="product_name title">
-                  <a href="{{ product.url }}">{{ 'homepage.onboarding.product_title' | t }}</a>
+                <div class="purchase-details">
+                  <div class="purchase-details__buttons purchase-details__spb--false">
+                    <button name="add" class="action_button button button--add-to-cart add_to_cart" data-label={{ add_to_cart_label | json }}><span class="text">{{ 'products.product.add_to_cart' | t }}</span></button>
+                  </div>
+                </div>
+
+              {% else %}
+
+                <h2 class="product-thumbnail__title title">
+                  {{ product.title }}
                 </h2>
-              </div>
 
-              <div class="purchase-details">
-                <div class="purchase-details__buttons purchase-details__spb--false">
-                  <button name="add" class="action_button button button--add-to-cart add_to_cart" data-label={{ add_to_cart_label | json }}><span class="text">{{ 'products.product.add_to_cart' | t }}</span></button>
-                </div>
-              </div>
+                {% unless collection_handles contains 'coming-soon' %}
+                  <div class="has-padding-top">
+                    {% include 'product__notify-me-form' %}
+                    {% include 'product__form' with 'product', type: 'product', page: 'monthly' %}
+                  </div>
+                {% endunless %}
 
-            {% else %}
-
-              <h2 class="product-thumbnail__title title">
-                {{ product.title }}
-              </h2>
-
-              {% unless collection_handles contains 'coming-soon' %}
-                <div class="has-padding-top">
-                  {% include 'product__notify-me-form' %}
-                  {% include 'product__form' with 'product', type: 'product', page: 'monthly' %}
-                </div>
-              {% endunless %}
-
-            {% endif %}
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
