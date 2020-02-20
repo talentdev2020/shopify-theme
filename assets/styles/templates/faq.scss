@@ -196,24 +196,26 @@
     opacity: 1;
     height: auto;
   }
+  
   .tabbed-nav {
     @include respond-to('medium-down') {
       width: 100%;
     }
+    @include respond-to('medium-down') {
+      ul {
+        columns: 2;
+        column-gap: 20px;
 
-    ul {
-      columns: 2;
-      column-gap: 20px;
+        li {
+          a {
+            font-weight: normal !important;
+            color: #a79580;
 
-      li {
-        a {
-          font-weight: normal !important;
-          color: #a79580;
-
-          &.nav-active {
-            color: $body-text;
-            font-weight: normal;
-            text-decoration: underline;
+            &.nav-active {
+              color: $body-text;
+              font-weight: normal;
+              text-decoration: underline;
+            }
           }
         }
       }

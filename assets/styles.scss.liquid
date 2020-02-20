@@ -8172,7 +8172,7 @@ ul.tabs {
     .standalone-bottomline {
       .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
         float: none;
-        font-size: 19px;
+        font-size: 14px;
 
         @include respond-to('medium-down') {
           font-size: 12px;
@@ -8185,11 +8185,15 @@ ul.tabs {
         float: none;
   
         .text-m {
-          font-family: Montserrat;
-          font-size: 19px;
+          font-size: 14px;
           font-weight: 600;
-          padding-left: 10px;
-          color: black!important;
+          font-stretch: normal;
+          font-style: normal !important;
+          line-height: 1.43;
+          letter-spacing: normal;
+          text-align: left;
+          color: #0a0a0a !important;
+          margin-left: 5px;
 
           @include respond-to('medium-down') {
             padding-left: 2px;
@@ -8986,15 +8990,15 @@ $mobile-padding : 15px;
 }
 
 .header-tag {
-  font-size: 19px;
+  font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.21;
+  line-height: 1.29;
   letter-spacing: normal;
   text-align: center;
   color: $purpley-grey;
-  height: 23px;
+  height: 20px;
   text-transform: capitalize;
   
   a {
@@ -10038,7 +10042,7 @@ $swatch-label-size: 34px;
   p {
     padding: 0 0.5em;
     display: inline-block;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 1.21;
     letter-spacing: 0.16px;
@@ -10500,7 +10504,7 @@ $product-height__mobile: 195px;
   }
 
   .flickity-viewport {
-    box-shadow: inset 0 $input-border-width/(-2) 0 $cart-border-color;
+
   }
 
   .has-thumbnail-sticker {
@@ -13784,7 +13788,7 @@ $product-height__mobile: 195px;
   }
 
   .flickity-viewport {
-    box-shadow: inset 0 $input-border-width/(-2) 0 $cart-border-color;
+
   } 
   
   .product-thumbnail__title,
@@ -17851,9 +17855,9 @@ $subtotal-bg-color: #F2F2F2;
   }
 
   .product-review__wrapper {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    min-height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 40px;
 
     @include respond-to('medium-down') {
       padding-top: 5px;
@@ -17876,11 +17880,16 @@ $subtotal-bg-color: #F2F2F2;
         float: none;
   
         .text-m {
-          font-family: Montserrat;
-          font-size: 19px;
+          font-family: "Montserrat";
+          font-size: 14px;
           font-weight: 600;
-          padding-left: 10px;
-          color: black!important;
+          font-stretch: normal;
+          font-style: normal !important;
+          line-height: 1.43;
+          letter-spacing: normal;
+          text-align: left;
+          color: #0a0a0a !important;
+          margin-left: 5px;
 
           @include respond-to('medium-down') {
             padding-left: 2px;
@@ -18218,24 +18227,26 @@ $subtotal-bg-color: #F2F2F2;
     opacity: 1;
     height: auto;
   }
+  
   .tabbed-nav {
     @include respond-to('medium-down') {
       width: 100%;
     }
+    @include respond-to('medium-down') {
+      ul {
+        columns: 2;
+        column-gap: 20px;
 
-    ul {
-      columns: 2;
-      column-gap: 20px;
+        li {
+          a {
+            font-weight: normal !important;
+            color: #a79580;
 
-      li {
-        a {
-          font-weight: normal !important;
-          color: #a79580;
-
-          &.nav-active {
-            color: $body-text;
-            font-weight: normal;
-            text-decoration: underline;
+            &.nav-active {
+              color: $body-text;
+              font-weight: normal;
+              text-decoration: underline;
+            }
           }
         }
       }

@@ -726,7 +726,7 @@
     .standalone-bottomline {
       .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
         float: none;
-        font-size: 19px;
+        font-size: 14px;
 
         @include respond-to('medium-down') {
           font-size: 12px;
@@ -739,11 +739,15 @@
         float: none;
   
         .text-m {
-          font-family: Montserrat;
-          font-size: 19px;
+          font-size: 14px;
           font-weight: 600;
-          padding-left: 10px;
-          color: black!important;
+          font-stretch: normal;
+          font-style: normal !important;
+          line-height: 1.43;
+          letter-spacing: normal;
+          text-align: left;
+          color: #0a0a0a !important;
+          margin-left: 5px;
 
           @include respond-to('medium-down') {
             padding-left: 2px;
