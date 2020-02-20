@@ -151,7 +151,9 @@
         {% if animation != "none" %}
           data-scroll-class="{{ animation }}"
         {% endif %}>
-  {% include 'wave-down-shape' %}
+  {% if page.handle contains "mission" %}
+    {% include 'wave-down-shape' %}
+  {% endif %}
   {% if cookies_position != blank %}
   {% unless cookies_position == 'none' %}
     {% include 'cookies2', position: cookies_position %}

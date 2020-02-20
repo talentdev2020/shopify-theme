@@ -12900,7 +12900,7 @@ h1.header__logo-text > a {
         }
 
         .icon-with-text-button__heading{
-            font-size: 2.2rem;
+            font-size: 30px;
             font-weight: 900;
             line-height: 1.29;
             text-align: center;
@@ -12908,23 +12908,23 @@ h1.header__logo-text > a {
             margin: auto;
 
             @include respond-to('medium-down') {
-                font-size: 1.5rem;
-                width: 272px;
-                margin: auto;
+                font-size: 24px;
+                width: 292px;
+                margin: 0;
             }
         }
  
         .icon-with-text-button__button .button {
             @include respond-to('medium-down') {
                 max-width: 200px;
-                font-size: 14px!important;
+                font-size: 14px !important;
                 height: auto;
                 padding: 10px 18px;
             }
         }
         .icon-with-text-button__text {
             @include respond-to('medium-down') {
-                font-size: 0.9rem;
+                font-size: 14px;
             }
         }
 
@@ -18180,6 +18180,7 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
     position: absolute;
     max-width: 387px;
     display: block;
+    top: 0;
     @include respond-to('medium-down') {
         display: none !important;
     }
@@ -18230,7 +18231,10 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
         margin-bottom: 30px;
     }
     .rich-text__heading {
-        margin-bottom: 55px;
+        margin-bottom: 0;
+        @include respond-to('medium-down') {
+          font-size: 24px;
+        }
     }
     .rich-text__text p {
         max-width: 244px;
@@ -18250,8 +18254,15 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
         }
     }
 
+    .image-with-text__text-column .image-with-text__heading.is-regular {
+      @include respond-to('medium-down') {
+        display: none !important;
+        text-align: left;
+      }
+    }
+
     .cookies3-bgr {
-        top:-30px;
+        top: -30px;
     }
     .team-section .image-with-text__text p {
         max-width: 532px;
