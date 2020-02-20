@@ -106,7 +106,6 @@
 .collection-main {
   .image-element__wrap img {
     width: 352px;
-    height: auto;
 
     @include respond-to('medium-down') {
     }
