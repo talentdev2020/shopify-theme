@@ -52,17 +52,43 @@
                 {% endunless %}
               </a>
             </div>
-            <div class="ajax-cart__line-items">
-              {% if item.properties %}
-                {% for p in item.properties %}
-                  {% if p.last != blank %}
-                    <div class="ajax-cart__line-item">
-                      {{ p.first }}: {{ p.last }}
-                    </div>
+
+            {% assign isSubscription = false %}
+            {% assign subScriptionType = '' %}
+            {% assign subScriptionFrequency = '' %}
+
+            {% if item.properties %}
+              {% for p in item.properties %}
+                {% if p.last != blank %}
+
+                  {% if p.first == 'subscription_id' %}
+                      {% assign isSubscription = true %}
+                  {% elsif p.first == 'shipping_interval_unit_type' %}
+                      {% assign subScriptionType = p.last  %}
+                  {% elsif p.first == 'shipping_interval_frequency' %}
+                      {% assign subScriptionFrequency = p.last %}
+                  {% else %}
                   {% endif %}
-                {% endfor %}
+
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if isSubscription == true %}
+              {% if subScriptionFrequency == '1' %}
+                {% assign size = subScriptionType | size | minus: 1 %}
+                {% assign subScriptionType  = subScriptionType | slice: 0, size %}
               {% endif %}
+            {% endif %}
+
+            <div class="ajax-cart__line-items">
+              <div class="ajax-cart__line-item">
+                {% if isSubscription == true %}
+                  {{ subScriptionFrequency }} {{ subScriptionType }}
+                {% endif %}
+              </div>
             </div>
+
             <div class="ajax-cart__line-items-discount">
             {% if item.line_level_discount_allocations.size > 0 %}
               <div class="ajax-cart__price-comparison">
