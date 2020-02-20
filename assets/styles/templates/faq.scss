@@ -167,6 +167,11 @@
 
 
 .faq-page {
+  h1 {
+    @include respond-to('medium-down') {
+      font-size: 24px;
+    }
+  }
   .page-faq__column-wrap {
     width: 100%;
     max-width: 100%;
@@ -182,12 +187,36 @@
     opacity: 0;
     height: 1px;
     overflow: hidden;
+    margin: 0;
   }
   .tabbed-container.tabbed-container-active {
     position: relative;
     z-index: 2;
     opacity: 1;
     height: auto;
+  }
+  .tabbed-nav {
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+
+    ul {
+      columns: 2;
+      column-gap: 20px;
+
+      li {
+        a {
+          font-weight: normal !important;
+          color: #a79580;
+
+          &.nav-active {
+            color: $body-text;
+            font-weight: normal;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
   }
 
   .faq-contents {
@@ -225,9 +254,19 @@
     }
   }
 
-
+  .banner__heading {
+    @include respond-to('medium-down') {
+      font-size: 24px;
+      color: $black;
+    }
+  }
   .banner__text.text-align-center {
     padding: 10px;
+  }
+  .rich-text__heading {
+    @include respond-to('medium-down') {
+      font-size: 24px !important;
+    }
   }
 
   .rich-text__text .image-element__wrap {
@@ -235,8 +274,15 @@
   }
   .rich-text__text p {
     max-width: 427px !important;
+    @include respond-to('medium-down') {
+      font-size: 14px !important;
+    }
   }
   .rich-text__content .buttons .button {
     max-width: 266px !important;
+    @include respond-to('medium-down') {
+      font-size: 14px !important;
+      max-width: 197px !important;
+    }
   }
 }

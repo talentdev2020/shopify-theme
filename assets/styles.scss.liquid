@@ -10529,16 +10529,18 @@ $product-height__mobile: 195px;
 
   .flickity-prev-next-button.previous {
     left: -50px;
-    color:black;
-    background-color: #f7ba17;
+    color: $dark-sky-blue;
+    border: solid 2px $inpute-bkg;
+    background-color: #fafafa;
     @include respond-to('medium-down') {
       display: none;
     }
   }
   .flickity-prev-next-button.next {
     right: -50px;
-    color:black;
-    background-color: #f7ba17;
+    color: $dark-sky-blue;
+    border: solid 2px $inpute-bkg;
+    background-color: #fafafa;
     @include respond-to('medium-down') {
       display: none;
     }
@@ -10618,7 +10620,8 @@ $product-height__mobile: 195px;
   }
 }
 
-body.index .featured-collection-section {
+
+.featured-collection-section {
   .one-whole {
     width: 100%;
   }
@@ -10771,6 +10774,45 @@ body.index .featured-collection-section {
     }
     .featured-collection__icon_container {
       display: none !important;
+    }
+  }
+}
+
+.product-wrap {
+  .yotpo  {
+    .yotpo-stars .yotpo-icon {
+      font-size: 14.5px  !important;
+      padding-top: 4px  !important;
+    }
+    a.text-m {
+      font-size: 14px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal  !important;
+      line-height: 1.43;
+      letter-spacing: normal;
+      text-align: left;
+      color: $black !important;
+      margin-left: 5px;
+    }
+  }
+  .product-thumbnail {
+    .product-thumbnail__title {
+      font-family: 'Cooper Std';
+      font-size: 16px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: $purpley-grey !important;
+      min-height: 60px;
+
+      @include respond-to('medium-down') {
+        font-size: 14px;
+        line-height: 1;
+      }
     }
   }
 }
@@ -15615,7 +15657,7 @@ $search-item-border: {{ settings.border_color }};
         font-style: normal;
         line-height: 1.37;
         letter-spacing: normal;
-        text-align: center;
+        text-align: left;
         color: #ffffff;
         @include respond-to('medium-down') {
           font-size: 14px;
@@ -17774,6 +17816,13 @@ $subtotal-bg-color: #F2F2F2;
 .cart__item-list {
   margin-top:40px;
 }
+
+.ajax-cart__product-title {
+
+    a {
+      font-family: 'Cooper Std' !important;
+    }
+}
 /* # Collection
 ================================================== */
 
@@ -18141,6 +18190,11 @@ $subtotal-bg-color: #F2F2F2;
 
 
 .faq-page {
+  h1 {
+    @include respond-to('medium-down') {
+      font-size: 24px;
+    }
+  }
   .page-faq__column-wrap {
     width: 100%;
     max-width: 100%;
@@ -18156,12 +18210,36 @@ $subtotal-bg-color: #F2F2F2;
     opacity: 0;
     height: 1px;
     overflow: hidden;
+    margin: 0;
   }
   .tabbed-container.tabbed-container-active {
     position: relative;
     z-index: 2;
     opacity: 1;
     height: auto;
+  }
+  .tabbed-nav {
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+
+    ul {
+      columns: 2;
+      column-gap: 20px;
+
+      li {
+        a {
+          font-weight: normal !important;
+          color: #a79580;
+
+          &.nav-active {
+            color: $body-text;
+            font-weight: normal;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
   }
 
   .faq-contents {
@@ -18199,9 +18277,19 @@ $subtotal-bg-color: #F2F2F2;
     }
   }
 
-
+  .banner__heading {
+    @include respond-to('medium-down') {
+      font-size: 24px;
+      color: $black;
+    }
+  }
   .banner__text.text-align-center {
     padding: 10px;
+  }
+  .rich-text__heading {
+    @include respond-to('medium-down') {
+      font-size: 24px !important;
+    }
   }
 
   .rich-text__text .image-element__wrap {
@@ -18209,9 +18297,16 @@ $subtotal-bg-color: #F2F2F2;
   }
   .rich-text__text p {
     max-width: 427px !important;
+    @include respond-to('medium-down') {
+      font-size: 14px !important;
+    }
   }
   .rich-text__content .buttons .button {
     max-width: 266px !important;
+    @include respond-to('medium-down') {
+      font-size: 14px !important;
+      max-width: 197px !important;
+    }
   }
 }
 /* # Password page

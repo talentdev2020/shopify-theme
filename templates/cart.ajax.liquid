@@ -176,7 +176,7 @@
       {% comment %} Checkout {% endcomment %}
       <div class="ajax-cart__button-wrapper text-align-center">
         {% if settings.go_to_checkout %}
-          <button type="submit" class="ajax-cart__button button--add-to-cart button">{% if settings.show_lock_icon %}{% include settings.icon, name: 'lock' %}{% endif %}{{ 'layout.general.checkout' | t }}</button>
+          <button type="submit" class="ajax-cart__button button--add-to-cart button button--primary">{% if settings.show_lock_icon %}{% include settings.icon, name: 'lock' %}{% endif %}{{ 'layout.general.checkout' | t }}</button>
           <a class="ajax-cart__cart-link" href="{{ routes.cart_url }}" >{{ 'layout.general.go_to_cart' | t }}</a>
         {% else %}
           <a href="{{ routes.cart_url }}" class="ajax-cart__button button--add-to-cart button" >{% if settings.show_lock_icon %}{% include settings.icon, name: 'lock' %}{% endif %}{{ 'layout.general.go_to_cart' | t }} </a>
