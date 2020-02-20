@@ -371,18 +371,30 @@ product__main.liquid
 
           <script>
             var acc = document.getElementsByClassName("accordion");
+            var length = acc.length;
             var i;
             
-            for (i = 0; i < acc.length; i++) {
+            for (i = 0; i < length; i++) {
               acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                   panel.style.maxHeight = null;
                 } else {
+                  closeToggle();
                   panel.style.maxHeight = panel.scrollHeight + "px";
                 } 
               });
+            }
+
+            function closeToggle()
+            {
+              for (var j = 0; j < length; j++) {
+                var contents = acc[j].nextElementSibling;
+                if (contents.style.maxHeight) {
+                  acc[j].click();
+                } 
+              }
             }
           </script>
 
