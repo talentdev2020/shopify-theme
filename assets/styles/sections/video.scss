@@ -52,6 +52,16 @@ $play-icon-size: 81px;
     position: relative;
     background-color: $black;
 
+    @include respond-to('medium-down') {
+      .lazyframe[data-ratio="16:9"]:before{
+        padding-top:100%
+      }
+      
+      .lazyframe[data-ratio="4:3"]:before{
+        padding-top:100%
+      }
+    }
+
     &.overlay--text_only {
       .video__text-wrapper {
         position: relative;
@@ -257,4 +267,56 @@ $play-icon-size: 81px;
 .video-header-wave {
   position: relative;
   z-index: 6;
+}
+
+.inside-title {
+  position: absolute;
+  z-index: 10;    
+  top: 30%;
+  left: 35%;
+
+  @include respond-to('medium-down') {
+    top: 30%;
+    left: 16%;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 45px;
+    line-height: 1.11;
+    color: white;
+
+    @include respond-to('medium-down') {
+      font-size: 24px;
+    }
+  }
+}
+
+.watch-now-title {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  top: 15%;
+  width: 206px;
+  height: 50px;
+  background-color: #ffb0b2;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 0px 20px;
+
+  @include respond-to('medium-down') {
+    width: 146.1px;
+    height: 40px;
+    padding: 0px 10px;
+  }
+
+  h3 {
+    font-size: 19px;
+    text-align: center;
+
+    @include respond-to('medium-down') {
+      font-size: 16px;
+    }
+  }
 }

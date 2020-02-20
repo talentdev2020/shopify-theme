@@ -70,12 +70,12 @@
 			{% assign show_poweredby = true %}
 		{% endif %}
     	{% comment %}Custom styling{% endcomment %}
-		{% assign widget_label_color = widget_settings.font_color | default: "#8c8c8c" %}
-		{% assign widget_price_color = widget_settings.font_color | default: "#d2b8cb" %}
+		{% assign widget_label_color = "#8c8c8c" %}
+		{% assign widget_price_color = "#d2b8cb" %}
 
-    	{% assign widget_active_color = widget_settings.active_color | default: "#191919" %}
+    	{% assign widget_active_color = "#191919" %}
 		{% assign widget_active_bg = widget_settings.background_color | default: "#ffffff" %}
-		{% assign widget_active_price_color = widget_settings.background_color | default: "#a57096" %}
+		{% assign widget_active_price_color = "#a57096" %}
 
     	{% assign widget_icon = widget_settings.widget_icon | default: "black" %}
     	{% if widget_icon == "white" %}
@@ -129,6 +129,10 @@
 		}
 		div.rc_block__type--active label.rc_label {
 			color: {{ widget_active_color }};
+		}
+		div.rc_block__type--active .rc_label__deliver_every {
+			font-size: 1rem;
+    		padding: 8px 0 0 10px;
 		}
 		div.rc_block__type--active label.rc_label .icon.active {
 			display: block;
@@ -213,7 +217,22 @@
 					</label>
 				{% endunless %}
 				<div id="rc_autodeliver_options" class="rc_block rc_block__type__options">
+					
+					<div class="swatch_options collection_swatches">
+					{% for option in product.options %}
+						{% include 'product__options', option: option, id: '2' %}
+					{% endfor %}
+					</div>
+
 					<label for="rc_shipping_interval_frequency" class="rc_label rc_label__deliver_every" aria-label="Subscription frequency options">
+						
+						{% if shipping_interval_frequency.size > 1 %}
+							<span class="rc_label__frequency">
+								Choose Frequency:
+							</span>
+						{% endif %}
+
+						{% comment %}
 						{% if shipping_interval_frequency.size == 1 %}
 							<span class="rc_label__frequency">
 								{{ shipping_interval_frequency[0] }}
@@ -224,6 +243,7 @@
 								{% endif %}
 							</span>
 						{% endif %}
+						{% endcomment %}
 					</label>
 
 					<div class="swatch_options">
@@ -267,11 +287,6 @@
 						{% endfor %}
 					</select>
 
-					<div class="swatch_options collection_swatches">
-					{% for option in product.options %}
-						{% include 'product__options', option: option, id: '2' %}
-					{% endfor %}
-					</div>
 
 					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_subscribe', class2 : 'meals_subscribe' %}
 				</div>
