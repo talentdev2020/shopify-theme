@@ -90,6 +90,10 @@
 
           {% include 'include-persons', type: 'block' %}
 
+        {% elsif block.type == 'wide_image' %}
+        
+          {% include 'include-wide-image', type: 'block' %}
+
         {% endif %}
 
         </div>
@@ -1238,6 +1242,26 @@
               "label": "Slide in right"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "wide_image",
+      "name": "Wide Image",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background image"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_mobile",
+          "label": "Mobile Background image"
         }
       ]
     },

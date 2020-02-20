@@ -9,6 +9,9 @@ $product-height__desktop: 350px;
 $product-width__mobile : 145px;
 $product-height__mobile: 195px;
 
+.featured-collection {
+  margin: auto;
+}
 .featured-collection-section,
 .block__featured-collection {
 
@@ -31,13 +34,13 @@ $product-height__mobile: 195px;
   }
 
   .flickity-viewport {
-    box-shadow: inset 0 $input-border-width/(-2) 0 $cart-border-color;
+
   }
 
   .has-thumbnail-sticker {
     display: block;
     border-bottom: $input-border-width solid transparent;
-    margin: 10px!important;
+//    margin: 10px!important;
   }
 
   .flickity-slider 
@@ -60,16 +63,18 @@ $product-height__mobile: 195px;
 
   .flickity-prev-next-button.previous {
     left: -50px;
-    color:black;
-    background-color: #f7ba17;
+    color: $dark-sky-blue;
+    border: solid 2px $inpute-bkg;
+    background-color: #fafafa;
     @include respond-to('medium-down') {
       display: none;
     }
   }
   .flickity-prev-next-button.next {
     right: -50px;
-    color:black;
-    background-color: #f7ba17;
+    color: $dark-sky-blue;
+    border: solid 2px $inpute-bkg;
+    background-color: #fafafa;
     @include respond-to('medium-down') {
       display: none;
     }
@@ -149,7 +154,8 @@ $product-height__mobile: 195px;
   }
 }
 
-body.index .featured-collection-section {
+
+.featured-collection-section {
   .one-whole {
     width: 100%;
   }
@@ -302,6 +308,45 @@ body.index .featured-collection-section {
     }
     .featured-collection__icon_container {
       display: none !important;
+    }
+  }
+}
+
+.product-wrap {
+  .yotpo  {
+    .yotpo-stars .yotpo-icon {
+      font-size: 14.5px  !important;
+      padding-top: 4px  !important;
+    }
+    a.text-m {
+      font-size: 14px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal  !important;
+      line-height: 1.43;
+      letter-spacing: normal;
+      text-align: left;
+      color: $black !important;
+      margin-left: 5px;
+    }
+  }
+  .product-thumbnail {
+    .product-thumbnail__title {
+      font-family: 'Cooper Std';
+      font-size: 16px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: $purpley-grey !important;
+      min-height: 60px;
+
+      @include respond-to('medium-down') {
+        font-size: 14px;
+        line-height: 1;
+      }
     }
   }
 }

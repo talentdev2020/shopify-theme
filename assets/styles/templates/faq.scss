@@ -3,12 +3,13 @@
 
 .page-faq__column-wrap {
   width: 100%;
+  max-width: 850px;
 }
 
 .faq-contents {
 
   .groups {
-    width: 98%;
+    width: 48%;
     margin: 0 1% 20px 1%;
 
     @include respond-to('medium-down') {
@@ -75,6 +76,7 @@
   border: 1px solid #8f9cb2;
   position: relative;
   padding: 15px;
+  background-color: white;
 
   a,
   button {
@@ -166,6 +168,15 @@
 
 
 .faq-page {
+  h1 {
+    @include respond-to('medium-down') {
+      font-size: 24px;
+    }
+  }
+  .page-faq__column-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
   .tabs {
     position: relative;
   }
@@ -177,12 +188,53 @@
     opacity: 0;
     height: 1px;
     overflow: hidden;
+    margin: 0;
   }
   .tabbed-container.tabbed-container-active {
     position: relative;
     z-index: 2;
     opacity: 1;
     height: auto;
+  }
+  
+  .tabbed-nav {
+    @include respond-to('medium-down') {
+      width: 100%;
+    }
+    @include respond-to('medium-down') {
+      ul {
+        columns: 2;
+        column-gap: 20px;
+
+        li {
+          a {
+            font-weight: normal !important;
+            color: #a79580;
+
+            &.nav-active {
+              color: $body-text;
+              font-weight: normal;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .faq-contents {
+
+    .groups {
+      width: 48%;
+      margin: 0 1% 20px 1%;
+      width: 98%;
+      margin: 0 1% 20px 1%;
+  
+      @include respond-to('medium-down') {
+        width: 98%;
+        margin: 0 1% 10px 1%;
+      }
+    }
   }
 
   ul.flex-change-2 {
@@ -205,9 +257,19 @@
     }
   }
 
-
+  .banner__heading {
+    @include respond-to('medium-down') {
+      font-size: 24px;
+      color: $black;
+    }
+  }
   .banner__text.text-align-center {
     padding: 10px;
+  }
+  .rich-text__heading {
+    @include respond-to('medium-down') {
+      font-size: 24px !important;
+    }
   }
 
   .rich-text__text .image-element__wrap {
@@ -215,8 +277,15 @@
   }
   .rich-text__text p {
     max-width: 427px !important;
+    @include respond-to('medium-down') {
+      font-size: 14px !important;
+    }
   }
   .rich-text__content .buttons .button {
     max-width: 266px !important;
+    @include respond-to('medium-down') {
+      font-size: 14px !important;
+      max-width: 197px !important;
+    }
   }
 }

@@ -360,7 +360,7 @@
   },
   "cart": {
     "general": {
-      "title": "Shopping Cart",
+      "title": "Order Summary",
       "products": "Products",
       "remove": "Remove",
       "price": "Price",
@@ -373,7 +373,7 @@
       "excluding_tax_shipping": "Excluding tax & shipping",
       "orders_processed_in_currency_html": "Orders will be processed in {{ currency }}.",
       "note": "Order Notes",
-      "note_detailed": "Include any notes or special instructions for your order here:",
+      "note_detailed": "Add a note",
       "agree_to_terms_html": "Agree to Terms",
       "view_terms": "[View Terms]",
       "agree_to_terms_warning": "You must agree with the terms and conditions to checkout.",
@@ -383,7 +383,13 @@
       "shipping_content": "Calculated at next step",
       "cart_total": "Cart total",
       "update": "Update Subtotal",
-      "checkout": "Checkout"
+      "checkout": "Checkout",
+      "frequency": "Frequency",
+      "flavor": "Flavor",
+      "onetime_purchase":"One-time purchase",
+      "subscription": "Subscription",
+      "special_instructions": "Special instructions",
+      "shiping_taxes_contents": "Shipping & Taxes Calculated At Checkout" 
     },
     "shipping_calculator": {
       "title": "Shipping rates calculator",

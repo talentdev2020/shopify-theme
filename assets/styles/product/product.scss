@@ -560,11 +560,6 @@
   }
   .container {
     @include respond-to('medium-down') {
-      .column,
-      .columns {
-        margin:0;
-      }
-
       .medium-down--one-whole {
         width: 100%;
       }
@@ -581,6 +576,8 @@
 }
 
 #rc_container {
+  cursor: pointer;
+  
   .rc_label {
     @include respond-to('medium-down') {
       font-size: 1rem;
@@ -593,6 +590,7 @@
         font-size: 1.2rem;
       }
     }
+    cursor: pointer;
   }
 
   .rc_radio {
@@ -612,6 +610,7 @@
     border: 2px solid #fadc8a;
     background-color: #ffffff;
     border-radius: 50%;
+    cursor: pointer;
   }
   
   /* appearance for checked radiobutton */
@@ -731,7 +730,7 @@
     .standalone-bottomline {
       .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
         float: none;
-        font-size: 19px;
+        font-size: 14px;
 
         @include respond-to('medium-down') {
           font-size: 12px;
@@ -744,11 +743,15 @@
         float: none;
   
         .text-m {
-          font-family: Montserrat;
-          font-size: 19px;
+          font-size: 14px;
           font-weight: 600;
-          padding-left: 10px;
-          color: black!important;
+          font-stretch: normal;
+          font-style: normal !important;
+          line-height: 1.43;
+          letter-spacing: normal;
+          text-align: left;
+          color: #0a0a0a !important;
+          margin-left: 5px;
 
           @include respond-to('medium-down') {
             padding-left: 2px;

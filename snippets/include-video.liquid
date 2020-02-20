@@ -96,7 +96,7 @@
 .video__subtitle {
   color: {% if subheading_alpha != 0 %}{{ object.settings.subheading_color }}{% else %}{{ settings.regular_color }}{% endif %}
 }
-
+ 
 .pretext {
   color: {% if preheading_alpha != 0 %}{{ object.settings.pretext_color }}{% else %}{{ settings.regular_color }}{% endif %}
 }
@@ -151,7 +151,9 @@
         {% if animation != "none" %}
           data-scroll-class="{{ animation }}"
         {% endif %}>
-  {% include 'wave-down-shape' %}
+  {% if page.handle contains "mission" %}
+    {% include 'wave-down-shape' %}
+  {% endif %}
   {% if cookies_position != blank %}
   {% unless cookies_position == 'none' %}
     {% include 'cookies2', position: cookies_position %}
@@ -179,8 +181,8 @@
         </div>
         {% endif %}
       </div>
-      <div class="video-wrapper overlay--{{ overlay_style }}">
 
+      <div class="video-wrapper overlay--{{ overlay_style }}">
         {% comment %} Including the image element when there is no video added {% endcomment %}
         {% unless video_exists %}
           {% if image %}
@@ -189,8 +191,6 @@
             {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--video' }}
           {% endif %}
         {% endunless %}
-
-
 
         {% comment %} Checks there is an iframe video (YouTube or Vimeo) {% endcomment %}
         {% if iframe_video != blank %}
@@ -210,7 +210,20 @@
           </video>
         {% endif %}
         <div class="video__text-container{% if pretext == blank and title == blank and subtitle == blank and button_label == blank %} hidden{% endif %}" data-video-text-container>
-          <div class="video__text is-justify-{{ vertical_text_position }}">            
+          <div class="video__text is-justify-{{ vertical_text_position }}">          
+            
+            {% if object.settings.title-watch_now != blank %}
+            <div class="watch-now-title">
+              <h3>{{ object.settings.title-watch_now }}</h3>
+            </div>
+            {% endif %}
+      
+            {% if object.settings.title_inside != blank %}
+            <div class="inside-title">
+              <h3>{{ object.settings.title_inside }}</h3>
+            </div>
+            {% endif %}
+            
             <div class="text-outer-wrapper is-flex is-justify-{{ horizontal_text_position }}">
               <div class="video__text-wrapper text-align-{{ text_align }}">
                 <div class="overlay"></div>
@@ -255,7 +268,9 @@
         <div class="container button-wrapper is-justify-center">
             <div class="buttons">
              <a class="button {{ button_style1 }}">{{ button_label1 }}</a> 
+             {% if button_label2 != blank %}
              <a class="button {{ button_style2 }} ">{{ button_label2 }}</a>
+             {% endif %}
             </div>
         </div>
         {% endif %}

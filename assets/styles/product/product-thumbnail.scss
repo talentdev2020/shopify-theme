@@ -32,15 +32,15 @@ $mobile-padding : 15px;
 }
 
 .header-tag {
-  font-size: 19px;
+  font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.21;
+  line-height: 1.29;
   letter-spacing: normal;
   text-align: center;
   color: $purpley-grey;
-  height: 23px;
+  height: 20px;
   text-transform: capitalize;
   
   a {
@@ -164,7 +164,7 @@ $mobile-padding : 15px;
 }
 
 .has-thumbnail-sticker {
-  margin: 40px 0;
+//  margin: 40px 0;
 
   @include respond-to('medium-down') {
     margin: 15px 0;
@@ -635,6 +635,8 @@ $mobile-padding : 15px;
 }
 
 .product-form-container {
+  cursor: pointer;
+
   .rc_block__type {
     border-radius: 10px;
   }
