@@ -576,6 +576,8 @@
 }
 
 #rc_container {
+  cursor: pointer;
+  
   .rc_label {
     @include respond-to('medium-down') {
       font-size: 1rem;
@@ -588,6 +590,7 @@
         font-size: 1.2rem;
       }
     }
+    cursor: pointer;
   }
 
   .rc_radio {
@@ -607,6 +610,7 @@
     border: 2px solid #fadc8a;
     background-color: #ffffff;
     border-radius: 50%;
+    cursor: pointer;
   }
   
   /* appearance for checked radiobutton */
