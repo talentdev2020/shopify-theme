@@ -112,14 +112,29 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
         margin-bottom: 30px;
     }
     .rich-text__heading {
+      margin-bottom: 55px;
+      margin-top: 70px;
+        
+      @include respond-to('medium-down') {
+        font-size: 24px !important;
+        padding-top: 25px;
+        padding-bottom: 35px;
         margin-bottom: 0;
-        @include respond-to('medium-down') {
-          font-size: 24px;
-        }
+        margin-top: 0;
+      }
     }
     .rich-text__text p {
         max-width: 244px;
         margin: 0 auto;
+        padding-bottom: 50px;
+        @include respond-to('medium-up') {
+          &:first-of-type {
+            margin-left: 0;
+          }
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
     }
     .wave-shape {
         width: 100vw;
@@ -133,12 +148,22 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
             height: auto;
             object-fit: cover;
         }
+        @include respond-to('medium-down') {
+          display: none;
+        }
     }
+    .video__container {
+      padding-bottom: 100px;
+      @include respond-to('medium-down') {
+        padding-bottom: 0;
+      }
+    }
+
 
     .image-with-text__text-column .image-with-text__heading.is-regular {
       @include respond-to('medium-down') {
-        display: none !important;
-        text-align: left;
+        text-align: left !important;
+        margin-top: 5px;
       }
     }
 
@@ -155,13 +180,29 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
         .image-element__wrap {
             height: 250px;
             width: 250px;
+            @include respond-to('medium-down') {
+              height: 130px;
+              width: 130px;
+            }
         }
         .image-with-text__image-column {
             width: 30%;
             margin: 105px auto;
+            @include respond-to('medium-down') {
+              width: 100%;
+              margin: 60px auto 0;
+            }
         }
         .image-with-text__text-column {
             width: 70%;
+            @include respond-to('medium-down') {
+              width: 100%;
+
+            }
+        }
+        .image-with-text__heading.is-regular {
+          text-align: center !important;
+          margin-top: 5px;
         }
 
         .image-with-text__text p {
@@ -173,22 +214,134 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
             letter-spacing: normal;
             text-align: left;
             color: $body-text;
+            @include respond-to('medium-down') {
+              font-size: 14px;
+              text-align: center !important;
+            }
           }
     }
     .blessed-are-those {
         .image-element__wrap {
             max-width: 91px !important;
             margin: 0 auto 50px;
+            @include respond-to('medium-down') {
+              margin: 0 auto 10px;
+            }
         }
         .rich-text__heading {
             margin-bottom: 12px;
+            @include respond-to('medium-down') {
+              font-size: 24px !important;
+              padding-top: 10px;
+              padding-bottom: 15px;
+              margin-bottom: 0;
+              margin-top: 0;
+          }
         }
         .rich-text__text p {
             max-width: 427px;
+            @include respond-to('medium-down') {
+              padding-bottom: 15px;
+            }
         }
         .button {
             width: 266px;
             height: 50px;
+            @include respond-to('medium-down') {
+              width: 200px;
+              height: 40px;
+              font-size: 14px !important;
+            }
         }
+    }
+
+    .stats-on-hunger {
+      @include respond-to('medium-down') {
+        background: url('{{ "mobile-wave-bgr.svg" | asset_url }}') repeat-x 50% 0 transparent !important;
+        background-size: 375px  449.5px;
+        object-fit: contain;
+        background-color: #f6f2ed;
+        width: 100%;
+      }
+    }
+    .zero-hunger {
+      @include respond-to('medium-down') {
+
+      }
+    }
+
+    .featured-video {
+      @include respond-to('medium-down') {
+        width: 100%;
+        padding: 0 30px;
+        .video__container .video-wrapper {
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .under-title {
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+
+          .video-title {
+            font-size: 13px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 3.23;
+            letter-spacing: normal;
+            text-align: center;
+            text-transform: uppercase;
+            padding-bottom: 12px;
+          }
+        }
+        .under-rich-text p {
+          font-size: 14px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.36;
+          letter-spacing: normal;
+          text-align: center;
+        }
+
+        .video__container .buttons .button {
+          width: 180px !important;
+          height: 40px !important;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .block__persons {
+      @include respond-to('medium-down') {
+        padding-top: 0 !important;
+        padding-bottom: 70px !important;
+      }
+    }
+    .team-section {
+
+      .image-with-text__text-column {
+        @include respond-to('medium-down') {
+          @include order(0);
+        }
+      }
+      .person-with-text-column__column {
+        padding: 10px !important;
+      }
+      .person-column__title {
+        @include respond-to('medium-down') {
+          font-size: 14px !important;
+        }
+      }
+      .person-column__text {
+        @include respond-to('medium-down') {
+          font-size: 14px !important;
+        }
+      }
+      .image-with-text__text p {
+        @include respond-to('medium-down') {
+          margin-bottom: 30px;
+        }
+      }
     }
 }
