@@ -155,7 +155,7 @@
   btn_one.innerHTML = price_one.innerHTML + " per month";
 
   $('#rc_price_onetime').on('DOMSubtreeModified',function(){
-    btn_one.innerHTML = price_one.innerHTML + " per month";
+    btn_one.innerHTML = price_one.innerHTML + " Add to Cart";
   })
 
   var price_subscribe = document.getElementById("rc_price_autodeliver");							
@@ -165,7 +165,7 @@
   $('#rc_price_autodeliver').on('DOMSubtreeModified',function(){
     btn_subscribe.innerHTML = price_subscribe.innerHTML + " per month";
   })
-
+  
   function clickaddcart() {
     $("#button--add-to-cart").click();
   }

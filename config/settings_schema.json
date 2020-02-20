@@ -2399,7 +2399,8 @@
       {
         "type": "checkbox",
         "id": "display_special_instructions",
-        "label": "Enable 'note' text box"
+        "label": "Enable 'note' text box",
+        "default": true
       },
       {
         "type": "header",

@@ -9,6 +9,9 @@ $product-height__desktop: 350px;
 $product-width__mobile : 145px;
 $product-height__mobile: 195px;
 
+.featured-collection {
+  margin: auto;
+}
 .featured-collection-section,
 .block__featured-collection {
 
@@ -37,7 +40,7 @@ $product-height__mobile: 195px;
   .has-thumbnail-sticker {
     display: block;
     border-bottom: $input-border-width solid transparent;
-    margin: 10px!important;
+//    margin: 10px!important;
   }
 
   .flickity-slider 

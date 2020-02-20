@@ -560,11 +560,6 @@
   }
   .container {
     @include respond-to('medium-down') {
-      .column,
-      .columns {
-        margin:0;
-      }
-
       .medium-down--one-whole {
         width: 100%;
       }
