@@ -1,5 +1,7 @@
 "use strict";
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 if ($(window).width() > 798) {
   Shopify.theme.jsFeaturedCollection = {
     init: function init($section) {
@@ -15,6 +17,8 @@ if ($(window).width() > 798) {
       }
     },
     createSlider: function createSlider() {
+      var _$$flickity;
+
       var featuredCollectionSlider = $('.featured-collection.layout--slider .slider-gallery');
       var slideData = {
         products_per_slide: this.products_per,
@@ -23,7 +27,7 @@ if ($(window).width() > 798) {
         cellAlign: "left",
         wrapAround: false
       };
-      $(featuredCollectionSlider).flickity({
+      $(featuredCollectionSlider).flickity((_$$flickity = {
         freeScroll: true,
         imagesLoaded: true,
         draggable: true,
@@ -32,17 +36,15 @@ if ($(window).width() > 798) {
         pageDots: false,
         contain: true,
         prevNextButtons: slideData.products_limit > slideData.products_per_slide ? true : false,
-        initialIndex: 0,
-        arrowShape: 'm88.06492,42.97897l-63.40262,0l27.33874,-25.51181c1.74503,-1.62841 1.74503,-4.34244 0,-5.97085c-1.74503,-1.62841 -4.07173,-1.62841 -5.81675,0l-34.90052,32.56826c-1.74503,1.62841 -1.74503,4.34244 0,5.97085l34.90052,32.56826c1.74503,1.62841 4.6534,1.62841 6.39843,0c1.74503,-1.62841 1.74503,-3.79963 0,-5.42804l-27.33874,-26.05461l63.40262,0c2.3267,0 4.6534,-1.62841 4.6534,-4.34244c-1.16335,-2.17122 -2.90838,-4.34244 -5.23508,-3.79963l0,0z',
-        on: {
-          ready: function ready() {
-            // Reset layout to avoid collapsing issues
-            setTimeout(function () {
-              $(featuredCollectionSlider).flickity('resize');
-            }, 500);
-          }
+        initialIndex: 0
+      }, _defineProperty(_$$flickity, "imagesLoaded", true), _defineProperty(_$$flickity, "arrowShape", 'm88.06492,42.97897l-63.40262,0l27.33874,-25.51181c1.74503,-1.62841 1.74503,-4.34244 0,-5.97085c-1.74503,-1.62841 -4.07173,-1.62841 -5.81675,0l-34.90052,32.56826c-1.74503,1.62841 -1.74503,4.34244 0,5.97085l34.90052,32.56826c1.74503,1.62841 4.6534,1.62841 6.39843,0c1.74503,-1.62841 1.74503,-3.79963 0,-5.42804l-27.33874,-26.05461l63.40262,0c2.3267,0 4.6534,-1.62841 4.6534,-4.34244c-1.16335,-2.17122 -2.90838,-4.34244 -5.23508,-3.79963l0,0z'), _defineProperty(_$$flickity, "on", {
+        ready: function ready() {
+          // Reset layout to avoid collapsing issues
+          setTimeout(function () {
+            $(featuredCollectionSlider).flickity('resize');
+          }, 500);
         }
-      });
+      }), _$$flickity));
     },
     unload: function unload($section) {
       var $slider = $section.find('.flickity-enabled');

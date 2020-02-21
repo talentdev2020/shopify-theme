@@ -25,6 +25,8 @@
 {% assign animation = object.settings.animation | default: 'none' %}
 {% comment %} Is the color set to transparent? {% endcomment %}
 {% assign thumb_caption_background_alpha = object.settings.thumb_caption_background | color_extract: 'alpha' %}
+{% assign tooltip_background = object.settings.tooltip_background %}
+{% assign tooltip_text_color = object.settings.tooltip_text_color %}
 {% comment %}Advanced{% endcomment %}
 {% assign css_class = object.settings.css_class %}
 {% assign custom_css = object.settings.custom_css %}
@@ -59,6 +61,16 @@
   #shopify-section-{{ id }}  .thumbnail__caption {
     background: {%- if thumb_caption_background_alpha != 0 -%}{{ object.settings.thumb_caption_background }}{%- endif -%};
   }
+
+  #shopify-section-{{ id }} .tooltip-text {
+    background: {%- if tooltip_background != 0 -%}{{ tooltip_background }}{%- endif -%};
+    color: {%- if tooltip_text_color != 0 -%}{{ tooltip_text_color }}{%- endif -%};
+  }
+  #shopify-section-{{ id }}  .tooltip-text::after {
+    border-color: {% if tooltip_background != 0 %} {{ tooltip_background }} {% endif %}   transparent transparent transparent;
+  }
+
+
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 

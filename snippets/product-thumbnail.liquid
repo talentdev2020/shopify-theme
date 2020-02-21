@@ -58,7 +58,14 @@ product-thumbnail.liquid
     <div class="header-tag">
       {% for tag in product.tags %}
         {% if tag contains 'meals' %}
-        <a>{% include settings.icon, name: "icon-meal" %} {{ tag }}</a>
+          {% if  object.settings.enable_tooltip %}<div class="con-tooltip bottom">{% endif %}
+            <a>{% include settings.icon, name: "icon-meal" %}{{ tag }}</a>
+            {% if object.settings.enable_tooltip and object.settings.tooltip_text != blank %}
+              <span class="tooltip-text purple">
+                {{ object.settings.tooltip_text }}
+              </span>
+            </div>
+            {% endif %}
         {% endif %}
       {% endfor %}
     </div>
