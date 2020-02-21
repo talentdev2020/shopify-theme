@@ -8,6 +8,8 @@
 {% assign width = section.settings.width %}
 {% assign padding_top = section.settings.padding_top %}
 {% assign padding_bottom = section.settings.padding_bottom %}
+{% assign tooltip_background = object.settings.tooltip_background %}
+{% assign tooltip_text_color = object.settings.tooltip_text_color %}
 {% comment %} Advanced {% endcomment %}
 {% assign css_class = section.settings.css_class %}
 {% assign custom_css = section.settings.custom_css %}
@@ -27,6 +29,14 @@
 
   .section__wrapper .section{
     padding-bottom: {{ padding_bottom }}px;
+  }
+
+  .collection-main .tooltip-text {
+    background: {%- if tooltip_background != 0 -%}{{ tooltip_background }}{%- endif -%};
+    color: {%- if tooltip_text_color != 0 -%}{{ tooltip_text_color }}{%- endif -%};
+  }
+  .collection-main  .tooltip-text::after {
+    border-color: {% if tooltip_background != 0 %} {{ tooltip_background }} {% endif %}   transparent transparent transparent;
   }
 
   {% include 'css-loop', css: custom_css, id: id %}
@@ -661,6 +671,34 @@
           "default": 200,
           "unit": "px",
           "info": "Applied when 'Align to height' is enabled. [Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022543913)"
+        },
+        {
+          "type": "header",
+          "content": "Tooltip"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_tooltip",
+          "label": "Enable tooltip",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "tooltip_text",
+          "label": "Text",
+          "default": "<p>Each box of hand-crafted cookies provides <b>2 meals<\/b> to those in need.<\/p>"
+        },
+        {
+          "type": "color",
+          "id": "tooltip_background",
+          "label": "Tooltip background",
+          "default": "#a57096"
+        },
+        {
+          "type": "color",
+          "id": "tooltip_text_color",
+          "label": "Tooltip text color",
+          "default": "#ffffff"
         },
         {
           "type": "header",

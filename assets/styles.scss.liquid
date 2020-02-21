@@ -10507,7 +10507,7 @@ $product-height__mobile: 195px;
   }
 
   .flickity-viewport {
-
+    
   }
 
   .has-thumbnail-sticker {
@@ -10615,6 +10615,7 @@ $product-height__mobile: 195px;
     text-align: center;
     color: $purpley-grey;
     height: 20px;
+    position: relative;
     a {
       color: $purpley-grey;
 
@@ -10724,6 +10725,7 @@ $product-height__mobile: 195px;
     text-align: center;
     color: $purpley-grey;
     height: 20px;
+    position: relative;
     a {
       color: $purpley-grey;
 
@@ -10822,6 +10824,101 @@ $product-height__mobile: 195px;
       }
     }
   }
+}
+
+/*tooltip Box*/
+.con-tooltip {
+
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  cursor: default;
+  z-index: 50;
+}
+
+/*tooltip */
+.tooltip-text {
+  visibility: hidden;
+  z-index: 1;
+  opacity: .40;
+  
+  width: 100%;
+  padding: 20px;
+
+  background: $purpley-grey;
+  color: $white;
+  
+  position: absolute;
+  top:-140%;
+  left: -25%;
+  border-radius: 9px;
+  font: 16px;
+  z-index: 20;
+  transform: translateY(9px);
+  transition: all 0.3s ease-in-out;
+
+  box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
+}
+
+
+/* tooltip  after*/
+.tooltip-text::after {
+  content: " ";
+  width: 0;
+  height: 0;
+  
+  border-style: solid;
+  border-width: 12px 12.5px 0 12.5px;
+  border-color: $purpley-grey transparent transparent transparent;
+  z-index: 20;
+  position: absolute;
+  left: 40%;
+
+}
+
+.con-tooltip:hover .tooltip-text{
+  visibility: visible;
+  transform: translateY(-10px);
+  opacity: 1;
+  transition: .3s linear;
+  animation: jump 1s ease-in-out infinite  alternate;
+}
+@keyframes jump {
+  0%{
+    transform: translateY(6px);	
+  }
+  100%{
+    transform: translateY(1px);	
+  }
+}
+
+/*hover ToolTip*/
+.left:hover {transform: translateX(-6px); }
+.top:hover {transform: translateY(-6px);  }
+.bottom:hover {transform: translateY(6px);}
+.right:hover {transform: translateX(6px); }
+
+/*left*/
+.left .tooltip-text{ top:-20%; left:-170%; }
+.left .tooltip-text::after{
+  top:40%;
+  left:90%;
+  transform: rotate(-90deg);
+}
+
+/*bottom*/
+.bottom .tooltip-text { top:125%; left: 0%; }
+.bottom .tooltip-text::after{
+  top:-10%;
+  left:40%;
+  transform: rotate(180deg);
+}
+
+/*right*/
+.right .tooltip-text { top:-20%; left:115%; }
+.right .tooltip-text::after{
+  top:40%;
+  left:-12%;
+  transform: rotate(90deg);
 }
 /* # Featured promotions
 ================================================== */
