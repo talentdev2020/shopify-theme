@@ -179,14 +179,16 @@
 		<div id="rc_radio_options" role="radiogroup" aria-labelledby="Purchase options">
 			{% unless subscription_only %}
 			<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
-				<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
 				<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
-					{% if discount_percentage > 0 %}
-					<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
-					{% endif %}
-					{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
-					{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
-					{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+					<div>
+						<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
+						{% if discount_percentage > 0 %}
+						<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
+						{% endif %}
+						{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
+						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
+						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+					</div>
 				</label>
 
 				<div id="rc_onetime_options" class="rc_block rc_block__type__options">		
@@ -202,9 +204,12 @@
 			</div>
 			{% endunless %}
 			<div class="rc_block rc_block__type rc_block__type__autodeliver {% if select_subscription_first %}rc_block__type--active{% endif %}" {% if subscription_only and shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
-				<input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
-				{% unless subscription_only %}
+				{% if subscription_only %}
+					<input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
+				{% else %}
 					<label for="rc_purchase_type_autodeliver" class="rc_label rc_label__autodeliver">
+					  <div>
+					    <input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
 						{% if discount_percentage > 0 %}
 							<span id="rc_price_autodeliver" class="rc_price rc_price__autodeliver" aria-label="recurring price"></span>
 						{% endif %}
@@ -214,8 +219,10 @@
 						{% endif %}
 						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
 						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+					  </div>
 					</label>
-				{% endunless %}
+				{% endif %}
+
 				<div id="rc_autodeliver_options" class="rc_block rc_block__type__options">
 					
 					<div class="swatch_options collection_swatches">

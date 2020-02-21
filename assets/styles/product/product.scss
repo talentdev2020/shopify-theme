@@ -576,8 +576,7 @@
 }
 
 #rc_container {
-  cursor: pointer;
-  
+
   .rc_label {
     @include respond-to('medium-down') {
       font-size: 1rem;
