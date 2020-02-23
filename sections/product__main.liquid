@@ -594,6 +594,17 @@ product__main.liquid
   </div>
 {% endif %}
 
+<script>
+  var width =  $('.product-gallery__image .image__container img').width();
+  var height =  $('.product-gallery__image .image__container img').height();
+  console.log("width", width);
+  console.log("height", height);
+
+  {% if section.settings.thumbnail_position == 'left-thumbnails' or section.settings.thumbnail_position == 'right-thumbnails' %}
+  $('.product-gallery__thumbnails').height(height);
+  {% endif %}
+</script>
+
 {% schema %}
 
 {
