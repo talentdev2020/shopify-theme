@@ -8004,6 +8004,7 @@ ul.tabs {
     @include respond-to('medium-down') {
       .medium-down--one-whole {
         width: 100%;
+        margin:0;
       }
 
       .one-whole {
@@ -8028,7 +8029,8 @@ ul.tabs {
       padding-right: 10px;
 
       @include respond-to('medium-down') {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        padding-right: 0px;
       }
     }
     cursor: pointer;
@@ -8052,6 +8054,12 @@ ul.tabs {
     background-color: #ffffff;
     border-radius: 50%;
     cursor: pointer;
+
+    @include respond-to('medium-down') {
+      width: 20px;
+      height: 20px;
+      padding: 3px;
+    }
   }
   
   /* appearance for checked radiobutton */
@@ -12576,12 +12584,10 @@ h1.header__logo-text > a {
             line-height: 1.29;
             text-align: center;
             padding: $gutter/2;
-            margin: auto;
+            margin: auto; 
 
             @include respond-to('medium-down') {
                 font-size: 1.5rem;
-                width: 272px;
-                margin: auto;
             }
         }
  
@@ -15298,7 +15304,8 @@ $search-item-border: {{ settings.border_color }};
 
     .flickity-page-dots {
       bottom: 40px;
-      left: 115px;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }
@@ -15854,11 +15861,11 @@ $play-icon-size: 81px;
   position: absolute;
   z-index: 10;    
   top: 30%;
-  left: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   @include respond-to('medium-down') {
     top: 30%;
-    left: 16%;
   }
 
   h3 {
@@ -16013,6 +16020,7 @@ $play-icon-size: 81px;
                     }
                     .title-top{
                         background-color: white;
+                        padding-top:5px;
                     }
 
                     .image__container img {
@@ -16619,8 +16627,13 @@ $subtotal-bg-color: #F2F2F2;
     padding-left: 5px;
     font-size: 19px;
     @include respond-to($medium-down) {
-      padding-left: 0px;
+      padding-left: 5px;
       font-size: 16px;
+    }
+  }
+  .money.was-price {
+    @include respond-to($medium-down) {
+      padding-left: 0px;
     }
   }
   @include respond-to($medium-down) {
@@ -16858,6 +16871,11 @@ $subtotal-bg-color: #F2F2F2;
     }
   }
 
+  .cart__total-savings {
+    .is-flex {
+      margin-left: auto;
+    }
+  }
   .cart__discounts p,
   .cart__total-savings p {
     color: $sale-color;
@@ -16909,7 +16927,8 @@ $subtotal-bg-color: #F2F2F2;
   }
 }
 
-.cart__subtotal {
+.cart__subtotal, .cart__total-discount {
+  padding-left: 10px;
   span {
     font-family: Montserrat;
     color: $body-text;
@@ -17006,6 +17025,10 @@ $subtotal-bg-color: #F2F2F2;
   margin-bottom: auto;
   text-align: right;
   padding: 0 25px;
+
+  @include respond-to($medium-down) {
+    display: none;
+  }
 }
 // Additional checkout buttons
 
@@ -17217,6 +17240,11 @@ $subtotal-bg-color: #F2F2F2;
     display: none;
     @include respond-to($medium-down) {
       display: block;
+      padding: 5px;
+
+      .one-third p {
+        padding-left: 5px;
+      }
     }
   }
 

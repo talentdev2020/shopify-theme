@@ -61,7 +61,8 @@
 
     .flickity-page-dots {
       bottom: 40px;
-      left: 115px;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

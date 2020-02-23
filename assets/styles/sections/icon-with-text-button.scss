@@ -26,12 +26,10 @@
             line-height: 1.29;
             text-align: center;
             padding: $gutter/2;
-            margin: auto;
+            margin: auto; 
 
             @include respond-to('medium-down') {
                 font-size: 1.5rem;
-                width: 272px;
-                margin: auto;
             }
         }
  
