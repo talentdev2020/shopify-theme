@@ -6,7 +6,14 @@
 <a class="button button--primary {{ button_class }}" id="{{ button_class }}" onclick="clickaddcart()">
     <span>{{ 'products.product.add_to_cart' | t }}</span>
 </a>
+{% if  object.settings.enable_tooltip %}<div class="con-tooltip bottom">{% endif %}
 <p class="meal_txt">{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="{{ meal_class }}">2</span> Meals</p>
+{% if object.settings.enable_tooltip and object.settings.tooltip_text != blank %}
+<span class="tooltip-text  blue">
+  {{ object.settings.tooltip_text }}
+</span>
+</div>
+{% endif %}
 </div>
 
 <p class="freeshipping_txt">Free shipping   •   Cancel anytime   •   Satisfaction guaranteed</p>

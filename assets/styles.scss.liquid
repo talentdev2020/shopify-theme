@@ -8091,18 +8091,35 @@ ul.tabs {
     white-space: normal;
   }
   .meal_txt {
-    width: 120px;
+    width: 180px;
     font-family: Caveat;
     font-size: 16px;
     font-weight: bold;
     line-height: 2.81;
     color: #4899d4;
+    display: flex;
     padding-left: 15px;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: center;
 
     @include respond-to('medium-down') {
       margin: auto;
       padding-left: 0;
       padding-top: 10px;
+      justify-content: center;
+    }
+  }
+
+  .con-tooltip {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+    z-index: 50;
+    @include respond-to('medium-down') {
+      margin: 0 auto;
+      display: block;
     }
   }
 
@@ -10582,7 +10599,7 @@ $product-height__mobile: 195px;
 
   .featured-collection__icon_container {
     @include respond-to('medium-down') {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -10785,6 +10802,12 @@ $product-height__mobile: 195px;
       display: none !important;
     }
   }
+
+  .featured-collection__icon_container {
+    @include respond-to('medium-down') {
+      display: none !important;
+    }
+  }
 }
 
 .product-wrap {
@@ -10842,6 +10865,7 @@ $product-height__mobile: 195px;
   opacity: .40;
   
   width: 100%;
+  min-width: 200px;
   padding: 20px;
 
   background: $purpley-grey;
@@ -10855,7 +10879,7 @@ $product-height__mobile: 195px;
   z-index: 20;
   transform: translateY(9px);
   transition: all 0.3s ease-in-out;
-
+  white-space: normal;
   box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
 }
 
@@ -11131,6 +11155,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
   @include respond-to('medium-down') {
     padding-top: 5rem;
     background: url('{{ "footer-bgr-mobile.svg" | asset_url }}') repeat-x 50% 0 transparent;
+    background-size: cover;
   }
 }
 .footer__scroll_to_top {
@@ -11291,7 +11316,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
     padding-top: $gutter/2;
     @include respond-to('medium-down') {
       padding-top: 0;
-      border-bottom: 1px solid #d9d9d9;
+      border-bottom: none;
       flex-direction: column-reverse;
     }
   }
@@ -11302,7 +11327,6 @@ $footer_headings_color: {{ settings.footer_headings_color }};
     padding-left: $gutter !important;
     padding-right: $gutter !important;
     border: none;
-    border-bottom: 1px solid #d9d9d9;
   }
 
   hr {
@@ -14479,9 +14503,9 @@ body.page-press {
 }
 
 .mobile-menu__content {
-  padding-bottom: 100px;
   height: 100%;
-  overflow-y: scroll;
+  padding-top: 30px;
+  padding-left: 10px;
 
   .icon-caption {
     padding: 0;
