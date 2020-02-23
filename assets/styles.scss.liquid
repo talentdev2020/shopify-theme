@@ -7629,7 +7629,6 @@ ul.tabs {
   .product-gallery__thumbnails {
     width: 15%;
     margin-left: 20px;
-    max-height: 440px;
 
     @include respond-to('medium-down') {
       display: none;
@@ -7639,6 +7638,12 @@ ul.tabs {
   .product-gallery__thumbnail {
     width: 100%;
     margin-bottom: 20px;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -7666,6 +7671,12 @@ ul.tabs {
     width: 100%;
     margin-bottom: 20px;
 
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -7677,7 +7688,6 @@ ul.tabs {
 .product-gallery__thumbnails--right-thumbnails,
 .product-gallery__thumbnails--left-thumbnails {
   width: 100%;
-  margin: 10px;
   @include align-self(flex-start);
 
   &.is-slide-nav--true {
@@ -7988,6 +7998,11 @@ ul.tabs {
     }
   }
   .product__information {
+    @include respond-to('medium-down') {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
     .money {
       font-weight: bold;
       @include respond-to('medium-down') {
@@ -8004,7 +8019,6 @@ ul.tabs {
     @include respond-to('medium-down') {
       .medium-down--one-whole {
         width: 100%;
-        margin:0;
       }
 
       .one-whole {
@@ -8054,6 +8068,7 @@ ul.tabs {
     background-color: #ffffff;
     border-radius: 50%;
     cursor: pointer;
+    margin:0;
 
     @include respond-to('medium-down') {
       width: 20px;
