@@ -240,8 +240,12 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
         }
         .rich-text__text p {
             max-width: 427px;
+            margin: inherit;
+            display: inline-block;
             @include respond-to('medium-down') {
               padding-bottom: 15px;
+              margin: inherit !important;
+              display: inline-block;
             }
         }
         .button {

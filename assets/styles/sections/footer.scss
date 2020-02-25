@@ -26,6 +26,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
   @include respond-to('medium-down') {
     padding-top: 5rem;
     background: url('{{ "footer-bgr-mobile.svg" | asset_url }}') repeat-x 50% 0 transparent;
+    background-size: cover;
   }
 }
 .footer__scroll_to_top {
@@ -186,7 +187,7 @@ $footer_headings_color: {{ settings.footer_headings_color }};
     padding-top: $gutter/2;
     @include respond-to('medium-down') {
       padding-top: 0;
-      border-bottom: 1px solid #d9d9d9;
+      border-bottom: none;
       flex-direction: column-reverse;
     }
   }
@@ -197,7 +198,6 @@ $footer_headings_color: {{ settings.footer_headings_color }};
     padding-left: $gutter !important;
     padding-right: $gutter !important;
     border: none;
-    border-bottom: 1px solid #d9d9d9;
   }
 
   hr {

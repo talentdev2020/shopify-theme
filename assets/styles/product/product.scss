@@ -187,7 +187,6 @@
   .product-gallery__thumbnails {
     width: 15%;
     margin-left: 20px;
-    max-height: 440px;
 
     @include respond-to('medium-down') {
       display: none;
@@ -197,6 +196,12 @@
   .product-gallery__thumbnail {
     width: 100%;
     margin-bottom: 20px;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -224,6 +229,12 @@
     width: 100%;
     margin-bottom: 20px;
 
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -235,7 +246,6 @@
 .product-gallery__thumbnails--right-thumbnails,
 .product-gallery__thumbnails--left-thumbnails {
   width: 100%;
-  margin: 10px;
   @include align-self(flex-start);
 
   &.is-slide-nav--true {
@@ -546,6 +556,11 @@
     }
   }
   .product__information {
+    @include respond-to('medium-down') {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
     .money {
       font-weight: bold;
       @include respond-to('medium-down') {
@@ -586,7 +601,8 @@
       padding-right: 10px;
 
       @include respond-to('medium-down') {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        padding-right: 0px;
       }
     }
     cursor: pointer;
@@ -610,6 +626,13 @@
     background-color: #ffffff;
     border-radius: 50%;
     cursor: pointer;
+    margin:0;
+
+    @include respond-to('medium-down') {
+      width: 20px;
+      height: 20px;
+      padding: 3px;
+    }
   }
   
   /* appearance for checked radiobutton */
@@ -645,18 +668,35 @@
     white-space: normal;
   }
   .meal_txt {
-    width: 120px;
+    width: 180px;
     font-family: Caveat;
     font-size: 16px;
     font-weight: bold;
     line-height: 2.81;
     color: #4899d4;
+    display: flex;
     padding-left: 15px;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: center;
 
     @include respond-to('medium-down') {
       margin: auto;
       padding-left: 0;
       padding-top: 10px;
+      justify-content: center;
+    }
+  }
+
+  .con-tooltip {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+    z-index: 50;
+    @include respond-to('medium-down') {
+      margin: 0 auto;
+      display: block;
     }
   }
 

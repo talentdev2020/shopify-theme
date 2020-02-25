@@ -39,6 +39,22 @@
   .hide-when-banner-enabled {
     display: none;
   }
+  .image-pc {
+  }
+  .image-mobile {
+    display: none;
+  }
+
+  {% if section.settings.image-mobile != blank %}
+  @media only screen and (max-width: 798px) {
+    .image-pc {
+      display: none;
+    }
+    .image-mobile {
+      display: block;
+    }
+  }
+  {% endif %}
 </style>
 
 <section class="section
@@ -54,10 +70,19 @@
                 dark-overlay-{{ section.settings.image_darken }}
                 is-{{ section.settings.banner_height }}">
       {% if image != blank %}
-        {% include 'image-element', image: image, alt: image.alt, stretch_width: true %}
+        <div class="image-pc">
+          {% include 'image-element', image: image, alt: image.alt, stretch_width: true %}
+        </div>
       {% else %}
         {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
+
+      {% if section.settings.image-mobile != blank %}
+        <div class="image-mobile">
+          {% include 'image-element', image: section.settings.image-mobile, alt: image.alt, stretch_width: true %}
+        </div>
+      {% endif %}
+
       {% if free_shipping__title != blank %}
         <div class="banner__freeshipping">
           {{ free_shipping__title }}
