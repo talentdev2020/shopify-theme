@@ -4,8 +4,8 @@
     "theme_name": "Flex",
     "theme_author": "Out of the Sandbox",
     "theme_version": "1.1.3",
-    "theme_documentation_url": "https:\/\/help.outofthesandbox.com\/",
-    "theme_support_url": "https:\/\/help.outofthesandbox.com\/hc\/en-us\/requests\/new"
+    "theme_documentation_url": "https:\/\/help.eagoats.com\/",
+    "theme_support_url": "https:\/\/help.eagoats.com\/hc\/en-us\/requests\/new"
   },
   {
     "name": "Layout",
@@ -32,7 +32,7 @@
         "type": "select",
         "id": "header_layout",
         "label": "Header",
-        "info": "[Preview options](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360022225073#header-settings-and-styles)",
+        "info": "[Preview options](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360022225073#header-settings-and-styles)",
         "options": [
           {
             "value": "centered",
@@ -57,7 +57,7 @@
         "type": "select",
         "id": "footer_layout",
         "label": "Footer",
-        "info": "[Preview options](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360021506133#footer-styles)",
+        "info": "[Preview options](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360021506133#footer-styles)",
         "options": [
           {
             "value": "none",
@@ -84,13 +84,13 @@
       },
       {
         "type": "paragraph",
-        "content": "Select a default template for each page. Alternate templates can also be used for individual pages. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360022795733#product-page-templates)"
+        "content": "Select a default template for each page. Alternate templates can also be used for individual pages. [Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360022795733#product-page-templates)"
       },
       {
         "type": "select",
         "id": "product_layout",
         "label": "Product page",
-        "info": "[Preview options](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360022795733#default-product-template)",
+        "info": "[Preview options](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360022795733#default-product-template)",
         "options": [
           {
             "value": "classic",
@@ -627,7 +627,7 @@
         "type": "text",
         "id": "button_cart_icon",
         "label": "Icon",
-        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360021570294)"
+        "info": "[Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360021570294)"
       },
       {
         "type": "select",
@@ -1046,7 +1046,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Select the number of custom mega menus to enable. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360021253094)"
+        "content": "Select the number of custom mega menus to enable. [Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360021253094)"
       },
       {
         "type": "checkbox",
@@ -2090,7 +2090,7 @@
         "type": "checkbox",
         "id": "collection_swatches",
         "label": "Show color swatches",
-        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](\/admin\/settings\/files).",
+        "info": "[Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](\/admin\/settings\/files).",
         "default": true
       },
       {
@@ -2288,7 +2288,7 @@
         "type": "radio",
         "id": "product_form_style",
         "label": "Options style",
-        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](\/admin\/settings\/files).",
+        "info": "[Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360024080613) or manage your custom color swatches for all products by [viewing your uploaded files](\/admin\/settings\/files).",
         "options": [
           {
             "value": "dropdown",
@@ -2341,7 +2341,7 @@
         "type": "page",
         "id": "size_chart",
         "label": "Size chart",
-        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910707-Using-the-Size-Chart-Sections-themes-)"
+        "info": "[Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/115006910707-Using-the-Size-Chart-Sections-themes-)"
       }
     ]
   },
@@ -2410,7 +2410,7 @@
         "type": "checkbox",
         "id": "display_tos_checkbox",
         "label": "Show 'agree to terms' checkbox",
-        "info": "If the dynamic payment button is enabled, customers will be able to bypass these terms. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115007101208-Terms-Conditions-on-the-Cart-Page) ",
+        "info": "If the dynamic payment button is enabled, customers will be able to bypass these terms. [Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/115007101208-Terms-Conditions-on-the-Cart-Page) ",
         "default": false
       },
       {
@@ -2614,7 +2614,7 @@
         "type": "image_picker",
         "id": "og_image_fallback",
         "label": "Social sharing image",
-        "info": "Used when an image cannot be found. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910147-Specify-what-image-text-is-shown-when-someone-shares-your-site-on-Facebook-#section5)"
+        "info": "Used when an image cannot be found. [Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/115006910147-Specify-what-image-text-is-shown-when-someone-shares-your-site-on-Facebook-#section5)"
       }
     ]
   },
