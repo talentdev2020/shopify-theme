@@ -56,6 +56,14 @@
         </div>
       {% endif %}
 
+      {% for tag in product.tags %}
+        {% if tag contains 'gluten-free' %}
+            <div class="gluten-free-sticker thumbnail-sticker sticker-{{i}}">
+              <span class="sticker-text" title="{{ tag }}">{% include settings.icon, name: "icon-gluten-free" %}</span>
+            </div>
+        {% endif %}
+      {% endfor %}
+
     </div>
   </div>
 {% endif %}

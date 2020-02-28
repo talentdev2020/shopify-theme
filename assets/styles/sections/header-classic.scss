@@ -13,10 +13,19 @@
   .section.is-width-wide {
     width: 81%;
     margin: 0 auto;
+
+    @include respond-to('widescreen-down') {
+      width: 100% !important;
+    }
   }
 
   .header__button.has-padding-left {
     padding-left: 24px;
+  }
+  .header__button {
+    @include respond-to('large-down') {
+      display: none;
+    }   
   }
 }
 

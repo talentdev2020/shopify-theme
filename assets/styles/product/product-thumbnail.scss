@@ -299,6 +299,9 @@ $mobile-padding : 15px;
     @include preorder-sticker;
   }
 
+  &.gluten-free-sticker {
+    @include glutenfree-sticker ;
+  }
 }
 
 // Banner text
