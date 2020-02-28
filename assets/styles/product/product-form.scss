@@ -473,7 +473,7 @@ button.shopify-payment-button__more-options {
 
       &:hover,
       &:focus {
-        background-color: transparent;
+        background-color: $btn-add-to-cart-bg-color-highlight;
         border: $input-border-width solid $border;
         color: $btn-add-to-cart-text-color-highlight;
       }

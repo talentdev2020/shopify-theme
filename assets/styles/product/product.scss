@@ -687,6 +687,10 @@
       padding-top: 10px;
       justify-content: center;
     }
+
+    #meals_subscribe {
+      margin: 0 5px;
+    }
   }
 
   .con-tooltip {
@@ -731,6 +735,7 @@
    margin-left: 5px;
    position: absolute;
    right: 20px;
+   font-weight: bold;
  }
  
  .active:after {

@@ -233,7 +233,7 @@
     width: 100%;
 
     .image-element__wrap {
-      width: 100%;
+      width: 100vw;
     }
 
     @include respond-to('small-down') {
@@ -255,6 +255,7 @@
       display: none;
     }
   }
+
 
   .flickity-page-dots {
     bottom: 51px;

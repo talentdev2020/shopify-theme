@@ -114,10 +114,20 @@ body.index .logo-list-slider {
   @include respond-to('medium-down') {
     background: transparent;
   }
+  .flickity-prev-next-button {
+    @include respond-to('medium-down') {
+      top: 105% !important;
+      z-index: 10;
+    }
+  }  
+  .flickity-viewport {
+    @include respond-to('medium-down') {
+      margin-bottom: 25px;
+    }
+  }
 }
 
 body.index {
-
 
   .rich-text__heading.title {
     @include respond-to('medium-down') {

@@ -1003,6 +1003,14 @@ $drop-down-menu-letter-spacing: {{ settings.dropdown_letter_spacing }}px !defaul
   color: set-text-color($preorder-sticker-color);
 }
 
+@mixin glutenfree-sticker {
+  background-color: $sale-sticker-color;
+  color: $white;
+  fill: $white;
+  padding: 5px 10px 0px 4px;
+  width: 50%;
+}
+
 /* # Reset
 ================================================== */
 
@@ -8133,6 +8141,10 @@ ul.tabs {
       padding-top: 10px;
       justify-content: center;
     }
+
+    #meals_subscribe {
+      margin: 0 5px;
+    }
   }
 
   .con-tooltip {
@@ -8177,6 +8189,7 @@ ul.tabs {
    margin-left: 5px;
    position: absolute;
    right: 20px;
+   font-weight: bold;
  }
  
  .active:after {
@@ -8754,7 +8767,7 @@ button.shopify-payment-button__more-options {
 
       &:hover,
       &:focus {
-        background-color: transparent;
+        background-color: $btn-add-to-cart-bg-color-highlight;
         border: $input-border-width solid $border;
         color: $btn-add-to-cart-text-color-highlight;
       }
@@ -9300,6 +9313,9 @@ $mobile-padding : 15px;
     @include preorder-sticker;
   }
 
+  &.gluten-free-sticker {
+    @include glutenfree-sticker ;
+  }
 }
 
 // Banner text
@@ -12097,10 +12113,19 @@ $footer_headings_color: {{ settings.footer_headings_color }};
   .section.is-width-wide {
     width: 81%;
     margin: 0 auto;
+
+    @include respond-to('widescreen-down') {
+      width: 100% !important;
+    }
   }
 
   .header__button.has-padding-left {
     padding-left: 24px;
+  }
+  .header__button {
+    @include respond-to('large-down') {
+      display: none;
+    }   
   }
 }
 
@@ -14193,10 +14218,20 @@ body.index .logo-list-slider {
   @include respond-to('medium-down') {
     background: transparent;
   }
+  .flickity-prev-next-button {
+    @include respond-to('medium-down') {
+      top: 105% !important;
+      z-index: 10;
+    }
+  }  
+  .flickity-viewport {
+    @include respond-to('medium-down') {
+      margin-bottom: 25px;
+    }
+  }
 }
 
 body.index {
-
 
   .rich-text__heading.title {
     @include respond-to('medium-down') {
@@ -15745,7 +15780,7 @@ $search-item-border: {{ settings.border_color }};
     width: 100%;
 
     .image-element__wrap {
-      width: 100%;
+      width: 100vw;
     }
 
     @include respond-to('small-down') {
@@ -15767,6 +15802,7 @@ $search-item-border: {{ settings.border_color }};
       display: none;
     }
   }
+
 
   .flickity-page-dots {
     bottom: 51px;

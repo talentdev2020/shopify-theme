@@ -731,3 +731,11 @@
   background-color: $preorder-sticker-color;
   color: set-text-color($preorder-sticker-color);
 }
+
+@mixin glutenfree-sticker {
+  background-color: $sale-sticker-color;
+  color: $white;
+  fill: $white;
+  padding: 5px 10px 0px 4px;
+  width: 50%;
+}
