@@ -23,6 +23,7 @@
 
 {% comment %} HTML markup {% endcomment %}
 <footer class="footer__container {{ css_class }}">
+{% include 'include-wave_footer' %}
   <div class="container footer__promo has-no-side-gutter is-flex-{{ section.settings.promo_position }}">
     <div class="footer__content {% if section.settings.enable_promo %} two-thirds {% else %} one-whole {% endif %} column medium-down--one-whole has-padding-top has-padding-bottom">
       <div class="footer__wrap container equal-columns--outside-trim">

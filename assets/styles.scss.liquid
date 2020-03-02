@@ -11188,12 +11188,11 @@ $footer_headings_color: {{ settings.footer_headings_color }};
 .footer__container {
   width: 100%;
   //background-color: $footer_background_color;
-  background: url('{{ "footer-bgr.svg" | asset_url }}') repeat-x 50% 0 transparent;
+  //background: url('{{ "footer-bgr.svg" | asset_url }}') repeat-x 50% 0 transparent;
   background-size: cover;
-  padding-top: 8.313rem;
+  background-color: {{ settings.footer_background }};
+
   @include respond-to('medium-down') {
-    padding-top: 5rem;
-    background: url('{{ "footer-bgr-mobile.svg" | asset_url }}') repeat-x 50% 0 transparent;
     background-size: cover;
   }
 }
@@ -11211,6 +11210,8 @@ $footer_headings_color: {{ settings.footer_headings_color }};
   //background-color: $footer_background_color;
   color: $footer_text_color;
   font-size: $footer_font_size;
+  padding-top: 3rem;
+
   @include respond-to('medium-down') {
     padding-left: 27px !important;
     padding-right: 27px !important;
