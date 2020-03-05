@@ -54,6 +54,10 @@ eg. {% include 'include-icon-with-text' %}
 {%- endcapture -%}
 
 {% style %}
+  .monthly-box__icontext .icon-with-text-column__column .icon {
+    color: black;  
+  }
+
   #shopify-section-{{ object.id }} {
     padding-top: {{ padding_top }}px;
     padding-bottom: {{ padding_bottom }}px;

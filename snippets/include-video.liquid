@@ -196,7 +196,7 @@
         {% if iframe_video != blank %}
           <div class="lazyframe lazyvideo video-{{ id }}" data-video-element>
             
-            {% if section.settings.show_wave_border %}
+            {% if object.settings.show_wave_border %}
             <div class="video-header-wave">
               {% include 'include-wave_background', color: 'white' %}
             </div>

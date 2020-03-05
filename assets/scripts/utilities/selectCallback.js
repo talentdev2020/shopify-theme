@@ -42,8 +42,8 @@ const selectCallback = function (variant, selector) {
         switch(variant.options[i]) {
           case "6-Pack":
             {
-              meal_one.innerHTML = 2;
-              meal_subscribe.innerHTML = 2;
+              meal_one.innerHTML = 1;
+              meal_subscribe.innerHTML = 1;
 
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked",true);  
               $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked",true);   
@@ -53,8 +53,8 @@ const selectCallback = function (variant, selector) {
             break;
           case "12-Pack":
             {
-              meal_one.innerHTML = 3;
-              meal_subscribe.innerHTML = 3;
+              meal_one.innerHTML = 2;
+              meal_subscribe.innerHTML = 2;
 
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked",true);  
               $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked",true);   

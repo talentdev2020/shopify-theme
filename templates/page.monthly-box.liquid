@@ -4,12 +4,8 @@
 {% endcomment %}
 
 <main id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section monthly-box-page" data-check-for-order="true">
-  {% section 'page-monthly-box__videobanner' %}
-  {% section 'page-monthly-box__texts' %}
-
+  {% section 'page__monthly-box' %}
+ 
   {% section 'page-monthly-box__product' %}
-
-  {% section 'page-monthly-box__icontexts' %}
-  {% section 'page-monthly-box__wideimage' %}
   {% section 'page-monthly-box__faq' %}
 </main>
