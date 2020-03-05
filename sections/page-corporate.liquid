@@ -1,0 +1,893 @@
+{% comment %}
+** Page details - custom view **
+- Page template
+- Uses blocks
+{% endcomment %}
+
+{% assign id = section.id %}
+{% comment %} Advanced {% endcomment %}
+{% assign css_class = section.settings.css_class %}
+{% assign custom_css = section.settings.custom_css %}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  {% include 'css-loop', css: custom_css, id: id %}
+{% endstyle %}
+
+<section class="details__page {{ css_class }}" data-check-for-order="true">
+
+  {% if section.blocks.size > 0 %}
+    <div class="page-details__blocks is-flex is-flex-wrap is-justify-center">
+      {% for block in section.blocks %}
+
+        <div id="shopify-section-{{ block.id }}" {{ block.shopify_attributes }}
+        class="shopify-section
+                details__block
+                block__{{ block.type | downcase | replace: '_', '-' }}
+
+                {% if block.type == 'corporate__form' %}
+                  page-corporate__form medium-down--hide-cookie_bg
+ 
+                {% elsif block.type == 'corporate__icontext' %}
+                    corporate__icontext
+
+                {% elsif block.type == "corporate__video" %}
+                  video-section jsVideo
+
+                {% elsif block.type == 'corporate__slider' %}
+
+                {% endif %}">
+
+        {% if block.type == "corporate__form" %}
+            {% include 'include-corporate__form', type: 'block' %}
+        
+        {% elsif block.type == "corporate__icontext" %}
+            {% include 'include-icon-with-text', type: 'block' %}
+
+        {% elsif block.type == "corporate__video" %}
+            {% include 'include-video', type: 'block' %}
+
+        {% elsif block.type == 'corporate__slider' %}
+            <div class="coporate-page-slider-container" id="coporate-page-slider-container">
+            </div>
+
+        {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</section> 
+
+<script data-theme-editor-load-script src="{{ 'z__jsCorporatePage.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Page sections",
+  "class": "page-details details page-corporate-gifting jsCorporatePage",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Learn more](https://help.eagoats.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "corporate__form",
+      "name": "Form",      
+      "limit": 1,
+      "settings": [
+        {
+            "type": "text",
+            "id": "title_1",
+            "label": "Title",
+            "default": "How To Build A <br> Nunbelievable Culture"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sub Title",
+            "default": "Choose your gift level: 25, 50, or 100 boxes.<br>We’ll deliver each box directly to your<br> customers & employees."
+        },
+        {
+            "type": "text",
+            "id": "title_2",
+            "label": "Bottom Title",
+            "default": "Let No One <br> Go Nun-Loved"
+        },
+        {
+            "type": "textarea",
+            "id": "custom_html",
+            "label": "Custom Html",
+            "default": "<div style='margin:0 auto;' class='pxFormGenerator' id='93Fkx33StCYPMR-B2ebK1A'></div>"
+        },
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "standard",
+            "options": [
+                {
+                "value": "standard",
+                "label": "Standard"
+                },
+                {
+                "value": "wide",
+                "label": "Wide"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Top spacing",
+            "min": 0,
+            "max": 80,
+            "default": 20,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Bottom spacing",
+            "min": 0,
+            "max": 80,
+            "default": 20,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Backgroud color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Backgroud Image"
+        },
+        {
+            "type": "text",
+            "id": "css_class",
+            "label": "CSS Class"
+        },
+        {
+            "type": "textarea",
+            "id": "custom_css",
+            "label": "Custom CSS"
+        }
+      ]
+    },  
+    {
+        "type": "corporate__icontext",
+        "name": "Icon With Text",
+        "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default" : "Brand-Building Ideas"
+            },
+            {
+            "type": "range",
+            "id": "icons_per_row",
+            "label": "Items per row",
+            "min": 1,
+            "max": 8,
+            "default": 4
+            },
+            {
+            "type": "select",
+            "id": "icon_size",
+            "label": "Icon size",
+            "options": [
+                {
+                "value": "small",
+                "label": "Small"
+                },
+                {
+                "value": "medium",
+                "label": "Medium"
+                },
+                {
+                "value": "large",
+                "label": "Large"
+                }
+            ],
+            "default": "medium"
+            },
+            {
+            "type": "select",
+            "id": "align_text",
+            "label": "Alignment",
+            "options": [
+                {
+                "value": "left",
+                "label": "Left"
+                },
+                {
+                "value": "center",
+                "label": "Center"
+                },
+                {
+                "value": "right",
+                "label": "Right"
+                }
+            ],
+            "default": "center"
+            },
+            {
+            "type": "header",
+            "content": "Colors"
+            },
+            {
+            "type": "color",
+            "id": "icon_color",
+            "label": "Icons",
+            "default": "rgba(0,0,0,0)"
+            },
+            {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text",
+            "default": "rgba(0,0,0,0)"
+            },
+            {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default": "#CCCCCC"
+            },
+            {
+            "type": "color",
+            "id": "gradient",
+            "label": "Gradient",
+            "default": "rgba(0,0,0,0)"
+            },
+            {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background Image"
+            },
+            {
+            "type": "range",
+            "id": "gradient_rotation",
+            "label": "Gradient rotation",
+            "min": 0,
+            "max": 180,
+            "step": 10,
+            "default": 0,
+            "unit": "deg"
+            },
+            {
+            "type": "header",
+            "content": "Layout"
+            },
+            {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "standard",
+            "options": [
+                {
+                "value": "half",
+                "label": "Half"
+                },
+                {
+                "value": "standard",
+                "label": "Standard"
+                },
+                {
+                "value": "wide",
+                "label": "Wide"
+                }
+            ]
+            },
+            {
+            "type": "checkbox",
+            "id": "show_gutter",
+            "label": "Show gutter",
+            "default": true
+            },
+            {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Top spacing",
+            "min": 0,
+            "max": 80,
+            "default": 20,
+            "unit": "px"
+            },
+            {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Bottom spacing",
+            "min": 0,
+            "max": 80,
+            "default": 20,
+            "unit": "px"
+            },
+            {
+            "type": "range",
+            "id": "padding_left",
+            "label": "Left spacing",
+            "min": 0,
+            "max": 80,
+            "default": 0,
+            "unit": "px"
+            },
+            {
+            "type": "range",
+            "id": "padding_right",
+            "label": "Right spacing",
+            "min": 0,
+            "max": 80,
+            "default": 0,
+            "unit": "px"
+            },
+            {
+            "type": "select",
+            "id": "animation",
+            "label": "Animation",
+            "default": "none",
+            "options": [
+                {
+                "value": "none",
+                "label": "None"
+                },
+                {
+                "value": "fadeIn",
+                "label": "Fade in"
+                },
+                {
+                "value": "fadeInDown",
+                "label": "Fade in down"
+                },
+                {
+                "value": "fadeInLeft",
+                "label": "Fade in left"
+                },
+                {
+                "value": "fadeInRight",
+                "label": "Fade in right"
+                },
+                {
+                "value": "slideInLeft",
+                "label": "Slide in left"
+                },
+                {
+                "value": "slideInRight",
+                "label": "Slide in right"
+                },
+                {
+                "value": "zoomIn",
+                "label": "Zoom in"
+                }
+            ]
+            },
+            {
+            "type": "header",
+            "content": "Block 1"
+            },
+            {
+            "type": "text",
+            "id": "icon_label_1",
+            "label": "Icon",
+            "placeholder": "Enter icon name",
+            "info": "[Icon list](https://help.eagoats.com/hc/en-us/articles/360021570294)",
+            "default": "icon-circle_dot1"
+            },
+            {
+            "type": "text",
+            "id": "title_1",
+            "label": "Heading"
+            },
+            {
+            "type": "richtext",
+            "id": "text_1",
+            "label": "Text",
+            "default": "<p>Give unforgettable branded merchandise at conferences and trade shows</p>"
+            },
+            {
+            "type": "header",
+            "content": "Block 2"
+            },
+            {
+            "type": "text",
+            "id": "icon_label_2",
+            "label": "Icon",
+            "placeholder": "Enter icon name",
+            "info": "[Icon list](https://help.eagoats.com/hc/en-us/articles/360021570294)",
+            "default": "icon-circle_dot2"
+            },
+            {
+            "type": "text",
+            "id": "title_2",
+            "label": "Heading"
+            },
+
+            {
+            "type": "richtext",
+            "id": "text_2",
+            "label": "Text",
+            "default": "<p>Align your gifting with your Corporate Social Responsibility values.</p>"
+            },
+            {
+            "type": "header",
+            "content": "Block 3"
+            },
+            {
+            "type": "text",
+            "id": "icon_label_3",
+            "label": "Icon",
+            "placeholder": "Enter icon name",
+            "info": "[Icon list](https://help.eagoats.com/hc/en-us/articles/360021570294)",
+            "default": "icon-circle_dot3"
+            },
+            {
+            "type": "text",
+            "id": "title_3",
+            "label": "Heading"
+            },
+
+            {
+            "type": "richtext",
+            "id": "text_3",
+            "label": "Text",
+            "default": "<p>Create lifetime customers with thoughtful cookie gifts.</p>"
+            },
+            {
+            "type": "header",
+            "content": "Block 4"
+            },
+            {
+            "type": "text",
+            "id": "icon_label_4",
+            "label": "Icon",
+            "placeholder": "Enter icon name",
+            "info": "[Icon list](https://help.eagoats.com/hc/en-us/articles/360021570294)",
+            "default": "icon-circle_dot4"
+            },
+            {
+            "type": "text",
+            "id": "title_4",
+            "label": "Heading"
+            },
+
+            {
+            "type": "richtext",
+            "id": "text_4",
+            "label": "Text",
+            "default": "<p>Show your team that sweet bonding moments matter.</p>"
+            }
+        ]
+    },
+    {
+        "type": "corporate__video",
+        "name": "Video",
+        "settings":[
+            {
+              "type": "header",
+              "content": "Video"
+            },
+            {
+              "type": "select",
+              "id": "aspect_ratio",
+              "label": "Aspect ratio",
+              "options": [
+                {
+                  "value": "16:9",
+                  "label": "16:9"
+                },
+                {
+                  "value": "4:3",
+                  "label": "4:3"
+                }
+              ],
+              "default": "16:9"
+            },
+            {
+              "type": "checkbox",
+              "id": "autoplay",
+              "label": "Autoplay on compatible devices",
+              "info": "[Learn more](https:\/\/help.eagoats.com\/hc\/en-us\/articles\/360000661568)",
+              "default": false
+            },
+            {
+              "type": "checkbox",
+              "id": "autoloop",
+              "label": "Autoloop video",
+              "default": true
+            },
+            {
+              "type": "video_url",
+              "id": "iframe_video",
+              "label": "YouTube or Vimeo video URL",
+              "accept": ["youtube", "vimeo"],
+              "default": "https://www.youtube.com/watch?v=8NxS0vrPcsA"
+            },
+            {
+              "type": "text",
+              "id": "html5_video",
+              "label": "HTML5 MP4/OGV File URL"
+            },
+            {
+              "type": "checkbox",
+              "id": "controls",
+              "label": "Enable HTML5 video controls",
+              "default": true
+            },
+            {
+              "type": "header",
+              "content": "Content"
+            },
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image",
+              "info": "1600 x 900px recommended"
+            },
+            {
+              "type": "text",
+              "id": "pretext",
+              "label": "Preheading"
+            }, 
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Heading",
+              "default": "Corporate Gifting"
+            },
+            {
+              "type": "text",
+              "id": "subtitle",
+              "label": "Subheading"
+            },
+            {
+              "type": "text",
+              "id": "review_content",
+              "label": "Review Content",
+              "default": "“When I started my <br> company, I wanted to make <br> an impact on the world.”"
+            },
+            {
+              "type": "text",
+              "id": "review_name",
+              "label": "Review Name",
+              "default": "Scott T., Senergy Medical Group" 
+            },
+            {
+              "type": "color",
+              "id": "pretext_color",
+              "label": "Preheading",
+              "default": "#000000"
+            },
+            {
+              "type": "color",
+              "id": "heading_color",
+              "label": "Heading",
+              "default": "#000000"
+            },
+            {
+              "type": "color",
+              "id": "subheading_color",
+              "label": "Subheading",
+              "default": "#000000"
+            },
+            {
+              "type": "select",
+              "id": "horizontal_text_position",
+              "label": "Horizontal position",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            },
+            {
+              "type": "select",
+              "id": "vertical_text_position",
+              "label": "Vertical position",
+              "options": [
+                {
+                  "value": "start",
+                  "label": "Top"
+                },
+                {
+                  "value": "center",
+                  "label": "Middle"
+                },
+                {
+                  "value": "end",
+                  "label": "Bottom"
+                }
+              ],
+              "default": "center"
+            },
+            {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            },
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "Button label",
+              "default": "Play video"
+            },
+            {
+              "type": "select",
+              "id": "button_style",
+              "label": "Button style",
+              "default": "button--secondary",
+              "options": [
+                {
+                  "value": "button--primary",
+                  "label": "Primary"
+                },
+                {
+                  "value": "button--secondary",
+                  "label": "Secondary"
+                },
+                {
+                  "value": "button--link-style",
+                  "label": "Link style"
+                }
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Overlay"
+            },
+            {
+              "type": "select",
+              "id": "overlay_style",
+              "label": "Overlay style",
+              "default": "text_only",
+              "options": [
+                {
+                  "value": "full",
+                  "label": "Full"
+                },
+                {
+                  "value": "text_only",
+                  "label": "Text only"
+                },
+                {
+                  "value": "none",
+                  "label": "None"
+                }
+              ]
+            },
+            {
+              "type": "color",
+              "id": "video_overlay_color",
+              "label": "Overlay",
+              "default": "#ffffff"
+            },
+            {
+              "type": "color",
+              "id": "gradient",
+              "label": "Gradient",
+              "default": "rgba(0,0,0,0)"
+            },
+            {
+              "type": "range",
+              "id": "gradient_rotation",
+              "label": "Gradient rotation",
+              "min": 0,
+              "max": 180,
+              "default": 180,
+              "unit": "deg",
+              "step": 10
+            },
+            {
+              "type": "range",
+              "id": "background_opacity",
+              "label": "Background opacity",
+              "default": 0,
+              "min": 0,
+              "max": 100,
+              "unit": "%"
+            },
+            {
+              "type": "range",
+              "id": "text_width",
+              "label": "Text width",
+              "min": 40,
+              "max": 100,
+              "default": 70,
+              "unit": "%"
+            },
+            {
+              "type": "header",
+              "content": "Layout"
+            },
+            {
+              "type": "select",
+              "id": "width",
+              "label": "Width",
+              "default": "standard",
+              "options": [
+                {
+                  "value": "half",
+                  "label": "Half"
+                },
+                {
+                  "value": "standard",
+                  "label": "Standard"
+                },
+                {
+                  "value": "wide",
+                  "label": "Wide"
+                }
+              ]
+            },
+            {
+              "type": "range",
+              "id": "padding_top",
+              "label": "Top spacing",
+              "min": 0,
+              "max": 80,
+              "default": 20,
+              "unit": "px"
+            },
+            { 
+              "type": "range",
+              "id": "padding_bottom",
+              "label": "Bottom spacing",
+              "min": 0,
+              "max": 80,
+              "default": 0,
+              "unit": "px"
+            },
+            {
+              "type": "range",
+              "id": "padding_left",
+              "label": "Left spacing",
+              "min": 0,
+              "max": 80,
+              "default": 0,
+              "unit": "px"
+            },
+            {
+              "type": "range",
+              "id": "padding_right",
+              "label": "Right spacing",
+              "default": 0,
+              "min": 0,
+              "max": 80,
+              "unit": "px"
+            },
+            {
+              "type": "select",
+              "id": "animation",
+              "label": "Animation",
+              "default": "none",
+              "options": [
+                {
+                  "value": "none",
+                  "label": "None"
+                },
+                {
+                  "value": "fadeIn",
+                  "label": "Fade in"
+                },
+                {
+                  "value": "fadeInDown",
+                  "label": "Fade in down"
+                },
+                {
+                  "value": "fadeInLeft",
+                  "label": "Fade in left"
+                },
+                {
+                  "value": "fadeInRight",
+                  "label": "Fade in right"
+                },
+                {
+                  "value": "slideInLeft",
+                  "label": "Slide in left"
+                },
+                {
+                  "value": "slideInRight",
+                  "label": "Slide in right"
+                },
+                {
+                  "value": "zoomIn",
+                  "label": "Zoom in"
+                }
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Advanced"
+            },
+            {
+              "type": "paragraph",
+              "content": "[Learn more](https://help.eagoats.com/hc/en-us/articles/360022329373)"
+            },
+            {
+              "type": "text",
+              "id": "css_class",
+              "label": "CSS Class"
+            },
+            {
+              "type": "textarea",
+              "id": "custom_css",
+              "label": "Custom CSS"
+            }
+          ]
+    },
+    {
+      "type": "corporate__slider",
+      "name": "slider",
+      "limit": 1,
+      "settings": [
+        {
+         "type": "paragraph",
+         "content": "This block can be configured using the slider section settings."
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {
+    },
+    "blocks": [
+      {
+        "type": "corporate__form"
+      },
+      {
+        "type": "corporate__icontext"
+      },
+      {
+        "type": "corporate__slider"
+      },
+      {
+        "type": "corporate__video"
+      }
+    ]
+  }
+}
+{% endschema %}

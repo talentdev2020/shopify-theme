@@ -14,7 +14,7 @@ include-corporate__form.liquid
 
 {% assign icon = object.settings.icon %}
 {% assign title_1 = object.settings.title_1 %}
-{% assign subtitle = object.settings.subtitle %}
+{% assign subtitle = object.settings.subtitle %} 
 {% assign title_2 = object.settings.title_2 %}
 
 {% assign buttonlabel = object.settings.button %}
@@ -56,7 +56,7 @@ include-corporate__form.liquid
  
   {% if width == 'wide' %}
   #shopify-section-{{ id }} .section {
-    width: 100vw;
+    width: 100vw; 
     margin-left: calc(-50vw + 50%);
   }
   {% endif %}
@@ -77,7 +77,7 @@ include-corporate__form.liquid
                 equal-columns--outside-trim
               {% endif %}
               is-flex">        
-        <div class="{% if section.settings.custom_html != blank %}one-third{% endif %} 
+        <div class="{% if object.settings.custom_html != blank %}one-third{% endif %} 
                 medium-down--one-whole icon-with-text-button__wrapper">
 
             {% if icon != blank %}
@@ -101,9 +101,9 @@ include-corporate__form.liquid
             {% endif %}        
         </div>
 
-        {% if section.settings.custom_html != blank %}
+        {% if object.settings.custom_html != blank %}
         <div class="two-thirds medium-down--one-whole contact-form">
-            {{ section.settings.custom_html }}
+            {{ object.settings.custom_html }}
         </div>
         {% endif %}
     </div>
