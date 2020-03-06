@@ -5968,7 +5968,8 @@ $textarea-with-secondary-btn-style: {{ settings.button_secondary_border_radius |
 
     &.is-stretched-width {
       @include flex(3 0 50%);
-      max-width: 100%;
+      max-width: 45%;
+      margin-right: 5%;
     }
 
     &.is-default-width {
@@ -6010,8 +6011,8 @@ $textarea-with-secondary-btn-style: {{ settings.button_secondary_border_radius |
       }
       .button {
         width: 100%;
-        border-radius: 0;
-        background-color: $inpute-bkg;
+       /* border-radius: 0;
+        background-color: $inpute-bkg;*/
         border: none;
         font-weight: bold;
         font-stretch: normal;
@@ -13801,10 +13802,13 @@ $banner-font-size: {{ settings.banner_text_size }}px;
 
   .caption {
     position: absolute;
-    width: 100%;
+    /*width: 100%;*/
     display: block;
     padding: 1%;
     pointer-events: none;
+    width: calc(81% + 30px);
+    left: calc(9.5% - 15px);
+    right: calc(9.5% - 15px);
 
     &.align-middle {
 
@@ -14183,6 +14187,39 @@ $product-height__mobile: 195px;
     @include respond-to('small-down') {
       max-width: $site-max-width;
       width: $site-width;
+    }
+  }
+  .logo-list-slider__wrapper.is-small {
+    div.logo-list-slider__item:nth-child(0) .image-element__wrap {
+      max-width: 70px !important;
+    }
+    div.logo-list-slider__item:nth-child(1) .image-element__wrap {
+      max-width: 90px !important;
+    }
+    div.logo-list-slider__item:nth-child(2) .image-element__wrap {
+      max-width: 118px !important;
+    }
+  }
+  .logo-list-slider__wrapper.is-medium {
+    div.logo-list-slider__item:nth-child(0) .image-element__wrap {
+      max-width: 108px !important;
+    }
+    div.logo-list-slider__item:nth-child(1) .image-element__wrap {
+      max-width: 118px !important;
+    }
+    div.logo-list-slider__item:nth-child(2) .image-element__wrap {
+      max-width: 136px !important;
+    }
+  }
+  .logo-list-slider__wrapper.is-large {
+    div.logo-list-slider__item:nth-child(0) .image-element__wrap {
+      max-width: 118px !important;
+    }
+    div.logo-list-slider__item:nth-child(1) .image-element__wrap {
+      max-width: 138px !important;
+    }
+    div.logo-list-slider__item:nth-child(2) .image-element__wrap {
+      max-width: 156px !important;
     }
   }
 

@@ -228,9 +228,13 @@
                         </div>
                       </div>
                       <div class="cart__quantity-content">
+                        
                         <div class="product-meal">
+                          {% comment %}
                           <p>{% include settings.icon, name: 'icon-meal' %} 2 Meals</p>
+                          {% endcomment %}
                         </div>
+                        
                         <div class="purchase-details__quantity product-quantity-box" data-line-item-key={{ forloop.index }}>
                           {% include 'quantity-box', size: 'is-medium', variant: item.variant %}
                         </div>
@@ -240,7 +244,7 @@
                   {% endif %}
 
                   <div class="cart__total is-flex">  
-                    <p class="is-flex">  
+                    <p class="is-flex" style="margin-top: 25px;">  
                       {% if item.variant.compare_at_price > item.variant.price %}
                         {% assign final_compare_price = item.variant.compare_at_price  | times: item.quantity %}
                         <span class="money was-price">{{ final_compare_price | money }}</span>

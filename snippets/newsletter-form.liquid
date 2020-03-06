@@ -70,11 +70,11 @@ newsletter_class: <string>
       {% if object.settings.display_first_name %}
         {% comment %} First name {% endcomment %}
         <div class="field is-stretched-width {% if object.settings.display_last_name != true %} is-full-width {% endif %}">
-          <label class="label newsletter__text {% if settings.use_placeholders %}is-sr-only{% endif %}">
+          <label class="label newsletter__text is-sr-only">
             {{ 'general.newsletter_form.subscriber_first_name' | t }}
           </label>
           <div class="control">
-            <input class="input is-{{ field_input_style }} is-{{ field_input_size }}" type="text" name="contact[first_name]" placeholder="{% if settings.use_placeholders %}{{ 'general.newsletter_form.subscriber_first_name' | t }}{% endif %}">
+            <input class="input is-{{ field_input_style }} is-{{ field_input_size }}" type="text" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
           </div>
         </div>
       {% endif %}
@@ -82,11 +82,11 @@ newsletter_class: <string>
       {% if object.settings.display_last_name %}
         {% comment %} Last name {% endcomment %}
         <div class="field is-stretched-width {% if object.settings.display_first_name != true %} is-full-width {% endif %}">
-          <label class="label newsletter__text {% if settings.use_placeholders %}is-sr-only{% endif %}">
+          <label class="label newsletter__text is-sr-only">
             {{ 'general.newsletter_form.subscriber_last_name' | t }}
           </label>
           <div class="control">
-            <input class="input is-{{ field_input_style }} is-{{ field_input_size }}" type="text" name="contact[last_name]" placeholder="{% if settings.use_placeholders %}{{ 'general.newsletter_form.subscriber_last_name' | t }}{% endif%}">
+            <input class="input is-{{ field_input_style }} is-{{ field_input_size }}" type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
           </div>
         </div>
       {% endif %}
