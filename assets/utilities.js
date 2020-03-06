@@ -1075,6 +1075,7 @@ var selectCallback = function selectCallback(variant, selector) {
   if (variant) {
     var meal_one = document.getElementById('meals_one');
     var meal_subscribe = document.getElementById('meals_subscribe');
+    var meal_text = document.getElementById('meals_text');
 
     if (meal_one == null) {
       return;
@@ -1093,6 +1094,7 @@ var selectCallback = function selectCallback(variant, selector) {
             {
               meal_one.innerHTML = 1;
               meal_subscribe.innerHTML = 1;
+              meal_text.innerHTML = 'Meal';
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked", true);
@@ -1103,6 +1105,7 @@ var selectCallback = function selectCallback(variant, selector) {
             {
               meal_one.innerHTML = 2;
               meal_subscribe.innerHTML = 2;
+              meal_text.innerHTML = 'Meals';
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked", true);
@@ -1134,7 +1137,6 @@ var selectCallback = function selectCallback(variant, selector) {
       if ($slider.is(":visible") && $sliderInstance != undefined) {
         $sliderInstance.select(index, false, true);
       }
-
       ;
     });
   } // Emits custom event
