@@ -1091,8 +1091,8 @@ var selectCallback = function selectCallback(variant, selector) {
         switch (variant.options[i]) {
           case "6-Pack":
             {
-              meal_one.innerHTML = 1;
-              meal_subscribe.innerHTML = 1;
+              meal_one.innerHTML = '1 Meal';
+              meal_subscribe.innerHTML = '1 Meal';
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked", true);
@@ -1101,8 +1101,8 @@ var selectCallback = function selectCallback(variant, selector) {
 
           case "12-Pack":
             {
-              meal_one.innerHTML = 2;
-              meal_subscribe.innerHTML = 2;
+              meal_one.innerHTML = '2 Meals';
+              meal_subscribe.innerHTML = '2 Meals';
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked", true);
               $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked", true);

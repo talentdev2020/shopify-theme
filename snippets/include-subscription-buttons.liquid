@@ -7,7 +7,7 @@
     <span>{{ 'products.product.add_to_cart' | t }}</span>
 </a>
 {% if  object.settings.enable_tooltip %}<div class="con-tooltip bottom">{% endif %}
-<p class="meal_txt">{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="{{ meal_class }}">2</span> Meals</p>
+<p class="meal_txt">{% include settings.icon, name: 'heart_sweet' %} Your Impact: <span id="{{ meal_class }}">2 Meals</span></p>
 {% if object.settings.enable_tooltip and object.settings.tooltip_text != blank %}
 <span class="tooltip-text  blue">
   {{ object.settings.tooltip_text }}
