@@ -144,10 +144,13 @@ $banner-font-size: {{ settings.banner_text_size }}px;
 
   .caption {
     position: absolute;
-    width: 100%;
+    /*width: 100%;*/
     display: block;
     padding: 1%;
     pointer-events: none;
+    width: calc(81% + 30px);
+    left: calc(9.5% - 15px);
+    right: calc(9.5% - 15px);
 
     &.align-middle {
 

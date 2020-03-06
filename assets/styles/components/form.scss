@@ -1001,7 +1001,8 @@ $textarea-with-secondary-btn-style: {{ settings.button_secondary_border_radius |
 
     &.is-stretched-width {
       @include flex(3 0 50%);
-      max-width: 100%;
+      max-width: 45%;
+      margin-right: 5%;
     }
 
     &.is-default-width {
@@ -1043,8 +1044,8 @@ $textarea-with-secondary-btn-style: {{ settings.button_secondary_border_radius |
       }
       .button {
         width: 100%;
-        border-radius: 0;
-        background-color: $inpute-bkg;
+       /* border-radius: 0;
+        background-color: $inpute-bkg;*/
         border: none;
         font-weight: bold;
         font-stretch: normal;
