@@ -2,10 +2,7 @@
 
 Shopify.theme.jsFooter = {
   init: function init($section) {
-    console.log("jsMonthly_box_page.js");
-
-    if ($('.monthly-box-faq-container').length) {
-      console.log("monthly-box-faq-container");
+     if ($('.monthly-box-faq-container').length) {
       var faqCode = $('.monthly-box_faq ').html();
 
       if (faqCode != null) {
