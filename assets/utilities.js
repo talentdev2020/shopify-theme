@@ -1075,6 +1075,7 @@ var selectCallback = function selectCallback(variant, selector) {
   if (variant) {
     var meal_one = document.getElementById('meals_one');
     var meal_subscribe = document.getElementById('meals_subscribe');
+    var meal_text = document.getElementById('meals_text');
 
     if (meal_one == null) {
       return;
@@ -1134,7 +1135,6 @@ var selectCallback = function selectCallback(variant, selector) {
       if ($slider.is(":visible") && $sliderInstance != undefined) {
         $sliderInstance.select(index, false, true);
       }
-
       ;
     });
   } // Emits custom event

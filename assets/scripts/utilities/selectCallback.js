@@ -21,6 +21,7 @@ const selectCallback = function (variant, selector) {
   if (variant) {
     var meal_one = document.getElementById('meals_one'); 
     var meal_subscribe = document.getElementById('meals_subscribe'); 
+    var meal_text = document.getElementById('meals_text');
 
     if (meal_one == null)
     {
@@ -210,4 +211,4 @@ const selectCallback = function (variant, selector) {
     }
   }
 
-};
+}; 
