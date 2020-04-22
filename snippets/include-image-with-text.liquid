@@ -61,6 +61,7 @@ eg. {% include 'include-image-with-text' %}
     {% assign background_alpha = block.settings.background | color_extract: 'alpha' %}
     {% assign text_block_background_alpha = block.settings.text_block_background | color_extract: 'alpha' %}
     {% assign text_alpha = block.settings.text_color | color_extract: 'alpha' %}
+    {% assign pre_text_alpha = block.settings.pre_text_color | color_extract: 'alpha' %}
     {% comment %} Block specific CSS {% endcomment %}
     {% capture block_css -%}
 
@@ -70,6 +71,10 @@ eg. {% include 'include-image-with-text' %}
 
       .image-with-text__text {
         color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+      .image-with-text__pre__heading {
+        color: {%- if pre_text_alpha != 0 -%}{{ block.settings.pre_text_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
       }
     {%- endcapture -%}
 
@@ -81,6 +86,8 @@ eg. {% include 'include-image-with-text' %}
       #shopify-section-{{ block.id }} .container {
         background: {%- if text_block_background_alpha != 0 -%}{{ block.settings.text_block_background }}{% endif %};
       }
+
+      {% include 'css-loop', css: block_css, id: block.id %}
     {% endstyle %}
 
     {% if image_position == 'left' %}

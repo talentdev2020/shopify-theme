@@ -501,7 +501,7 @@
           "step": 10,
           "default": 200,
           "unit": "px",
-          "info": "Applied when 'Align to height' is also enabled. [Learn more](https://help.eagoats.com/hc/en-us/articles/360022543913)"
+          "info": "Applied when 'Align to height' is also enabled. "
         },
         {
           "type": "header",
@@ -887,6 +887,16 @@
           "info": "Only active in absence of buttons"
         },
         {
+          "type": "range",
+          "id": "banner-image-height",
+          "label": "Image minimal height",
+          "min": 100,
+          "max": 600,
+          "step": 50,
+          "default": 400,
+          "unit": "px"
+        },
+        {
           "type": "header",
           "content": "Text"
         },
@@ -1100,6 +1110,11 @@
           "content": "Mobile"
         },
         {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
+        },
+        {
           "type": "select",
           "id": "mobile_image_crop",
           "label": "Image cropping",
@@ -1146,6 +1161,22 @@
           "id": "subheading_color_mobile",
           "label": "Subheading",
           "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "background_color_mobile",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "range",
+          "id": "mobile_min_height",
+          "label": "Mobile minimal height",
+          "min": 100,
+          "max": 500,
+          "step": 50,
+          "default": 400,
+          "unit": "px"
         },
         {
           "type": "header",
@@ -1513,6 +1544,12 @@
           "type": "color",
           "id": "text_block_background",
           "label": "Text block background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "pre_text_color",
+          "label": "Pre heading",
           "default": "rgba(0,0,0,0)"
         },
         {

@@ -11,8 +11,6 @@
 {% endif %}
  
 {% assign id = object.id %}
-{% assign image = object.settings.image %}
-{% assign mobile_image = object.settings.mobile_image %}
 {% assign link = object.settings.link %}
 {% comment %} Text {% endcomment %}
 {% assign pretext = object.settings.pretext %}
@@ -43,11 +41,15 @@
 {% assign caption_border_width = object.settings.border_width %}
 {% assign caption_border_color = object.settings.border_color %}
 {% comment %} Mobile {% endcomment %}
+{% assign image = object.settings.image %}
+{% assign mobile_image = object.settings.mobile_image %}
 {% assign mobile_text_below_image = object.settings.mobile_text_below_image %}
 {% assign mobile_text_crop = object.settings.mobile_image_crop %}
+{% assign mobile_background_color = object.settings.background_color_mobile %}
 {% assign mobile_headline_color = object.settings.heading_color_mobile %}
 {% assign mobile_preheading_color = object.settings.pretext_color_mobile %}
 {% assign mobile_subtitle_color = object.settings.subheading_color_mobile %}
+{% assign mobile_min_height = object.settings.mobile_min_height %}
 {% comment %}Layout{% endcomment %}
 {% assign width = object.settings.width %}
 {% assign padding_top = object.settings.padding_top %}
@@ -60,6 +62,7 @@
 {% assign heading_alpha = title_color | color_extract: 'alpha' %}
 {% assign preheading_alpha = pretext_color | color_extract: 'alpha' %}
 {% assign subheading_alpha = subtitle_color | color_extract: 'alpha' %}
+{% assign mobile_background_alpha = mobile_background_color | color_extract: 'alpha' %}
 {% assign mobile_headline_alpha = mobile_headline_color | color_extract: 'alpha' %}
 {% assign mobile_preheading_alpha = mobile_preheading_color | color_extract: 'alpha' %}
 {% assign mobile_subtitle_alpha = mobile_subtitle_color | color_extract: 'alpha' %}
@@ -111,6 +114,35 @@
       width: {{ text_width }}%;
     }
   }
+  {% if object.settings.banner-image-height != blank %}
+  #shopify-section-{{ id }} .image-with-text-overlay__banner img {
+    height: {{ object.settings.banner-image-height }}px;
+  }
+  {% endif %}
+
+  {% if mobile_image != blank  and mobile_min_height != blank %}
+  @media only screen and (max-width: 779px) {
+    #shopify-section-{{ id }} .image-with-text-overlay__banner img {
+      height: {{ mobile_min_height }}px;
+    }
+  }
+  {% endif %}
+
+
+  {% if mobile_background_color != blank and mobile_image == blank %}
+  @media only screen and (max-width: 779px) {
+
+    #shopify-section-{{ id }} .image-with-text-overlay__banner {
+      background: {{ mobile_background_color}};
+      min-height: {{ mobile_min_height }}px;
+    }
+    #shopify-section-{{ id }} .image-with-text-overlay__banner img {
+      display: none;
+    }
+  }
+  {% endif %}
+
+
 
   #shopify-section-{{ id }} {
     padding-top: {{ padding_top }}px;

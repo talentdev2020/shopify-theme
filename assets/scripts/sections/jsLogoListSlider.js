@@ -14,7 +14,6 @@ Shopify.theme.jsLogoListSlider = {
       pageDots: false,
       imagesLoaded: true,
       draggable: true,
-      watchCSS: true,
       on: {
         ready: function () {
           // Reset layout to avoid collapsing issues

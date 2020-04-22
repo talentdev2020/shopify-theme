@@ -152,7 +152,7 @@
 <script>
   var price_one = document.getElementById("rc_price_onetime");	
   var btn_one = document.getElementById("fake_addcartbtn_one"); 
-  btn_one.innerHTML = price_one.innerHTML + " per month";
+  btn_one.innerHTML = price_one.innerHTML + " Subscribe";
 
   $('#rc_price_onetime').on('DOMSubtreeModified',function(){
     btn_one.innerHTML = price_one.innerHTML + " Add to Cart";
@@ -160,10 +160,10 @@
 
   var price_subscribe = document.getElementById("rc_price_autodeliver");							
   var btn_subscribe = document.getElementById("fake_addcartbtn_subscribe"); 
-  btn_subscribe.innerHTML = price_subscribe.innerHTML + " per month";
+  btn_subscribe.innerHTML = price_subscribe.innerHTML + " Subscribe";
 
   $('#rc_price_autodeliver').on('DOMSubtreeModified',function(){
-    btn_subscribe.innerHTML = price_subscribe.innerHTML + " per month";
+    btn_subscribe.innerHTML = price_subscribe.innerHTML + " Subscribe";
   })
   
   function clickaddcart() {

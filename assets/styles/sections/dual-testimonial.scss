@@ -45,7 +45,9 @@
             @include justify-content(flex-start);
         }
 
-        .yotpo-icon.yotpo-icon-star {
+        .yotpo-icon.yotpo-icon-star,
+        .yotpo-icon.yotpo-icon-half-star,
+        .yotpo-icon.yotpo-icon-empty-star {
             font-size: 23.4px !important;
             color: $purpley-grey !important;
         }

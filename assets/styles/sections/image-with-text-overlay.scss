@@ -140,6 +140,17 @@ $banner-font-size: {{ settings.banner_text_size }}px;
     .placeholder-svg {
       min-height: 400px;
     }
+
+    .image-with-text-overlay__heading, .image-with-text-overlay__heading span {
+      @include respond-to('medium-down') {
+        font-size: 24px !important;
+      }
+    }
+    .image-with-text-overlay__subheading, .image-with-text-overlay__subheading span {
+      @include respond-to('medium-down') {
+        font-size: 14px !important;
+      }
+    }
   }
 
   .caption {
@@ -205,6 +216,10 @@ $banner-font-size: {{ settings.banner_text_size }}px;
 
 .image-with-text-overlay__buttons {
   @include justify-content(space-between);
+
+  @include respond-to('medium-down') {
+    @include justify-content(center);
+  }
 
   &.are-small {
     max-width: 300px;

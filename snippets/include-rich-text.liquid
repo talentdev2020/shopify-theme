@@ -41,6 +41,11 @@
 {% assign padding_left = object.settings.padding_left %}
 {% assign padding_right = object.settings.padding_right %}
 {% assign animation = object.settings.animation | default: 'none' %}
+{% comment %}Mobile{% endcomment %}
+{% assign mobile_padding_top = object.settings.mobile_padding_top %}
+{% assign mobile_padding_bottom = object.settings.mobile_padding_bottom %}
+{% assign mobile_padding_left = object.settings.mobile_padding_left %}
+{% assign mobile_padding_right = object.settings.mobile_padding_right %}
 {% comment %} Advanced {% endcomment %}
 {% assign css_class = object.settings.css_class %}
 {% assign custom_css = object.settings.custom_css %}
@@ -93,6 +98,15 @@
       width: 50%;
     {% endif %}
   }
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ id }} {
+      padding-top: {{ mobile_padding_top }}px;
+      padding-bottom: {{ mobile_padding_bottom }}px;
+      padding-left: {{ mobile_padding_left }}px;
+      padding-right: {{ mobile_padding_right }}px;
+    }
+  }
+
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}

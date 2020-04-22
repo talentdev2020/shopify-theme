@@ -63,6 +63,16 @@
   .contact-form__form {
     background-color: {% if background_alpha != 0 %}{{ background }}{% endif %};
   }
+
+  .contact-form__social ul li a {
+    color: {{ settings.link_color }};
+  }
+  .contact-form__social ul li a svg {
+    fill: {{ settings.link_color }};
+  }
+  .contact-form__social ul li a .icon {
+    vertical-align: text-bottom;
+  } 
 {%- endcapture -%}
 
 {% style %}

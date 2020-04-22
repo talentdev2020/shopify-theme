@@ -424,7 +424,9 @@ $(function () {
   }
 
   //Newsletter
-  Shopify.theme.jsNewsletter.init();
+  if ($('.newsletter-form__wrapper .contact-form').length > 0) {
+    Shopify.theme.jsNewsletter.init();
+  }
 
   // Footer
   Shopify.theme.jsFooter.init();

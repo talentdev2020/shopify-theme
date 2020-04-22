@@ -92,6 +92,7 @@
         {% comment %}Add number to id for each loop{% endcomment %}
         {% capture image %}image{{ index }}{% endcapture %}
         {% capture title %}title{{ index }}{% endcapture %}
+        {% capture subtitle %}subtitle{{ index }}{% endcapture %}
         {% capture link %}link{{ index }}{% endcapture %}
         {% capture show_logo %}show_logo{{ index }}{% endcapture %}
 
@@ -117,7 +118,7 @@
               one-eighth
             {% endif %}" {% if type != 'block' %}{{ block.shopify_attributes }}{% endif %}>
             {% if block.settings[link] != blank %}
-              <a href="{{ block.settings[link] }}" class="logo-list__link">
+              <a href="{{ block.settings[link] }}" class="logo-list__link" target="_blank">
             {% endif %}
             {% if block.settings[image] %}
               {% assign alt_text = block.settings[image].alt %}
@@ -127,7 +128,11 @@
             {% endif %}
 
             {% if block.settings[title] != blank %}
-                <p>{{ block.settings[title] }}</p>
+                <p class="list-title">{{ block.settings[title] }}</p>
+            {% endif %}
+
+            {% if block.settings[subtitle] != blank %}
+                <p class="list-subtitle">{{ block.settings[subtitle] }}</p>
             {% endif %}
 
             {% if block.settings[link] != blank %}

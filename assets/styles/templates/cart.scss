@@ -811,7 +811,7 @@ $subtotal-bg-color: #F2F2F2;
 }
 
 .cart__item-list {
-  margin-top:40px;
+  margin-top: 40px;
 }
 
 .ajax-cart__product-title {
@@ -819,4 +819,58 @@ $subtotal-bg-color: #F2F2F2;
     a {
       font-family: 'Cooper Std' !important;
     }
+}
+
+@include respond-to($medium-down) {
+  #shopify-section-cart__main {
+    .cart__item-list {
+      margin: 0 !important;
+      width: 100% !important;
+    }
+    .cart__info {
+      padding-left: 15px;
+      .item__title {
+        font-size: 14px;
+      }
+      .item__properties {
+        padding-top: 0px;
+        font-size: 10px;
+        width: 48%;
+        display: inline-block;
+      }
+      .cart__remove {
+        position: static;
+        margin-left: 0px;
+        text-align: right;
+        width: 50% !important;
+        display: inline-block;
+        font-size: 12px !important;
+      }
+    }
+
+    .cart__total {
+      p.is-flex {
+        margin-top: 0 !important;
+      }
+      .was-price {
+        padding-left: 0px;
+        font-size: 14px !important;
+      }
+      .money {
+        font-size: 14px !important;
+      }
+    }
+
+    .cart__quantity {
+      margin-top: 2px !important;
+      .cart__frequency p {
+        font-size: 12px !important;
+        height: 18px !important;
+      }
+      .cart__frequency .type, .product-meal {
+        height: 22px !important;
+      }
+    }
+
+  }
 }

@@ -738,11 +738,11 @@
    font-weight: bold;
  }
  
- .active:after {
+ .accordion.active:after {
    content: "Less -";
  }
  
- .panel {
+ .panel:not(.active) {
    max-height: 0;
    overflow: hidden;
    transition: max-height 0.2s ease-out;
@@ -751,6 +751,10 @@
     padding: 18px 0px;
    }
  }
+
+  /*.accordion.active + .panel {
+    max-height: inherit;
+  }*/
 }
 
 .allergens_info {
@@ -772,7 +776,9 @@
 .product__header {
   .product-review__wrapper {
     .standalone-bottomline {
-      .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
+      .yotpo-icon.yotpo-icon-star,
+      .yotpo-icon.yotpo-icon-half-star,
+      .yotpo-icon.yotpo-icon-empty-star {
         float: none;
         font-size: 14px;
 
@@ -822,7 +828,9 @@
 
   .yotpo-display-wrapper {
     .yotpo-regular-box {
-      .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
+      .yotpo-icon.yotpo-icon-star,
+      .yotpo-icon.yotpo-icon-half-star,
+      .yotpo-icon.yotpo-icon-empty-star {
         color: #163b66;
       }
 

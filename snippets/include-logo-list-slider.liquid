@@ -115,11 +115,11 @@
             {% elsif section.blocks.size == 2 or loop.length == 2 %}
             one-half
             {% else %}
-            one-third
+            one-fifth
             {% endif %}
             " data-logo-index={{ index }} {% if type != 'block' %}{{ block.shopify_attributes }}{% endif %}>
             {% if block.settings[link] != blank %}
-              <a href="{{ block.settings[link] }}" class="logo-list-slider__link">
+              <a href="{{ block.settings[link] }}" class="logo-list-slider__link" target="_blank">
             {% endif %}
             {% if block.settings[image] %}
               {% assign alt_text = block.settings[image].alt %}

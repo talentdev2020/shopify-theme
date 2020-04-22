@@ -1,0 +1,135 @@
+{% comment %}
+Snippet can be used in section or block
+eg. {% include 'include-icon-with-text' %}
+{% endcomment %}
+
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+
+<div class="allergens_info toggle-info">
+  <button class="accordion">
+    <p class="allergens-title">{{ object.settings.title }}</p>
+  </button>
+  
+  <div class="panel">
+    <div class="panel-padding container is-justify-left">
+
+      {% if object.settings.show_block_1 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_1 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_1 %}
+        {% endif %}
+        {% if object.settings.title_1 != blank %}
+          <div><p>{{ object.settings.title_1 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_2 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_2 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_2 %}
+        {% endif %}
+        {% if object.settings.title_2 != blank %}
+          <div><p>{{ object.settings.title_2 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_3 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_3 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_3 %}
+        {% endif %}
+        {% if object.settings.title_3 != blank %}
+          <div><p>{{ object.settings.title_3 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_4 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_4 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_4 %}
+        {% endif %}
+        {% if object.settings.title_4 != blank %}
+          <div><p>{{ object.settings.title_4 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_5 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_5 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_5 %}
+        {% endif %}
+        {% if object.settings.title_5 != blank %}
+          <div><p>{{ object.settings.title_5 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_6 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_6 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_6 %}
+        {% endif %}
+        {% if object.settings.title_6 != blank %}
+          <div><p>{{ object.settings.title_6 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_7 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_7 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_7 %}
+        {% endif %}
+        {% if object.settings.title_7 != blank %}
+          <div><p>{{ object.settings.title_7 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_8 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_8 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_8 %}
+        {% endif %}
+        {% if object.settings.title_8 != blank %}
+          <div><p>{{ object.settings.title_8 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if object.settings.show_block_9 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_9 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_9 %}
+        {% endif %}
+        {% if object.settings.title_9 != blank %}
+          <div><p>{{ object.settings.title_9 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+      {% if object.settings.show_block_10 %}
+      <div class="icon-container text-align-center">
+        {% if object.settings.icon_label_10 != blank %}
+          {% include settings.icon, name: object.settings.icon_label_10 %}
+        {% endif %}
+        {% if object.settings.title_10 != blank %}
+          <div><p>{{ object.settings.title_10 }}</p></div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

@@ -680,6 +680,12 @@
         "default": "icon_solid"
       },
       {
+        "type": "checkbox",
+        "id": "show_icon_text",
+        "label": "Show text next to icons",
+        "default": true
+      },
+      {
         "type": "select",
         "id": "toggle_icon_style",
         "label": "Accordion icon type",

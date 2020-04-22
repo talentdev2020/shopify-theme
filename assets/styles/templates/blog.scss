@@ -93,7 +93,10 @@ $blog-border: thin solid $border !default;
   .image-element__wrap {
 
     @include respond-to('medium-up') {
-      max-height: 15rem;
+      img {
+        max-height: 15rem;
+        object-fit: contain;
+      }
     }
   }
 

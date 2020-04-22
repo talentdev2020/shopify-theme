@@ -15,19 +15,12 @@
       }
     }
 
-    [data-logo-list-slider] {
-      &:after {
-        @include respond-to('medium-down') {
-          content: 'flickity';
-          display: none;
-        }
-      }
-    }
+
     .logo-list-slider__nav-wrapper {
       display: block !important;
       .logo-list-slider__nav{
         position: absolute;
-        top: calc(50% - 18px);
+        top: 70px;
         content: '';
         width: 36px;
         height: 36px;
@@ -59,19 +52,7 @@
     }
   }
   
-  .desktop-slider--disabled {
 
-    [data-logo-list-slider] {
-      &:after {
-        @include respond-to('medium-up') {
-          content: '';
-        }
-      }
-    }
-    .logo-list-slider__nav-wrapper {
-      display: none !important;
-    }
-  }
 
   .logo-list-slider__wrapper {
     @include respond-to('small-down') {
@@ -79,43 +60,12 @@
       width: $site-width;
     }
   }
-  .logo-list-slider__wrapper.is-small {
-    div.logo-list-slider__item:nth-child(0) .image-element__wrap {
-      max-width: 70px !important;
-    }
-    div.logo-list-slider__item:nth-child(1) .image-element__wrap {
-      max-width: 90px !important;
-    }
-    div.logo-list-slider__item:nth-child(2) .image-element__wrap {
-      max-width: 118px !important;
-    }
-  }
-  .logo-list-slider__wrapper.is-medium {
-    div.logo-list-slider__item:nth-child(0) .image-element__wrap {
-      max-width: 108px !important;
-    }
-    div.logo-list-slider__item:nth-child(1) .image-element__wrap {
-      max-width: 118px !important;
-    }
-    div.logo-list-slider__item:nth-child(2) .image-element__wrap {
-      max-width: 136px !important;
-    }
-  }
-  .logo-list-slider__wrapper.is-large {
-    div.logo-list-slider__item:nth-child(0) .image-element__wrap {
-      max-width: 118px !important;
-    }
-    div.logo-list-slider__item:nth-child(1) .image-element__wrap {
-      max-width: 138px !important;
-    }
-    div.logo-list-slider__item:nth-child(2) .image-element__wrap {
-      max-width: 156px !important;
-    }
-  }
+
 
   .logo-list-slider__item {
     .image-element__wrap {
       min-height: 60px;
+      padding: 20px;
     }
     h5 {
       font-size: 24px;

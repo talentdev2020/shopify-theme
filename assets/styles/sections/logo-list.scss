@@ -35,3 +35,19 @@ body.page-press {
     max-width: 232px;
   }
 }
+
+body.page-loyalty {
+  .logo-list__item {
+    margin-bottom: 40px;
+  }
+  .list-title {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .list-subtitle {
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

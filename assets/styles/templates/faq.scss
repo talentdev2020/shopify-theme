@@ -260,7 +260,6 @@
   .banner__heading {
     @include respond-to('medium-down') {
       font-size: 24px;
-      color: $black;
     }
   }
   .banner__text.text-align-center {

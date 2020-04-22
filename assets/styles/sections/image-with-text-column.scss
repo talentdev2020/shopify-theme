@@ -62,41 +62,95 @@
 
 body.index {
 
-  .image-with-text-column__column_1 {
+  .is-small {
+    .image-element__wrap {
+      max-width: 150px;
+    }
+    &.image-with-text-column__column_1 {
+      .image-element__wrap img {
+        max-height: 108px;
+      }
+    }
+    &.image-with-text-column__column_2 {
+      .image-element__wrap img {
+        max-height: 108px;
+      }
+    }
+    &.image-with-text-column__column_3 {
+      .image-element__wrap img {
+        max-height: 108px;
+      }
+    }
+  }
+
+  .is-medium {
     .image-element__wrap {
       max-width: 200px;
-      margin-top: 20px;
-      margin-bottom: 30px;
+    }
+    &.image-with-text-column__column_1 {
+      .image-element__wrap img {
+        max-height: 131px;
+      }
+    }
+    &.image-with-text-column__column_2 {
+      .image-element__wrap img {
+        max-height: 131px;
+      }
+    }
+    &.image-with-text-column__column_3 {
+      .image-element__wrap img {
+        max-height: 131px;
+      }
+    }
+  }
+  .is-large {
+    .image-element__wrap {
+      max-width: 250px;
+    }
+    &.image-with-text-column__column_1 {
+      .image-element__wrap img {
+        max-height: 170px;
+      }
+    }
+    &.image-with-text-column__column_2 {
+      .image-element__wrap img {
+        max-height: 170px;
+      }
+    }
+    &.image-with-text-column__column_3 {
+      .image-element__wrap img {
+        max-height: 170px;
+      }
+    }
+  }
+
+  .image-with-text-column__column_1 {
+    .image-element__wrap {
     }
     .image-column__text p {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.5;
       letter-spacing: normal;
       text-align: center;
-      color: $white;
     }
   }
   .image-with-text-column__column_2 {
     .image-element__wrap {
-      max-width: 195px;
-      margin-bottom: 5px;
     }
     .image-column__text p {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.5;
       letter-spacing: normal;
       text-align: center;
-      color: $white;
     }
 
     .image-column__action .button {
-      max-width: 240px;
       height: 45px;
       background-color: $purpley-grey;
       color: $white;
@@ -110,31 +164,26 @@ body.index {
     }
 
     .image-column__note_text {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.5;
       letter-spacing: normal;
       text-align: center;
-      color: $white;
     }
   }
   .image-with-text-column__column_3 {
     .image-element__wrap {
-      max-width: 90px;
-      margin-top: 28px;
-      margin-bottom: 36px;
     }
     .image-column__text p {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.5;
       letter-spacing: normal;
       text-align: center;
-      color: $white;
     }
   }
 }

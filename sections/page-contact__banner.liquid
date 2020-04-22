@@ -34,6 +34,13 @@
       width: 100%;
     {%- endif %}
   }
+  {% unless section.settings.show_banner_mobile %}
+  @media only screen and (max-width: 779px) {
+    #shopify-section-{{ id }} {
+      display: none !important;
+    }
+  }
+  {% endunless %}
 
   {% include 'css-loop', css: section_css, id: id %}
   {% include 'css-loop', css: custom_css, id: id %}
@@ -53,6 +60,12 @@
       "type": "checkbox",
       "id": "show_banner",
       "label": "Show banner",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner_mobile",
+      "label": "Show banner on mobile",
       "default": false
     },
     {

@@ -1135,6 +1135,7 @@ var selectCallback = function selectCallback(variant, selector) {
       if ($slider.is(":visible") && $sliderInstance != undefined) {
         $sliderInstance.select(index, false, true);
       }
+
       ;
     });
   } // Emits custom event

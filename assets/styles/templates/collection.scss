@@ -38,7 +38,7 @@
 
     .standalone-bottomline {
       .yotpo-icon.yotpo-icon-star.rating-star.pull-left {
-        float: none;
+        float: none !important; 
 
         @include respond-to('medium-down') {
           font-size: 12px;
@@ -69,6 +69,10 @@
         }
       }
     }
+  }
+
+  .yotpo .pull-left {
+    float: none !important; 
   }
 }
 

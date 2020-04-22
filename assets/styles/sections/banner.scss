@@ -21,7 +21,7 @@ $banner-badge-height: 50px !default;
       height: 30vh;
 
       @include respond-to('medium-down') {
-        height: 300px;
+        height: 150px;
       }
     }
   }

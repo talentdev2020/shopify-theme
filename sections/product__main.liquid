@@ -217,7 +217,7 @@ product__main.liquid
             <div class="description content has-padding-top">
               {% if product.description != blank %}
               <div class="product_info toggle-info">
-                <button class="accordion">
+                <button class="accordion active">
                   <p class="description_title">Product Info</p>
                 </button>
                 <div class="panel">
@@ -307,10 +307,10 @@ product__main.liquid
           <div class="description content has-padding-top">
               {% if product.description != blank %}
               <div class="product_info toggle-info">
-                <button class="accordion">
+                <button class="accordion active">
                   <p class="description_title">Product Info</p>
                 </button>
-                <div class="panel">
+                <div class="panel active">
                   <div class="panel-padding">
                   {{ product.description | split: '<!-- split -->' | first }}
                   </div>
@@ -335,45 +335,11 @@ product__main.liquid
               {% endif %}
 
               {% if section.settings.allergens_show %}
-              <div class="allergens_info toggle-info">
-                <button class="accordion">
-                  <p class="allergens-title">Allergens</p>
-                </button>
-                
-                <div class="panel">
-                  <div class="panel-padding container is-justify-left">
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-dairy' %}
-                      <div><p>Dairy</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-eggs' %}
-                      <div><p>Eggs</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-soy' %}
-                      <div><p>Soy</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-wheat' %}
-                      <div><p>Wheat</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-peanuts' %}
-                      <div><p>Peanuts</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-treenuts' %}
-                      <div><p>Tree nuts</p></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                {% for block in section.blocks %}
+                  {% if block.type == 'allergens' %}
+                    {% include 'include-allergens-icon-with-text', type: 'block' %}
+                  {% endif %}
+                {% endfor %}
               {% endif %}
             </div>
 
@@ -388,11 +354,13 @@ product__main.liquid
               acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
+                if (panel.style.maxHeight > 0 ) {
                   panel.style.maxHeight = null;
+                  panel.classList.toggle("active");
                 } else {
                   closeToggle();
-                  panel.style.maxHeight = panel.scrollHeight + "px";
+                  panel.classList.toggle("active");
+                  //panel.style.maxHeight = panel.scrollHeight + "px";
                 } 
               });
             }
@@ -401,7 +369,7 @@ product__main.liquid
             {
               for (var j = 0; j < length; j++) {
                 var contents = acc[j].nextElementSibling;
-                if (contents.style.maxHeight) {
+                if (contents.style.maxHeight ) {
                   acc[j].click();
                 } 
               }
@@ -1321,7 +1289,7 @@ product__main.liquid
           "step": 10,
           "default": 200,
           "unit": "px",
-          "info": "Applied when 'Align to height' is also enabled. [Learn more](https://help.eagoats.com/hc/en-us/articles/360022543913)"
+          "info": "Applied when 'Align to height' is also enabled. "
         },    
         {
           "type": "header",
@@ -2509,6 +2477,488 @@ product__main.liquid
               "label": "Zoom in"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "allergens",
+      "name": "Allergens",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default" : "Allergens"
+        },
+        {
+          "type": "header",
+          "content": "Block 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_1",
+          "label": "Show block 1"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_1",
+          "label": "Allergen 1 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_2",
+          "label": "Show block 2"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_2",
+          "label": "Allergen 2 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_3",
+          "label": "Show block 3"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_3",
+          "label": "Allergen 3 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_4",
+          "label": "Show block 4"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_4",
+          "label": "Allergen 4 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_4",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 5"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_5",
+          "label": "Show block 5"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_5",
+          "label": "Allergen 5 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_5",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_6",
+          "label": "Show block 6"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_6",
+          "label": "Allergen 6 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_6",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 7"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_7",
+          "label": "Show block 7"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_7",
+          "label": "Allergen 7 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_7",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 8"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_8",
+          "label": "Show block 8"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_8",
+          "label": "Allergen 8 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_8",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 9"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_9",
+          "label": "Show block 9"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_9",
+          "label": "Allergen 9 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_9",
+          "label": "Heading",
+          "default": "Enter allergen name"
+        },
+        {
+          "type": "header",
+          "content": "Block 10"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_block_10",
+          "label": "Show block 10"
+        },
+        {
+          "type": "select",
+          "id": "icon_label_10",
+          "label": "Allergen 1 icon",
+          "default": "icon-dairy",
+          "options": [
+            {
+              "value": "icon-dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "icon-eggs",
+              "label": "Eggs"
+            },
+            {
+              "value": "icon-soy",
+              "label": "Soy"
+            },
+            {
+              "value": "icon-wheat",
+              "label": "Wheat"
+            },
+            {
+              "value": "icon-peanuts",
+              "label": "Peanuts"
+            },
+            {
+              "value": "icon-treenuts",
+              "label": "Treenuts"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_10",
+          "label": "Heading",
+          "default": "Enter allergen name"
         }
       ]
     },

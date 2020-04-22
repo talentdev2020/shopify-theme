@@ -6,6 +6,7 @@
 
 {% assign id = section.id %}
 {% comment %}Colors{% endcomment %}
+{% assign heading_color = section.settings.heading_color %}
 {% assign text_color = section.settings.text_color %}
 {% assign image_color = section.settings.image_color %}
 {% assign background = section.settings.background %}
@@ -22,8 +23,14 @@
 {% comment %} Advanced {% endcomment %}
 {% assign css_class = section.settings.css_class %}
 {% assign custom_css = section.settings.custom_css %}
+{% comment %} Button {% endcomment %}
+{% assign button_text_color = section.settings.button_text_color %}
+{% assign button_background_color = section.settings.button_background_color %}
+{% assign button_text_hover_color = section.settings.button_text_color %}
+{% assign button_background_hover_color = section.settings.button_background_hover_color %}
 
 {% comment %} Is the color set to transparent? {% endcomment %}
+{% assign heading_alpha = heading_color | color_extract: 'alpha' %}
 {% assign text_alpha = text_color | color_extract: 'alpha' %}
 {% assign image_alpha = image_color | color_extract: 'alpha' %}
 {% assign background_alpha = background | color_extract: 'alpha' %}
@@ -33,15 +40,27 @@
 {% capture section_css -%}
 
   .image-column__title {
-    color: {%- if text_alpha != 0 -%}{{ section.settings.text_color }}{%- endif -%};
+    color: {%- if text_alpha != 0 -%}{{ section.settings.heading_color }}{%- endif -%};
   }
 
   .image {
     fill: {%- if image_alpha != 0 -%}{{ section.settings.image_color }}{%- endif -%};
   }
 
-  .image-column__text {
+  .image-column__text, .image-column__note_text  {
     color: {%- if text_alpha != 0 -%}{{ section.settings.text_color }}{%- endif -%};
+  }
+
+  .image-with-text__heading {
+    color: {%- if text_alpha != 0 -%}{{ section.settings.heading_color }}{%- endif -%};
+  }
+  .image-column__action .button {
+    color: {%- if text_alpha != 0 -%}{{ section.settings.button_text_color }}{%- endif -%};
+    background-color: {%- if text_alpha != 0 -%}{{ section.settings.button_background_color }}{%- endif -%};
+  }
+  .image-column__action .button:hover {
+    color: {%- if text_alpha != 0 -%}{{ section.settings.button_text_hover_color }}{%- endif -%};
+    background-color: {%- if text_alpha != 0 -%}{{ section.settings.button_background_hover_color }}{%- endif -%};
   }
 
 {%- endcapture -%}
@@ -107,13 +126,12 @@
                   {% endif %}
                   column
                   has-padding
+                  is-{{ section.settings.image_size }}
                   {% include 'column-width', value: section.settings.images_per_row %}
                   text-align-{{ section.settings.align_text }}
                   medium-down--one-whole">
 
-        {%- capture image_size -%}
-          is-{{ section.settings.image_size }}
-        {%- endcapture -%}
+
 
         {% if block.settings.image != blank %}
             {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt, stretch_width: true, additional_classes: 'image-with-text-column__image' %}
@@ -196,7 +214,7 @@
     {
       "type": "select",
       "id": "image_size",
-      "label": "image size",
+      "label": "Image size",
       "options": [
         {
           "value": "small",
@@ -265,6 +283,12 @@
     },
     {
       "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
       "id": "text_color",
       "label": "Text",
       "default": "rgba(0,0,0,0)"
@@ -274,6 +298,30 @@
       "id": "background",
       "label": "Background",
       "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button background",
+      "default": "#A57096"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Button hover text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_background_hover_color",
+      "label": "Button hover background",
+      "default": "#A57096"
     },
     {
       "type": "color",
