@@ -104,9 +104,7 @@
       </p>
     {% endif %}
 
-    <div class="purchase-details {% if settings.display_product_quantity %}has-quantity-box{% endif %}"
-        {% if autodeliver_form__show %} style="position: absolute;" {% endif %} 
-        >
+    <div class="purchase-details {% if settings.display_product_quantity %}has-quantity-box{% endif %}">
       {% if settings.display_product_quantity %}
         <div class="purchase-details__quantity product-quantity-box quantity-box--{{ settings.qty_box_style }}">
           {% include 'quantity-box' %}
@@ -124,23 +122,42 @@
         {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
 
         <button id="button--add-to-cart"
-              {% if autodeliver_form__show %} style="visibility: hidden;" {% endif %} 
               type="{% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %}button{% else %}submit{% endif %}" name="add" class="button {% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %} ajax-submit {% endif %}action_button button--add-to-cart {% if show_payment_button %} action_button--secondary {% else %} action_button--primary {% endif %}" data-label={{ add_to_cart_label | json }} data-add-to-cart-trigger>
-          {% if  settings.button_cart_icon != blank and settings.button_cart_icon_position == 'left' %}
-            {% include settings.icon, name: settings.button_cart_icon, icon_class: 'icon--cart' %}
-          {% endif %}
-          <span class="text">{{ add_to_cart_label }}</span>
-          {% if  settings.button_cart_icon != blank and settings.button_cart_icon_position == 'right' %}
-            {% include settings.icon, name: settings.button_cart_icon, icon_class: 'icon--cart icon--right' %}
-          {% endif %}
-          <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
-            <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+
+          
+          <span class="add-to-cart__text add-to-cart__text--onetime" style="display:none;">
+            <span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
+            {{ add_to_cart_label }}
+          </span>
+          <span class="add-to-cart__text add-to-cart__text--subscribe">
+            <span id="rc_price_autodeliver" class="rc_price rc_price__autodeliver" aria-label="recurring price"></span>
+            Subscribe
+          </span>
+    
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="23.989" height="11.687" viewBox="0 0 23.989 11.687" class="add-to-cart-arrow">
+            <path d="M23.989 5.843a.72.72 0 0 0-.173-.423L18.9.192a.615.615 0 0 0-.87-.024.634.634 0 0 0-.024.87l3.95 4.19H.615a.615.615 0 0 0 0 1.23h21.337L18 10.649a.645.645 0 0 0 .024.87.616.616 0 0 0 .87-.024l4.921-5.228a.548.548 0 0 0 .173-.423z"/>
           </svg>
+        
         </button>
 
         {% if show_payment_button %}
           {{ form | payment_button }}
         {% endif %}
+
+        <div class="rc_popup">
+          {% if show_widget %}
+            <div class="rc_popup__click">
+              {% include settings.icon, name: "info" %} {{ subscription_details_label }}
+              <div class="rc_popup__block">
+                <div class="rc_popup__block__content">
+                  <div class="rc_popup__close" style="display: none;">x</div>
+                  {{ how_it_works_text }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   {% endif %}
@@ -150,22 +167,46 @@
 
 {% if autodeliver_form__show %}
 <script>
-  var price_one = document.getElementById("rc_price_onetime");	
-  var btn_one = document.getElementById("fake_addcartbtn_one"); 
-  btn_one.innerHTML = price_one.innerHTML + " Subscribe";
 
-  $('#rc_price_onetime').on('DOMSubtreeModified',function(){
-    btn_one.innerHTML = price_one.innerHTML + " Add to Cart";
-  })
 
-  var price_subscribe = document.getElementById("rc_price_autodeliver");							
-  var btn_subscribe = document.getElementById("fake_addcartbtn_subscribe"); 
-  btn_subscribe.innerHTML = price_subscribe.innerHTML + " Subscribe";
+  $(document).on('change', 'input[name="purchase_type"]', function(){
 
-  $('#rc_price_autodeliver').on('DOMSubtreeModified',function(){
-    btn_subscribe.innerHTML = price_subscribe.innerHTML + " Subscribe";
-  })
+    var type = $('input[name="purchase_type"]:checked').val();
+    if(type == 'onetime') {
+      $('.add-to-cart__text--onetime').show();
+      $('.add-to-cart__text--subscribe').hide();
+      $('.swatch-money-onetime').show();
+      $('.swatch-money-subscribe').hide();
+      $('#rc_autodeliver_options').hide();
+      $('.rc_block__type__autodeliver .icon').removeClass('active');
+    }
+    if(type == 'autodeliver') {
+      $('.add-to-cart__text--onetime').hide();
+      $('.add-to-cart__text--subscribe').show();
+      $('.swatch-money-onetime').hide();
+      $('.swatch-money-subscribe').show();
+      $('#rc_autodeliver_options').hide();
+      $('.rc_block__type__autodeliver .icon').removeClass('active');
+    }
+  });
+
+  $(document).on('change', 'input[name="option-01"]', function(){
+
+    var current_pack = $('input[name="option-01"]:checked').val();
+    $('.current-pack').text(current_pack);
+
+    if (current_pack == '6-Pack') {
+      $('.meal_txt .number').text('6 meals');
+    }
+    if (current_pack == '12-Pack') {
+      $('.meal_txt .number').text('12 meals');
+    }
+  });
   
+  $(document).on('click', '.rc_popup__click', function(){
+    $('.rc_popup__block').toggleClass('visible');
+  });
+
   function clickaddcart() {
     $("#button--add-to-cart").click();
   }

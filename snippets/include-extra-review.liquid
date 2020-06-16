@@ -1,0 +1,343 @@
+{% comment %}
+Snippet can be used in section or block
+eg. {% include 'include-extra-review' %}
+{% endcomment %}
+
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+{% comment %} Layout {% endcomment %}
+{% assign show_gutter = object.settings.show_gutter %}
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign animation = object.settings.animation %}
+{% assign cookies_position = object.settings.cookies_position %}
+{% assign css_class = object.settings.css_class %}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+    position: relative;
+    {% if width == 'wide' %}
+      width: 100%;
+    {% endif %}
+  }
+{% endstyle %}
+
+{% comment %}
+  {% include 'cookies2', position: 'right' %}
+{% endcomment %}
+<section class="section section-extra-review
+                {{ css_class }}
+                is-width-{{ width }}
+                {% if show_gutter == false %}
+                  has-no-side-gutter
+                  has-background
+                {% else %}
+                  has-gutter-enabled
+                {% endif %}
+                {% if width == 'wide' %}
+                  equal-columns--outside-trim
+                {% endif %}
+                "
+                {% if animation != "none" %}
+                  data-scroll-class="{{ animation }}"
+                {% endif %}>
+
+  <div class="container is-justify-space-between">
+
+    {% comment %} Is the color set to transparent? {% endcomment %}
+    {% assign background_alpha = block.settings.background | color_extract: 'alpha' %}
+    {% assign background_gradient_start_alpha = block.settings.background_gradient_start | color_extract: 'alpha' %}
+    {% assign background_gradient_end_alpha = block.settings.background_gradient_end | color_extract: 'alpha' %}
+    {% assign review_background1_background_alpha = block.settings.review_background1 | color_extract: 'alpha' %}
+    {% assign review_background2_background_alpha = block.settings.review_background2 | color_extract: 'alpha' %}
+    {% assign review_background3_background_alpha = block.settings.review_background3 | color_extract: 'alpha' %}
+
+    {% assign customer_name_color1_background_alpha = block.settings.customer_name_color1 | color_extract: 'alpha' %}
+    {% assign review_title_color1 _background_alpha = block.settings.review_title_color1  | color_extract: 'alpha' %}
+    {% assign review_text_color1_background_alpha = block.settings.review_text_color1 | color_extract: 'alpha' %}
+
+    {% assign customer_name_color2_background_alpha = block.settings.customer_name_color2 | color_extract: 'alpha' %}
+    {% assign review_title_color2 _background_alpha = block.settings.review_title_color2  | color_extract: 'alpha' %}
+    {% assign review_text_color2_background_alpha = block.settings.review_text_color2 | color_extract: 'alpha' %}
+
+    {% assign customer_name_color3_background_alpha = block.settings.customer_name_color3 | color_extract: 'alpha' %}
+    {% assign review_title_color3 _background_alpha = block.settings.review_title_color3  | color_extract: 'alpha' %}
+    {% assign review_text_color3_background_alpha = block.settings.review_text_color3 | color_extract: 'alpha' %}    
+
+    {% assign text_alpha = block.settings.text_color | color_extract: 'alpha' %}
+    {% assign text_color_strong_alpha = block.settings.text_color_strong | color_extract: 'alpha' %}
+    {% assign pre_text_alpha = block.settings.pre_text_color | color_extract: 'alpha' %}
+    {% comment %} Block specific CSS {% endcomment %}
+    {% capture block_css -%}
+
+      .image-with-text__heading {
+        text-transform: capitalize;
+        color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- else -%}{{ settings.heading_color }}{%- endif -%};
+      }
+
+      .image-with-text__heading strong {
+        color: {%- if text_color_strong_alpha != 0 -%}{{ block.settings.text_color_strong }}{%- else -%}{{ settings.text_color }}{%- endif -%};
+      }
+
+      .image-with-text__text {
+        color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+      .image-with-text__pre__heading {
+        color: {%- if pre_text_alpha != 0 -%}{{ block.settings.pre_text_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+      .review_block1 .review_text p {
+        background: {%- if review_background1_background_alpha != 0 -%}{{ block.settings.review_background1}}{%- endif -%};
+        color: {%- if review_text_color1_background_alpha != 0 -%}{{ block.settings.review_text_color1 }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+      .review_block2 .review_text p {
+        background: {%- if review_background2_background_alpha != 0 -%}{{ block.settings.review_background2}}{%- endif -%};
+        color: {%- if review_text_color2_background_alpha != 0 -%}{{ block.settings.review_text_color2 }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+
+      }
+      .review_block3 .review_text p {
+        background: {%- if review_background3_background_alpha != 0 -%}{{ block.settings.review_background3}}{%- endif -%};
+        color: {%- if review_text_color3_background_alpha != 0 -%}{{ block.settings.review_text_color3 }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+
+      }
+
+      .review_block1 .review_text svg path {
+        fill: {%- if review_background1_background_alpha != 0 -%}{{ block.settings.review_background1}}{%- endif -%};
+      }
+      .review_block2 .review_text svg path {
+        fill: {%- if review_background2_background_alpha != 0 -%}{{ block.settings.review_background2}}{%- endif -%};
+      }
+      .review_block3 .review_text svg path {
+        fill: {%- if review_background3_background_alpha != 0 -%}{{ block.settings.review_background3}}{%- endif -%};
+      }
+
+
+      .content-reviews-block1 .customer_name {
+        color: {%- if customer_name_color1_background_alpha != 0 -%}{{ block.settings.customer_name_color1 }}{%- else -%}{{ settings.regular_color }}{%- endif -%}
+      }
+      .content-reviews-block1 .review_title {
+        color: {%- if review_title_color1_background_alpha != 0 -%}{{ block.settings.review_title_color1 }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+      .content-reviews-block2 .customer_name {
+        color: {%- if customer_name_color2_background_alpha != 0 -%}{{ block.settings.customer_name_color2 }}{%- else -%}{{ settings.regular_color }}{%- endif -%}
+      }
+      .content-reviews-block2 .review_title {
+        color: {%- if review_title_color2_background_alpha != 0 -%}{{ block.settings.review_title_color2 }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+      .content-reviews-block3 .customer_name {
+        color: {%- if customer_name_color3_background_alpha != 0 -%}{{ block.settings.customer_name_color3 }}{%- else -%}{{ settings.regular_color }}{%- endif -%}
+      }
+      .content-reviews-block3 .review_title {
+        color: {%- if review_title_color3_background_alpha != 0 -%}{{ block.settings.review_title_color3 }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+    {%- endcapture -%}
+
+    {% style %}
+      #shopify-section-{{ block.id }} {
+          background-color: {%- if background_alpha != 0 -%}{{ block.settings.background }}{% endif %};
+        }
+
+      {% include 'css-loop', css: block_css, id: block.id %}
+    {% endstyle %}
+
+
+    <div class="image-with-text__text-column
+                image-with-text__column
+                one-whole
+                medium-down--one-whole
+                column
+                has-padding-left
+                has-padding-right
+                {% if background_alpha != 0 %}has-background {% endif %}
+                is-flex
+                is-flex-wrap
+                is-justify-{{ block.settings.alignment }}
+                is-align-{{ block.settings.vertical_position }}
+                "
+                {% if type != 'block' %}
+                  {{ block.shopify_attributes }} id="shopify-section-{{ block.id }}"
+                {% endif %}>
+      <div class="image-with-text__wrapper">
+        <div class="content-1">
+          {% if block.settings.main_title != blank %}
+            <h3 class="image-with-text__heading text-align-{{ block.settings.alignment }} is-{{ block.settings.main_heading_size }}" >
+              {{ block.settings.main_title }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.image_link %}
+          <a class="image-with-text__link" href="{{ block.settings.image_link }}">
+          {% endif %}
+          
+          {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt, stretch_width: true, additional_classes: 'image-with-text__image' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+    
+          {% if block.settings.image_link %}
+          </a>
+          {% endif %}
+
+          {% if block.settings.pre-title != blank %}
+            <p class="image-with-text__pre__heading text-align-{{ block.settings.alignment }}"> 
+              {{ block.settings.pre-title }}
+            </p>
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <h3 class="image-with-text__heading text-align-{{ block.settings.alignment }} is-{{ block.settings.heading_size }}" >
+              {{ block.settings.title }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.text }}
+            </div>
+          {% endif %}
+          {% if block.settings.custom_html != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.custom_html }}
+            </div>
+          {% endif %}
+        </div>
+      <div class="content-reviews-wrap                 
+                  is-flex
+                  is-flex-wrap
+                  is-justify-{{ block.settings.alignment }}
+                  is-align-{{ block.settings.vertical_position }}">
+        <div class="content-reviews
+                    content-reviews-block1
+                    one-third
+                    medium-down--one-whole
+                    column
+                    has-padding-left
+                    has-padding-right ">
+          {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.customer_image1, alt: block.settings.customer_image1.alt, stretch_width: true, additional_classes: 'image-with-text__image customer' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="content-reviews-text review_block review_block1">
+            {% if block.settings.customer_name1 != blank %}
+              <p class="image-with-text__text text-align-{{ block.settings.alignment }} customer_name"> 
+                {{ block.settings.customer_name1 }}
+              </p>
+            {% endif %}
+            {% if block.settings.review_title1 != blank %}
+              <h4 class="image-with-text__heading text-align-{{ block.settings.alignment }} review_title" >
+                {{ block.settings.review_title1 }}
+              </h4>
+            {% endif %}
+
+            {% if block.settings.review_text1 != blank %}
+              <div class="image-with-text__text text-align-{{ block.settings.alignment }} content review_text">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,112C384,85,480,43,576,26.7C672,11,768,21,864,64C960,107,1056,181,1152,202.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                {{ block.settings.review_text1 }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="content-reviews
+                    content-reviews-block2
+                    one-third
+                    medium-down--one-whole
+                    column
+                    has-padding-left
+                    has-padding-right ">
+          {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.customer_image2, alt: block.settings.customer_image2.alt, stretch_width: true, additional_classes: 'image-with-text__image customer' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="content-reviews-text review_block review_block2">
+            {% if block.settings.customer_name2 != blank %}
+              <p class="image-with-text__text text-align-{{ block.settings.alignment }} customer_name"> 
+                {{ block.settings.customer_name2 }}
+              </p>
+            {% endif %}
+            {% if block.settings.review_title2 != blank %}
+              <h4 class="image-with-text__heading text-align-{{ block.settings.alignment }} review_title" >
+                {{ block.settings.review_title2 }}
+              </h4>
+            {% endif %}
+
+            {% if block.settings.review_text2 != blank %}
+              <div class="image-with-text__text text-align-{{ block.settings.alignment }} content review_text">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,112C384,85,480,43,576,26.7C672,11,768,21,864,64C960,107,1056,181,1152,202.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                {{ block.settings.review_text2 }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+
+        <div class="content-reviews
+                    content-reviews-block3
+                    one-third
+                    medium-down--one-whole
+                    column
+                    has-padding-left
+                    has-padding-right ">
+          {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.customer_image3, alt: block.settings.customer_image3.alt, stretch_width: true, additional_classes: 'image-with-text__image customer' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="content-reviews-text review_block review_block3">
+            {% if block.settings.customer_name3 != blank %}
+              <p class="image-with-text__text text-align-{{ block.settings.alignment }} customer_name"> 
+                {{ block.settings.customer_name3 }}
+              </p>
+            {% endif %}
+            {% if block.settings.review_title3 != blank %}
+              <h4 class="image-with-text__heading text-align-{{ block.settings.alignment }} review_title" >
+                {{ block.settings.review_title3 }}
+              </h4>
+            {% endif %}
+
+            {% if block.settings.review_text3 != blank %}
+              <div class="image-with-text__text text-align-{{ block.settings.alignment }} content review_text">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,112C384,85,480,43,576,26.7C672,11,768,21,864,64C960,107,1056,181,1152,202.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                {{ block.settings.review_text3 }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div> 
+
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+{% if block.settings.show_wave_bottom %}
+<div class="product-header-wave">
+  {% if block.settings.wave_down_color != 0 %}
+    {% assign wave_color =  block.settings.wave_down_color %} 
+  {% else %} 
+    {% assign wave_color =  'white' %} 
+  {% endif %}
+
+  {% include 'include-wave_background', color: wave_color %}
+</div>
+{% endif %}

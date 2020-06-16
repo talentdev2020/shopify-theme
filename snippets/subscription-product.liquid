@@ -116,16 +116,16 @@
 			color: {{ widget_label_color }};
 		}
 		.rc_price {
-			color: {{ widget_price_color }};
+			color: #000;
 		}
 		div.rc_block__type {
 			background-color: {{ widget_active_bg }};
 		}
 		div.rc_block__type label.rc_label .icon.active {
-			display: none;
+			/*display: block;*/
 		}
 		div.rc_block__type label.rc_label .icon.disactive {
-			display: block;
+			/*display: block;*/
 		}
 		div.rc_block__type--active label.rc_label {
 			color: {{ widget_active_color }};
@@ -135,7 +135,13 @@
     		padding: 8px 0 0 10px;
 		}
 		div.rc_block__type--active label.rc_label .icon.active {
-			display: block;
+			/*display: block;*/
+		}
+		div.rc_block__type--active label.rc_label .icon svg {
+			transform: rotate(0deg);
+		}
+		div.rc_block__type--active label.rc_label .icon.active svg {
+			transform: rotate(180deg);
 		}
 		div.rc_block__type--active label.rc_label .icon.disactive {
 			display: none;
@@ -143,7 +149,14 @@
 		div.rc_block__type--active .rc_price {
 			color: {{ widget_active_price_color }};
 		}
+		div.rc_block__type__options {
+			display: flex;
+		}
 		/* Widget: Popup */
+		div.rc_popup {
+			padding: 8px 0;
+			cursor: pointer;
+		}
 		div.rc_popup__block {
 			z-index: {{ popup_zindex }};
 		}
@@ -164,7 +177,211 @@
 		/* ReCharge CSS */
 		{{ recharge_custom_css }}
 		/* Add Custom CSS Below */
+		div#rc_container {
+			margin-bottom: 0;
+			margin-top: -6px;
+		}
+		div.rc_block__type {
+			background-color: #f6f2ed;
+		}
+		div.rc_block__type.rc_block__type--active {
+			background-color: #fff;
+			border-color: #a57096;
+		}
+		label.rc_label {
+			color: #000;
+		}
+		#rc_radio_options {
+			display: flex;
+		}
 
+		#rc_autodeliver_options {
+			z-index: 5;
+			background: #fff;
+			position: absolute;
+			left: -1px;
+			right: -1px;
+    		top: 30px;
+			border: 1px solid #a57096;
+			border-top: none;
+			padding: 0 30px;
+			border-bottom-left-radius: 3px;
+			border-bottom-right-radius: 3px;
+			display: none;
+		}
+		#rc_autodeliver_options	.swatch {
+			padding: 0;
+		}
+		#rc_autodeliver_options	.swatch .swatch-element {
+			background: none;
+			border: none;
+			width: 100%;
+			margin: 0;
+			min-height: 25px;
+		}
+		#rc_autodeliver_options	.swatch .swatch-element label {
+			display: block;
+			min-width: 40px;
+			margin: 0;
+			font-size: 12px;
+			text-align: left;
+			padding: 3px 0;
+			line-height: 1.2;
+			white-space: nowrap;
+			text-transform: none;
+			cursor: pointer;
+			color: #a57096;
+			font-weight: normal;
+		}
+		#rc_autodeliver_options	.swatch .swatch_options input:checked+.swatch-element {
+			color: #4899d4;
+		}
+
+		div.rc_block__type__autodeliver.rc_block__type--active #rc_autodeliver_options  {
+			/*display: block;*/
+		}  
+		
+		.rc_label__discount {
+			border-radius: 10px;
+			background-color: #a57096;
+			color: #fff;
+			font-size: 12px;
+    		padding: 2px 6px;
+		}
+
+		#rc_autodeliver_options input:checked +  .swatch-element label {
+			color: #4899d4 ;
+		}
+		#rc_autodeliver_options .swatch-element label:hover {
+			color: #4899d4 ;
+		}
+
+		div.rc_popup__block {
+			width: 100%;
+			padding: 0;
+			display: none;
+			position: absolute;
+			top: -108px;
+			cursor: default;
+			left: 0;
+			text-align: left;
+			white-space: normal;
+			border: 1px solid #a57096;
+			border-radius: 5px;
+		}
+		div.rc_popup__click {
+			color: #4899d4;
+			font-size: 13px;
+			display: flex;
+			position: relative;
+		}
+		a.rc_popup__hover, div.rc_popup__hover {
+			color: #4899d4;
+			font-size: 13px;
+			display: flex;
+		}
+		a.rc_popup__hover .icon , div.rc_popup__hover .icon, .rc_popup__click .icon {
+			margin-right: 7px;
+		}
+		div.rc_popup__block:before {
+			display: block;
+			content: "";
+			width: 1px;
+			border: 9px solid transparent;
+			position: absolute;
+			bottom: -18px;
+			left: calc(50% - 9px);
+			border-top-color: #fff;
+			z-index: 1;
+			top: initial;
+		}
+		div.rc_popup__block:after {
+			display: block;
+			content: "";
+			width: 1px;
+			border: 11px solid transparent;
+			position: absolute;
+			bottom: -22px;
+			left: calc(50% - 11px);
+			border-top-color: #a57096;
+			top: initial;
+		}
+		div.rc_popup__block__content {
+			white-space: normal;
+			padding: 20px;
+			font-size: 14px;
+			color: #000;
+		}
+
+
+		@media only screen and (max-width: 798px) {
+			div#rc_container {
+				margin-top: 20px;
+			}
+			#rc_radio_options {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			/*.product-form-container .rc_block__type {
+				margin-right: 0;
+				width: 100%;
+				margin-bottom: 15px;
+				height: 45px;
+    			padding: 14px;
+			}*/
+			.product-form-container .rc_block__type.rc_block__type__autodeliver {
+				margin-right: 0;
+				margin-left: 0;
+			}
+			.rc_label__discount {
+				font-size: 10px;
+				padding: 2px 5px;
+				margin-left: 0;
+			}
+			#rc_container .swatch .swatch-element {
+				width: 100% !important;
+			}
+			.product_section .pack-image img {
+				width: 54px;
+				height: 42px;
+			}
+			.product_section .product_form {
+				min-height: 330px;
+			}
+			div.rc_popup__block {
+				width: 100%;
+				top: -166px;
+			}
+			.product-form-container .rc_label .icon {
+				top: 6px;
+    			right: -1px;
+			}
+			#rc_container .rc_label {
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 16px!important;
+			}
+			.product-form-container .rc_block__type {
+				border: 1px solid #ccc;
+				margin-right: 12px;
+				height: 35px;
+				position: relative;
+				width: calc(50% - 6px);
+			}
+			.product-form-container .rc_block__type.rc_block__type__onetime {
+				padding: 12px 4px;
+    			height: 42px;
+			}
+			#rc_container .rc_label div {
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+			.product-form-container .rc_block__type.rc_block__type__autodeliver {
+				padding: 12px 14px 12px 4px;
+				height: 42px;
+			}
+		}
 	</style>
 
 	<!-- Subscriptions Powered by ReCharge Payments: HTML -->
@@ -176,33 +393,24 @@
 				<option value="{{ variant.metafields.subscriptions.discount_variant_id }}">{{ variant.metafields.subscriptions.discount_variant_id }}</option>
 			{% endfor %}
 		</select>
+		{% if shipping_interval_frequency.size > 1 %}
+			<span class="rc_label__frequency">
+				Deliver Every: <span class="current-freq">{{ shipping_interval_frequency[0] }} {{ label_unit_type }}</span>
+			</span>
+		{% endif %}
 		<div id="rc_radio_options" role="radiogroup" aria-labelledby="Purchase options">
 			{% unless subscription_only %}
 			<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
 				<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
 					<div>
 						<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
-						{% if discount_percentage > 0 %}
-						<span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
-						{% endif %}
-						{{ label_onetime }}{% if discount_percentage > 0 %}:{% endif %}
-						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
-						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+						{{ label_onetime }}
 					</div>
 				</label>
 
-				<div id="rc_onetime_options" class="rc_block rc_block__type__options">		
-							
-					<div class="swatch_options collection_swatches">
-						{% for option in product.options %}
-							{% include 'product__options', option: option, id: '1' %}
-						{% endfor %}
-					</div>
-
-					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_one', class2 : 'meals_one' %}				
-				</div>
 			</div>
 			{% endunless %}
+
 			<div class="rc_block rc_block__type rc_block__type__autodeliver {% if select_subscription_first %}rc_block__type--active{% endif %}" {% if subscription_only and shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
 				{% if subscription_only %}
 					<input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
@@ -210,47 +418,27 @@
 					<label for="rc_purchase_type_autodeliver" class="rc_label rc_label__autodeliver">
 					  <div>
 					    <input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
-						{% if discount_percentage > 0 %}
-							<span id="rc_price_autodeliver" class="rc_price rc_price__autodeliver" aria-label="recurring price"></span>
-						{% endif %}
 						{{ label_autodeliver }}
 						{% if discount_percentage > 0 %}
-							<span class="rc_label__discount" aria-label="subscription discount">({{ discount_percentage }}%):</span>
+							<span class="rc_label__discount" aria-label="subscription discount">{{ discount_percentage }}% off</span>
 						{% endif %}
-						{% include settings.icon, name: 'right-caret', icon_class: 'disactive' %}
-						{% include settings.icon, name: 'down-caret',icon_class: 'active' %}
+						{% include settings.icon, name: 'down-caret-blue',icon_class: '' %}
 					  </div>
 					</label>
 				{% endif %}
 
 				<div id="rc_autodeliver_options" class="rc_block rc_block__type__options">
 					
-					<div class="swatch_options collection_swatches">
-					{% for option in product.options %}
-						{% include 'product__options', option: option, id: '2' %}
-					{% endfor %}
-					</div>
-
-					<label for="rc_shipping_interval_frequency" class="rc_label rc_label__deliver_every" aria-label="Subscription frequency options">
+					<label style="display: none !important;"
+							for="rc_shipping_interval_frequency"
+					 		class="rc_label rc_label__deliver_every" 
+					 		aria-label="Subscription frequency options">
 						
 						{% if shipping_interval_frequency.size > 1 %}
 							<span class="rc_label__frequency">
 								Choose Frequency:
 							</span>
 						{% endif %}
-
-						{% comment %}
-						{% if shipping_interval_frequency.size == 1 %}
-							<span class="rc_label__frequency">
-								{{ shipping_interval_frequency[0] }}
-								{% if shipping_interval_frequency[0] == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
-									{{ label_unit_type | remove: 's' }}
-								{% else %}
-									{{ label_unit_type }}
-								{% endif %}
-							</span>
-						{% endif %}
-						{% endcomment %}
 					</label>
 
 					<div class="swatch_options">
@@ -294,38 +482,20 @@
 						{% endfor %}
 					</select>
 
-					{% include 'include-subscription-buttons', class1 : 'fake_addcartbtn_subscribe', class2 : 'meals_subscribe' %}
 				</div>
 			</div>
 		</div>
-		<div class="rc_popup" style="display:none">
-			{% if show_widget %}
-				<div class="rc_popup__hover">
-					{% if show_widget_icon %}
-						<img src="{{ widget_icon }}" height="21" width="18" alt="ReCharge Subscription services icon" class="rc_popup__icon">
-					{% endif %}
-					{{ subscription_details_label }}
-					<div class="rc_popup__block">
-						<div class="rc_popup__block__content">
-							<div class="rc_popup__close" style="display: none;">x</div>
-							{{ how_it_works_text }}
-							{% if show_learnmore %}
-								<br><a href="{{ learnmore_url }}" target="_blank" aria-label="Learn more about ReCharge Payments">{{ learnmore_link }}</a>
-							{% endif %}
-						</div>
-						{% if show_poweredby %}
-							<div class="rc_popup__block__footer">
-								<a href="{{ poweredby_url }}" target="_blank" aria-label="ReCharge Payments homepage">
-									<img src="//rechargestatic-bootstrapheroes.netdna-ssl.com/static/images/widget/rc_widget__banner@2x.png" height="28" width="153" alt="ReCharge Subscriptions company banner" class="rc_popup__badge">
-								</a>
-							</div>
-						{% endif %}
-					</div>
-				</div>
-			{% elsif show_widget == "link" %}
-				<a href="{{ learnmore_url }}" target="_blank" class="rc_popup__hover" aria-label="Learn more about ReCharge Payments">{% if show_widget_icon %}<img src="{{ widget_icon }}" height="21" width="18" alt="ReCharge Subscription services icon" class="rc_popup__icon"> {% endif %}{{ subscription_details_label }}</a>
-			{% endif %}
+
+		<div id="rc_options" class="rc_block rc_block__type__options">		
+							
+			<div class="swatch_options collection_swatches">
+				{% for option in product.options %}
+					{% include 'product__options', option: option, id: '1' %}
+				{% endfor %}
+			</div>			
 		</div>
+
+
 	</div>
 	<!-- Subscriptions Powered by ReCharge Payments: JS -->
     <script src="//rechargeassets-bootstrapheroes-rechargeapps.netdna-ssl.com/static/js/rcWidget.js"></script>

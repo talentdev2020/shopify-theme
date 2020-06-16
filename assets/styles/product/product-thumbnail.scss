@@ -6,13 +6,21 @@ $product-hover-bg: {{ settings.product_hover_bg_color | color_modify: 'alpha', 0
 $mobile-padding : 15px;
 
 .product__header {
-  padding-top: 50px;
-  padding-bottom: 30px;
+  padding-top: 0;
+  padding-bottom: 10px;
+  background: #a57096;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  color: #fff;
 
   .product-review__wrapper {
     min-height: $gutter*1.25;
     text-align: center;
-
+    line-height: 28px;
+    
     .stamped-badge{
       display: block!important;
 
@@ -639,26 +647,73 @@ $mobile-padding : 15px;
 
 .product-form-container {
   .rc_block__type {
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-right: 6px;
+    height: 35px;
+    position: relative;
+    width: calc(50% - 6px);
+    &.rc_block__type__autodeliver {
+      margin-right: 0;
+      margin-left: 6px;
+      z-index: 5;
+    }
   }
   .rc_block__type__onetime {
 
   }
-  .rc_block__type__autodeliver  {
-    margin-top: 10px;
-  }
+
   .rc_label {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21 !important;
+    letter-spacing: normal;
+    text-align: left;
 
     .icon {
       float: right;
       margin: 5px;
+      position: absolute;
+      right: 2px;
+      top: 3px;
+      width: 100%;
+      justify-content: flex-end;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
     }
   }
-  .rc_price {
-    font-size: 1.4rem;
-    font-weight: bold;
+  .add-to-cart__text {
+    font-size: 18px;
+    font-weight: 600;
     line-height: 1.26;
+  }
+  .rc_price {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.26;
+  }
+  .add-to-cart-arrow {
+    margin-left: 20px;
+    margin-top: 3px;
+  }
+
+  .rc_label__frequency {
+    text-align: right;
+    width: 100%;
+    display: inline-block;
+    margin-right: 12px;
+    color: #000;
+    font-weight: 600;
+    font-size: 13px;
+
+    .current-freq {
+      color: #4495eb;
+      font-weight: 400;
+      width: 60px;
+      display: inline-block;
+    }
   }
 }

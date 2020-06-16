@@ -1,0 +1,259 @@
+{% comment %}
+Snippet can be used in section or block
+eg. {% include 'include-image-with-text' %}
+{% endcomment %}
+
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+{% comment %} Layout {% endcomment %}
+{% assign show_gutter = object.settings.show_gutter %}
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign animation = object.settings.animation %}
+{% assign image_position = object.settings.image_position %}
+{% assign cookies_position = object.settings.cookies_position %}
+{% assign css_class = object.settings.css_class %}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+    position: relative;
+    {% if width == 'wide' %}
+      width: 100%;
+    {% endif %}
+  }
+{% endstyle %}
+
+{% comment %} HTML markup {% endcomment %}
+{% if cookies_position != blank %}
+{% unless cookies_position == 'none' %}
+  {% include 'cookies2', position: cookies_position %}
+{% endunless %}
+{% endif %}
+<section class="section
+                {{ css_class }}
+                is-width-{{ width }}
+                {% if show_gutter == false %}
+                  has-no-side-gutter
+                  has-background
+                {% else %}
+                  has-gutter-enabled
+                {% endif %}
+                {% if width == 'wide' %}
+                  equal-columns--outside-trim
+                {% endif %}
+                "
+                {% if animation != "none" %}
+                  data-scroll-class="{{ animation }}"
+                {% endif %}>
+
+  <div class="container is-justify-space-between">
+
+    {% comment %} Is the color set to transparent? {% endcomment %}
+    {% assign background_alpha = block.settings.background | color_extract: 'alpha' %}
+    {% assign background_gradient_start_alpha = block.settings.background_gradient_start | color_extract: 'alpha' %}
+    {% assign background_gradient_end_alpha = block.settings.background_gradient_end | color_extract: 'alpha' %}
+    {% assign text_block_background_alpha = block.settings.text_block_background | color_extract: 'alpha' %}
+    {% assign text_alpha = block.settings.text_color | color_extract: 'alpha' %}
+    {% assign pre_text_alpha = block.settings.pre_text_color | color_extract: 'alpha' %}
+    {% comment %} Block specific CSS {% endcomment %}
+    {% capture block_css -%}
+
+      .image-with-text__heading {
+        color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- else -%}{{ settings.heading_color }}{%- endif -%};
+      }
+
+      .image-with-text__text {
+        color: {%- if text_alpha != 0 -%}{{ block.settings.text_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+
+      .image-with-text__pre__heading {
+        color: {%- if pre_text_alpha != 0 -%}{{ block.settings.pre_text_color }}{%- else -%}{{ settings.regular_color }}{%- endif -%};
+      }
+    {%- endcapture -%}
+
+    {% style %}
+      #shopify-section-{{ block.id }} {
+        {%- if background_gradient_start_alpha != 0 and background_gradient_end_alpha != 0 -%}
+          background-image: linear-gradient(to bottom, {{ block.settings.background_gradient_start }}, {{ block.settings.background_gradient_end }});
+        {%- else -%}
+          background-color: {%- if background_alpha != 0 -%}{{ block.settings.background }}{% endif %};
+        {%- endif -%}
+        }
+
+      #shopify-section-{{ block.id }} .container {
+        background: {%- if text_block_background_alpha != 0 -%}{{ block.settings.text_block_background }}{% endif %};
+      }
+
+      {% include 'css-loop', css: block_css, id: block.id %}
+    {% endstyle %}
+
+    {% if image_position == 'left' %}
+    <div class="image-with-text__image-column
+    image-with-text__column
+      three-fifths
+      medium-down--one-whole
+      column
+      has-image-crop
+      image-crop--{{ block.settings.image_crop }}
+    " {% if type != 'block' %}{{ block.shopify_attributes }} id="shopify-section-{{ block.id }}"{% endif %}>
+      {% if block.settings.image_link %}
+      <a class="image-with-text__link" href="{{ block.settings.image_link }}">
+      {% endif %}
+
+          {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt, stretch_width: true, additional_classes: 'image-with-text__image' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+      {% if block.settings.image_link %}
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="image-with-text__text-column
+                image-with-text__column
+                two-fifths
+                medium-down--one-whole
+                column
+                has-padding-left
+                has-padding-right
+                {% if background_alpha != 0 %}has-background {% endif %}
+                is-flex
+                is-flex-wrap
+                is-justify-{{ block.settings.alignment }}
+                is-align-{{ block.settings.vertical_position }}
+                "
+                {% if type != 'block' %}
+                  {{ block.shopify_attributes }} id="shopify-section-{{ block.id }}"
+                {% endif %}>
+      <div class="image-with-text__wrapper">
+        <div class="content-1">
+          {% if block.settings.pre-title != blank %}
+            <p class="image-with-text__pre__heading text-align-{{ block.settings.alignment }}"> 
+              {{ block.settings.pre-title }}
+            </p>
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <h3 class="image-with-text__heading text-align-{{ block.settings.alignment }} is-{{ block.settings.heading_size }}" >
+              {{ block.settings.title }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.text }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.custom_html != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.custom_html }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="content-2">
+          {% if block.settings.pre-title2 != blank %}
+            <p class="image-with-text__pre__heading text-align-{{ block.settings.alignment }}"> 
+              {{ block.settings.pre-title2 }}
+            </p>
+          {% endif %}
+          {% if block.settings.title2 != blank %}
+            <h3 class="image-with-text__heading text-align-{{ block.settings.alignment }} is-{{ block.settings.heading_size2 }}" >
+              {{ block.settings.title2 }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.text2 != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.text2 }}
+            </div>
+          {% endif %}
+          {% if block.settings.custom_html2 != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.custom_html2 }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="content-3">
+          {% if block.settings.pre-title3 != blank %}
+            <p class="image-with-text__pre__heading text-align-{{ block.settings.alignment }}"> 
+              {{ block.settings.pre-title3 }}
+            </p>
+          {% endif %}
+          {% if block.settings.title3 != blank %}
+            <h3 class="image-with-text__heading text-align-{{ block.settings.alignment }} is-{{ block.settings.heading_size3 }}" >
+              {{ block.settings.title3 }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.text3 != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.text3 }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.custom_html3 != blank %}
+            <div class="image-with-text__text text-align-{{ block.settings.alignment }} content">
+              {{ block.settings.custom_html3 }}
+            </div>
+          {% endif %}
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+    {% if image_position == 'right' %}
+    <div class="image-with-text__image-column
+    image-with-text__column
+      three-fifths
+      medium-down--one-whole
+      column
+      has-image-crop
+      image-crop--{{ block.settings.image_crop }}
+    " {% if type != 'block' %}{{ block.shopify_attributes }} id="shopify-section-{{ block.id }}"{% endif %}>
+      {% if block.settings.image_link %}
+      <a class="image-with-text__link" href="{{ block.settings.image_link }}">
+      {% endif %}
+      
+          {% if block.settings.image != blank %}
+              {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt, stretch_width: true, additional_classes: 'image-with-text__image' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+      {% if block.settings.image_link %}
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% if block.settings.show_wave_bottom %}
+<div class="product-header-wave">
+  {% if block.settings.wave_down_color != 0 %}
+    {% assign wave_color =  block.settings.wave_down_color %} 
+  {% else %} 
+    {% assign wave_color =  'white' %} 
+  {% endif %}
+
+  {% include 'include-wave_background', color: wave_color %}
+</div>
+{% endif %}

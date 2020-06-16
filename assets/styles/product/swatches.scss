@@ -22,6 +22,7 @@ $swatch-label-size: 34px;
 
   .swatch_options {
     font-weight: bold;
+    width: 100%;
   }
 
   .swatch .option-title {
@@ -42,11 +43,26 @@ $swatch-label-size: 34px;
     font-size: 13px;
     text-align: center;
     padding: 5px 10px;
-    line-height: 35px;
+    line-height: 20px;
     white-space: nowrap;
     text-transform: uppercase;
     cursor: pointer;
     color: #191919;
+    @include respond-to('medium-down') {
+      line-height: 20px;
+    }
+  }
+  .rc_block__type__options .swatch label {
+    font-family: 'Cooper Std';
+  }
+  .rc_block__type__autodeliver .swatch label {
+    font-family: inherit;
+  }
+  .swatch-money {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 30px;
+    color: #000;
   }
 
   .swatch .color label {
@@ -55,6 +71,9 @@ $swatch-label-size: 34px;
     line-height: $swatch-label-size;
     background-position: center;
     background-size: cover;
+    @include respond-to('medium-down') {
+      line-height: 20px;
+    }
   }
 
   .swatch-element {
@@ -64,6 +83,9 @@ $swatch-label-size: 34px;
     {% if settings.swatch_style != 'square' %}
       border-radius: 3px;
     {% endif %}
+    @include respond-to('medium-down') {
+      min-height: 30px;
+    }
   }
 
   .swatch-element.color {
@@ -86,10 +108,9 @@ $swatch-label-size: 34px;
     overflow: hidden;
   }
 
-  .swatch_options input:checked + .swatch-element {
-    border-color: #fdb12f ;
+  .swatch_options input:checked + .swatch-wrapper .swatch-element {
+    border-color: #a57096 ;
     background-color: white;
-    box-shadow: 0px 0px 0px 2px rgba(255,255,255,1);
   }
 
   .swatch .swatch-element {
@@ -97,14 +118,44 @@ $swatch-label-size: 34px;
     transform: translateZ(0);
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0px 8px 8px 0;
+    margin: 0;
     position: relative;
     outline: none;
-    min-width: 100px;
-    border-radius: 31px;
+    border-radius: 3px;
     text-align: center;
-    border: solid 2px #f1f1f1;
-    background-color: #f1f1f1;
+    border: solid 1px #ccc;
+    background-color: #f6f2ed;
+
+  }
+  .have-highlight .swatch-element { 
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .swatch .swatch-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 6px 12px 0;
+    width: calc(50% - 6px);
+    &:nth-of-type(2n+1){
+      margin: 0px 0 12px 6px;
+    }
+
+    .highlight {
+      background: #a57096;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      display: flex;
+      justify-content: space-around;
+      padding: 1px 10px;
+      margin-bottom: 0;
+      margin-top: -18px;
+      color: #fff;
+      span {
+        line-height: 1.17;
+        font-size: 14px;
+      }
+    }
   }
 
   .crossed-out {

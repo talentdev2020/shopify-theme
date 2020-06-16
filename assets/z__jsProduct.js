@@ -46,6 +46,20 @@ Shopify.theme.jsProduct = {
       this.enableFeaturedSlideshow($mainProductGallery);
     }
 
+    $('.readmore').click(function (event) {
+      event.preventDefault();
+      var descriptionFull = $('.product-description-full');
+      descriptionFull.show();
+      var descriptionShort = $('.product-description-short');
+      descriptionShort.hide();
+    });
+    $('.readless').click(function (event) {
+      event.preventDefault();
+      var descriptionFull = $('.product-description-full');
+      descriptionFull.hide();
+      var descriptionShort = $('.product-description-short');
+      descriptionShort.show();
+    });
     $(".product_form_options", $section).each(function () {
       new Shopify.OptionSelectors($(this).data("select-id"), {
         product: $(this).data("product"),
@@ -114,6 +128,22 @@ Shopify.theme.jsProduct = {
 
       $(this).toggleClass('active');
     });
+    $(document).on('click', '.rc_block__type__autodeliver .icon', function (e) {
+      if ($(this).hasClass('active')) {
+        $('#rc_autodeliver_options').hide();
+      } else {
+        $('#rc_autodeliver_options').show();
+      }
+
+      $(this).toggleClass('active');
+    });
+    $(document).on('change', '#rc_autodeliver_options input[name="radio-frequency"]', function (e) {
+      e.preventDefault();
+      var freq = $('#rc_autodeliver_options input[name="radio-frequency"]:checked').val();
+      $('.current-freq').text(freq + " Weeks");
+      $('#rc_autodeliver_options').hide();
+      $('.rc_block__type__autodeliver .icon').removeClass('active');
+    });
   },
   enableStickyTabBar: function enableStickyTabBar($el) {
     var element = document.getElementById($el);
@@ -177,9 +207,8 @@ Shopify.theme.jsProduct = {
       dragThreshold: 10,
       imagesLoaded: true,
       pageDots: false,
-      prevNextButtons: this.product_images_amount > 1 ? this.gallery_arrows : false,
-      autoPlay: this.slideshow_speed * 1000,
-      arrowShape: arrowShape
+      prevNextButtons: false,
+      autoPlay: this.slideshow_speed * 1000
     });
     $gallery.on('staticClick.flickity', function (event, pointer, cellElem, cellIndex) {
       if (cellIndex !== undefined) {
@@ -195,17 +224,22 @@ Shopify.theme.jsProduct = {
       dragThreshold: 10,
       imagesLoaded: true,
       pageDots: this.product_images_amount > 1 ? true : false,
-      prevNextButtons: this.product_images_amount > 1 ? this.gallery_arrows : false,
+      prevNextButtons: false,
       autoPlay: this.slideshow_speed * 1000,
       fade: this.slideshow_transition === 'fade' ? true : false,
-      watchCSS: this.template === 'image-scroll' ? true : false,
-      arrowShape: arrowShape
+      watchCSS: this.template === 'image-scroll' ? true : false
     });
     setTimeout(function () {
       $el.flickity('resize');
     }, 500);
     $(window).on('load', function () {
       $el.flickity('resize');
+    });
+    $(document).on('click', '.product_gallery__nav--prev', function () {
+      $el.flickity('previous');
+    });
+    $(document).on('click', '.product_gallery__nav--next', function () {
+      $el.flickity('next');
     });
     var flkty = $el.data('flickity');
 

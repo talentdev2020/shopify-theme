@@ -567,7 +567,7 @@ button.shopify-payment-button__more-options {
 
   .purchase-details__spb--false {
     height: $atc-button-height;
-    margin: 12px 0 0;
+    margin: 0;
     display: inline-block;
 
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -576,10 +576,22 @@ button.shopify-payment-button__more-options {
 
     .button--add-to-cart {
       height: inherit;
-      width: 50%;
+      width: 100%;
+      border-radius:3px;
 
       @include respond-to('medium-down') {
         width: 100%;
+      }
+
+      span.text {
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        text-align: left;
+        color: #000;
       }
     }
   }

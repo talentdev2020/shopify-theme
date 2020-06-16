@@ -9,7 +9,7 @@
   {% capture list %}
     {% for image in product.images %}
       {% comment %}Loop through images only once{% endcomment %}
-      {{ image.id }}`~`{{ image.alt }}`~`{{ image | img_url: '50x' }}`~`{{ image | img_url: '200x' }}`~`{{ image | img_url: '400x' }}`~`{{ image | img_url: '600x' }}`~`{{ image | img_url: '800x' }}`~`{{ image | img_url: '1200x' }}`~`{{ image | img_url: '2000x' }}`~`{{-image.width-}}px`~`{{-image.height-}}px{% if forloop.last == false %}^{% endif %}
+      {{ image.id }}`~`{{ image.alt }}`~`{{ image | img_url: '50x' }}`~`{{ image | img_url: '200x' }}`~`{{ image | img_url: '400x' }}`~`{{ image | img_url: '600x' }}`~`{{ image | img_url: '800x' }}`~`{{ image | img_url: '1000x' }}`~`{{ image | img_url: '2000x' }}`~`{{-image.width-}}px`~`{{-image.height-}}px{% if forloop.last == false %}^{% endif %}
     {% endfor %}
   {% endcapture %}
   {% assign image_list = list | split: "^" %}
@@ -28,7 +28,7 @@
         {% capture image_400x %}{{ image[4] }}{% endcapture %}
         {% capture image_600x %}{{ image[5] }}{% endcapture %}
         {% capture image_800x %}{{ image[6] }}{% endcapture %}
-        {% capture image_1200x %}{{ image[7] }}{% endcapture %}
+        {% capture image_1000x %}{{ image[7] }}{% endcapture %}
         {% capture image_2000x %}{{ image[8] }}{% endcapture %}
         {% capture original_image_width %}{{- image[9] -}}{% endcapture %}
         {% capture original_image_height %}{{- image[10] -}}{% endcapture %}
@@ -62,11 +62,11 @@
                             {{ image_400x }} 400w,
                             {{ image_600x }} 600w,
                             {{ image_800x }} 800w,
-                            {{ image_1200x }} 1200w,
+                            {{ image_1000x }} 1000w,
                             {{ image_2000x }} 2000w"
                     />
               <noscript>
-                <img  src="{{ image_1200x }}"
+                <img  src="{{ image_1000x }}"
                       alt="{{ image_alt | escape }}"
                       class="lazyloaded lazyload fallbackImage" />
               </noscript>
@@ -99,7 +99,7 @@
           {% capture image_400x %}{{ image[4] }}{% endcapture %}
           {% capture image_600x %}{{ image[5] }}{% endcapture %}
           {% capture image_800x %}{{ image[6] }}{% endcapture %}
-          {% capture image_1200x %}{{ image[7] }}{% endcapture %}
+          {% capture image_1000x %}{{ image[7] }}{% endcapture %}
           {% capture image_2000x %}{{ image[8] }}{% endcapture %}
           <div class="product-gallery__thumbnail one-fifth column"
                 data-title="{{ image_alt | escape }}">
@@ -115,5 +115,14 @@
     {% endif %}
   {% endif %}
 </div>
-
+{% if product.images.size > 1 %}
+<div class="product_gallery__nav-wrap">
+  <div class="product_gallery__nav product_gallery__nav--prev">
+      {% include 'arrow', orientation: 'left' %}
+  </div>
+  <div class="product_gallery__nav product_gallery__nav--next ">
+      {% include 'arrow', orientation: 'right' %}
+  </div>
+</div>
+{% endif %}
 

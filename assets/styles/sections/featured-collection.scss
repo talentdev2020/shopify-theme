@@ -279,6 +279,10 @@ $product-height__mobile: 195px;
       text-align: left;
       color: $black !important;
       margin-left: 5px;
+
+      @include respond-to('medium-down') {
+        display: none !important;
+      }
     }
   }
   .flickity-prev-next-button .flickity-button-icon {
@@ -336,6 +340,10 @@ $product-height__mobile: 195px;
       text-align: left;
       color: $black !important;
       margin-left: 5px;
+
+      @include respond-to('medium-down') {
+        display: none !important;
+      }
     }
   }
   .product-thumbnail {

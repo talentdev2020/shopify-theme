@@ -437,7 +437,13 @@ product__main.liquid
 
 {% if section.settings.show_wave_border %}
 <div class="product-header-wave">
-  {% include 'include-wave_background', color: 'white' %}
+  {% if section.settings.wave_down_color != 0 %}
+    {% assign wave_color =  section.settings.wave_down_color %} 
+  {% else %} 
+    {% assign wave_color =  'white' %} 
+  {% endif %}
+
+  {% include 'include-wave_background', color: wave_color %}
 </div>
 {% endif %}
 
@@ -802,6 +808,12 @@ product__main.liquid
       "id": "thumbnail_background_color",
       "label": "Background",
       "default": "#f6f2ed"
+    },
+    {
+      "type": "color",
+      "id": "wave_down_color",
+      "label": "Wave color",
+      "default": "#ffffff"
     },
     {
       "type": "checkbox",

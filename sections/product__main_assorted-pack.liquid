@@ -92,19 +92,6 @@ product__main.liquid
   <div class="product-{{ product.id }}">
 
     <div class="product_section js-product_section">
-      <div class="product__header">
-        {% comment %} Review stars {% endcomment %}
-        {% if section.settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
-          <div class="product-review__wrapper text-align-center">                        
-            <div class="yotpo bottomLine star2" style="display:inline-block"
-              data-product-id="{{ review_product_1.id }}"> </div> 
-          </div>
-          {% endif %}
-
-          {% comment %} Name {% endcomment %}
-        <h1 class="product_name title">{{ product.title }}</h1>
-      </div>
-
       <div class="container
                   is-justify-space-between
                   has-padding-bottom
@@ -131,7 +118,51 @@ product__main.liquid
             {% include 'product-thumbnail__sticker', context: 'product' %}
           {% endif %}
           {% endcomment %}
+          <div class="product__header">
+            {% comment %} Review stars {% endcomment %}
+            {% if section.settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
+              <div class="product-review__wrapper text-align-left">                        
+                <div class="yotpo bottomLine star2" style="display:inline-block"
+                  data-product-id="{{ review_product_1.id }}"> </div> 
+              </div>
+              {% endif %}
+              <p class="meal_txt"> Your Impact: <span class="number">6 Meals</span></p>
+          </div>
 
+          {% comment %} Purchase form {% endcomment %}
+          <div class="product-form-container">
+
+
+          {% comment %} Name {% endcomment %}
+          <h1 class="product_name title">{{ product.title }}</h1>
+
+          <div class="product-info__extra-info">
+            <span class="check">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20.544" height="13.885" viewBox="0 0 20.544 13.885">
+                <path id="prefix__np_check_1822264_000000" d="M32.076 24.968a1.39 1.39 0 0 0-.953.416c-.057.057-.876.85-1.95 1.872l-3.848 3.658-3.848 3.658-1.066 1.014-5.148-4.446a1.392 1.392 0 1 0-1.82 2.106l6.1 5.269a1.386 1.386 0 0 0 1.889-.069c.057-.057.876-.85 1.95-1.872s2.461-2.331 3.848-3.649 2.77-2.643 3.849-3.666 1.782-1.687 2-1.907a1.387 1.387 0 0 0-1.005-2.383z" transform="translate(-12.96 -24.968)" style="fill:#f2a564"/>
+              </svg>    
+            </span>
+            Individually wrapped waffle cookies
+          </div>
+        
+          {% comment %} Description - top {% endcomment %}
+
+            <div class="description content has-padding-top">
+              {% if product.description != blank %}
+                {% if product.description.size > 250 %}
+                  <div class="product-description-short">
+                  {{ product.description | strip_html  | truncate: 150, ". . . " }}
+                  <br><a class="readmore" href="#">Read More &#62;</a>
+                  </div>
+                  <div class="product-description-full">
+                  {{ product.description }}
+                  <a class="readless" href="#">&#60; Show Less</a>
+                  </div>
+                {% else %}
+                  {{ product.description }}
+                {% endif %} 
+              {% endif %}
+            </div>
 
           {% comment %} Vendor {% endcomment %}
           {% if section.settings.display_vendor %}
@@ -211,86 +242,6 @@ product__main.liquid
             {% endunless %}
           </div>
 
-          {% comment %} Description - top {% endcomment %}
-          {% if section.settings.product_description_position == "top" %}
-
-            <div class="description content has-padding-top">
-              {% if product.description != blank %}
-              <div class="product_info toggle-info">
-                <button class="accordion active">
-                  <p class="description_title">Product Info</p>
-                </button>
-                <div class="panel">
-                  <div class="panel-padding">
-                  {{ product.description | split: '<!-- split -->' | first }}
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              {% if section.settings.cookiecare_heading != blank %} 
-              <div class="cookie_care_info toggle-info">
-                <button class="accordion">
-                  <p class="cookie-care_title">Cookie Care</p>
-                </button>
-                
-                <div class="panel container is-justify-left">
-                  <div class="panel-padding">
-                    {% if section.settings.cookiecare_content != blank %}
-                    <p>{{ section.settings.cookiecare_content }}</p>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              {% if section.settings.allergens_show %}
-              <div class="allergens_info toggle-info">
-                <button class="accordion">
-                  <p class="allergens-title">Allergens</p>
-                </button>
-                
-                <div class="panel">
-                  <div class="panel-padding container is-justify-left">
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-dairy' %}
-                      <div><p>Dairy</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-eggs' %}
-                      <div><p>Eggs</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-soy' %}
-                      <div><p>Soy</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-wheat' %}
-                      <div><p>Wheat</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-peanuts' %}
-                      <div><p>Peanuts</p></div>
-                    </div>
-
-                    <div class="icon-container text-align-center">
-                      {% include settings.icon, name: 'icon-treenuts' %}
-                      <div><p>Tree nuts</p></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-            </div>
-            
-          {% endif %}
-
-          {% comment %} Purchase form {% endcomment %}
-          <div class="product-form-container">
 
             {% comment %} Notify form {% endcomment %}
             {% include 'product__notify-me-form' %}
@@ -301,80 +252,7 @@ product__main.liquid
             {% endunless %}
           </div>
 
-          {% comment %} Description - bottom {% endcomment %}
-          {% if section.settings.product_description_position == "bottom" %}
 
-          <div class="description content has-padding-top">
-              {% if product.description != blank %}
-              <div class="product_info toggle-info">
-                <button class="accordion active">
-                  <p class="description_title">Product Info</p>
-                </button>
-                <div class="panel active">
-                  <div class="panel-padding">
-                  {{ product.description | split: '<!-- split -->' | first }}
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              {% if section.settings.cookiecare_heading != blank %} 
-              <div class="cookie_care_info toggle-info">
-                <button class="accordion">
-                  <p class="cookie-care_title">Cookie Care</p>
-                </button>
-                
-                <div class="panel container is-justify-left">
-                  <div class="panel-padding">
-                    {% if section.settings.cookiecare_content != blank %}
-                    <p>{{ section.settings.cookiecare_content }}</p>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              {% if section.settings.allergens_show %}
-                {% for block in section.blocks %}
-                  {% if block.type == 'allergens' %}
-                    {% include 'include-allergens-icon-with-text', type: 'block' %}
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-            </div>
-
-          {% endif %}
-
-          <script>
-            var acc = document.getElementsByClassName("accordion");
-            var length = acc.length;
-            var i;
-            
-            for (i = 0; i < length; i++) {
-              acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight > 0 ) {
-                  panel.style.maxHeight = null;
-                  panel.classList.toggle("active");
-                } else {
-                  closeToggle();
-                  panel.classList.toggle("active");
-                  //panel.style.maxHeight = panel.scrollHeight + "px";
-                } 
-              });
-            }
-
-            function closeToggle()
-            {
-              for (var j = 0; j < length; j++) {
-                var contents = acc[j].nextElementSibling;
-                if (contents.style.maxHeight ) {
-                  acc[j].click();
-                } 
-              }
-            }
-          </script>
 
           {% comment %} Collections, type, tags {% endcomment %}
           {% if section.settings.display_collections or section.settings.display_tags or section.settings.display_type %}
@@ -412,13 +290,6 @@ product__main.liquid
             </div>
           {% endif %}
 
-          {% comment %} Social share icons {% endcomment %}
-          <div class="product__social-share has-padding-top">
-            {% if section.settings.display_social_buttons %}
-              {% include 'social-share-buttons' %}
-            {% endif %}
-          </div>
-
         </div>
       </div>
     </div>
@@ -437,7 +308,13 @@ product__main.liquid
 
 {% if section.settings.show_wave_border %}
 <div class="product-header-wave">
-  {% include 'include-wave_background', color: 'white' %}
+  {% if section.settings.wave_down_color != 0 %}
+    {% assign wave_color =  section.settings.wave_down_color %} 
+  {% else %} 
+    {% assign wave_color =  'white' %} 
+  {% endif %}
+
+  {% include 'include-wave_background', color: wave_color %}
 </div>
 {% endif %}
 
@@ -500,9 +377,17 @@ product__main.liquid
           {% comment %} Image with text overlay {% endcomment %}
           {% include 'include-image-with-text-overlay', type: 'block' %}
 
+        {% elsif block.type == 'image_with_text_extra' %}
+          {% comment %} Image with text {% endcomment %}
+          {% include 'include-image-with-text-extra', type: 'block' %}
+
         {% elsif block.type == 'rich_text' %}
           {% comment %} Rich text {% endcomment %}
           {% include 'include-rich-text', type: 'block' %}
+
+        {% elsif block.type == 'extra_review' %}
+          {% comment %} Extra review {% endcomment %}
+          {% include 'include-extra-review', type: 'block' %}
 
         {% elsif block.type == 'video' %}
           {% comment %} Featured video {% endcomment %}
@@ -804,6 +689,12 @@ product__main.liquid
       "default": "#f6f2ed"
     },
     {
+      "type": "color",
+      "id": "wave_down_color",
+      "label": "Wave color",
+      "default": "#ffffff"
+    },
+    {
       "type": "checkbox",
       "id": "background_image",
       "label": "Show Cookie Background image",
@@ -869,6 +760,22 @@ product__main.liquid
         }
       ]
     },
+    {
+      "type": "header",
+      "content": "Product pack images"
+    },
+    {
+      "type": "image_picker",
+      "id": "six_pack_image",
+      "label": "6 Pack image",
+      "info": "512px x 512px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "twelve_pack_image",
+      "label": "12 Pack image",
+      "info": "512px x 512px recommended"
+    },  
     {
       "type": "header",
       "content": "Tooltip"
@@ -1910,6 +1817,736 @@ product__main.liquid
         }
       ]
     },
+    {
+      "type": "extra_review", 
+      "name": "Extra review",
+      "settings": [
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "default": "standard",
+          "options": [
+            {
+              "value": "standard",
+              "label": "Standard"
+            },
+            {
+              "value": "wide",
+              "label": "Wide"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Top spacing",
+          "min": 0,
+          "max": 80,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Bottom spacing",
+          "default": 0,
+          "min": 0,
+          "max": 80,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "animation",
+          "label": "Animation",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "fadeIn",
+              "label": "Fade in"
+            },
+            {
+              "value": "fadeInDown",
+              "label": "Fade in down"
+            },
+            {
+              "value": "fadeInLeft",
+              "label": "Fade in left"
+            },
+            {
+              "value": "fadeInRight",
+              "label": "Fade in right"
+            },
+            {
+              "value": "slideInLeft",
+              "label": "Slide in left"
+            },
+            {
+              "value": "slideInRight",
+              "label": "Slide in right"
+            },
+            {
+              "value": "zoomIn",
+              "label": "Zoom in"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "main_title",
+          "label": "Heading",
+          "default": "Heading text here"
+        },
+        {
+          "type": "select",
+          "id": "main_heading_size",
+          "label": "Base size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "large"
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main image",
+          "info": "1024 x 512px recommended"
+        },
+
+        {
+          "type": "text",
+          "id": "pre-title",
+          "label": "Pre Heading"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading text here"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Base size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "regular"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_html",
+          "label": "Custom Html"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "text_color_strong",
+          "label": "Text strong tag",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "text_block_background",
+          "label": "Text block background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Reviews"
+        },
+        {
+          "type": "image_picker",
+          "id": "customer_image1",
+          "label": "Customer image",
+          "info": "512px x 512px recommended"
+        },
+
+        {
+          "type": "text",
+          "id": "customer_name1",
+          "label": "Customer name"
+        },
+        {
+          "type": "text",
+          "id": "review_title1",
+          "label": "Review title",
+          "default": "Review title text here"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text1",
+          "label": "Review text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "review_background1",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "customer_name_color1",
+          "label": "Customer name",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "review_title_color1",
+          "label": "Review title",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "review_text_color1",
+          "label": "Review text",
+          "default": "#fff"
+        },
+        {
+          "type": "image_picker",
+          "id": "customer_image2",
+          "label": "Customer image",
+          "info": "512px x 512px recommended"
+        },
+        {
+          "type": "text",
+          "id": "customer_name2",
+          "label": "Customer name"
+        },
+        {
+          "type": "text",
+          "id": "review_title2",
+          "label": "Review title",
+          "default": "Review title text here"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text2",
+          "label": "Review text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "review_background2",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "customer_name_color2",
+          "label": "Customer name",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "review_title_color2",
+          "label": "Review title",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "review_text_color2",
+          "label": "Review text",
+          "default": "#fff"
+        },
+        {
+          "type": "image_picker",
+          "id": "customer_image3",
+          "label": "Customer image",
+          "info": "512px x 512px recommended"
+        },
+
+        {
+          "type": "text",
+          "id": "customer_name3",
+          "label": "Customer name"
+        },
+        {
+          "type": "text",
+          "id": "review_title3",
+          "label": "Review title",
+          "default": "Review title text here"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text3",
+          "label": "Review text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "review_background3",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "customer_name_color3",
+          "label": "Customer name",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "review_title_color3",
+          "label": "Review title",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "review_text_color3",
+          "label": "Review text",
+          "default": "#fff"
+        }
+      ]
+    },
+    {
+      "type": "image_with_text_extra", 
+      "name": "Image with Text Extra",
+      "settings": [
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "default": "standard",
+          "options": [
+            {
+              "value": "standard",
+              "label": "Standard"
+            },
+            {
+              "value": "wide",
+              "label": "Wide"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Top spacing",
+          "min": 0,
+          "max": 80,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Bottom spacing",
+          "default": 0,
+          "min": 0,
+          "max": 80,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "animation",
+          "label": "Animation",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "fadeIn",
+              "label": "Fade in"
+            },
+            {
+              "value": "fadeInDown",
+              "label": "Fade in down"
+            },
+            {
+              "value": "fadeInLeft",
+              "label": "Fade in left"
+            },
+            {
+              "value": "fadeInRight",
+              "label": "Fade in right"
+            },
+            {
+              "value": "slideInLeft",
+              "label": "Slide in left"
+            },
+            {
+              "value": "slideInRight",
+              "label": "Slide in right"
+            },
+            {
+              "value": "zoomIn",
+              "label": "Zoom in"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gutter",
+          "label": "Show gutter",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Position",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "BiG Image",
+          "info": "1024 x 1024px recommended"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Wave"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_wave_bottom",
+          "label": "Show wave",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "wave_down_color",
+          "label": "Wave color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Text content 1"
+        },
+        {
+          "type": "text",
+          "id": "pre-title",
+          "label": "Pre Heading"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading text here"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Base size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "regular"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_html",
+          "label": "Custom Html"
+        },
+        {
+          "type": "header",
+          "content": "Text content 2"
+        },
+        {
+          "type": "text",
+          "id": "pre-title2",
+          "label": "Pre Heading"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Heading",
+          "default": "Heading text here"
+        },
+        {
+          "type": "select",
+          "id": "heading_size2",
+          "label": "Base size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "regular"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_html2",
+          "label": "Custom Html"
+        },
+        {
+          "type": "header",
+          "content": "Text content 3"
+        },
+        {
+          "type": "text",
+          "id": "pre-title3",
+          "label": "Pre Heading"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Heading",
+          "default": "Heading text here"
+        },
+        {
+          "type": "select",
+          "id": "heading_size3",
+          "label": "Base size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "regular"
+        },
+        {
+          "type": "richtext",
+          "id": "text3",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_html3",
+          "label": "Custom Html"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "background_gradient_start",
+          "label": "Background gradient start",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "background_gradient_end",
+          "label": "Background gradient end",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "text_block_background",
+          "label": "Text block background",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "pre_text_color",
+          "label": "Pre heading",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "vertical_position",
+          "label": "Vertical position",
+          "options": [
+            {
+              "value": "start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Middle"
+            },
+            {
+              "value": "end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "css_class",
+          "label": "CSS Class"
+        }
+      ]
+    }, 
     {
       "type": "image_with_overlay",
       "name": "Image with text overlay",
