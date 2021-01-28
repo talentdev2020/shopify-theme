@@ -53,14 +53,15 @@
               aria-label="{{ value | escape }}" 
               tabindex="0" 
               name="option-{{ option_index }}{{ id }}"
-              value="{{ value | escape }}"{% if forloop.first %}
-              checked{% endif %}/>
+              value="{{ value | escape }}"/>
       <div class="swatch-wrapper {% if value == '12-Pack' %}have-highlight{% endif %}">
+        {%- comment -%}
         {% if value == '12-Pack' %}
         <div class="highlight">
           <span>Best Value</span>
         </div>
         {% endif %}
+        {%- endcomment -%}
       <div aria-label="{{ value | escape }}" tabindex="0" 
             data-value="{{ value | escape }}" 
             data-value-handle="{{ value | handle }}" 
@@ -93,18 +94,19 @@
           </label>
         {% else %}
           <label for="swatch-{{ option_index }}-{{ value | handle }}{{ id }}-{{ product.id }}">
-            {% if section.settings.six_pack_image and section.settings.twelve_pack_image  %}
-              <div class="pack-image">
-                {% if value == '6-Pack' %}
-                  <img src="{{ section.settings.six_pack_image | img_url: '250x' }}" alt="">
-                {% endif %}
-                {% if value == '12-Pack' %}
-                  <img src="{{ section.settings.twelve_pack_image | img_url: '250x' }}" alt="">
-                  <img src="{{ section.settings.twelve_pack_image | img_url: '250x' }}" alt="">
-                {% endif %}
-              </div>
+            {% if section.settings != blank %}
+              {% if section.settings.six_pack_image and section.settings.twelve_pack_image  %}
+                <div class="pack-image">
+                  {% if value == '6-Pack' %}
+                    <img src="{{ section.settings.six_pack_image | img_url: '250x' }}" alt="">
+                  {% endif %}
+                  {% if value == '12-Pack' %}
+                    <img src="{{ section.settings.twelve_pack_image | img_url: '250x' }}" alt="">
+                  {% endif %}
+                </div>
+              {% endif %}
             {% endif %}
-            {{ value }}
+            {{ value }} {% if value == '12-Pack' %}<span>(Best Value)</span>{% else %}<span>&nbsp;</span>{% endif %}
             <span class="crossed-out" aria-label="{{ 'products.product.sold_out' | t }}" 
                 alt="{{ 'products.product.sold_out' | t }}"></span>
           </label>
@@ -113,8 +115,12 @@
       <span class="swatch-{{ option_index }}-{{ value | handle }}{{ id }}-{{ product.id }}-price {% if product.available == false %}hidden{% endif %}">
         {% if variant.price > 0 %}
         {% assign bags = value | handle | split: '-' %}
-          <span class="swatch-money swatch-money-onetime" style="display:none;">{{ variant.price | divided_by: bags[0] | round | money }}/cookie</span>
-          <span class="swatch-money swatch-money-subscribe">{{ variant.metafields.subscriptions.discount_variant_price | replace: ".", ""  | divided_by: bags[0] | round | money }}/cookie</span>
+        {% capture testValue %}{{ bags[0] | plus: 0 }}{% endcapture %}
+        {% assign ozs = testValue | times: 3 %}
+          {% unless testValue contains '"' %}
+            <span class="swatch-money swatch-money-onetime" style="display:none;">{{ ozs }} ounces ({{ variant.price | divided_by: ozs | round | money }}/oz)</span>
+            <span class="swatch-money swatch-money-subscribe">{{ ozs }} ounces ({{ variant.metafields.subscriptions.discount_variant_price | replace: ".", ""  | divided_by: ozs| round | money }}/oz)</span>
+          {% endunless %}
         {% else %}
           {{ settings.free_price_text }}
         {% endif %}

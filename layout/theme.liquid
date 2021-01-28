@@ -8,6 +8,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.shop_bg_color }}">
   <link rel="canonical" href="{{ canonical_url }}" />
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KG8882P');</script>
+  <!-- End Google Tag Manager -->
 
   {%- if current_tags -%}{%- assign meta_tags = current_tags | join: ', ' -%}{%- endif -%}
   <title>{%- if template contains "index" -%}{{ page_title }}{%- else -%}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{%- endif -%}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}</title>
@@ -57,6 +67,12 @@
   {%- if page_description -%}
     <meta name="description" content="{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}" />
   {%- endif -%}
+  
+  {{ 'cj-event-storage2.js' | asset_url | script_tag }}
+  {{ 'cj-event-storage.js' | asset_url | script_tag }}
+
+  
+  <script type="text/javascript" src="/services/javascripts/currencies.js" ></script>
 
   {%- if settings.favicon != nil -%}
     <link rel="shortcut icon" type="image/x-icon" href="{{ settings.favicon | img_url: '180x180' }}">
@@ -76,16 +92,74 @@
     <script defer src="{{ 'shopify_common.js' | shopify_asset_url }}"></script>
     <script defer src="{{ 'customer_area.js' | shopify_asset_url }}"></script>
   {%- endif -%}
-
+  
+  {% render 'header-scripts.zipifypages', renderctx: 'thm' %}
+  {%-comment -%}{% capture head_js %}
+  {{ content_for_header }}
+  {% endcapture %}
+  {{ head_js | remove: ',"https:\/\/formbuilder.hulkapps.com\/skeletopapp.js?shop=nunbelievable.myshopify.com"' }}
+{%- endcomment -%}
   {{ content_for_header }}
 
   {% include 'social-meta-info' %}
   {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
   {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
 
-  <script type="text/javascript">
-    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+{%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+{%- assign time_now = 'now' | date: '%s' %}
+{%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+{%- assign diffSeconds = time_now | minus: yotpo_live_time %}
+{%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
+{{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+  
+  <!-- TikTok Pixel Start  -->
+    <script> (function() { var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true; ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BRVLPUJ4J692HOFKNH2G'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ta, s); })(); </script>
+  <!-- TikTok Pixel End   -->
+  
+  <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer="defer"></script>
+  
+    <!-- Cactusmedia Pixel Start  -->
+ <script type="text/javascript" src="https://cactusmedia.com/js/p-07302020.js"></script>
+  <!-- Cactusmedia Pixel Ends  -->
+  
+  <!-- Global site tag (gtag.js) - Google Ads: 711327711 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-711327711"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'AW-711327711');
+    </script>
+  
+  <!-- Event snippet for Submit lead form conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+  function gtag_report_conversion(url) {
+   var callback = function () {
+    if (typeof(url) != 'undefined') {
+     window.location = url;
+    }
+   };
+   gtag('event', 'conversion', {
+     'send_to': 'AW-711327711/3mxWCKn18eEBEN__l9MC',
+     'event_callback': callback
+   });
+   return false;
+  }
   </script>
+  <!-- BEGIN AMP code -->
+
+{% assign wf_canonical_url_length = canonical_url | size %}
+{% assign wf_domain_url_length = "https://nunbelievable.com/" | size %}
+{% assign wf_url = canonical_url | split: '/' %}
+{% if wf_url[3] == "blogs" %}
+{% assign wf_amp_canonical = canonical_url | replace: "https://nunbelievable.com/","https://amp.nunbelievable.com/" %}
+<link rel="amphtml" href="{{wf_amp_canonical}}">
+{% endif %}
+<!-- END AMP code --> 
+
+
 </head>
 
 {% if template.name == 'index' %}
@@ -113,6 +187,10 @@
               has-vertical-header
             {%- endif -%}"
   data-money-format="{{ shop.money_format }}" data-shop-url="{{ shop.url }}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG8882P"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   {%- if settings.show_announcement_bar -%}
     {% section 'announcement-bar' %}
@@ -211,6 +289,40 @@
   {% endif %}
 
   {% include 'subscription-theme-footer' %}
+ {% include 'smile-initializer' %}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% render 'ocuapp-theme', ocuapp: ocuapp %}
+{% assign ocuapp = true %}
+{% render 'page-footer.zipifypages', renderctx: 'thm', ocuapp: ocuapp %}
+  <script src="https://cdn.attn.tv/nunbelievable/dtag.js"></script>
+  
+ <!-- Linkedin Start  -->  
+<script type="text/javascript"> _linkedin_partner_id = "2661684"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id); </script><script type="text/javascript"> (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(); </script> <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=2661684&fmt=gif" /> </noscript> 
+  <!-- Linkedini end  --> 
+<script type="text/javascript"> var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers'; js.src = ('https:' == document.location.protocol ? 'https://shop.pe/widget/' : 'http://cdn.shop.pe/widget/')+ 'widget_async.js#5feb72aabbddbd601cfee901'; document.getElementsByTagName("head")[0].appendChild(js); </script>
 </body>
 </html>
 {% endcapture %}

@@ -70,19 +70,7 @@ product-thumbnail.liquid
       {% endfor %}
     </div>
 
-    <div class="product-review__wrapper">
-      <div class="yotpo bottomLine"
-        data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
-        data-domain="{{shop.permanent_domain | escape }}"
-        data-product-id="{{ product.id }}"
-        data-product-models="{{ product.id }}"
-        data-name="{{ product.title | escape }}"
-        data-url="{{ shop.url }}{{ product.url }}"
-        data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
-        data-description="{{ product.description | escape }}"
-        data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
-      </div>  
-    </div>
+    
 
     <div class="product-image__wrapper"> 
       <div class="image__container product__imageContainer">
@@ -162,6 +150,20 @@ product-thumbnail.liquid
 
     <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
       {% include 'product-thumbnail__product-info' %}
+      
+      <div class="product-review__wrapper is-hidden-mobile-only">
+        <div class="yotpo bottomLine"
+          data-appkey="GjzCpbSqvmwwEWx7j6NiVgJL2xkIbFcgHLR48YC0"
+          data-domain="{{shop.permanent_domain | escape }}"
+          data-product-id="{{ product.id }}"
+          data-product-models="{{ product.id }}"
+          data-name="{{ product.title | escape }}"
+          data-url="{{ shop.url }}{{ product.url }}"
+          data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+          data-description="{{ product.description | escape }}"
+          data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+        </div>  
+      </div>
 
       {% if collection_handles contains 'coming-soon' %}
         {% if settings.stickers_enabled == false %}

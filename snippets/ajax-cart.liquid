@@ -48,7 +48,7 @@
     function get_cookie(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
     if (get_cookie('recharge')=='true' || subscription_active=='true') { 
         rjQuery('body').on('click','form[action="/checkout"] input[type="submit"], #ajaxifyCart [name="checkout"], #AjaxifyCart [name="checkout"], #shoppingBagInner [name="checkout"]', function(e){
-            e.preventDefault(); 
+            e.preventDefault();           	        
             window.location.href = '/cart';
         })
         rjQuery('.additional-checkout-buttons').hide()
@@ -56,5 +56,22 @@
             rjQuery('.additional-checkout-buttons').hide()
         })
     }
+      
+      rjQuery('body').on('click','.button--minicart-checkout', function(e){
+        e.preventDefault();
+        const noteInput = rjQuery(this).closest('form').find('textarea.ajax-cart__note').val();
+        const submitBtn = rjQuery(this).closest('form').find('button[type="submit"]');
+        console.log(noteInput);
+        $.ajax({
+          type: "POST",
+          url: '/cart.js',
+          data: {"note": noteInput},
+          success: function(d) {
+            submitBtn.trigger('click');
+          },
+          dataType: 'json'
+        });
+      });
+      
     </script>
 {% endif %}

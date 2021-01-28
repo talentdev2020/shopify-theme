@@ -7,12 +7,10 @@ Shopify.theme.jsLogoListSlider = {
     var $nextButton = $section.find('.logo-list-slider__nav--next');
     var $logoSlider = $section.find('[data-logo-list-slider]');
     var $LogoListSlider = $logoSlider.flickity({
-      initialIndex: 1,
-      contain: true,
+      initialIndex: 0,
       wrapAround: true,
       prevNextButtons: false,
       pageDots: false,
-      imagesLoaded: true,
       draggable: true,
       on: {
         ready: function ready() {

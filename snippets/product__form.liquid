@@ -124,15 +124,76 @@
         <button id="button--add-to-cart"
               type="{% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %}button{% else %}submit{% endif %}" name="add" class="button {% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %} ajax-submit {% endif %}action_button button--add-to-cart {% if show_payment_button %} action_button--secondary {% else %} action_button--primary {% endif %}" data-label={{ add_to_cart_label | json }} data-add-to-cart-trigger>
 
+          {% if template contains 'product' %}
           
-          <span class="add-to-cart__text add-to-cart__text--onetime" style="display:none;">
-            <span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
+          	{% if product.metafields.subscriptions.subscription_id %}
+            <span class="variant_available">
+              <span class="add-to-cart__text add-to-cart__text--onetime" style="display:none;">
+                <span id="rc_price_onetime" class="rc_price rc_price__onetime" aria-label="original price"></span>
+                {{ add_to_cart_label }}
+              </span>
+              <span class="add-to-cart__text add-to-cart__text--subscribe">
+                <span id="rc_price_autodeliver" class="rc_price rc_price__autodeliver" aria-label="recurring price"></span>
+                Subscribe
+              </span>
+            </span>
+          	<span class="add-to-cart__text sold_out" style="display:none">{{ 'products.product.sold_out' | t }}</span>
+          	{% else %}
+          
+              <p class="modal_price subtitle">
+                {% if collection_handles contains 'coming-soon' %}
+                  {% if settings.stickers_enabled == false %}
+                    {{ 'collections.general.coming_soon' | t }}
+                  {% endif %}
+                {% else %}
+
+                  {% comment %} Sold out {% endcomment %}
+                  <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+
+                  {% comment %} Current price {% endcomment %}
+                  <span class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                    <span class="current_price {% if product.available == false %}hidden{% endif %}">
+                      {% if variant.price > 0 %}
+                        <span class="money">{{ variant.price | money }}</span>
+                      {% else %}
+                        {{ settings.free_price_text }}
+                      {% endif %}
+                    </span>
+                  </span>
+
+                  {% comment %} Compare at (original) price {% endcomment %}
+                  <span class="was-price">
+                    {% if variant.price < variant.compare_at_price and variant.available %}
+                      <span class="money">{{ variant.compare_at_price | money }}</span>
+                    {% endif %}
+                  </span>
+
+                  {% comment %} Size chart {% endcomment %}
+                  {% if settings.size_chart != blank or meta-size-chart %}
+                    <a href="javascript:;" class="product__size-chart medium-down--hidden" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% include settings.icon, name: 'right-caret' %}</a>
+                    {% include 'popup-size-chart', product_id: product.id %}
+                  {% endif %}
+
+                  {% comment %} Savings {% endcomment %}
+                  {% if section.settings.display_savings %}
+                    <span class="sale savings">
+                      {% if variant.price < variant.compare_at_price and variant.available %}
+                        {{ 'products.product.savings' | t }}  {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                      {% endif %}
+                    </span>
+                  {% endif %}
+                {% endif %}
+              </p>
+          
+            <span class="add-to-cart__text">
+              {{ add_to_cart_label }}
+            </span>
+          	{% endif %}
+          {% else %}
+          <span class="add-to-cart__text">
             {{ add_to_cart_label }}
           </span>
-          <span class="add-to-cart__text add-to-cart__text--subscribe">
-            <span id="rc_price_autodeliver" class="rc_price rc_price__autodeliver" aria-label="recurring price"></span>
-            Subscribe
-          </span>
+          {% endif %}
     
 
           <svg xmlns="http://www.w3.org/2000/svg" width="23.989" height="11.687" viewBox="0 0 23.989 11.687" class="add-to-cart-arrow">
@@ -145,19 +206,20 @@
           {{ form | payment_button }}
         {% endif %}
 
-        <div class="rc_popup">
-          {% if show_widget %}
-            <div class="rc_popup__click">
-              {% include settings.icon, name: "info" %} {{ subscription_details_label }}
-              <div class="rc_popup__block">
-                <div class="rc_popup__block__content">
-                  <div class="rc_popup__close" style="display: none;">x</div>
-                  {{ how_it_works_text }}
-                </div>
+      </div>
+      
+      <div class="rc_popup">
+        {% if show_widget %}
+          <div class="rc_popup__click">
+            {% include settings.icon, name: "info" %} {{ subscription_details_label }}
+            <div class="rc_popup__block">
+              <div class="rc_popup__block__content">
+                <div class="rc_popup__close" style="display: none;">x</div>
+                {{ how_it_works_text }}
               </div>
             </div>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
       </div>
     </div>
   {% endif %}
@@ -167,8 +229,118 @@
 
 {% if autodeliver_form__show %}
 <script>
+	/*$(document).ajaxStop(function(){
+    
+    	$('#rc_options input[type="radio"]:checked').each(function() {
+        var swatchValue = $(this).val().toString();
+        $(this).siblings('input[value="' + swatchValue.replace(/\"/g, '\\"') + '"]').prop("checked", true).trigger("change");
+        var JSONData = $(this).parents('.product_form').data('product');
+        var productID = $(this).parents('.product_form').data('product-id');
+        var productSection = '.product-' + productID + ' .js-product_section';
+        var swatchOptions = $(this).parents('.product_form').find('.swatch_options .swatch');
+		var type = $('input[name="purchase_type"]:checked').val();
+       
+         for (var i = 0; i < JSONData.variants.length; i++) {
+            var variant = JSONData.variants[i];
+           console.log('variant.title '); console.log(variant.title);
+           console.log('swatchValue '); console.log(swatchValue);
+            if (variant.available && variant.title == swatchValue ) {
+              console.log('variant.title '); console.log(variant.price);
+			    if (variant.price > 0) {
+                  console.log(type);
+                  if(type == 'onetime') {
+                    $('.rc_price__onetime').html(Shopify.formatMoney(variant.price, $('body').data('money-format')));
+                  }
+                  
+                  if(type == 'autodeliver') {
+                    $('.rc_price__autodeliver').html(Shopify.formatMoney(variant.price, $('body').data('money-format')));
+                  }
+                  
+                } else {
+                  if(type == 'onetime') {
+                    $('.rc_price__onetime').html(Shopify.translation.free_price_text);
+                  }
+                  
+                  if(type == 'autodeliver') {
+                    $('.rc_price__autodeliver').html(Shopify.translation.free_price_text);
+                  }
+                }
+            }
+         }
+      });
+      
+      });
+  */
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
 
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+	};
+  
+  $(document).ajaxStop(function(){
+    /*var variant = getUrlParameter('variant');
+    console.log('getUrlParameter: ');console.log(variant);
+    
+    var JSONData = $('.product_form').data('product');
+    var currentValue = '';
+    for ( var i = 0, l = JSONData.variants.length; i < l; i++ ) {
+      console.log(JSONData.variants[ i ].id);
+      if(variant == JSONData.variants[ i ].id){
+        currentValue = JSONData.variants[ i ].option1;
+        console.log(JSONData.variants[ i ].option1);
+      }
+    }
+    console.log('currentValue');console.log(currentValue);
+    if( currentValue == '12-pack'){
+    	$('.single-option-selector[data-option="option1"]').prop('selectedIndex', 1).trigger('change');
+    	$("input[name='option-01'][value='12-Pack']").prop("checked",true);
+    } else {
+        $('.single-option-selector[data-option="option1"]').prop('selectedIndex', 0).trigger('change');
+    	$("input[name='option-01'][value='6-Pack']").prop("checked",true);
+    }*/
+    var variant = getUrlParameter('variant');
+    console.log('getUrlParameter: ');console.log(variant);
+    
+    var JSONData = $('.product_form').data('product');
+    var currentValue = '';
+    for ( var i = 0, l = JSONData.variants.length; i < l; i++ ) {
+      console.log(JSONData.variants[ i ].id);
+      if(variant == JSONData.variants[ i ].id){
+        currentValue = JSONData.variants[ i ].option1;
+        console.log(JSONData.variants[ i ].option1);
+      }
+    }
+    console.log('currentValue');console.log(currentValue);
+    $('.product_form ').addClass('oos-pass');
+    if (typeof variant === "undefined") {
+		$('.single-option-selector[data-option="option1"]').prop('selectedIndex', 1).trigger('change');
+    	$("input[name='option-01'][value='12-Pack']").prop("checked",true);
+    } else {
+
+        if( $('.single-option-selector[data-option="option1"]').prop('selectedIndex') == 1){
+            $('.single-option-selector[data-option="option1"]').prop('selectedIndex', 1).trigger('change');
+            $("input[name='option-01'][value='12-Pack']").prop("checked",true);
+        } else {
+            $('.single-option-selector[data-option="option1"]').prop('selectedIndex', 0).trigger('change');
+            $("input[name='option-01'][value='6-Pack']").prop("checked",true);
+        }
+    }
+    
+  });
+  
+  $(document).on('click', '.swatch-element label', function(){
+    $('.product_form ').removeClass('oos-pass');        
+  })
+  
   $(document).on('change', 'input[name="purchase_type"]', function(){
 
     var type = $('input[name="purchase_type"]:checked').val();
@@ -201,14 +373,64 @@
     if (current_pack == '12-Pack') {
       $('.meal_txt .number').text('12 meals');
     }
+    if (current_pack == '18-Pack') {
+      $('.meal_txt .number').text('18 meals');
+    }
   });
   
-  $(document).on('click', '.rc_popup__click', function(){
+  $(document).on('click', '.rc_popup__click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
     $('.rc_popup__block').toggleClass('visible');
+  });
+  
+  $(document).on('click', function(){
+    $('.rc_popup__block').removeClass('visible');
   });
 
   function clickaddcart() {
     $("#button--add-to-cart").click();
   }
+  
+  $( document ).ready(function() {
+    setTimeout(function(){
+      var current_pack = $('input[name="option-01"]:checked').val();
+      $('.current-pack').text(current_pack);
+
+      if (current_pack == '6-Pack') {
+        $('.meal_txt .number').text('6 meals');
+      }
+      if (current_pack == '12-Pack') {
+        $('.meal_txt .number').text('12 meals');
+      }
+    }, 500);
+    
+    
+    var type = $('input[name="purchase_type"]:checked').val();
+    if(type == 'onetime') {
+      $('.add-to-cart__text--onetime').show();
+      $('.add-to-cart__text--subscribe').hide();
+      $('.swatch-money-onetime').show();
+      $('.swatch-money-subscribe').hide();
+      $('#rc_autodeliver_options').hide();
+      $('.rc_block__type__autodeliver .icon').removeClass('active');
+    }
+    if(type == 'autodeliver') {
+      $('.add-to-cart__text--onetime').hide();
+      $('.add-to-cart__text--subscribe').show();
+      $('.swatch-money-onetime').hide();
+      $('.swatch-money-subscribe').show();
+      $('#rc_autodeliver_options').hide();
+      $('.rc_block__type__autodeliver .icon').removeClass('active');
+    }
+    
+  });
 </script>
 {% endif %}
+
+<script type="text/javascript">
+	var _learnq = _learnq || [];
+	document.getElementById("button--add-to-cart").addEventListener('click',function (){
+ 		_learnq.push(['track', 'Added to Cart', item]);
+	});
+</script>

@@ -107,7 +107,7 @@
 
               <div class="dual_testimonials__text__wrapper">
                 <div class="yotpo bottomLine dual_testimonials__text__total_reviews_text"
-                  data-appkey="kyDy5bzz12muU4z7nybtXJcLBvwEc15oQfmnwnMT"
+                  data-appkey="GjzCpbSqvmwwEWx7j6NiVgJL2xkIbFcgHLR48YC0"
                   data-domain="{{shop.permanent_domain | escape }}"
                   data-product-id=""
                   data-product-models="">
@@ -215,9 +215,10 @@
                         </div>
                         <div class="right-part">
                           {% if  show_review_2  and review_product_2.id %}
-                          <div class="testimonial__description__review">
-                            <span class=" stamped-product-reviews-badge" data-product-sku="{{ review_product_2.handle }}" data-id="{{ review_product_2.id }}" style="display:block;">{{ review_product.metafields.stamped.badge }}</span>
-                          </div>
+                              <!--         YOTPO STAR RATINGS -->
+                                <div class="yotpo bottomLine star2" style="display:inline-block"
+                                  data-product-id="{{ review_product_2.id }}">
+                                </div>
                           {% endif %}
                           <div class="testimonial__description-title title">
                             {{ item.settings.name_2 }}

@@ -163,8 +163,10 @@
       {% if section.settings.display_payment_methods %}
       <div class="footer__payment-methods one-whole is-flex is-justify-end is-flex-wrap is-hidden-desktop-only">
         <div class="payment-methods">
+          {% comment %}
           <img src="{{ 'footer_payment_icons.png' | asset_img_url : 'master' }}" />
-
+		  {% endcomment %}
+          
           {% for type in shop.enabled_payment_types %}
             {{ type | payment_type_svg_tag: class:'payment-icon' }}
           {% endfor %}

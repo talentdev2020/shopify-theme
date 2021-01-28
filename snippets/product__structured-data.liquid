@@ -3,17 +3,36 @@
 {
   "@context": "http://schema.org/",
   "@type": "Product",
+  {% if product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count != "0" -%}
+    "aggregateRating": {
+    "@type": "AggregateRating",
+    "bestRating": "5",
+    "ratingValue": "{{ product.metafields.yotpo.reviews_average }}",
+    "reviewCount": "{{ product.metafields.yotpo.reviews_count }}"
+  },
+  {%- endif %}
+  {%- if product.variants.first.barcode.size == 12 -%}
+    "gtin12": {{ product.variants.first.barcode }},
+  {%- endif %}
+  {%- if product.variants.first.barcode.size == 13 -%}
+    "gtin13": {{ product.variants.first.barcode }},
+  {%- endif %}
+  {%- if product.variants.first.barcode.size == 14 -%}
+    "gtin14": {{ product.variants.first.barcode }},
+  {%- endif %}
   "name": "{{ product.title | escape }}",
   "url": "{{ shop.url }}{{ product.url }}",
+  {%- if product.variants.first.sku != blank -%}
+    "sku": "{{ product.variants.first.sku }}",
+  {%- else -%}
+    "sku": "{{ product.variants.first.id }}",
+  {%- endif %}
   {%- if product.featured_image -%}
     {%- assign image_size = product.featured_image.width | append: 'x' -%}
     "image": [
       "https:{{ product.featured_image.src | img_url: image_size }}"
     ],
-  {%- endif -%}
-  {%- if current_variant.sku != blank -%}
-    "sku": "{{ current_variant.sku }}",
-  {%- endif -%}
+  {%- endif %}
   "brand": {
     "@type": "Thing",
     "name": "{{ product.vendor | escape }}"
@@ -22,16 +41,42 @@
     {%- for variant in product.variants -%}
       {
         "@type" : "Offer",
+         {% if variant.barcode.size == 12 %}
+           "gtin12": {{ variant.barcode }},
+         {%- endif %}
+         {%- if variant.barcode.size == 13 -%}
+           "gtin13": {{ variant.barcode }},
+         {%- endif %}
+         {%- if variant.barcode.size == 14 -%}
+           "gtin14": {{ variant.barcode }},
+         {%- endif %}
         {%- if variant.sku != blank -%}
           "sku": "{{ variant.sku }}",
         {%- endif -%}
         "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
         "price" : "{{ variant.price | divided_by: 100.00 }}",
         "priceCurrency" : "{{ cart.currency.iso_code }}",
+        "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}",
         "url" : "{{ shop.url }}{{ variant.url }}"
       }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
   ],
-  "description": "{{ product.description | strip_html | escape }}"
+  "description": "{{ product.description | strip_html | escape }}",
+  "review": [
+    {
+      "@type": "Review",
+      "author": "Ellie",
+      "datePublished": "2019-04-01",
+      "description": "Best product ever.",
+      "name": "Extremely satisfied",
+      "reviewRating": {
+        "@type": "Rating",
+        "bestRating": "5",
+        "ratingValue": "5",
+        "worstRating": "1"
+      }
+    }
+   ]
+  
 }
 </script>

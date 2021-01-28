@@ -24,6 +24,11 @@
     {%- endif %}
   }
 
+  .article-image__container {
+	max-width: 400px;
+    margin: auto;
+  }
+
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
@@ -124,11 +129,13 @@
 
   <div class="container article-content has-padding-top has-padding-bottom">
     <div class="one-whole column content">
+      <div class="article-image__container">
       {% if article.image and section.settings.show_featured_image %}
         <p>
           {% include 'image-element', image: article.image, alt: article.image.alt, stretch_width: true %}
         </p>
       {% endif %}
+      </div>
 
       {{ article.content }}
     </div>
@@ -598,3 +605,14 @@
 }
 
 {% endschema %}
+
+<style>
+  
+  p a {
+    margin-left: 5px;
+    font-weight: 600 !important;
+    font-size: 17px;
+    color: #e38c00 !important;
+}
+  
+</style>

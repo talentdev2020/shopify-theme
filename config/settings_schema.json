@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Flex",
-    "theme_author": "Out of the Sandbox",
-    "theme_version": "1.1.3",
-    "theme_documentation_url": "https:\/\/help.eagoats.com\/",
-    "theme_support_url": "https:\/\/help.eagoats.com\/hc\/en-us\/requests\/new"
+    "theme_name": "nunbelievable",
+    "theme_version": "1.0.0",
+    "theme_author": "EA Goats",
+    "theme_documentation_url": "https:\/\/binaery.com",
+    "theme_support_url": "https:\/\/binaery.com"
   },
   {
     "name": "Layout",

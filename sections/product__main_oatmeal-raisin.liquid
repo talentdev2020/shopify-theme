@@ -122,8 +122,17 @@ product__main.liquid
             {% comment %} Review stars {% endcomment %}
             {% if section.settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
               <div class="product-review__wrapper text-align-left">                        
-                <div class="yotpo bottomLine star2" style="display:inline-block"
-                  data-product-id="{{ review_product_1.id }}"> </div> 
+                      <div class="yotpo bottomLine"
+                        data-appkey="GjzCpbSqvmwwEWx7j6NiVgJL2xkIbFcgHLR48YC0"
+                        data-domain="{{shop.permanent_domain | escape }}"
+                        data-product-id="{{ product.id }}"
+                        data-product-models="{{ product.id }}"
+                        data-name="{{ product.title | escape }}"
+                        data-url="{{ shop.url }}{{ product.url }}"
+                        data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                        data-description="{{ product.description | escape }}"
+                        data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                      </div>  
               </div>
               {% endif %}
               <p class="meal_txt"> Your Impact: <span class="number">6 Meals</span></p>
@@ -142,7 +151,7 @@ product__main.liquid
                 <path id="prefix__np_check_1822264_000000" d="M32.076 24.968a1.39 1.39 0 0 0-.953.416c-.057.057-.876.85-1.95 1.872l-3.848 3.658-3.848 3.658-1.066 1.014-5.148-4.446a1.392 1.392 0 1 0-1.82 2.106l6.1 5.269a1.386 1.386 0 0 0 1.889-.069c.057-.057.876-.85 1.95-1.872s2.461-2.331 3.848-3.649 2.77-2.643 3.849-3.666 1.782-1.687 2-1.907a1.387 1.387 0 0 0-1.005-2.383z" transform="translate(-12.96 -24.968)" style="fill:#f2a564"/>
               </svg>    
             </span>
-            Individually wrapped waffle cookies
+            Eat A Cookie, Feed the Hungry
           </div>
         
           {% comment %} Description - top {% endcomment %}
@@ -152,11 +161,11 @@ product__main.liquid
                 {% if product.description.size > 250 %}
                   <div class="product-description-short">
                   {{ product.description | strip_html  | truncate: 150, ". . . " }}
-                  <br><a class="readmore" href="#">Read More &#62;</a>
+                  <br><a class="readmore" href="#">Read More!</a>
                   </div>
                   <div class="product-description-full">
                   {{ product.description }}
-                  <a class="readless" href="#">&#60; Show Less</a>
+                  <a class="readless" href="#">Show Less.</a>
                   </div>
                 {% else %}
                   {{ product.description }}

@@ -42,6 +42,19 @@
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
 
+<style>
+  .cart_checkout_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .cart__checkout input[type="submit"] {
+    display: none !important;
+  }
+</style>
+
 <section class="section__wrapper">
   <div class="section {{ css_class }}">
     <div class="container hide-when-banner-enabled cart__heading-container">
@@ -282,7 +295,7 @@
                 <p>{{ 'cart.general.special_instructions' | t }}</p>
                 <label class="visuallyhidden" for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
                 <div class="control">
-                  <textarea class="textarea" id="note" name="note" rows="2" placeholder="{{ 'cart.general.note_detailed' | t: shop_name: shop.name }}">{{ cart.note }}</textarea>
+                  <textarea class="textarea cart_note" id="note" name="note" rows="2" placeholder="{{ 'cart.general.note_detailed' | t: shop_name: shop.name }}">{{ cart.note }}</textarea>
                 </div>
               </div>
               {% endif %}
@@ -348,7 +361,8 @@
                     </div>                    
       
                     <div class="cart__checkout">
-                      <input type="submit" class="button add_to_cart checkout" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
+                      <span class="checkout cart_checkout_button">CHECKOUT</span>                      
+                      <input type="submit" style="display: none !important;" class="button add_to_cart checkout" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
                       {% if cart.item_count > 0 %}
                       <div class="cart__featured-links">
                         <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
@@ -475,6 +489,25 @@
 </script>
 <script src="{{ 'z__jsCart.js' | asset_url }}"></script>
 <script src="{{ 'z__jsShippingCalculator.js' | asset_url }}"></script>
+
+<script>
+  rjQuery = jQuery.noConflict( true );
+  rjQuery('body').on('click','.cart_checkout_button', function(e){
+    e.preventDefault();    
+    const noteInput = rjQuery(this).closest('form').find('textarea.cart_note').val();
+    const submitBtn = rjQuery(this).closest('form').find('input[type="submit"]');
+    console.log(noteInput);
+    $.ajax({
+      type: "POST",
+      url: '/cart.js',
+      data: {"note": noteInput},
+      success: function(d) {
+        submitBtn.trigger('click');
+      },
+      dataType: 'json'
+    });
+  });
+</script>
 
 {% schema %}
 

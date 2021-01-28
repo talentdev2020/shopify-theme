@@ -128,22 +128,22 @@ Shopify.theme.jsProduct = {
 
       $(this).toggleClass('active');
     });
-    $(document).on('click', '.rc_block__type__autodeliver .icon', function (e) {
-      if ($(this).hasClass('active')) {
-        $('#rc_autodeliver_options').hide();
+    $(document).on('click', 'input[name="purchase_type"]', function (e) {
+      if ($(this).val() == 'onetime') {
+        $('.rc_label__frequency_wrap').hide();
       } else {
-        $('#rc_autodeliver_options').show();
+        $('.rc_label__frequency_wrap').show();
       }
-
-      $(this).toggleClass('active');
     });
-    $(document).on('change', '#rc_autodeliver_options input[name="radio-frequency"]', function (e) {
-      e.preventDefault();
-      var freq = $('#rc_autodeliver_options input[name="radio-frequency"]:checked').val();
+    $(document).on('change', 'select[name="properties[shipping_interval_frequency]"]', function (e) {
+      var freq = this.value;
       $('.current-freq').text(freq + " Weeks");
-      $('#rc_autodeliver_options').hide();
-      $('.rc_block__type__autodeliver .icon').removeClass('active');
     });
+    
+
+
+
+
   },
   enableStickyTabBar: function enableStickyTabBar($el) {
     var element = document.getElementById($el);
@@ -285,6 +285,7 @@ Shopify.theme.jsProduct = {
     });
   },
   enableProductSwatches: function enableProductSwatches() {
+
     $('body').on('change', '.swatch :radio', function () {
       var optionIndex = $(this).closest('.swatch').attr('data-option-index');
       var optionValue = $(this).val();
@@ -339,6 +340,7 @@ Shopify.theme.jsProduct = {
         var swatchOptions = $(this).parents('.product_form').find('.swatch_options .swatch');
 
         if (swatchOptions.length > 1) {
+          $('.current_price .money').text(this.formatRate(swatchOptions));
           Shopify.linkOptionSelectors(JSONData, productSection);
         }
       });
@@ -370,6 +372,11 @@ Shopify.theme.jsProduct = {
       if (Shopify.theme.jsProduct.template === 'image-scroll') {
         Shopify.theme.jsProduct.scrollSelectedImage(index);
       }
+    }
+  },
+  formatRate: function formatRate(cents) {
+    if (typeof Shopify.formatMoney === 'function') {
+      return Shopify.formatMoney(cents, this.moneyFormat);
     }
   },
   scrollSelectedImage: function scrollSelectedImage(variant) {

@@ -68,10 +68,7 @@ product_recommendations: <boolean>
                 {% endif %}
               {% endfor %}
             </div>
-            <div class="product-review__wrapper text-align-center">
-              <div class="yotpo bottomLine star2" style="display:inline-block"
-                                  data-product-id="{{ review_product_1.id }}"> </div> 
-            </div>
+            
             <div class="product-image__wrapper">
                 <div class="image__container product__imageContainer">
                   <a href="{{ product.url | within: collection }}">
@@ -126,6 +123,44 @@ product_recommendations: <boolean>
               <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
                 {% include 'product-thumbnail__product-info' %}
               </div>
+              <div class="product-review__wrapper ">
+                      <div class="yotpo bottomLine"
+                        data-appkey="GjzCpbSqvmwwEWx7j6NiVgJL2xkIbFcgHLR48YC0"
+                        data-domain="{{shop.permanent_domain | escape }}"
+                        data-product-id="{{ product.id }}"
+                        data-product-models="{{ product.id }}"
+                        data-name="{{ product.title | escape }}"
+                        data-url="{{ shop.url }}{{ product.url }}"
+                        data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                        data-description="{{ product.description | escape }}"
+                        data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                      </div>  
+            </div>
+                {% if collection_handles contains 'coming-soon' %}
+        {% if settings.stickers_enabled == false %}
+          {{ 'collections.general.coming_soon' | t }}
+        {% endif %}
+      {% else %} 
+        <span class="product-thumbnail__price price {% comment %}{% if product.compare_at_price_max > product.price %}sale{% endif %}{% endcomment %}">
+          {% if product.available %}
+            {% if product.price_varies and product.price_min > 0 %}
+              <small><em>{{ 'products.general.from' | t }}</em></small>
+            {% endif %}
+            {% if product.price_min > 0 %}
+              <span class="money">{{ product.price_min | money }}</span>
+            {% else %}
+              {{ settings.free_price_text }}
+            {% endif %}
+            {% if product.compare_at_price_max > product.price %}
+              <span class="product-thumbnail__was-price was-price">
+                <span class="money">{{ product.compare_at_price_max | money }}</span>
+              </span>
+            {% endif %}
+          {% else %}
+            <span class="product-thumbnail__sold-out sold-out">{{ 'products.product.sold_out' | t }}</span>
+          {% endif %}
+        </span>
+      {% endif %} 
       </div>
 
 
