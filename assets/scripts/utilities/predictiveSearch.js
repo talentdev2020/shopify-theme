@@ -26,9 +26,9 @@ Shopify.theme.predictiveSearch = {
         e.preventDefault();
 
         if (cleanFormValue == null) {
-          window.location.href = '/search';
+          window.parent.location.href = '/search'; 
         } else {
-          window.location.href = `${searchURL}*`;
+          window.parent.location.href = `${searchURL}*`;
         }
       });
 

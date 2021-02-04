@@ -152,7 +152,7 @@ Shopify.theme.dropdownMenu = function () {
   domElements.$submenuInput.on('click', function () {
     if ($(this).hasClass('is-opened')) {
       var parentLink = $(this).closest('navbar-link').attr('href');
-      window.location.href = parentLink;
+      window.parent.location.href = parentLink;
     } else {
       $(this).addClass('is-opened');
     }
@@ -1056,9 +1056,6 @@ Shopify.theme.responsiveVideo = {
 };
 
 var selectCallback = function selectCallback(variant, selector) {
-  
-  
-  
   var $product = $('.product-' + selector.product.id);
   var $notify_form = $('.notify-form-' + selector.product.id);
   var $productForm = $('.product_form, .shopify-product-form', $product);
@@ -1074,34 +1071,7 @@ var selectCallback = function selectCallback(variant, selector) {
   }
 
   console.log(variant);
-  
-  if (variant.price > 0) {
-    $('.current_price', $product).html('<span class="money">' + Shopify.formatMoney(variant.price, $('body').data('money-format')) + '</span>');
-  } else {
-    $('.current_price', $product).html(Shopify.translation.free_price_text);
-  }
 
-  console.log("current price = " + variant.price);
-  console.log("current available = " + variant.available);
-  
-  if (variant.available) {
-    $('span.variant_available').show();
-    $('span.add-to-cart__text.sold_out').hide();
-  } else {
-    if($('.product_form ').hasClass('oos-pass')) {
-      console.log('hehe' + variant.title);
-      if(variant.title == '6-Pack') {
-        $(".12-pack-swatch label").trigger('click');
-      } else {
-        console.log('here');
-        $(".6-pack-swatch label").trigger('click');
-      }
-      $('.product_form ').removeClass('oos-pass');
-    }
-    $('span.variant_available').hide();
-    $('span.add-to-cart__text.sold_out').show();
-  }
-  
   if (variant) {
     var meal_one = document.getElementById('meals_one');
     var meal_subscribe = document.getElementById('meals_subscribe');
@@ -1122,7 +1092,6 @@ var selectCallback = function selectCallback(variant, selector) {
         switch (variant.options[i]) {
           case "6-Pack":
             {
-              $('.meal_txt .number').text('6 meals');
               meal_one.innerHTML = '1 Meal';
               meal_subscribe.innerHTML = '1 Meal';
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
@@ -1133,7 +1102,6 @@ var selectCallback = function selectCallback(variant, selector) {
 
           case "12-Pack":
             {
-              $('.meal_txt .number').text('12 meals');
               meal_one.innerHTML = '2 Meals';
               meal_subscribe.innerHTML = '2 Meals';
               $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
@@ -1144,22 +1112,20 @@ var selectCallback = function selectCallback(variant, selector) {
 
             case "18-Pack":
               {
-                $('.meal_txt .number').text('18 meals');
-                meal_one.innerHTML = '2 Meals';
-                meal_subscribe.innerHTML = '2 Meals';
+                meal_one.innerHTML = '3 Meals';
+                meal_subscribe.innerHTML = '3 Meals';
                 $("input[name='option-" + i + "'][value=" + variant.options[i] + "]").prop("checked", true);
                 $("input[name='option-" + i + "1'][value=" + variant.options[i] + "]").prop("checked", true);
                 $("input[name='option-" + i + "2'][value=" + variant.options[i] + "]").prop("checked", true);
               }
               break;
 
+
           default:
         }
       }
     }
   }
-  
-
 
   if ($notifyFormInputs.hasClass('customer--true')) {
     var notifyCustomerEmail = Shopify.translation.customer_email;
@@ -1273,7 +1239,6 @@ var selectCallback = function selectCallback(variant, selector) {
       convertCurrencies();
     }
   } else {
-    
     var message = variant ? Shopify.translation.soldOut : Shopify.translation.unavailable;
     $('.was-price', $product).text('');
     $('.savings', $product).text('');
@@ -1293,10 +1258,6 @@ var selectCallback = function selectCallback(variant, selector) {
       $notifyFormInputs.append(notifyFormHTML);
     }
   }
-  
- 
-
-
 };
 
 Shopify.theme.predictiveSearch = {
@@ -1322,9 +1283,9 @@ Shopify.theme.predictiveSearch = {
         e.preventDefault();
 
         if (cleanFormValue == null) {
-          window.location.href = '/search';
+          window.parent.location.href = '/search';
         } else {
-          window.location.href = "".concat(searchURL, "*");
+          window.parent.location.href = "".concat(searchURL, "*");
         }
       });
 

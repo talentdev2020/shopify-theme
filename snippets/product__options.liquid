@@ -22,7 +22,7 @@
   {% endif %}
 {% endfor %}
 
-<div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}">
+<div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}" data-issingleoption="{{ single_option }}">
   <div class="option-title label" aria-label="{{ value | escape }}" tabindex="0">
     {% if swatch == "Size" %}
       Pack Size:
@@ -32,6 +32,10 @@
     <span class="current-pack">{{ product.variants[0].options[option_index] }}</span>
   </div>
 
+  {% assign single_option = false %}
+  {% if product.variants.size == 1 %}
+    {% assign single_option = true %}
+  {% endif %}
   {% assign values = '' %}
   {% for variant in product.variants %}
     {% assign value = variant.options[option_index] %}
@@ -53,8 +57,11 @@
               aria-label="{{ value | escape }}" 
               tabindex="0" 
               name="option-{{ option_index }}{{ id }}"
-              value="{{ value | escape }}"/>
-      <div class="swatch-wrapper {% if value == '12-Pack' %}have-highlight{% endif %}">
+              value="{{ value | escape }}"
+              {% if single_option %}
+                checked
+              {% endif %}/>
+      <div class="swatch-wrapper {% if value == '12-Pack' %}have-highlight{% endif %}" {% if single_option %} style="display:none;"{% endif %}/>
         {%- comment -%}
         {% if value == '12-Pack' %}
         <div class="highlight">
@@ -95,15 +102,26 @@
         {% else %}
           <label for="swatch-{{ option_index }}-{{ value | handle }}{{ id }}-{{ product.id }}">
             {% if section.settings != blank %}
-              {% if section.settings.six_pack_image and section.settings.twelve_pack_image  %}
+            {% if single_option == false %}
+              {% if section.settings.six_pack_image or section.settings.twelve_pack_image or section.settings.eighteen_pack_image %}
                 <div class="pack-image">
                   {% if value == '6-Pack' %}
-                    <img src="{{ section.settings.six_pack_image | img_url: '250x' }}" alt="">
+                    {% if section.settings.six_pack_image %}
+                      <img src="{{ section.settings.six_pack_image | img_url: '250x' }}" alt="">
+                    {% endif %}
                   {% endif %}
                   {% if value == '12-Pack' %}
-                    <img src="{{ section.settings.twelve_pack_image | img_url: '250x' }}" alt="">
+                    {% if section.settings.twelve_pack_image %}
+                      <img src="{{ section.settings.twelve_pack_image | img_url: '250x' }}" alt="">
+                    {% endif %}
+                  {% endif %}
+                  {% if value == '18-Pack' %}
+                    {% if section.settings.eighteen_pack_image %}
+                      <img src="{{ section.settings.eighteen_pack_image | img_url: '250x' }}" alt="">
+                    {% endif %}
                   {% endif %}
                 </div>
+              {% endif %}
               {% endif %}
             {% endif %}
             {{ value }} {% if value == '12-Pack' %}<span>(Best Value)</span>{% else %}<span>&nbsp;</span>{% endif %}
@@ -112,6 +130,7 @@
           </label>
         {% endif %}
       </div>
+      {% if single_option == false %}
       <span class="swatch-{{ option_index }}-{{ value | handle }}{{ id }}-{{ product.id }}-price {% if product.available == false %}hidden{% endif %}">
         {% if variant.price > 0 %}
         {% assign bags = value | handle | split: '-' %}
@@ -125,6 +144,7 @@
           {{ settings.free_price_text }}
         {% endif %}
       </span>
+      {% endif %}
       </div>
     {% endunless %}
   {% endfor %}

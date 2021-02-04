@@ -7,7 +7,7 @@ Shopify.theme.dropdownMenu = function () {
   domElements.$submenuInput.on('click', function () {
     if ($(this).hasClass('is-opened')) {
       let parentLink = $(this).closest('navbar-link').attr('href');
-      window.location.href = parentLink;
+      window.parent.location.href = parentLink;
     } else {
       $(this).addClass('is-opened');
     }
