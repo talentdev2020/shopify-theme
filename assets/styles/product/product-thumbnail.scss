@@ -20,6 +20,7 @@ $mobile-padding : 15px;
     min-height: $gutter*1.25;
     text-align: center;
     line-height: 28px;
+    padding-top: 7px;
     
     .stamped-badge{
       display: block!important;
@@ -652,7 +653,7 @@ $mobile-padding : 15px;
     height: 35px;
     position: relative;
     width: calc(50% - 6px);
-    &.rc_block__type__autodeliver {
+    &:last-child {
       margin-right: 0;
       margin-left: 6px;
       z-index: 5;

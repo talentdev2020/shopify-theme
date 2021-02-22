@@ -144,6 +144,11 @@ Shopify.theme.jsProduct = {
       $('#rc_autodeliver_options').hide();
       $('.rc_block__type__autodeliver .icon').removeClass('active');
     });
+    $(document).on('change', 'select[name="properties[shipping_interval_frequency]"]', function (e) {
+      e.preventDefault();
+      var freq = $(this).val();
+      $('.current-freq').text(freq + " Weeks");
+    });
   },
   enableStickyTabBar: function enableStickyTabBar($el) {
     var element = document.getElementById($el);

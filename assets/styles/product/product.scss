@@ -379,6 +379,7 @@
   .flickity-page-dots {
     @include respond-to('medium-down') {
       display: block;
+      bottom: 5px;
     }
   }
 }
@@ -706,6 +707,7 @@
   flex-flow: wrap;
   justify-content: flex-start;
   align-items: center;
+  margin-left: auto; 
 
   span  {
     margin-left: 10px;
@@ -716,10 +718,14 @@
     font-weight: bold;
     border-radius: 10px;
     min-width: 60px;
+    @include respond-to('medium-down') {
+      margin-right: 10px;
+    }
   }
 
   @include respond-to('medium-down') {
     justify-content: center;
+    padding-left: 0;
   }
 
   #meals_one, #meals_subscribe {
@@ -820,6 +826,7 @@
           @include respond-to('medium-down') {
             padding-left: 2px;
             font-size: 12px;
+            margin-left: 0px;
           }
         }
       }
@@ -950,6 +957,20 @@
   .product_form {
     min-height: 340px;
   }
+  .product_form[data-single_option] {
+    min-height: auto;
+  }
+
+  .download-link {
+    padding: 15px 25px;
+    a {
+      color: #4899d4;
+
+      svg {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
 .product_gallery__nav-wrap {
@@ -957,7 +978,7 @@
     justify-content: flex-end;
     padding-right: 20px;
     .product_gallery__nav {
-      margin-top: -50px;
+      margin-top: -60px;
       z-index: 5;
 
       svg {
@@ -993,6 +1014,7 @@
 
   .product_gallery__nav-wrap {
     justify-content: center;
+    padding-right: 0;
   }
   .product-section__background .section {
     width: 100% !important;
@@ -1006,7 +1028,7 @@
   }
   .product__information .product__header .product-review__wrapper .standalone-bottomline .text-m {
     display: inline-block;
-    font-size: 1.1rem !important;
+    font-size: 13px !important;
   }
   .shopify-section.product-page.section__wrapper {
     padding-top: 0 !important;

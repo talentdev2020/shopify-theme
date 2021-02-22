@@ -149,7 +149,8 @@
               {% for link in main_menu.links %}
                 {% if link.links == blank %}
                   <div class="navbar-item header__item {% if link.active or link.child_active %}is-active{% endif %}" data-navlink-handle="{{ link.title | handleize }}">
-                    <a href="{{ link.url }}" class="navbar-link header__link {% if link.active %}is-active{% endif %} is-arrowless">
+                    <a href="{{ link.url }}" class="navbar-link header__link {% if link.active %}is-active{% endif %} is-arrowless"
+                    {% if link.url contains '.pdf' %} target="_blank"{% endif %}>
                       {{ link.title }}
                     </a>
                   </div>

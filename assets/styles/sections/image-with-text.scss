@@ -365,6 +365,10 @@
       background-color: #f6f2ed;
       overflow: hidden;
 
+      @include respond-to('medium-down') {
+        margin-bottom: 40px;
+      }
+
       .image-with-text__text {
         display: flex;
         flex-direction: column;

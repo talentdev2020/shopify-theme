@@ -19,7 +19,8 @@ link_setting: <string>
   <ul class="footer__menu__submenu animated slideInDown">
     {% for link in menu.links %}
       <li>
-        <a href="{{ link.url }}" class="footer__menu-link {% if link.active %}is-active{% endif %}">
+        <a href="{{ link.url }}" class="footer__menu-link {% if link.active %}is-active{% endif %}"  
+        {% if link.url contains '.pdf' %} target="_blank"{% endif %}>
           {{ link.title }}
         </a>
       </li>

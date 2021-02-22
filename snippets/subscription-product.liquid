@@ -180,7 +180,7 @@
 		/* Add Custom CSS Below */
 		div#rc_container {
 			margin-bottom: 0;
-			margin-top: -6px;
+			margin-top: 10px;
 		}
 		div.rc_block__type {
 			background-color: #fff;
@@ -244,16 +244,16 @@
 		}  
 		
 		.rc_label__discount {
-			border-radius: 5px;
+			border-radius: 3px;
 			background-color: #f1f9ff;
 			color: #000;
-			font-size: 14px;
-			padding: 3px 7px;
+			font-size: 12px;
+			padding: 3px 3px;
 			font-weight: bold;
-			margin-left: 7px;
+			margin-left: 4px;
 		}
 		.rc_label__autodeliver_text, .rc_label__onetime_text {
-			padding-top: 4px;
+			padding-top: 0;
 		}
 
 		#rc_autodeliver_options input:checked +  .swatch-element label {
@@ -338,12 +338,12 @@
 			}*/
 			.product-form-container .rc_block__type.rc_block__type__autodeliver {
 				margin-right: 0;
-				margin-left: 0;
-              	padding: 6px 0 0 25px !important;
+				margin-left: 6px;
+              	/*padding: 6px 0 0 25px !important;*/
 			}
 			.rc_label__discount {
-				font-size: 10px;
-				padding: 2px 5px;
+				font-size: 9px;
+				padding: 2px 3px;
 				margin-left: 0;
 			}
 			#rc_container .swatch .swatch-element {
@@ -355,6 +355,9 @@
 			}
 			.product_section .product_form {
 				min-height: 330px;
+			}
+			.product_section .product_form[data-single_option] {
+				min-height: auto;
 			}
 			div.rc_popup__block {
 				width: 100%;
@@ -375,7 +378,7 @@
 				height: 35px;
 				position: relative;
 				width: calc(50% - 6px);
-              	padding: 8px 0 0 25px !important;
+              	/*padding: 8px 0 0 25px !important;*/
 			}
 			.product-form-container .rc_block__type.rc_block__type__onetime {
 				padding: 12px 4px;
@@ -387,7 +390,7 @@
 				justify-content: space-evenly;
 			}
 			.product-form-container .rc_block__type.rc_block__type__autodeliver {
-				padding: 12px 14px 12px 4px;
+				padding: 12px 4px 12px 3px;
 				height: 42px;
 			}
 		}
@@ -410,6 +413,18 @@
 		{% endif %}
 		{%- endcomment -%}
 		<div id="rc_radio_options" role="radiogroup" aria-labelledby="Purchase options">
+			{% unless subscription_only %}
+			<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
+				<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
+					<div class="rc_label__onetime_text">
+						<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
+						{{ label_onetime }}
+					</div>
+				</label>
+
+			</div>
+			{% endunless %}
+
 			<div class="rc_block rc_block__type rc_block__type__autodeliver {% if select_subscription_first %}rc_block__type--active{% endif %}" {% if subscription_only and shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
 				{% if subscription_only %}
 					<input type="radio" name="purchase_type" id="rc_purchase_type_autodeliver" value="autodeliver" {% if select_subscription_first %}checked{% endif %} class="rc_radio rc_radio__autodeliver" {% if subscription_only %}style="display: none;"{% endif %}>
@@ -473,17 +488,6 @@
 				</div>
 			</div>
 
-			{% unless subscription_only %}
-			<div class="rc_block rc_block__type rc_block__type__onetime {% unless select_subscription_first %}rc_block__type--active{% endunless %}">
-				<label for="rc_purchase_type_onetime" class="rc_label rc_label__onetime">
-					<div class="rc_label__onetime_text">
-						<input type="radio" id="rc_purchase_type_onetime" name="purchase_type" value="onetime" {% unless select_subscription_first %}checked{% endunless %} class="rc_radio rc_radio__onetime">
-						{{ label_onetime }}
-					</div>
-				</label>
-
-			</div>
-			{% endunless %}
 
 		</div>
 		
@@ -508,6 +512,7 @@
 			</select>
 		</div>
 
+		{% unless template contains "monthly" %}
 		<div id="rc_options" class="rc_block rc_block__type__options" data-optionsize="{{ product.options.size }}">		
 							
 			<div class="swatch_options collection_swatches">
@@ -516,6 +521,7 @@
 				{% endfor %}
 			</div>			
 		</div>
+		{% endunless %}
 
 
 	</div>

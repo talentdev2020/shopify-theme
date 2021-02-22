@@ -31,7 +31,7 @@
   </span>
 
   <div class="quickshop-forms__container js-quickshop-forms__container js-quickshop-forms--{{ product.id }}">
-      {% unless collection_handles contains 'coming-soon' %}
+      {% unless collection_handles contains 'coming-soon' or product.available == false %}
         {% include 'product__notify-me-form' %}
         {% include 'product__form', type: 'quickshop' %}
       {% endunless %}

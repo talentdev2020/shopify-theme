@@ -112,8 +112,32 @@
                     line-height: 1;
                     outline: 0;
                     padding: 0.65em 0.75em;
+                    margin-bottom: 15px;
                 }
             }
         }
     }
 }
+
+
+.monthly-box-product-container {
+    .swatch .swatch-wrapper {
+      display: none;
+      flex-direction: column;
+      margin: 0px 0 12px 0;
+      width: 100%;
+    }
+  
+    .product-gallery__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .product_section .product_form {
+      min-height: 180px;
+    }
+  }

@@ -50,6 +50,7 @@ $swatch-label-size: 34px;
     color: #191919;
     @include respond-to('medium-down') {
       line-height: 20px;
+      font-size: 11px;
     }
   }
   .rc_block__type__options .swatch label {

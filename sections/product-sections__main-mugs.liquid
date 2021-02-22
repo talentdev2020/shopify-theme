@@ -273,7 +273,7 @@
                       <div class="product-form-container medium-down--visible" style="display:none;">
 
                         {% comment %} Product form {% endcomment %}
-                        {% unless collection_handles contains 'coming-soon' %}
+                        {% unless collection_handles contains 'coming-soon' or product.available == false %}
                             {% include 'product__form', product: product, type: 'product' %}
                         {% endunless %}
                       </div>

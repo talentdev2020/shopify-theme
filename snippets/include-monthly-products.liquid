@@ -16,7 +16,7 @@
 {%- assign product = all_products[featured_product] -%}
 {% assign product_tags = product.tags | join: ' ' %}
 
-{% unless collection_handles contains 'coming-soon' %}
+{% unless collection_handles contains 'coming-soon' or product.available == false %}
   {% assign variant = product.selected_or_first_available_variant %}
 {% endunless %}
 
@@ -134,7 +134,7 @@
                   {{ product.title }}
                 </h2>
 
-                {% unless collection_handles contains 'coming-soon' %}
+                {% unless collection_handles contains 'coming-soon' or product.available == false %}
                   <div class="has-padding-top">
                     {% include 'product__notify-me-form' %}
                     {% include 'product__form' with 'product', type: 'product', page: 'monthly' %}

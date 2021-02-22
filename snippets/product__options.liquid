@@ -138,8 +138,13 @@
         {% assign ozs = testValue | times: 3 %}
           {% unless testValue contains '"' %}
             <span class="swatch-money swatch-money-onetime" style="display:none;">{{ ozs }} ounces ({{ variant.price | divided_by: ozs | round | money }}/oz)</span>
-            <span class="swatch-money swatch-money-subscribe">{{ ozs }} ounces ({{ variant.metafields.subscriptions.discount_variant_price | replace: ".", ""  | divided_by: ozs| round | money }}/oz)</span>
-          {% endunless %}
+            {% if variant.metafields.subscriptions.discount_variant_price != blank %}
+              {% assign dvp = variant.metafields.subscriptions.discount_variant_price | plus: 0 %}
+              {%if ozs > 0 %}
+              <span class="swatch-money swatch-money-subscribe">{{ ozs }} ounces ({{ variant.metafields.subscriptions.discount_variant_price | replace: ".", ""  | divided_by: ozs| round | money }}/oz)</span>
+              {% endif %}
+            {% endif %}
+            {% endunless %}
         {% else %}
           {{ settings.free_price_text }}
         {% endif %}
