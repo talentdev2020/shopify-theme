@@ -244,16 +244,45 @@
   }
 }
 
-[data-collection-title] {
-  color: #000;
-  font-size: 34px;
-  font-weight: 900;
-  margin-top: 25px;
-  margin-bottom: 30px;
-  text-align: center;
-  width: 100%;
+
+body.collection {
+  .collection_pretitle {
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 45px;
+    text-align: center;
+    @media (max-width: 989px) {
+      margin-bottom: 30px;
+    }
+  }
 }
 
+
+.collection_header {
+  margin-top: 30px;
+  margin-bottom: 45px;
+  .collection_title {
+    color: #000;
+    font-family: "CooperStd", sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    margin-top: 25px;
+    text-align: center;
+    width: 100%;
+    @media (max-width: 989px) {
+      font-size: 24px;
+    }
+  }
+  .collection_subtitle {
+    color: #4b4a4a;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+  
 #template-collection {
 
   @media (max-width: 990px) {
@@ -270,6 +299,8 @@
     padding-bottom: 150px;
     position: relative;
     @media (max-width: 990px) {
+      margin-bottom: 50px;
+      padding-top: 45px;
       padding-bottom: 75px;
     }
     [data-bg-svg] {

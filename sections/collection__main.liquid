@@ -106,6 +106,9 @@
 </div>
 
 {% assign inCollections = false %}
+
+<div class="collection_pretitle">Sort By</div>
+
 <div class="collectionTabHeaderWrapper container">
   {% assign c_title = '' %}
   <div class="wrapper d-flex">
@@ -131,7 +134,14 @@
   </div>
 </div>
 
-<div data-collection-title>{{ c_title | default: collection.title }}</div>
+<div class="collection_header">
+  {% if section.settings.title != blank %}
+    <div class="collection_title" data-collection-title>{{ section.settings.title }}</div>
+  {% endif %}
+  {% if section.settings.subtitle != blank %}
+    <div class="collection_subtitle">{{ section.settings.subtitle }}</div>
+  {% endif %}
+</div>
 
 
 
@@ -262,6 +272,20 @@ data-section-data
       "id": "collection_sort",
       "label": "Show sort by filter",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Sub title"
     },
     {
       "type": "header",
