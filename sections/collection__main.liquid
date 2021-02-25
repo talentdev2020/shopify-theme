@@ -98,8 +98,46 @@
 
   {% include 'css-loop', css: custom_css, id: id %}
 {% endstyle %}
- 
-{% paginate collection.products by object.settings.pagination_limit %}
+
+<div data-bg-svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1366" height="1402.065" viewBox="0 0 1366 1402.065">
+    <path fill="#f6f2ed" d="M1366-852.065H0V509.8s174.364 29.773 351.783 39.7 248.153-132.091 439.787-48.44 154.065-43.011 318.146-52.936S1366 474.751 1366 474.751z" transform="translate(0 852.065)"/>
+  </svg>
+</div>
+
+{% assign inCollections = false %}
+<div class="collectionTabHeaderWrapper container">
+  {% assign c_title = '' %}
+  <div class="wrapper d-flex">
+    {% for block in section.blocks %}
+      {% assign _collection = collections[block.settings.collection] %}
+
+      {% assign title = block.settings.title | default: _collection.title %}
+
+      {% if collection.handle == _collection.handle %}
+        {% assign inCollections = true %}
+        {% assign c_title = title %}
+      {% endif %}
+      {% if _collection != blank %}
+        <div class="collectionTabHeader {% if collection.handle == _collection.handle %}active{% endif %}" data-tab-header data-target="{{ _collection.handle }}">
+          {% if block.settings.is_new %}
+            <span class="collection_tab_header_badge">NEW</span>
+          {% endif %}
+          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="9.349" height="15.583"><path d="M.467 2.651L5.61 7.793.468 12.935a1.543 1.543 0 002.182 2.182l6.232-6.233a1.506 1.506 0 000-2.182L2.649.469A1.543 1.543 0 00.467 2.651z" data-name="Path 69" fill="#fff"/></svg></span>
+          <span class="collection_tab_header_title">{{ title }}</span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div data-collection-title>{{ c_title | default: collection.title }}</div>
+
+</div>
+
+
+
+
+
 
 <div class="collection__main section {{ css_class }}">
   {% if object.settings.show_promo_banner %}
@@ -127,45 +165,80 @@
     </div>
   {% endif %}
 
-  {% if collection.products.size == 0 %}
-    <div class="container container--no-products-in-collection text-align-center has-padding-bottom has-padding-top">
-      <div class="one-whole column">
-        <p>{{ 'collections.general.no_matches' | t }}</p>
-      </div>
-    </div>
-  {% else %}
-    <div class="collection-matrix__wrapper">
-      <div class="container collection-matrix" {% if object.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
-        {% assign products_per_row = object.settings.products_per_row %}
-        {% include 'product-loop', limit: object.settings.pagination_limit, align_height: object.settings.align_height, height: object.settings.collection_height %}
-      </div>
-    </div>
-  {% endif %}
 
-  <div class="container container--pagination">
-    <div class="one-whole column text-align-center">
-      {% assign load_more_text = 'collections.general.pagination_button' | t %}
-      {% include 'pagination', pagination_type: object.settings.pagination_type, load_more_text: load_more_text %}
-    </div>
+  
+  
+
+  <div class="collectionTabContenetWrapper container">
+    {% if section.blocks.size > 0 and inCollections %}
+      {% for block in section.blocks %}
+        {% assign _collection = collections[block.settings.collection] %}
+
+        {% if _collection.handle == 'accessories' %}
+          <div class="collectionTabContent {% if collection.handle == _collection.handle %}active{% endif %}" data-handle="{{ _collection.handle }}">
+            {% if collection.products.size == 0 %}
+              <div class="container container--no-products-in-collection text-align-center has-padding-bottom has-padding-top">
+                <div class="one-whole column">
+                  <p>{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+              </div>
+            {% else %}
+              <div class="collection-matrix__wrapper">
+                <div class="container collection-matrix" {% if object.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
+                  {% paginate _collection.products by object.settings.pagination_limit %}
+                    {% assign products_per_row = object.settings.products_per_row %}
+                    {% include 'product-loop-second', limit: object.settings.pagination_limit, align_height: object.settings.align_height, height: object.settings.collection_height, collection: _collection %}
+                    <div class="container container--pagination">
+                      <div class="one-whole column text-align-center">
+                        {% assign load_more_text = 'collections.general.pagination_button' | t %}
+                        {% include 'pagination', pagination_type: object.settings.pagination_type, load_more_text: load_more_text %}
+                      </div>
+                    </div>
+                  {% endpaginate %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="collectionTabContent {% if collection.handle == _collection.handle %}active{% endif %}" data-handle="{{ _collection.handle }}">
+            {% if collection.products.size == 0 %}
+              <div class="container container--no-products-in-collection text-align-center has-padding-bottom has-padding-top">
+                <div class="one-whole column">
+                  <p>{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+              </div>
+            {% else %}
+              <div class="collection-matrix__wrapper">
+                <div class="container collection-matrix" {% if object.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
+                  {% assign products_per_row = object.settings.products_per_row %}
+                  {% include 'product-loop-second', limit: object.settings.pagination_limit, align_height: object.settings.align_height, height: object.settings.collection_height, collection: _collection, products: _collection.products %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
+
+  
 </div>
+
 
 {% comment %} JavaScript {% endcomment %}
 <script
-  type="application/json"
-  data-section-id="{{ object.id }}"
-  data-section-data
+type="application/json"
+data-section-id="{{ object.id }}"
+data-section-data
 >
-  {
-    "enable_filter": {{ object.settings.collection_tags | json }},
-    "enable_sorting": {{ object.settings.collection_sort | json }},
-    "enable_breadcrumb": {{ object.settings.collection_breadcrumb | json}},
-    "pagination_type": {{ object.settings.pagination_type | json }},
-    "number_of_pages": {{ paginate.pages | json }}
-  }
+{
+  "enable_filter": {{ object.settings.collection_tags | json }},
+  "enable_sorting": {{ object.settings.collection_sort | json }},
+  "enable_breadcrumb": {{ object.settings.collection_breadcrumb | json}},
+  "pagination_type": {{ object.settings.pagination_type | json }},
+  "number_of_pages": {{ paginate.pages | json }}
+}
 </script>
-
-{% endpaginate %}
 
 <script src="{{ 'z__jsCollection.js' | asset_url }}"></script>
 
@@ -413,6 +486,30 @@
       "type": "textarea",
       "id": "custom_css",
       "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_new",
+          "label": "Is new ?",
+          "default": false
+        }
+      ]
     }
   ]
 }
