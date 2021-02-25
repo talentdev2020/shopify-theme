@@ -42,6 +42,53 @@ Shopify.theme.jsCollection = {
       Shopify.theme.jsCollection.multiTagFilter.clearSelectedFilter($el);
       Shopify.theme.scrollToTop($('.collection__content'));
     });
+
+
+    var $tabHeaderItem = $('.collectionTabHeader');
+    var $tabHeaderHandle = $(".collection_tab_header_title");
+
+    var $tabContent = $(".collectionTabContent");
+
+    $tabHeaderHandle.on('click', function(){
+      var $item = $(this).closest('.collectionTabHeader');
+      if($item.hasClass('active')) {
+
+      } else {
+        $("[data-collection-title]").text($(this).closest('.collectionTabHeader').attr('data-title'));
+        $("[data-collection-subtitle]").html($(this).closest('.collectionTabHeader').attr('data-subtitle'));
+        $tabHeaderItem.removeClass('active');
+        $item.addClass('active');
+        var handle = $item.attr('data-target');
+        $tabContent.removeClass('active');
+        var $target = $(".collectionTabContent[data-handle='"+ handle +"']");
+        $target.addClass('active');
+        if(handle == 'accessories') {
+          $target.find('.paginate a').each(function(){
+            if(! $(this).hasClass('is-current')) {
+              var _link = $(this).attr('href');
+              var segment = _link.split('/').pop();
+              var _text = segment.split('?');
+              _link = _link.replace(_text[0], 'accessories');
+              $(this).attr('href', _link);
+            }
+          })
+        }
+      }
+    })
+
+    if($(window).width() <= 990) {
+      // var $target = $(".collectionTabHeaderWrapper .wrapper .collectionTabHeader.active");
+      // var left = $target.offset().left;
+      // $(".collectionTabHeaderWrapper").scrollLeft(left - $(window).width() / 2 + $target.width() / 2);
+
+      $("[data-hor-slider]").flickity({
+        pageDots: false,
+        contain: true,
+        initialIndex: '.active'
+      });
+      $("[data-hor-slider]").css('opacity', 1);
+    }
+
   },
   filterURL: function filterURL() {
     var selectedOptions = [],
