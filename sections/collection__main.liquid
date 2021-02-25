@@ -111,18 +111,21 @@
 
 <div class="collectionTabHeaderWrapper container">
   {% assign c_title = '' %}
-  <div class="wrapper d-flex">
+  {% assign c_subtitle = '' %}
+  <div class="wrapper" data-hor-slider>
+
     {% for block in section.blocks %}
       {% assign _collection = collections[block.settings.collection] %}
 
-      {% assign title = block.settings.title | default: _collection.title %}
-
+      {% assign title = block.settings.btn_label | default: _collection.title %}
+      {% assign subtitle = block.settings.subtitle %}
       {% if collection.handle == _collection.handle %}
         {% assign inCollections = true %}
-        {% assign c_title = title %}
+        {% assign c_title = block.settings.title | default: _collection.title %}
+        {% assign c_subtitle = subtitle %}
       {% endif %}
       {% if _collection != blank %}
-        <div class="collectionTabHeader {% if collection.handle == _collection.handle %}active{% endif %}" data-tab-header data-target="{{ _collection.handle }}">
+        <div class="collectionTabHeader {% if collection.handle == _collection.handle %}active{% endif %}" data-tab-header data-target="{{ _collection.handle }}" data-subtitle="{{ block.settings.subtitle }}" data-idx="{{ forloop.index }}">
           {% if block.settings.is_new %}
             <span class="collection_tab_header_badge">NEW</span>
           {% endif %}
@@ -135,12 +138,8 @@
 </div>
 
 <div class="collection_header">
-  {% if section.settings.title != blank %}
-    <div class="collection_title" data-collection-title>{{ section.settings.title }}</div>
-  {% endif %}
-  {% if section.settings.subtitle != blank %}
-    <div class="collection_subtitle">{{ section.settings.subtitle }}</div>
-  {% endif %}
+  <div class="collection_title" data-collection-title>{{ c_title }}</div>
+  <div class="collection_subtitle" data-collection-subtitle>{{ c_subtitle }}</div>
 </div>
 
 
@@ -272,20 +271,6 @@ data-section-data
       "id": "collection_sort",
       "label": "Show sort by filter",
       "default": true
-    },
-    {
-      "type": "header",
-      "content": "Collection"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    },
-    {
-      "type": "richtext",
-      "id": "subtitle",
-      "label": "Sub title"
     },
     {
       "type": "header",
@@ -516,11 +501,6 @@ data-section-data
       "type": "collection",
       "settings": [
         {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
           "type": "collection",
           "id": "collection",
           "label": "Collection"
@@ -530,6 +510,21 @@ data-section-data
           "id": "is_new",
           "label": "Is new ?",
           "default": false
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "label": "Sub title"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button Label"
         }
       ]
     }

@@ -54,7 +54,8 @@ Shopify.theme.jsCollection = {
       if($item.hasClass('active')) {
 
       } else {
-        // $("[data-collection-title]").text($(this).text());
+        $("[data-collection-title]").text($(this).text());
+        $("[data-collection-subtitle]").html($(this).closest('.collectionTabHeader').attr('data-subtitle'));
         $tabHeaderItem.removeClass('active');
         $item.addClass('active');
         var handle = $item.attr('data-target');
@@ -75,10 +76,17 @@ Shopify.theme.jsCollection = {
       }
     })
 
-    if($(window).width() <= 640) {
-      var $target = $(".collectionTabHeaderWrapper .wrapper .collectionTabHeader.active");
-      var left = $target.offset().left;
-      $(".collectionTabHeaderWrapper").scrollLeft(left - $(window).width() / 2 + $target.width() / 2);
+    if($(window).width() <= 990) {
+      // var $target = $(".collectionTabHeaderWrapper .wrapper .collectionTabHeader.active");
+      // var left = $target.offset().left;
+      // $(".collectionTabHeaderWrapper").scrollLeft(left - $(window).width() / 2 + $target.width() / 2);
+
+      $("[data-hor-slider]").flickity({
+        pageDots: false,
+        contain: true,
+        initialIndex: '.active'
+      });
+      $("[data-hor-slider]").css('opacity', 1);
     }
 
   },
