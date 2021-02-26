@@ -54,7 +54,7 @@ Shopify.theme.jsCollection = {
       if($item.hasClass('active')) {
 
       } else {
-        $("[data-collection-title]").text($(this).text());
+        $("[data-collection-title]").text($(this).closest('.collectionTabHeader').attr('data-title'));
         $("[data-collection-subtitle]").html($(this).closest('.collectionTabHeader').attr('data-subtitle'));
         $tabHeaderItem.removeClass('active');
         $item.addClass('active');

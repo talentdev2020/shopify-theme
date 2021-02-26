@@ -125,7 +125,7 @@
         {% assign c_subtitle = subtitle %}
       {% endif %}
       {% if _collection != blank %}
-        <div class="collectionTabHeader {% if collection.handle == _collection.handle %}active{% endif %}" data-tab-header data-target="{{ _collection.handle }}" data-subtitle="{{ block.settings.subtitle }}" data-idx="{{ forloop.index }}">
+        <div class="collectionTabHeader {% if collection.handle == _collection.handle %}active{% endif %}" data-tab-header data-target="{{ _collection.handle }}" data-title="{{ block.settings.title | default: _collection.title }}" data-subtitle="{{ block.settings.subtitle }}" data-idx="{{ forloop.index }}">
           {% if block.settings.is_new %}
             <span class="collection_tab_header_badge">NEW</span>
           {% endif %}

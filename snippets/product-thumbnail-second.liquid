@@ -56,6 +56,10 @@ product-thumbnail.liquid
     {% endif %}
 
     <div class="header-tag">
+      {% if product.metafields.global.type != blank %}
+        <span class="meta_product_type">{{ product.metafields.global.type }}</span>
+      {% endif %}
+      {% comment %}
       {% for tag in product.tags %}
         {% if tag contains 'meals' %}
           {% if  object.settings.enable_tooltip %}<div class="con-tooltip bottom">{% endif %}
@@ -68,6 +72,7 @@ product-thumbnail.liquid
             {% endif %}
         {% endif %}
       {% endfor %}
+      {% endcomment %}
     </div>
 
     
@@ -177,7 +182,7 @@ product-thumbnail.liquid
       {% endif %} 
 
       <div class="show_now_btn" data-shop-now>
-        <a href="{{ product.url }}">Shop Now</a>
+        <a href="{{ product.url }}">{% if product.available %}Shop Now{% else %}Sold Out{% endif %}</a>
       </div>
 
       <div class="product-review__wrapper is-hidden-mobile-only">
