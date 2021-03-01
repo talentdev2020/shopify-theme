@@ -1,14 +1,16 @@
 /* # Landing Hero
 ================================================== */
 .landing-hero{
-    object-fit: contain;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
     height: 629px;
     margin: auto;
-    padding-left: 100px;
+    padding-left: calc(10% - 100px);
     padding-top: 159px;
     width: 81%;
     .image-block{

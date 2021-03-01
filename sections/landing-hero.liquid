@@ -2,6 +2,7 @@
 ** Landingpage hero **
 - Template section
 {% endcomment %}
+<img class='landing-img' src="{{ section.settings.background | img_url: '2000x' }}"  />
 <div class='landing-hero'> 
   <p class="hero-header">{{section.settings.heading}}</p>
   <p class="hero-content">{{section.settings.content}}</p>
@@ -24,9 +25,7 @@
 <div>
 
 {% style %}
-.landing-container{
-  background-image: url({{ section.settings.background | img_url: '2000x' }} );
-} 
+
 {% endstyle %}
 
  {% schema %}

@@ -13835,29 +13835,6 @@ h1.header__logo-text > a {
     border: none !important;
   }
 }
-.button--cta {
-  width: 139px;
-  height: 40px;
-  margin: 35.4px 0px 0 0;
-  padding: 11px 29px 11px 30px;
-  border-radius: 5px;
-  background-color: #4899d4;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-
-  &:hover {
-    opacity: 0.75;
-    color: white;
-    border: none !important;
-  }
-}
 
 
 .cookie-guilt {
@@ -17186,6 +17163,30 @@ $play-icon-size: 81px;
   }
 }
 
+.button--cta {
+  width: 139px;
+  height: 40px;
+  margin: 35.4px 0px 0 0;
+  padding: 11px 29px 11px 30px;
+  border-radius: 5px;
+  background-color: #4899d4;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+
+  &:hover {
+    opacity: 0.75;
+    color: white;
+    border: none !important;
+  }
+}
+
 .review {
   text-align: center;
   padding: 20px;
@@ -20120,13 +20121,20 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
       }
   }
 
-
 .landing-container{
-    background-repeat: no-repeat;  
-    background-size: contain;
+  position: relative;
+  background-repeat: no-repeat;  
+  background-size: contain;
+  
+  .landing-img{
+    width: 100%;
+  }
 }
 
 .landing-hero{
+  position: absolute;
+  top: 0px;
+  left: 10%;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -20134,7 +20142,7 @@ h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .headline
   height: 629px;
   margin: auto;
   padding-left: 100px;
-  padding-top: 159px;
+  padding-top: 10%;
   width: 81%;
   .image-block{
       display: table;
