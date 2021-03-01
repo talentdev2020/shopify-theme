@@ -1,0 +1,78 @@
+{% comment %}
+** Landingpage hero **
+- Template section
+{% endcomment %}
+<div class='landing-hero'> 
+  <p class="hero-header">{{section.settings.heading}}</p>
+  <p class="hero-content">{{section.settings.content}}</p>
+  <form action='/'>
+    <input type='email' name='email' id='email' placeholder="Enter your Email" class="email border-round"></input>
+    <input type='submit' class='button-access border-round' value="{{section.settings.button}}" class="button-black border-round"> </input>
+  </form>
+  <div class="as-seen">
+    <div class="logo-header">
+      As Seen:
+    </div>
+    <div class="image-block">
+      {% for block in section.blocks%}
+      <div>
+        <img class='logo' src="{{block.settings.logo | img_url: '96x30' }}" />
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+<div>
+
+{% style %}
+.landing-container{
+  background-image: url({{ section.settings.background | img_url: '2000x' }} );
+} 
+{% endstyle %}
+
+ {% schema %}
+
+ {
+  "name": "Landing hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "header",
+      "default": "The Ultimate Mission-Based Cookie"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "content",
+      "default": "For ever cookie sold, we donate 1 meal to partner soup kitchens"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "button",
+      "default": "GET ACCESS"
+    },
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Backgrond",
+      "info": "1800 x 800px recommended"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "logo block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "96 x 30px recommended"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

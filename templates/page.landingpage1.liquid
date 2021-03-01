@@ -1,0 +1,27 @@
+{% comment %}
+  To edit the contents of this file, look inside the `sections` folder for the file name that comes directly after `section`. Eg. {% section 'product__main' %} or {% section 'page__banner' %}
+{% endcomment %}
+
+<main id="template-{{ template | replace: '.', '-' | handle }}" class="shopify-section default-page">
+  <div class="landing-container">
+    {% section 'landing-hero' %}
+  </div>
+  <div class='landingpage-section'>
+    {% section 'index__video' %}
+  </div>
+  <div class='landingpage-section'>
+    {% section 'include__button' %}
+  </div>
+  <div class='landingpage-section'>
+    {% section 'index__image-with-text' %}
+  </div>
+  <div class='landingpage-section'>
+    {% section 'index__dual__testimonial' %}
+  </div>
+  <div class='landingpage-section'>
+    {% section 'collection_main' %}
+  </div>
+  <div class='landingpage-section'>
+    {% section 'collection__icon-with-text-button' %}
+  </div>
+</main>

@@ -1,0 +1,70 @@
+{% comment %}
+** Include button **
+{% endcomment %}
+<div class='join_button'>
+{% include 'button', label: section.settings.button_label, href: section.settings.link, type: "link", style: section.settings.button_style %}
+</div>
+
+{% style %}
+  .join_button{
+    text-align: center;
+    padding-top: {{ section.settings.paddingtop }}px;
+    padding-bottom: {{ section.settings.paddingbottom }}px;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+    "name": "Join Movement",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Label"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Style",
+        "options": [
+          {
+            "value": "button--primary",
+            "label": "Primary"
+          },
+          {
+            "value": "button--secondary",
+            "label": "Secondary"
+          },
+          {
+            "value": "button--link-style",
+            "label": "Link style"
+          },
+          {
+            "value": "button--cta",
+            "label": "Button Blue"
+          }
+        ],
+        "default": "button--primary"
+      },
+      {
+        "type": "text",
+        "id": "paddingtop",
+        "label": "Padding Top"
+      },
+      {
+        "type": "text",
+        "id": "paddingbottom",
+        "label": "Padding Bottom"
+      }
+    ]
+  }
+{% endschema %}
